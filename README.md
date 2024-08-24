@@ -1,6 +1,10 @@
 # @types/telegram-bot-api
 
-This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation.
+A 0KB Telegram Bot API SDK that only includes type definition files. It can be used to conveniently develop Telegram Bots in TypeScript.
+
+This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
+
+![](./preview.jpg)
 
 
 ### Installation
@@ -11,9 +15,11 @@ npm i telegram-bot-api-types
 
 ### Example
 
+You can use any HTTP request library you want to encapsulate your API client. Here is a simple example:
+
 ```typescript
 
-import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod } from ".";
+import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod, AllBotMethods } from ".";
 
 class APIClientBase {
     readonly token: string;
@@ -68,7 +74,8 @@ class APIClientBase {
 }
 
 
-type APIClient = APIClientBase &  GetFileRequest & SendPhotoRequest & GetMeRequest;
+// type APIClient = APIClientBase &  GetFileRequest & SendPhotoRequest & GetMeRequest; // You can use this type if you want to implement the methods one by one.
+type APIClient = APIClientBase &  AllBotMethods // Or you can use this type to include all methods at once.
 
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
@@ -91,6 +98,11 @@ client.getMe().then(res => res.json()).then(console.log).catch(console.error);
 ```
 
 You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods.
+
+
+## Known Issues
+
+- Missing return type for methods, Maybe in the future, I will add return types for methods by parsing the official documentation with a ChatGPT.
 
 
 ## License
