@@ -1,5 +1,6 @@
 import * as fs from 'node:fs';
-import * as cheerio from 'cheerio';
+import {load} from 'cheerio';
+import type { Cheerio } from 'cheerio';
 import type { TelegramTypes, TelegramField, TelegramMethod } from './type';
 
 
@@ -9,11 +10,12 @@ if (!fs.existsSync('index.html')) {
 }
 
 const html = fs.readFileSync('index.html', 'utf8');
-const $ = cheerio.load(html);
+const $ = load(html);
 
 const devPageContent = $('#dev_page_content');
 const types: TelegramTypes[] = [];
 const methods: TelegramMethod[] = [];
+
 
 
 devPageContent.find('h4').each((i, el) => {
@@ -22,11 +24,18 @@ devPageContent.find('h4').each((i, el) => {
         return;
     }
     const description = $(el).next().text();
+    let table: Cheerio<any> | null = $(el).next();
+    while (!table.is('table')) {
+       table = table.next();
+       if (table.is('h4')) {
+            table = null;
+           break;
+       }
+    }
     if (name[0] === name[0].toLowerCase()) {
         const parameters: TelegramField[] = [];
         const returns = '';
-        const table = $(el).next().next();
-        table.find('tbody tr').each((i, tr) => {
+        table?.find('tbody tr').each((i, tr) => {
             const td = $(tr).find('td');
             const name = td.eq(0).text();
             const type = td.eq(1).text();
@@ -36,15 +45,14 @@ devPageContent.find('h4').each((i, el) => {
         });
         methods.push({ name, description, parameters, returns });
     } else {
-        const table = $(el).next().next();
-        const fields = table.find('tbody tr').map((i, el) => {
+        const fields = table?.find('tbody tr').map((i, el) => {
             const $el = $(el);
             const name = $el.find('td').eq(0).text();
             const type = $el.find('td').eq(1).text();
             const description = $el.find('td').eq(2).text();
             const optional = description.includes('Optional');
             return { name, type, description, optional };
-        }).get();
+        }).get() || [];
         types.push({ name, description, fields });
     }
 })

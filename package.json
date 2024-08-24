@@ -1,6 +1,6 @@
 {
   "name": "telegram-bot-api-types",
-  "version": "7.9",
+  "version": "7.9.0.1",
   "description": "Telegram Bot API types",
   "type": "module",
   "author": "TBXark",

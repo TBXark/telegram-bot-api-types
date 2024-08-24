@@ -1227,6 +1227,14 @@ export interface UserProfilePhotos {
 
 // This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
 export interface File {
+    // Identifier for this file, which can be used to download or reuse the file
+    file_id: string;
+    // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
+    file_unique_id: string;
+    // Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
+    file_size?: number;
+    // Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+    file_path?: string;
 }
 
 
@@ -1369,6 +1377,14 @@ export interface InlineKeyboardButton {
 
 // This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
 export interface LoginUrl {
+    // An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data.NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.
+    url: string;
+    // Optional. New text of the button in forwarded messages.
+    forward_text?: string;
+    // Optional. Username of a bot, which will be used for user authorization. See Setting up a bot for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
+    bot_username?: string;
+    // Optional. Pass True to request the permission for your bot to send messages to the user.
+    request_write_access?: boolean;
 }
 
 
@@ -2478,6 +2494,38 @@ export interface InlineQueryResultMpeg4Gif {
 
 // Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
 export interface InlineQueryResultVideo {
+    // Type of the result, must be video
+    type: string;
+    // Unique identifier for this result, 1-64 bytes
+    id: string;
+    // A valid URL for the embedded video player or video file
+    video_url: string;
+    // MIME type of the content of the video URL, “text/html” or “video/mp4”
+    mime_type: string;
+    // URL of the thumbnail (JPEG only) for the video
+    thumbnail_url: string;
+    // Title for the result
+    title: string;
+    // Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
+    caption?: string;
+    // Optional. Mode for parsing entities in the video caption. See formatting options for more details.
+    parse_mode?: string;
+    // Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+    caption_entities?: Array<MessageEntity>;
+    // Optional. Pass True, if the caption must be shown above the message media
+    show_caption_above_media?: boolean;
+    // Optional. Video width
+    video_width?: number;
+    // Optional. Video height
+    video_height?: number;
+    // Optional. Video duration in seconds
+    video_duration?: number;
+    // Optional. Short description of the result
+    description?: string;
+    // Optional. Inline keyboard attached to the message
+    reply_markup?: InlineKeyboardMarkup;
+    // Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
+    input_message_content?: InputMessageContent;
 }
 
 
@@ -3454,10 +3502,28 @@ export interface GetUpdatesRequest {
     getUpdates?: (params: GetUpdatesParams) => Promise<Response>;
 }
 
+// Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
+export interface SetWebhookParams {
+    // HTTPS URL to send updates to. Use an empty string to remove webhook integration
+    url: string;
+    // Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details.
+    certificate?: InputFile;
+    // The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS
+    ip_address?: string;
+    // The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
+    max_connections?: number;
+    // A JSON-serialized list of the update types you want your bot to receive. For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member, message_reaction, and message_reaction_count (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
+    allowed_updates?: Array<string>;
+    // Pass True to drop all pending updates
+    drop_pending_updates?: boolean;
+    // A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook request, 1-256 characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful to ensure that the request comes from a webhook set by you.
+    secret_token?: string;
+}
+
 
 // Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
 export interface SetWebhookRequest {
-    setWebhook?: () => Promise<Response>;
+    setWebhook?: (params: SetWebhookParams) => Promise<Response>;
 }
 
 // Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
@@ -3670,10 +3736,46 @@ export interface SendPhotoRequest {
     sendPhoto?: (params: SendPhotoParams) => Promise<Response>;
 }
 
+// Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+export interface SendAudioParams {
+    // Unique identifier of the business connection on behalf of which the message will be sent
+    business_connection_id?: string;
+    // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+    chat_id: number | string;
+    // Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+    message_thread_id?: number;
+    // Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
+    audio: InputFile | string;
+    // Audio caption, 0-1024 characters after entities parsing
+    caption?: string;
+    // Mode for parsing entities in the audio caption. See formatting options for more details.
+    parse_mode?: string;
+    // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+    caption_entities?: Array<MessageEntity>;
+    // Duration of the audio in seconds
+    duration?: number;
+    // Performer
+    performer?: string;
+    // Track name
+    title?: string;
+    // Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
+    thumbnail?: InputFile | string;
+    // Sends the message silently. Users will receive a notification with no sound.
+    disable_notification?: boolean;
+    // Protects the contents of the sent message from forwarding and saving
+    protect_content?: boolean;
+    // Unique identifier of the message effect to be added to the message; for private chats only
+    message_effect_id?: string;
+    // Description of the message to reply to
+    reply_parameters?: ReplyParameters;
+    // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+    reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
+}
+
 
 // Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 export interface SendAudioRequest {
-    sendAudio?: () => Promise<Response>;
+    sendAudio?: (params: SendAudioParams) => Promise<Response>;
 }
 
 // Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
@@ -4134,10 +4236,22 @@ export interface SendDiceRequest {
     sendDice?: (params: SendDiceParams) => Promise<Response>;
 }
 
+// Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
+export interface SendChatActionParams {
+    // Unique identifier of the business connection on behalf of which the action will be sent
+    business_connection_id?: string;
+    // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+    chat_id: number | string;
+    // Unique identifier for the target message thread; for supergroups only
+    message_thread_id?: number;
+    // Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
+    action: string;
+}
+
 
 // Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
 export interface SendChatActionRequest {
-    sendChatAction?: () => Promise<Response>;
+    sendChatAction?: (params: SendChatActionParams) => Promise<Response>;
 }
 
 // Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
@@ -4834,10 +4948,24 @@ export interface UnpinAllGeneralForumTopicMessagesRequest {
     unpinAllGeneralForumTopicMessages?: (params: UnpinAllGeneralForumTopicMessagesParams) => Promise<Response>;
 }
 
+// Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
+export interface AnswerCallbackQueryParams {
+    // Unique identifier for the query to be answered
+    callback_query_id: string;
+    // Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+    text?: string;
+    // If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
+    show_alert?: boolean;
+    // URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @BotFather, specify the URL that opens your game - note that this will only work if the query comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
+    url?: string;
+    // The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
+    cache_time?: number;
+}
+
 
 // Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
 export interface AnswerCallbackQueryRequest {
-    answerCallbackQuery?: () => Promise<Response>;
+    answerCallbackQuery?: (params: AnswerCallbackQueryParams) => Promise<Response>;
 }
 
 // Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
@@ -5702,10 +5830,18 @@ export interface RefundStarPaymentRequest {
     refundStarPayment?: (params: RefundStarPaymentParams) => Promise<Response>;
 }
 
+// Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
+export interface SetPassportDataErrorsParams {
+    // User identifier
+    user_id: number;
+    // A JSON-serialized array describing the errors
+    errors: Array<PassportElementError>;
+}
+
 
 // Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
 export interface SetPassportDataErrorsRequest {
-    setPassportDataErrors?: () => Promise<Response>;
+    setPassportDataErrors?: (params: SetPassportDataErrorsParams) => Promise<Response>;
 }
 
 // Use this method to send a game. On success, the sent Message is returned.
@@ -5760,10 +5896,22 @@ export interface SetGameScoreRequest {
     setGameScore?: (params: SetGameScoreParams) => Promise<Response>;
 }
 
+// Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
+export interface GetGameHighScoresParams {
+    // Target user id
+    user_id: number;
+    // Required if inline_message_id is not specified. Unique identifier for the target chat
+    chat_id?: number;
+    // Required if inline_message_id is not specified. Identifier of the sent message
+    message_id?: number;
+    // Required if chat_id and message_id are not specified. Identifier of the inline message
+    inline_message_id?: string;
+}
+
 
 // Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
 export interface GetGameHighScoresRequest {
-    getGameHighScores?: () => Promise<Response>;
+    getGameHighScores?: (params: GetGameHighScoresParams) => Promise<Response>;
 }
 
 export type TelegramBotMethod = 'getUpdates' | 'setWebhook' | 'deleteWebhook' | 'getWebhookInfo' | 'getMe' | 'logOut' | 'close' | 'sendMessage' | 'forwardMessage' | 'forwardMessages' | 'copyMessage' | 'copyMessages' | 'sendPhoto' | 'sendAudio' | 'sendDocument' | 'sendVideo' | 'sendAnimation' | 'sendVoice' | 'sendVideoNote' | 'sendPaidMedia' | 'sendMediaGroup' | 'sendLocation' | 'sendVenue' | 'sendContact' | 'sendPoll' | 'sendDice' | 'sendChatAction' | 'setMessageReaction' | 'getUserProfilePhotos' | 'getFile' | 'banChatMember' | 'unbanChatMember' | 'restrictChatMember' | 'promoteChatMember' | 'setChatAdministratorCustomTitle' | 'banChatSenderChat' | 'unbanChatSenderChat' | 'setChatPermissions' | 'exportChatInviteLink' | 'createChatInviteLink' | 'editChatInviteLink' | 'createChatSubscriptionInviteLink' | 'editChatSubscriptionInviteLink' | 'revokeChatInviteLink' | 'approveChatJoinRequest' | 'declineChatJoinRequest' | 'setChatPhoto' | 'deleteChatPhoto' | 'setChatTitle' | 'setChatDescription' | 'pinChatMessage' | 'unpinChatMessage' | 'unpinAllChatMessages' | 'leaveChat' | 'getChat' | 'getChatAdministrators' | 'getChatMemberCount' | 'getChatMember' | 'setChatStickerSet' | 'deleteChatStickerSet' | 'getForumTopicIconStickers' | 'createForumTopic' | 'editForumTopic' | 'closeForumTopic' | 'reopenForumTopic' | 'deleteForumTopic' | 'unpinAllForumTopicMessages' | 'editGeneralForumTopic' | 'closeGeneralForumTopic' | 'reopenGeneralForumTopic' | 'hideGeneralForumTopic' | 'unhideGeneralForumTopic' | 'unpinAllGeneralForumTopicMessages' | 'answerCallbackQuery' | 'getUserChatBoosts' | 'getBusinessConnection' | 'setMyCommands' | 'deleteMyCommands' | 'getMyCommands' | 'setMyName' | 'getMyName' | 'setMyDescription' | 'getMyDescription' | 'setMyShortDescription' | 'getMyShortDescription' | 'setChatMenuButton' | 'getChatMenuButton' | 'setMyDefaultAdministratorRights' | 'getMyDefaultAdministratorRights' | 'editMessageText' | 'editMessageCaption' | 'editMessageMedia' | 'editMessageLiveLocation' | 'stopMessageLiveLocation' | 'editMessageReplyMarkup' | 'stopPoll' | 'deleteMessage' | 'deleteMessages' | 'sendSticker' | 'getStickerSet' | 'getCustomEmojiStickers' | 'uploadStickerFile' | 'createNewStickerSet' | 'addStickerToSet' | 'setStickerPositionInSet' | 'deleteStickerFromSet' | 'replaceStickerInSet' | 'setStickerEmojiList' | 'setStickerKeywords' | 'setStickerMaskPosition' | 'setStickerSetTitle' | 'setStickerSetThumbnail' | 'setCustomEmojiStickerSetThumbnail' | 'deleteStickerSet' | 'answerInlineQuery' | 'answerWebAppQuery' | 'sendInvoice' | 'createInvoiceLink' | 'answerShippingQuery' | 'answerPreCheckoutQuery' | 'getStarTransactions' | 'refundStarPayment' | 'setPassportDataErrors' | 'sendGame' | 'setGameScore' | 'getGameHighScores';
