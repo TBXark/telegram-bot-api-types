@@ -11,10 +11,11 @@ npm i telegram-bot-api-types
 
 ### Example
 
-```ts
-import type { GetFileParams, GetFileRequest, SendPhotoParams, SendPhotoRequest, TelegramBotMethod } from ".";
+```typescript
 
-class APIClient implements GetFileRequest, SendPhotoRequest {
+import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod } from ".";
+
+class APIClientBase {
     readonly token: string;
     readonly baseURL: string = `https://api.telegram.org/`;
     constructor(token: string, baseURL?: string) {
@@ -24,7 +25,7 @@ class APIClient implements GetFileRequest, SendPhotoRequest {
         }
     }
 
-    jsonRequest<T>(method: TelegramBotMethod, params: T): Promise<Response> {
+    private jsonRequest<T>(method: BotMethod, params: T): Promise<Response> {
         return fetch(`${this.baseURL}bot${this.token}/${method}`, {
             method: 'POST',
             headers: {
@@ -34,7 +35,7 @@ class APIClient implements GetFileRequest, SendPhotoRequest {
         });
     }
 
-    formDataRequest<T>(method: TelegramBotMethod, params: T): Promise<Response> {
+    private formDataRequest<T>(method: BotMethod, params: T): Promise<Response> {
         const formData = new FormData();
         for (const key in params) {
             const value = params[key];
@@ -54,18 +55,42 @@ class APIClient implements GetFileRequest, SendPhotoRequest {
         });
     }
 
-    getFile(params: GetFileParams): Promise<Response> {
-        return this.jsonRequest('getFile', params);
+    request<T>(method: BotMethod, params: T): Promise<Response> {
+        for (const key in params) {
+            if (params[key] instanceof File || params[key] instanceof Blob) {
+                return this.formDataRequest(method, params);
+            }
+        }
+        return this.jsonRequest(method, params);
     }
 
-    sendPhoto(params: SendPhotoParams): Promise<Response> {
-        return this.formDataRequest('sendPhoto', params);
-    }
+    
 }
 
-const client = new APIClient('123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11');
-client.getFile!({ file_id: '123' }).then(console.log);
+
+type APIClient = APIClientBase &  GetFileRequest & SendPhotoRequest & GetMeRequest;
+
+export function createAPIClient(token: string): APIClient {
+    const client = new APIClientBase(token);
+    return new Proxy(client, {
+        get(target, prop, receiver) {
+            if (prop in target) {
+                return Reflect.get(target, prop, receiver);
+            }
+            return (...args: any[]) => {
+                return Reflect.apply(target.request, target, [prop as BotMethod, ...args]);
+            };
+        }
+    }) as APIClient; 
+}
+
+
+const client = createAPIClient('YOUR_BOT_TOKEN');
+client.getMe().then(res => res.json()).then(console.log).catch(console.error);
+
 ```
+
+You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods.
 
 
 ## License

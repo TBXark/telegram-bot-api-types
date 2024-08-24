@@ -63,7 +63,7 @@ export function createAPIClient(token: string): APIClient {
                 return Reflect.get(target, prop, receiver);
             }
             return (...args: any[]) => {
-                return target.request(prop as BotMethod, args[0]);
+                return Reflect.apply(target.request, target, [prop as BotMethod, ...args]);
             };
         }
     }) as APIClient; 
