@@ -1,4 +1,4 @@
-import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod } from ".";
+import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod, SendPhotoParams } from ".";
 
 class APIClientBase {
     readonly token: string;
@@ -72,3 +72,9 @@ export function createAPIClient(token: string): APIClient {
 
 const client = createAPIClient('YOUR_BOT_TOKEN');
 client.getMe().then(res => res.json()).then(console.log).catch(console.error);
+
+const photo: SendPhotoParams = {
+    chat_id: 'YOUR_CHAT_ID',
+    photo: new File(['photo'], 'photo.jpg'),
+    caption: 'Hello, World!',
+};

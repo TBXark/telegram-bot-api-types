@@ -35,42 +35,62 @@ const typeGen = (t: string): string => {
     }
 }
 
-const genType = (name: string, description: string, fields: TelegramField[]): string => {
-    let typeDef = `// ${description}`
+const genType = (name: string, anchor: string, description: string, fields: TelegramField[]): string => {
+    let typeDef = `/** ${description ? description + ' ' : '' } https://core.telegram.org/bots/api#${anchor.toLowerCase()} */`
     typeDef += `\nexport interface ${name} {`
     for (const field of fields) {
-        typeDef += `\n    // ${field.description}`
+        typeDef += `\n    /** ${field.description} */`
         typeDef += `\n    ${field.name}${field.optional ? '?' : ''}: ${typeGen(field.type)};`
     }
     typeDef += `\n}\n\n`
     return typeDef;
 }
 
-let typedts = types.map(type => genType(type.name, type.description, type.fields)).join('\n');
+let output = ''
 
-let methoddts = ``
+output += types.map(type => genType(type.name, type.name, type.description, type.fields)).join('\n');
+
 const upcaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 methods.forEach(method => {
-    let methodDef = `\n// ${method.description}`
+    let methodDef = ''
     let methodReqParams = ''
     methodDef += `\nexport interface ${upcaseFirstChar(method.name)}Request {`
+    methodDef += `\n    /** ${method.description} https://core.telegram.org/bots/api#${method.name.toLowerCase()} */`
     methodDef += `\n    ${method.name}: (`
     if (method.parameters.length > 0) {
         const name = `${upcaseFirstChar(method.name)}Params`
-        methodReqParams = genType(name, method.description, method.parameters)
+        methodReqParams = genType(name, method.name, '', method.parameters)
         methodDef += `params: ${name}) => Promise<Response>;`  
     }   else {
         methodDef += `) => Promise<Response>;`
     }
-    methodDef += `\n}\n\n`
     if (methodReqParams) {
-        methoddts += methodReqParams;
+        output += methodReqParams;
     }
-    methoddts += methodDef;
+    methodDef += `\n}\n\n\n`
+    output += methodDef;
 })
 
-const allMethods = `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`
+
+output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
+
+output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${upcaseFirstChar(method.name)}Request`).join(' & ')};`;
+
+output += `
 
 
-fs.writeFileSync('index.d.ts', typedts + methoddts + allMethods);
+export interface ResponseSuccess<T> {
+    ok: true;
+    result: T;
+}
+
+
+export interface ResponseError {
+    ok: false;
+    error_code: number;
+    description: string;
+}
+`
+
+fs.writeFileSync('index.d.ts', output);
