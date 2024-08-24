@@ -55,7 +55,7 @@ methods.forEach(method => {
     let methodDef = `\n// ${method.description}`
     let methodReqParams = ''
     methodDef += `\nexport interface ${upcaseFirstChar(method.name)}Request {`
-    methodDef += `\n    ${method.name}?: (`
+    methodDef += `\n    ${method.name}: (`
     if (method.parameters.length > 0) {
         const name = `${upcaseFirstChar(method.name)}Params`
         methodReqParams = genType(name, method.description, method.parameters)
@@ -70,7 +70,7 @@ methods.forEach(method => {
     methoddts += methodDef;
 })
 
-const allMethods = `export type TelegramBotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`
+const allMethods = `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`
 
 
 fs.writeFileSync('index.d.ts', typedts + methoddts + allMethods);

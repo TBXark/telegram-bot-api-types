@@ -3499,7 +3499,7 @@ export interface GetUpdatesParams {
 
 // Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.
 export interface GetUpdatesRequest {
-    getUpdates?: (params: GetUpdatesParams) => Promise<Response>;
+    getUpdates: (params: GetUpdatesParams) => Promise<Response>;
 }
 
 // Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
@@ -3523,7 +3523,7 @@ export interface SetWebhookParams {
 
 // Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
 export interface SetWebhookRequest {
-    setWebhook?: (params: SetWebhookParams) => Promise<Response>;
+    setWebhook: (params: SetWebhookParams) => Promise<Response>;
 }
 
 // Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
@@ -3535,31 +3535,31 @@ export interface DeleteWebhookParams {
 
 // Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
 export interface DeleteWebhookRequest {
-    deleteWebhook?: (params: DeleteWebhookParams) => Promise<Response>;
+    deleteWebhook: (params: DeleteWebhookParams) => Promise<Response>;
 }
 
 
 // Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
 export interface GetWebhookInfoRequest {
-    getWebhookInfo?: () => Promise<Response>;
+    getWebhookInfo: () => Promise<Response>;
 }
 
 
 // A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.
 export interface GetMeRequest {
-    getMe?: () => Promise<Response>;
+    getMe: () => Promise<Response>;
 }
 
 
 // Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
 export interface LogOutRequest {
-    logOut?: () => Promise<Response>;
+    logOut: () => Promise<Response>;
 }
 
 
 // Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
 export interface CloseRequest {
-    close?: () => Promise<Response>;
+    close: () => Promise<Response>;
 }
 
 // Use this method to send text messages. On success, the sent Message is returned.
@@ -3593,7 +3593,7 @@ export interface SendMessageParams {
 
 // Use this method to send text messages. On success, the sent Message is returned.
 export interface SendMessageRequest {
-    sendMessage?: (params: SendMessageParams) => Promise<Response>;
+    sendMessage: (params: SendMessageParams) => Promise<Response>;
 }
 
 // Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned.
@@ -3615,7 +3615,7 @@ export interface ForwardMessageParams {
 
 // Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned.
 export interface ForwardMessageRequest {
-    forwardMessage?: (params: ForwardMessageParams) => Promise<Response>;
+    forwardMessage: (params: ForwardMessageParams) => Promise<Response>;
 }
 
 // Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned.
@@ -3637,7 +3637,7 @@ export interface ForwardMessagesParams {
 
 // Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned.
 export interface ForwardMessagesRequest {
-    forwardMessages?: (params: ForwardMessagesParams) => Promise<Response>;
+    forwardMessages: (params: ForwardMessagesParams) => Promise<Response>;
 }
 
 // Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
@@ -3671,7 +3671,7 @@ export interface CopyMessageParams {
 
 // Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
 export interface CopyMessageRequest {
-    copyMessage?: (params: CopyMessageParams) => Promise<Response>;
+    copyMessage: (params: CopyMessageParams) => Promise<Response>;
 }
 
 // Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
@@ -3695,7 +3695,7 @@ export interface CopyMessagesParams {
 
 // Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
 export interface CopyMessagesRequest {
-    copyMessages?: (params: CopyMessagesParams) => Promise<Response>;
+    copyMessages: (params: CopyMessagesParams) => Promise<Response>;
 }
 
 // Use this method to send photos. On success, the sent Message is returned.
@@ -3733,7 +3733,7 @@ export interface SendPhotoParams {
 
 // Use this method to send photos. On success, the sent Message is returned.
 export interface SendPhotoRequest {
-    sendPhoto?: (params: SendPhotoParams) => Promise<Response>;
+    sendPhoto: (params: SendPhotoParams) => Promise<Response>;
 }
 
 // Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
@@ -3775,7 +3775,7 @@ export interface SendAudioParams {
 
 // Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 export interface SendAudioRequest {
-    sendAudio?: (params: SendAudioParams) => Promise<Response>;
+    sendAudio: (params: SendAudioParams) => Promise<Response>;
 }
 
 // Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
@@ -3813,7 +3813,7 @@ export interface SendDocumentParams {
 
 // Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 export interface SendDocumentRequest {
-    sendDocument?: (params: SendDocumentParams) => Promise<Response>;
+    sendDocument: (params: SendDocumentParams) => Promise<Response>;
 }
 
 // Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
@@ -3861,7 +3861,7 @@ export interface SendVideoParams {
 
 // Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 export interface SendVideoRequest {
-    sendVideo?: (params: SendVideoParams) => Promise<Response>;
+    sendVideo: (params: SendVideoParams) => Promise<Response>;
 }
 
 // Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
@@ -3907,7 +3907,7 @@ export interface SendAnimationParams {
 
 // Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 export interface SendAnimationRequest {
-    sendAnimation?: (params: SendAnimationParams) => Promise<Response>;
+    sendAnimation: (params: SendAnimationParams) => Promise<Response>;
 }
 
 // Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
@@ -3943,7 +3943,7 @@ export interface SendVoiceParams {
 
 // Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 export interface SendVoiceRequest {
-    sendVoice?: (params: SendVoiceParams) => Promise<Response>;
+    sendVoice: (params: SendVoiceParams) => Promise<Response>;
 }
 
 // As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
@@ -3977,7 +3977,7 @@ export interface SendVideoNoteParams {
 
 // As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
 export interface SendVideoNoteRequest {
-    sendVideoNote?: (params: SendVideoNoteParams) => Promise<Response>;
+    sendVideoNote: (params: SendVideoNoteParams) => Promise<Response>;
 }
 
 // Use this method to send paid media. On success, the sent Message is returned.
@@ -4011,7 +4011,7 @@ export interface SendPaidMediaParams {
 
 // Use this method to send paid media. On success, the sent Message is returned.
 export interface SendPaidMediaRequest {
-    sendPaidMedia?: (params: SendPaidMediaParams) => Promise<Response>;
+    sendPaidMedia: (params: SendPaidMediaParams) => Promise<Response>;
 }
 
 // Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
@@ -4037,7 +4037,7 @@ export interface SendMediaGroupParams {
 
 // Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
 export interface SendMediaGroupRequest {
-    sendMediaGroup?: (params: SendMediaGroupParams) => Promise<Response>;
+    sendMediaGroup: (params: SendMediaGroupParams) => Promise<Response>;
 }
 
 // Use this method to send point on the map. On success, the sent Message is returned.
@@ -4075,7 +4075,7 @@ export interface SendLocationParams {
 
 // Use this method to send point on the map. On success, the sent Message is returned.
 export interface SendLocationRequest {
-    sendLocation?: (params: SendLocationParams) => Promise<Response>;
+    sendLocation: (params: SendLocationParams) => Promise<Response>;
 }
 
 // Use this method to send information about a venue. On success, the sent Message is returned.
@@ -4117,7 +4117,7 @@ export interface SendVenueParams {
 
 // Use this method to send information about a venue. On success, the sent Message is returned.
 export interface SendVenueRequest {
-    sendVenue?: (params: SendVenueParams) => Promise<Response>;
+    sendVenue: (params: SendVenueParams) => Promise<Response>;
 }
 
 // Use this method to send phone contacts. On success, the sent Message is returned.
@@ -4151,7 +4151,7 @@ export interface SendContactParams {
 
 // Use this method to send phone contacts. On success, the sent Message is returned.
 export interface SendContactRequest {
-    sendContact?: (params: SendContactParams) => Promise<Response>;
+    sendContact: (params: SendContactParams) => Promise<Response>;
 }
 
 // Use this method to send a native poll. On success, the sent Message is returned.
@@ -4205,7 +4205,7 @@ export interface SendPollParams {
 
 // Use this method to send a native poll. On success, the sent Message is returned.
 export interface SendPollRequest {
-    sendPoll?: (params: SendPollParams) => Promise<Response>;
+    sendPoll: (params: SendPollParams) => Promise<Response>;
 }
 
 // Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
@@ -4233,7 +4233,7 @@ export interface SendDiceParams {
 
 // Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
 export interface SendDiceRequest {
-    sendDice?: (params: SendDiceParams) => Promise<Response>;
+    sendDice: (params: SendDiceParams) => Promise<Response>;
 }
 
 // Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
@@ -4251,7 +4251,7 @@ export interface SendChatActionParams {
 
 // Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
 export interface SendChatActionRequest {
-    sendChatAction?: (params: SendChatActionParams) => Promise<Response>;
+    sendChatAction: (params: SendChatActionParams) => Promise<Response>;
 }
 
 // Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
@@ -4269,7 +4269,7 @@ export interface SetMessageReactionParams {
 
 // Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
 export interface SetMessageReactionRequest {
-    setMessageReaction?: (params: SetMessageReactionParams) => Promise<Response>;
+    setMessageReaction: (params: SetMessageReactionParams) => Promise<Response>;
 }
 
 // Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
@@ -4285,7 +4285,7 @@ export interface GetUserProfilePhotosParams {
 
 // Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
 export interface GetUserProfilePhotosRequest {
-    getUserProfilePhotos?: (params: GetUserProfilePhotosParams) => Promise<Response>;
+    getUserProfilePhotos: (params: GetUserProfilePhotosParams) => Promise<Response>;
 }
 
 // Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
@@ -4297,7 +4297,7 @@ export interface GetFileParams {
 
 // Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
 export interface GetFileRequest {
-    getFile?: (params: GetFileParams) => Promise<Response>;
+    getFile: (params: GetFileParams) => Promise<Response>;
 }
 
 // Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4315,7 +4315,7 @@ export interface BanChatMemberParams {
 
 // Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface BanChatMemberRequest {
-    banChatMember?: (params: BanChatMemberParams) => Promise<Response>;
+    banChatMember: (params: BanChatMemberParams) => Promise<Response>;
 }
 
 // Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
@@ -4331,7 +4331,7 @@ export interface UnbanChatMemberParams {
 
 // Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
 export interface UnbanChatMemberRequest {
-    unbanChatMember?: (params: UnbanChatMemberParams) => Promise<Response>;
+    unbanChatMember: (params: UnbanChatMemberParams) => Promise<Response>;
 }
 
 // Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
@@ -4351,7 +4351,7 @@ export interface RestrictChatMemberParams {
 
 // Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
 export interface RestrictChatMemberRequest {
-    restrictChatMember?: (params: RestrictChatMemberParams) => Promise<Response>;
+    restrictChatMember: (params: RestrictChatMemberParams) => Promise<Response>;
 }
 
 // Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
@@ -4395,7 +4395,7 @@ export interface PromoteChatMemberParams {
 
 // Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
 export interface PromoteChatMemberRequest {
-    promoteChatMember?: (params: PromoteChatMemberParams) => Promise<Response>;
+    promoteChatMember: (params: PromoteChatMemberParams) => Promise<Response>;
 }
 
 // Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
@@ -4411,7 +4411,7 @@ export interface SetChatAdministratorCustomTitleParams {
 
 // Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
 export interface SetChatAdministratorCustomTitleRequest {
-    setChatAdministratorCustomTitle?: (params: SetChatAdministratorCustomTitleParams) => Promise<Response>;
+    setChatAdministratorCustomTitle: (params: SetChatAdministratorCustomTitleParams) => Promise<Response>;
 }
 
 // Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4425,7 +4425,7 @@ export interface BanChatSenderChatParams {
 
 // Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface BanChatSenderChatRequest {
-    banChatSenderChat?: (params: BanChatSenderChatParams) => Promise<Response>;
+    banChatSenderChat: (params: BanChatSenderChatParams) => Promise<Response>;
 }
 
 // Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4439,7 +4439,7 @@ export interface UnbanChatSenderChatParams {
 
 // Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface UnbanChatSenderChatRequest {
-    unbanChatSenderChat?: (params: UnbanChatSenderChatParams) => Promise<Response>;
+    unbanChatSenderChat: (params: UnbanChatSenderChatParams) => Promise<Response>;
 }
 
 // Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
@@ -4455,7 +4455,7 @@ export interface SetChatPermissionsParams {
 
 // Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
 export interface SetChatPermissionsRequest {
-    setChatPermissions?: (params: SetChatPermissionsParams) => Promise<Response>;
+    setChatPermissions: (params: SetChatPermissionsParams) => Promise<Response>;
 }
 
 // Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
@@ -4467,7 +4467,7 @@ export interface ExportChatInviteLinkParams {
 
 // Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
 export interface ExportChatInviteLinkRequest {
-    exportChatInviteLink?: (params: ExportChatInviteLinkParams) => Promise<Response>;
+    exportChatInviteLink: (params: ExportChatInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
@@ -4487,7 +4487,7 @@ export interface CreateChatInviteLinkParams {
 
 // Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
 export interface CreateChatInviteLinkRequest {
-    createChatInviteLink?: (params: CreateChatInviteLinkParams) => Promise<Response>;
+    createChatInviteLink: (params: CreateChatInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
@@ -4509,7 +4509,7 @@ export interface EditChatInviteLinkParams {
 
 // Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
 export interface EditChatInviteLinkRequest {
-    editChatInviteLink?: (params: EditChatInviteLinkParams) => Promise<Response>;
+    editChatInviteLink: (params: EditChatInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
@@ -4527,7 +4527,7 @@ export interface CreateChatSubscriptionInviteLinkParams {
 
 // Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
 export interface CreateChatSubscriptionInviteLinkRequest {
-    createChatSubscriptionInviteLink?: (params: CreateChatSubscriptionInviteLinkParams) => Promise<Response>;
+    createChatSubscriptionInviteLink: (params: CreateChatSubscriptionInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
@@ -4543,7 +4543,7 @@ export interface EditChatSubscriptionInviteLinkParams {
 
 // Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
 export interface EditChatSubscriptionInviteLinkRequest {
-    editChatSubscriptionInviteLink?: (params: EditChatSubscriptionInviteLinkParams) => Promise<Response>;
+    editChatSubscriptionInviteLink: (params: EditChatSubscriptionInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
@@ -4557,7 +4557,7 @@ export interface RevokeChatInviteLinkParams {
 
 // Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
 export interface RevokeChatInviteLinkRequest {
-    revokeChatInviteLink?: (params: RevokeChatInviteLinkParams) => Promise<Response>;
+    revokeChatInviteLink: (params: RevokeChatInviteLinkParams) => Promise<Response>;
 }
 
 // Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
@@ -4571,7 +4571,7 @@ export interface ApproveChatJoinRequestParams {
 
 // Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
 export interface ApproveChatJoinRequestRequest {
-    approveChatJoinRequest?: (params: ApproveChatJoinRequestParams) => Promise<Response>;
+    approveChatJoinRequest: (params: ApproveChatJoinRequestParams) => Promise<Response>;
 }
 
 // Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
@@ -4585,7 +4585,7 @@ export interface DeclineChatJoinRequestParams {
 
 // Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
 export interface DeclineChatJoinRequestRequest {
-    declineChatJoinRequest?: (params: DeclineChatJoinRequestParams) => Promise<Response>;
+    declineChatJoinRequest: (params: DeclineChatJoinRequestParams) => Promise<Response>;
 }
 
 // Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4599,7 +4599,7 @@ export interface SetChatPhotoParams {
 
 // Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface SetChatPhotoRequest {
-    setChatPhoto?: (params: SetChatPhotoParams) => Promise<Response>;
+    setChatPhoto: (params: SetChatPhotoParams) => Promise<Response>;
 }
 
 // Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4611,7 +4611,7 @@ export interface DeleteChatPhotoParams {
 
 // Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface DeleteChatPhotoRequest {
-    deleteChatPhoto?: (params: DeleteChatPhotoParams) => Promise<Response>;
+    deleteChatPhoto: (params: DeleteChatPhotoParams) => Promise<Response>;
 }
 
 // Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4625,7 +4625,7 @@ export interface SetChatTitleParams {
 
 // Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface SetChatTitleRequest {
-    setChatTitle?: (params: SetChatTitleParams) => Promise<Response>;
+    setChatTitle: (params: SetChatTitleParams) => Promise<Response>;
 }
 
 // Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -4639,7 +4639,7 @@ export interface SetChatDescriptionParams {
 
 // Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
 export interface SetChatDescriptionRequest {
-    setChatDescription?: (params: SetChatDescriptionParams) => Promise<Response>;
+    setChatDescription: (params: SetChatDescriptionParams) => Promise<Response>;
 }
 
 // Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
@@ -4657,7 +4657,7 @@ export interface PinChatMessageParams {
 
 // Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
 export interface PinChatMessageRequest {
-    pinChatMessage?: (params: PinChatMessageParams) => Promise<Response>;
+    pinChatMessage: (params: PinChatMessageParams) => Promise<Response>;
 }
 
 // Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
@@ -4673,7 +4673,7 @@ export interface UnpinChatMessageParams {
 
 // Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
 export interface UnpinChatMessageRequest {
-    unpinChatMessage?: (params: UnpinChatMessageParams) => Promise<Response>;
+    unpinChatMessage: (params: UnpinChatMessageParams) => Promise<Response>;
 }
 
 // Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
@@ -4685,7 +4685,7 @@ export interface UnpinAllChatMessagesParams {
 
 // Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
 export interface UnpinAllChatMessagesRequest {
-    unpinAllChatMessages?: (params: UnpinAllChatMessagesParams) => Promise<Response>;
+    unpinAllChatMessages: (params: UnpinAllChatMessagesParams) => Promise<Response>;
 }
 
 // Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
@@ -4697,7 +4697,7 @@ export interface LeaveChatParams {
 
 // Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
 export interface LeaveChatRequest {
-    leaveChat?: (params: LeaveChatParams) => Promise<Response>;
+    leaveChat: (params: LeaveChatParams) => Promise<Response>;
 }
 
 // Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
@@ -4709,7 +4709,7 @@ export interface GetChatParams {
 
 // Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
 export interface GetChatRequest {
-    getChat?: (params: GetChatParams) => Promise<Response>;
+    getChat: (params: GetChatParams) => Promise<Response>;
 }
 
 // Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.
@@ -4721,7 +4721,7 @@ export interface GetChatAdministratorsParams {
 
 // Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.
 export interface GetChatAdministratorsRequest {
-    getChatAdministrators?: (params: GetChatAdministratorsParams) => Promise<Response>;
+    getChatAdministrators: (params: GetChatAdministratorsParams) => Promise<Response>;
 }
 
 // Use this method to get the number of members in a chat. Returns Int on success.
@@ -4733,7 +4733,7 @@ export interface GetChatMemberCountParams {
 
 // Use this method to get the number of members in a chat. Returns Int on success.
 export interface GetChatMemberCountRequest {
-    getChatMemberCount?: (params: GetChatMemberCountParams) => Promise<Response>;
+    getChatMemberCount: (params: GetChatMemberCountParams) => Promise<Response>;
 }
 
 // Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
@@ -4747,7 +4747,7 @@ export interface GetChatMemberParams {
 
 // Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
 export interface GetChatMemberRequest {
-    getChatMember?: (params: GetChatMemberParams) => Promise<Response>;
+    getChatMember: (params: GetChatMemberParams) => Promise<Response>;
 }
 
 // Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
@@ -4761,7 +4761,7 @@ export interface SetChatStickerSetParams {
 
 // Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
 export interface SetChatStickerSetRequest {
-    setChatStickerSet?: (params: SetChatStickerSetParams) => Promise<Response>;
+    setChatStickerSet: (params: SetChatStickerSetParams) => Promise<Response>;
 }
 
 // Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
@@ -4773,13 +4773,13 @@ export interface DeleteChatStickerSetParams {
 
 // Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
 export interface DeleteChatStickerSetRequest {
-    deleteChatStickerSet?: (params: DeleteChatStickerSetParams) => Promise<Response>;
+    deleteChatStickerSet: (params: DeleteChatStickerSetParams) => Promise<Response>;
 }
 
 
 // Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
 export interface GetForumTopicIconStickersRequest {
-    getForumTopicIconStickers?: () => Promise<Response>;
+    getForumTopicIconStickers: () => Promise<Response>;
 }
 
 // Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
@@ -4797,7 +4797,7 @@ export interface CreateForumTopicParams {
 
 // Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
 export interface CreateForumTopicRequest {
-    createForumTopic?: (params: CreateForumTopicParams) => Promise<Response>;
+    createForumTopic: (params: CreateForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
@@ -4815,7 +4815,7 @@ export interface EditForumTopicParams {
 
 // Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
 export interface EditForumTopicRequest {
-    editForumTopic?: (params: EditForumTopicParams) => Promise<Response>;
+    editForumTopic: (params: EditForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
@@ -4829,7 +4829,7 @@ export interface CloseForumTopicParams {
 
 // Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
 export interface CloseForumTopicRequest {
-    closeForumTopic?: (params: CloseForumTopicParams) => Promise<Response>;
+    closeForumTopic: (params: CloseForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
@@ -4843,7 +4843,7 @@ export interface ReopenForumTopicParams {
 
 // Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
 export interface ReopenForumTopicRequest {
-    reopenForumTopic?: (params: ReopenForumTopicParams) => Promise<Response>;
+    reopenForumTopic: (params: ReopenForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
@@ -4857,7 +4857,7 @@ export interface DeleteForumTopicParams {
 
 // Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
 export interface DeleteForumTopicRequest {
-    deleteForumTopic?: (params: DeleteForumTopicParams) => Promise<Response>;
+    deleteForumTopic: (params: DeleteForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
@@ -4871,7 +4871,7 @@ export interface UnpinAllForumTopicMessagesParams {
 
 // Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
 export interface UnpinAllForumTopicMessagesRequest {
-    unpinAllForumTopicMessages?: (params: UnpinAllForumTopicMessagesParams) => Promise<Response>;
+    unpinAllForumTopicMessages: (params: UnpinAllForumTopicMessagesParams) => Promise<Response>;
 }
 
 // Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
@@ -4885,7 +4885,7 @@ export interface EditGeneralForumTopicParams {
 
 // Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
 export interface EditGeneralForumTopicRequest {
-    editGeneralForumTopic?: (params: EditGeneralForumTopicParams) => Promise<Response>;
+    editGeneralForumTopic: (params: EditGeneralForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
@@ -4897,7 +4897,7 @@ export interface CloseGeneralForumTopicParams {
 
 // Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
 export interface CloseGeneralForumTopicRequest {
-    closeGeneralForumTopic?: (params: CloseGeneralForumTopicParams) => Promise<Response>;
+    closeGeneralForumTopic: (params: CloseGeneralForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
@@ -4909,7 +4909,7 @@ export interface ReopenGeneralForumTopicParams {
 
 // Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
 export interface ReopenGeneralForumTopicRequest {
-    reopenGeneralForumTopic?: (params: ReopenGeneralForumTopicParams) => Promise<Response>;
+    reopenGeneralForumTopic: (params: ReopenGeneralForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
@@ -4921,7 +4921,7 @@ export interface HideGeneralForumTopicParams {
 
 // Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
 export interface HideGeneralForumTopicRequest {
-    hideGeneralForumTopic?: (params: HideGeneralForumTopicParams) => Promise<Response>;
+    hideGeneralForumTopic: (params: HideGeneralForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
@@ -4933,7 +4933,7 @@ export interface UnhideGeneralForumTopicParams {
 
 // Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
 export interface UnhideGeneralForumTopicRequest {
-    unhideGeneralForumTopic?: (params: UnhideGeneralForumTopicParams) => Promise<Response>;
+    unhideGeneralForumTopic: (params: UnhideGeneralForumTopicParams) => Promise<Response>;
 }
 
 // Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
@@ -4945,7 +4945,7 @@ export interface UnpinAllGeneralForumTopicMessagesParams {
 
 // Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
 export interface UnpinAllGeneralForumTopicMessagesRequest {
-    unpinAllGeneralForumTopicMessages?: (params: UnpinAllGeneralForumTopicMessagesParams) => Promise<Response>;
+    unpinAllGeneralForumTopicMessages: (params: UnpinAllGeneralForumTopicMessagesParams) => Promise<Response>;
 }
 
 // Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
@@ -4965,7 +4965,7 @@ export interface AnswerCallbackQueryParams {
 
 // Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
 export interface AnswerCallbackQueryRequest {
-    answerCallbackQuery?: (params: AnswerCallbackQueryParams) => Promise<Response>;
+    answerCallbackQuery: (params: AnswerCallbackQueryParams) => Promise<Response>;
 }
 
 // Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
@@ -4979,7 +4979,7 @@ export interface GetUserChatBoostsParams {
 
 // Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
 export interface GetUserChatBoostsRequest {
-    getUserChatBoosts?: (params: GetUserChatBoostsParams) => Promise<Response>;
+    getUserChatBoosts: (params: GetUserChatBoostsParams) => Promise<Response>;
 }
 
 // Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.
@@ -4991,7 +4991,7 @@ export interface GetBusinessConnectionParams {
 
 // Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.
 export interface GetBusinessConnectionRequest {
-    getBusinessConnection?: (params: GetBusinessConnectionParams) => Promise<Response>;
+    getBusinessConnection: (params: GetBusinessConnectionParams) => Promise<Response>;
 }
 
 // Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
@@ -5007,7 +5007,7 @@ export interface SetMyCommandsParams {
 
 // Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
 export interface SetMyCommandsRequest {
-    setMyCommands?: (params: SetMyCommandsParams) => Promise<Response>;
+    setMyCommands: (params: SetMyCommandsParams) => Promise<Response>;
 }
 
 // Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
@@ -5021,7 +5021,7 @@ export interface DeleteMyCommandsParams {
 
 // Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
 export interface DeleteMyCommandsRequest {
-    deleteMyCommands?: (params: DeleteMyCommandsParams) => Promise<Response>;
+    deleteMyCommands: (params: DeleteMyCommandsParams) => Promise<Response>;
 }
 
 // Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
@@ -5035,7 +5035,7 @@ export interface GetMyCommandsParams {
 
 // Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
 export interface GetMyCommandsRequest {
-    getMyCommands?: (params: GetMyCommandsParams) => Promise<Response>;
+    getMyCommands: (params: GetMyCommandsParams) => Promise<Response>;
 }
 
 // Use this method to change the bot's name. Returns True on success.
@@ -5049,7 +5049,7 @@ export interface SetMyNameParams {
 
 // Use this method to change the bot's name. Returns True on success.
 export interface SetMyNameRequest {
-    setMyName?: (params: SetMyNameParams) => Promise<Response>;
+    setMyName: (params: SetMyNameParams) => Promise<Response>;
 }
 
 // Use this method to get the current bot name for the given user language. Returns BotName on success.
@@ -5061,7 +5061,7 @@ export interface GetMyNameParams {
 
 // Use this method to get the current bot name for the given user language. Returns BotName on success.
 export interface GetMyNameRequest {
-    getMyName?: (params: GetMyNameParams) => Promise<Response>;
+    getMyName: (params: GetMyNameParams) => Promise<Response>;
 }
 
 // Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
@@ -5075,7 +5075,7 @@ export interface SetMyDescriptionParams {
 
 // Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
 export interface SetMyDescriptionRequest {
-    setMyDescription?: (params: SetMyDescriptionParams) => Promise<Response>;
+    setMyDescription: (params: SetMyDescriptionParams) => Promise<Response>;
 }
 
 // Use this method to get the current bot description for the given user language. Returns BotDescription on success.
@@ -5087,7 +5087,7 @@ export interface GetMyDescriptionParams {
 
 // Use this method to get the current bot description for the given user language. Returns BotDescription on success.
 export interface GetMyDescriptionRequest {
-    getMyDescription?: (params: GetMyDescriptionParams) => Promise<Response>;
+    getMyDescription: (params: GetMyDescriptionParams) => Promise<Response>;
 }
 
 // Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
@@ -5101,7 +5101,7 @@ export interface SetMyShortDescriptionParams {
 
 // Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
 export interface SetMyShortDescriptionRequest {
-    setMyShortDescription?: (params: SetMyShortDescriptionParams) => Promise<Response>;
+    setMyShortDescription: (params: SetMyShortDescriptionParams) => Promise<Response>;
 }
 
 // Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.
@@ -5113,7 +5113,7 @@ export interface GetMyShortDescriptionParams {
 
 // Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.
 export interface GetMyShortDescriptionRequest {
-    getMyShortDescription?: (params: GetMyShortDescriptionParams) => Promise<Response>;
+    getMyShortDescription: (params: GetMyShortDescriptionParams) => Promise<Response>;
 }
 
 // Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
@@ -5127,7 +5127,7 @@ export interface SetChatMenuButtonParams {
 
 // Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
 export interface SetChatMenuButtonRequest {
-    setChatMenuButton?: (params: SetChatMenuButtonParams) => Promise<Response>;
+    setChatMenuButton: (params: SetChatMenuButtonParams) => Promise<Response>;
 }
 
 // Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
@@ -5139,7 +5139,7 @@ export interface GetChatMenuButtonParams {
 
 // Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
 export interface GetChatMenuButtonRequest {
-    getChatMenuButton?: (params: GetChatMenuButtonParams) => Promise<Response>;
+    getChatMenuButton: (params: GetChatMenuButtonParams) => Promise<Response>;
 }
 
 // Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
@@ -5153,7 +5153,7 @@ export interface SetMyDefaultAdministratorRightsParams {
 
 // Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
 export interface SetMyDefaultAdministratorRightsRequest {
-    setMyDefaultAdministratorRights?: (params: SetMyDefaultAdministratorRightsParams) => Promise<Response>;
+    setMyDefaultAdministratorRights: (params: SetMyDefaultAdministratorRightsParams) => Promise<Response>;
 }
 
 // Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
@@ -5165,7 +5165,7 @@ export interface GetMyDefaultAdministratorRightsParams {
 
 // Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
 export interface GetMyDefaultAdministratorRightsRequest {
-    getMyDefaultAdministratorRights?: (params: GetMyDefaultAdministratorRightsParams) => Promise<Response>;
+    getMyDefaultAdministratorRights: (params: GetMyDefaultAdministratorRightsParams) => Promise<Response>;
 }
 
 // Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
@@ -5193,7 +5193,7 @@ export interface EditMessageTextParams {
 
 // Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 export interface EditMessageTextRequest {
-    editMessageText?: (params: EditMessageTextParams) => Promise<Response>;
+    editMessageText: (params: EditMessageTextParams) => Promise<Response>;
 }
 
 // Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
@@ -5221,7 +5221,7 @@ export interface EditMessageCaptionParams {
 
 // Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 export interface EditMessageCaptionRequest {
-    editMessageCaption?: (params: EditMessageCaptionParams) => Promise<Response>;
+    editMessageCaption: (params: EditMessageCaptionParams) => Promise<Response>;
 }
 
 // Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
@@ -5243,7 +5243,7 @@ export interface EditMessageMediaParams {
 
 // Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 export interface EditMessageMediaRequest {
-    editMessageMedia?: (params: EditMessageMediaParams) => Promise<Response>;
+    editMessageMedia: (params: EditMessageMediaParams) => Promise<Response>;
 }
 
 // Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
@@ -5275,7 +5275,7 @@ export interface EditMessageLiveLocationParams {
 
 // Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 export interface EditMessageLiveLocationRequest {
-    editMessageLiveLocation?: (params: EditMessageLiveLocationParams) => Promise<Response>;
+    editMessageLiveLocation: (params: EditMessageLiveLocationParams) => Promise<Response>;
 }
 
 // Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
@@ -5295,7 +5295,7 @@ export interface StopMessageLiveLocationParams {
 
 // Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
 export interface StopMessageLiveLocationRequest {
-    stopMessageLiveLocation?: (params: StopMessageLiveLocationParams) => Promise<Response>;
+    stopMessageLiveLocation: (params: StopMessageLiveLocationParams) => Promise<Response>;
 }
 
 // Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
@@ -5315,7 +5315,7 @@ export interface EditMessageReplyMarkupParams {
 
 // Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 export interface EditMessageReplyMarkupRequest {
-    editMessageReplyMarkup?: (params: EditMessageReplyMarkupParams) => Promise<Response>;
+    editMessageReplyMarkup: (params: EditMessageReplyMarkupParams) => Promise<Response>;
 }
 
 // Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
@@ -5333,7 +5333,7 @@ export interface StopPollParams {
 
 // Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
 export interface StopPollRequest {
-    stopPoll?: (params: StopPollParams) => Promise<Response>;
+    stopPoll: (params: StopPollParams) => Promise<Response>;
 }
 
 // Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.
@@ -5347,7 +5347,7 @@ export interface DeleteMessageParams {
 
 // Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.
 export interface DeleteMessageRequest {
-    deleteMessage?: (params: DeleteMessageParams) => Promise<Response>;
+    deleteMessage: (params: DeleteMessageParams) => Promise<Response>;
 }
 
 // Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
@@ -5361,7 +5361,7 @@ export interface DeleteMessagesParams {
 
 // Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
 export interface DeleteMessagesRequest {
-    deleteMessages?: (params: DeleteMessagesParams) => Promise<Response>;
+    deleteMessages: (params: DeleteMessagesParams) => Promise<Response>;
 }
 
 // Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
@@ -5391,7 +5391,7 @@ export interface SendStickerParams {
 
 // Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
 export interface SendStickerRequest {
-    sendSticker?: (params: SendStickerParams) => Promise<Response>;
+    sendSticker: (params: SendStickerParams) => Promise<Response>;
 }
 
 // Use this method to get a sticker set. On success, a StickerSet object is returned.
@@ -5403,7 +5403,7 @@ export interface GetStickerSetParams {
 
 // Use this method to get a sticker set. On success, a StickerSet object is returned.
 export interface GetStickerSetRequest {
-    getStickerSet?: (params: GetStickerSetParams) => Promise<Response>;
+    getStickerSet: (params: GetStickerSetParams) => Promise<Response>;
 }
 
 // Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
@@ -5415,7 +5415,7 @@ export interface GetCustomEmojiStickersParams {
 
 // Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
 export interface GetCustomEmojiStickersRequest {
-    getCustomEmojiStickers?: (params: GetCustomEmojiStickersParams) => Promise<Response>;
+    getCustomEmojiStickers: (params: GetCustomEmojiStickersParams) => Promise<Response>;
 }
 
 // Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.
@@ -5431,7 +5431,7 @@ export interface UploadStickerFileParams {
 
 // Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.
 export interface UploadStickerFileRequest {
-    uploadStickerFile?: (params: UploadStickerFileParams) => Promise<Response>;
+    uploadStickerFile: (params: UploadStickerFileParams) => Promise<Response>;
 }
 
 // Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
@@ -5453,7 +5453,7 @@ export interface CreateNewStickerSetParams {
 
 // Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
 export interface CreateNewStickerSetRequest {
-    createNewStickerSet?: (params: CreateNewStickerSetParams) => Promise<Response>;
+    createNewStickerSet: (params: CreateNewStickerSetParams) => Promise<Response>;
 }
 
 // Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.
@@ -5469,7 +5469,7 @@ export interface AddStickerToSetParams {
 
 // Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.
 export interface AddStickerToSetRequest {
-    addStickerToSet?: (params: AddStickerToSetParams) => Promise<Response>;
+    addStickerToSet: (params: AddStickerToSetParams) => Promise<Response>;
 }
 
 // Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
@@ -5483,7 +5483,7 @@ export interface SetStickerPositionInSetParams {
 
 // Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
 export interface SetStickerPositionInSetRequest {
-    setStickerPositionInSet?: (params: SetStickerPositionInSetParams) => Promise<Response>;
+    setStickerPositionInSet: (params: SetStickerPositionInSetParams) => Promise<Response>;
 }
 
 // Use this method to delete a sticker from a set created by the bot. Returns True on success.
@@ -5495,7 +5495,7 @@ export interface DeleteStickerFromSetParams {
 
 // Use this method to delete a sticker from a set created by the bot. Returns True on success.
 export interface DeleteStickerFromSetRequest {
-    deleteStickerFromSet?: (params: DeleteStickerFromSetParams) => Promise<Response>;
+    deleteStickerFromSet: (params: DeleteStickerFromSetParams) => Promise<Response>;
 }
 
 // Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
@@ -5513,7 +5513,7 @@ export interface ReplaceStickerInSetParams {
 
 // Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
 export interface ReplaceStickerInSetRequest {
-    replaceStickerInSet?: (params: ReplaceStickerInSetParams) => Promise<Response>;
+    replaceStickerInSet: (params: ReplaceStickerInSetParams) => Promise<Response>;
 }
 
 // Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
@@ -5527,7 +5527,7 @@ export interface SetStickerEmojiListParams {
 
 // Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
 export interface SetStickerEmojiListRequest {
-    setStickerEmojiList?: (params: SetStickerEmojiListParams) => Promise<Response>;
+    setStickerEmojiList: (params: SetStickerEmojiListParams) => Promise<Response>;
 }
 
 // Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
@@ -5541,7 +5541,7 @@ export interface SetStickerKeywordsParams {
 
 // Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
 export interface SetStickerKeywordsRequest {
-    setStickerKeywords?: (params: SetStickerKeywordsParams) => Promise<Response>;
+    setStickerKeywords: (params: SetStickerKeywordsParams) => Promise<Response>;
 }
 
 // Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
@@ -5555,7 +5555,7 @@ export interface SetStickerMaskPositionParams {
 
 // Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
 export interface SetStickerMaskPositionRequest {
-    setStickerMaskPosition?: (params: SetStickerMaskPositionParams) => Promise<Response>;
+    setStickerMaskPosition: (params: SetStickerMaskPositionParams) => Promise<Response>;
 }
 
 // Use this method to set the title of a created sticker set. Returns True on success.
@@ -5569,7 +5569,7 @@ export interface SetStickerSetTitleParams {
 
 // Use this method to set the title of a created sticker set. Returns True on success.
 export interface SetStickerSetTitleRequest {
-    setStickerSetTitle?: (params: SetStickerSetTitleParams) => Promise<Response>;
+    setStickerSetTitle: (params: SetStickerSetTitleParams) => Promise<Response>;
 }
 
 // Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.
@@ -5587,7 +5587,7 @@ export interface SetStickerSetThumbnailParams {
 
 // Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.
 export interface SetStickerSetThumbnailRequest {
-    setStickerSetThumbnail?: (params: SetStickerSetThumbnailParams) => Promise<Response>;
+    setStickerSetThumbnail: (params: SetStickerSetThumbnailParams) => Promise<Response>;
 }
 
 // Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
@@ -5601,7 +5601,7 @@ export interface SetCustomEmojiStickerSetThumbnailParams {
 
 // Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
 export interface SetCustomEmojiStickerSetThumbnailRequest {
-    setCustomEmojiStickerSetThumbnail?: (params: SetCustomEmojiStickerSetThumbnailParams) => Promise<Response>;
+    setCustomEmojiStickerSetThumbnail: (params: SetCustomEmojiStickerSetThumbnailParams) => Promise<Response>;
 }
 
 // Use this method to delete a sticker set that was created by the bot. Returns True on success.
@@ -5613,7 +5613,7 @@ export interface DeleteStickerSetParams {
 
 // Use this method to delete a sticker set that was created by the bot. Returns True on success.
 export interface DeleteStickerSetRequest {
-    deleteStickerSet?: (params: DeleteStickerSetParams) => Promise<Response>;
+    deleteStickerSet: (params: DeleteStickerSetParams) => Promise<Response>;
 }
 
 // Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed.
@@ -5635,7 +5635,7 @@ export interface AnswerInlineQueryParams {
 
 // Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed.
 export interface AnswerInlineQueryRequest {
-    answerInlineQuery?: (params: AnswerInlineQueryParams) => Promise<Response>;
+    answerInlineQuery: (params: AnswerInlineQueryParams) => Promise<Response>;
 }
 
 // Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
@@ -5649,7 +5649,7 @@ export interface AnswerWebAppQueryParams {
 
 // Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
 export interface AnswerWebAppQueryRequest {
-    answerWebAppQuery?: (params: AnswerWebAppQueryParams) => Promise<Response>;
+    answerWebAppQuery: (params: AnswerWebAppQueryParams) => Promise<Response>;
 }
 
 // Use this method to send invoices. On success, the sent Message is returned.
@@ -5715,7 +5715,7 @@ export interface SendInvoiceParams {
 
 // Use this method to send invoices. On success, the sent Message is returned.
 export interface SendInvoiceRequest {
-    sendInvoice?: (params: SendInvoiceParams) => Promise<Response>;
+    sendInvoice: (params: SendInvoiceParams) => Promise<Response>;
 }
 
 // Use this method to create a link for an invoice. Returns the created invoice link as String on success.
@@ -5765,7 +5765,7 @@ export interface CreateInvoiceLinkParams {
 
 // Use this method to create a link for an invoice. Returns the created invoice link as String on success.
 export interface CreateInvoiceLinkRequest {
-    createInvoiceLink?: (params: CreateInvoiceLinkParams) => Promise<Response>;
+    createInvoiceLink: (params: CreateInvoiceLinkParams) => Promise<Response>;
 }
 
 // If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
@@ -5783,7 +5783,7 @@ export interface AnswerShippingQueryParams {
 
 // If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
 export interface AnswerShippingQueryRequest {
-    answerShippingQuery?: (params: AnswerShippingQueryParams) => Promise<Response>;
+    answerShippingQuery: (params: AnswerShippingQueryParams) => Promise<Response>;
 }
 
 // Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
@@ -5799,7 +5799,7 @@ export interface AnswerPreCheckoutQueryParams {
 
 // Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
 export interface AnswerPreCheckoutQueryRequest {
-    answerPreCheckoutQuery?: (params: AnswerPreCheckoutQueryParams) => Promise<Response>;
+    answerPreCheckoutQuery: (params: AnswerPreCheckoutQueryParams) => Promise<Response>;
 }
 
 // Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
@@ -5813,7 +5813,7 @@ export interface GetStarTransactionsParams {
 
 // Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
 export interface GetStarTransactionsRequest {
-    getStarTransactions?: (params: GetStarTransactionsParams) => Promise<Response>;
+    getStarTransactions: (params: GetStarTransactionsParams) => Promise<Response>;
 }
 
 // Refunds a successful payment in Telegram Stars. Returns True on success.
@@ -5827,7 +5827,7 @@ export interface RefundStarPaymentParams {
 
 // Refunds a successful payment in Telegram Stars. Returns True on success.
 export interface RefundStarPaymentRequest {
-    refundStarPayment?: (params: RefundStarPaymentParams) => Promise<Response>;
+    refundStarPayment: (params: RefundStarPaymentParams) => Promise<Response>;
 }
 
 // Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
@@ -5841,7 +5841,7 @@ export interface SetPassportDataErrorsParams {
 
 // Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
 export interface SetPassportDataErrorsRequest {
-    setPassportDataErrors?: (params: SetPassportDataErrorsParams) => Promise<Response>;
+    setPassportDataErrors: (params: SetPassportDataErrorsParams) => Promise<Response>;
 }
 
 // Use this method to send a game. On success, the sent Message is returned.
@@ -5869,7 +5869,7 @@ export interface SendGameParams {
 
 // Use this method to send a game. On success, the sent Message is returned.
 export interface SendGameRequest {
-    sendGame?: (params: SendGameParams) => Promise<Response>;
+    sendGame: (params: SendGameParams) => Promise<Response>;
 }
 
 // Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
@@ -5893,7 +5893,7 @@ export interface SetGameScoreParams {
 
 // Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
 export interface SetGameScoreRequest {
-    setGameScore?: (params: SetGameScoreParams) => Promise<Response>;
+    setGameScore: (params: SetGameScoreParams) => Promise<Response>;
 }
 
 // Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
@@ -5911,7 +5911,7 @@ export interface GetGameHighScoresParams {
 
 // Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
 export interface GetGameHighScoresRequest {
-    getGameHighScores?: (params: GetGameHighScoresParams) => Promise<Response>;
+    getGameHighScores: (params: GetGameHighScoresParams) => Promise<Response>;
 }
 
-export type TelegramBotMethod = 'getUpdates' | 'setWebhook' | 'deleteWebhook' | 'getWebhookInfo' | 'getMe' | 'logOut' | 'close' | 'sendMessage' | 'forwardMessage' | 'forwardMessages' | 'copyMessage' | 'copyMessages' | 'sendPhoto' | 'sendAudio' | 'sendDocument' | 'sendVideo' | 'sendAnimation' | 'sendVoice' | 'sendVideoNote' | 'sendPaidMedia' | 'sendMediaGroup' | 'sendLocation' | 'sendVenue' | 'sendContact' | 'sendPoll' | 'sendDice' | 'sendChatAction' | 'setMessageReaction' | 'getUserProfilePhotos' | 'getFile' | 'banChatMember' | 'unbanChatMember' | 'restrictChatMember' | 'promoteChatMember' | 'setChatAdministratorCustomTitle' | 'banChatSenderChat' | 'unbanChatSenderChat' | 'setChatPermissions' | 'exportChatInviteLink' | 'createChatInviteLink' | 'editChatInviteLink' | 'createChatSubscriptionInviteLink' | 'editChatSubscriptionInviteLink' | 'revokeChatInviteLink' | 'approveChatJoinRequest' | 'declineChatJoinRequest' | 'setChatPhoto' | 'deleteChatPhoto' | 'setChatTitle' | 'setChatDescription' | 'pinChatMessage' | 'unpinChatMessage' | 'unpinAllChatMessages' | 'leaveChat' | 'getChat' | 'getChatAdministrators' | 'getChatMemberCount' | 'getChatMember' | 'setChatStickerSet' | 'deleteChatStickerSet' | 'getForumTopicIconStickers' | 'createForumTopic' | 'editForumTopic' | 'closeForumTopic' | 'reopenForumTopic' | 'deleteForumTopic' | 'unpinAllForumTopicMessages' | 'editGeneralForumTopic' | 'closeGeneralForumTopic' | 'reopenGeneralForumTopic' | 'hideGeneralForumTopic' | 'unhideGeneralForumTopic' | 'unpinAllGeneralForumTopicMessages' | 'answerCallbackQuery' | 'getUserChatBoosts' | 'getBusinessConnection' | 'setMyCommands' | 'deleteMyCommands' | 'getMyCommands' | 'setMyName' | 'getMyName' | 'setMyDescription' | 'getMyDescription' | 'setMyShortDescription' | 'getMyShortDescription' | 'setChatMenuButton' | 'getChatMenuButton' | 'setMyDefaultAdministratorRights' | 'getMyDefaultAdministratorRights' | 'editMessageText' | 'editMessageCaption' | 'editMessageMedia' | 'editMessageLiveLocation' | 'stopMessageLiveLocation' | 'editMessageReplyMarkup' | 'stopPoll' | 'deleteMessage' | 'deleteMessages' | 'sendSticker' | 'getStickerSet' | 'getCustomEmojiStickers' | 'uploadStickerFile' | 'createNewStickerSet' | 'addStickerToSet' | 'setStickerPositionInSet' | 'deleteStickerFromSet' | 'replaceStickerInSet' | 'setStickerEmojiList' | 'setStickerKeywords' | 'setStickerMaskPosition' | 'setStickerSetTitle' | 'setStickerSetThumbnail' | 'setCustomEmojiStickerSetThumbnail' | 'deleteStickerSet' | 'answerInlineQuery' | 'answerWebAppQuery' | 'sendInvoice' | 'createInvoiceLink' | 'answerShippingQuery' | 'answerPreCheckoutQuery' | 'getStarTransactions' | 'refundStarPayment' | 'setPassportDataErrors' | 'sendGame' | 'setGameScore' | 'getGameHighScores';
+export type BotMethod = 'getUpdates' | 'setWebhook' | 'deleteWebhook' | 'getWebhookInfo' | 'getMe' | 'logOut' | 'close' | 'sendMessage' | 'forwardMessage' | 'forwardMessages' | 'copyMessage' | 'copyMessages' | 'sendPhoto' | 'sendAudio' | 'sendDocument' | 'sendVideo' | 'sendAnimation' | 'sendVoice' | 'sendVideoNote' | 'sendPaidMedia' | 'sendMediaGroup' | 'sendLocation' | 'sendVenue' | 'sendContact' | 'sendPoll' | 'sendDice' | 'sendChatAction' | 'setMessageReaction' | 'getUserProfilePhotos' | 'getFile' | 'banChatMember' | 'unbanChatMember' | 'restrictChatMember' | 'promoteChatMember' | 'setChatAdministratorCustomTitle' | 'banChatSenderChat' | 'unbanChatSenderChat' | 'setChatPermissions' | 'exportChatInviteLink' | 'createChatInviteLink' | 'editChatInviteLink' | 'createChatSubscriptionInviteLink' | 'editChatSubscriptionInviteLink' | 'revokeChatInviteLink' | 'approveChatJoinRequest' | 'declineChatJoinRequest' | 'setChatPhoto' | 'deleteChatPhoto' | 'setChatTitle' | 'setChatDescription' | 'pinChatMessage' | 'unpinChatMessage' | 'unpinAllChatMessages' | 'leaveChat' | 'getChat' | 'getChatAdministrators' | 'getChatMemberCount' | 'getChatMember' | 'setChatStickerSet' | 'deleteChatStickerSet' | 'getForumTopicIconStickers' | 'createForumTopic' | 'editForumTopic' | 'closeForumTopic' | 'reopenForumTopic' | 'deleteForumTopic' | 'unpinAllForumTopicMessages' | 'editGeneralForumTopic' | 'closeGeneralForumTopic' | 'reopenGeneralForumTopic' | 'hideGeneralForumTopic' | 'unhideGeneralForumTopic' | 'unpinAllGeneralForumTopicMessages' | 'answerCallbackQuery' | 'getUserChatBoosts' | 'getBusinessConnection' | 'setMyCommands' | 'deleteMyCommands' | 'getMyCommands' | 'setMyName' | 'getMyName' | 'setMyDescription' | 'getMyDescription' | 'setMyShortDescription' | 'getMyShortDescription' | 'setChatMenuButton' | 'getChatMenuButton' | 'setMyDefaultAdministratorRights' | 'getMyDefaultAdministratorRights' | 'editMessageText' | 'editMessageCaption' | 'editMessageMedia' | 'editMessageLiveLocation' | 'stopMessageLiveLocation' | 'editMessageReplyMarkup' | 'stopPoll' | 'deleteMessage' | 'deleteMessages' | 'sendSticker' | 'getStickerSet' | 'getCustomEmojiStickers' | 'uploadStickerFile' | 'createNewStickerSet' | 'addStickerToSet' | 'setStickerPositionInSet' | 'deleteStickerFromSet' | 'replaceStickerInSet' | 'setStickerEmojiList' | 'setStickerKeywords' | 'setStickerMaskPosition' | 'setStickerSetTitle' | 'setStickerSetThumbnail' | 'setCustomEmojiStickerSetThumbnail' | 'deleteStickerSet' | 'answerInlineQuery' | 'answerWebAppQuery' | 'sendInvoice' | 'createInvoiceLink' | 'answerShippingQuery' | 'answerPreCheckoutQuery' | 'getStarTransactions' | 'refundStarPayment' | 'setPassportDataErrors' | 'sendGame' | 'setGameScore' | 'getGameHighScores';
