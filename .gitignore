@@ -144,7 +144,8 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node
 
 
+index.html
 types.json
 methods.json
-index.html
+unions.json
 example_config.json

@@ -11,6 +11,12 @@ export interface TelegramTypes {
     fields: TelegramField[];
 }
 
+export interface TelegramUnions {
+    name: string;
+    description: string;
+    types: string[];
+}
+
 export interface TelegramMethod {
     name: string;
     description: string;

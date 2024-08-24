@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import { load } from 'cheerio';
 import type { Cheerio } from 'cheerio';
-import type { TelegramTypes, TelegramField, TelegramMethod } from './type';
+import type { TelegramTypes, TelegramField, TelegramMethod, TelegramUnions } from './type';
 
 
 if (!fs.existsSync('index.html')) {
@@ -13,7 +13,9 @@ const html = fs.readFileSync('index.html', 'utf8');
 const $ = load(html);
 
 const devPageContent = $('#dev_page_content');
+
 const types: TelegramTypes[] = [];
+const unions: TelegramUnions[] = [];
 const methods: TelegramMethod[] = [];
 
 
@@ -74,6 +76,22 @@ devPageContent.find('h4').each((i, el) => {
         });
         methods.push({ name, description, parameters, returns });
     } else {
+        let ul: Cheerio<any> | null = $(el).next();
+        if (table === null) {
+            while (!ul.is('ul')) {
+                ul = ul.next();
+                if (ul.is('h4')) {
+                    ul = null;
+                    break;
+                }
+            }
+        }
+        if (ul && ul.is('ul')) {
+            // 如果 ul 说明是 union
+            const types = ul?.find('li').map((i, li) => $(li).text()).get();
+            unions.push({ name, description, types });
+            return;
+        }
         const fields = table?.find('tbody tr').map((i, el) => {
             const $el = $(el);
             const name = $el.find('td').eq(0).text();
@@ -88,4 +106,5 @@ devPageContent.find('h4').each((i, el) => {
 
 
 fs.writeFileSync('types.json', JSON.stringify(types, null, 2));
+fs.writeFileSync('unions.json', JSON.stringify(unions, null, 2));
 fs.writeFileSync('methods.json', JSON.stringify(methods, null, 2));

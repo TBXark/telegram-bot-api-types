@@ -1,4 +1,4 @@
-import type { TelegramTypes, TelegramField, TelegramMethod } from './type';
+import type { TelegramTypes, TelegramMethod } from './type';
 import * as fs from 'node:fs';
 
 

@@ -1,9 +1,10 @@
-import type { TelegramTypes, TelegramField, TelegramMethod } from './type';
+import type { TelegramTypes, TelegramField, TelegramMethod, TelegramUnions } from './type';
 import * as fs from 'node:fs';
 
 
 const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
+const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
 
 
 
@@ -18,9 +19,18 @@ const genType = (name: string, anchor: string, description: string, fields: Tele
     return typeDef;
 }
 
+const genUnion = (name: string, description: string, types: string[]): string => {
+    let unionDef = `/** ${description ? description + ' ' : ''} https://core.telegram.org/bots/api#${name.toLowerCase()} */`
+    unionDef += `\nexport type ${name} = ${types.join(' | ')};`
+    unionDef += `\n\n`
+    return unionDef;
+}
+
 let output = ''
 
 output += types.map(type => genType(type.name, type.name, type.description, type.fields)).join('\n');
+output += unions.map(union => genUnion(union.name, union.description, union.types)).join('\n');
+
 
 
 output += `
@@ -48,12 +58,12 @@ export type ResponseWithMessage = ResponseSuccess<Message>;
 
 `
 
-const upcaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
+const uppercaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 methods.forEach(method => {
     let methodDef = ''
-    const paramsName = `${upcaseFirstChar(method.name)}Params`
-    methodDef += `\nexport interface ${upcaseFirstChar(method.name)}Request {`
+    const paramsName = `${uppercaseFirstChar(method.name)}Params`
+    methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request {`
     methodDef += `\n    /** ${method.description} https://core.telegram.org/bots/api#${method.name.toLowerCase()} */`
     methodDef += `\n    ${method.name}: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<Response>;`
     if (method.parameters.length > 0) {
@@ -71,7 +81,7 @@ methods.forEach(method => {
         if (returns && returns !== 'ResponseWithOutData') {
             methodDef += `\n    ${method.name}WithReturns: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<${returns}>;`
         }
-        output += `\nexport type ${upcaseFirstChar(method.name)}Response = ${returns};\n\n`
+        output += `\nexport type ${uppercaseFirstChar(method.name)}Response = ${returns};\n\n`
     }
     methodDef += `\n}\n\n\n`
     output += methodDef;
@@ -80,7 +90,7 @@ methods.forEach(method => {
 
 output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
 
-output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${upcaseFirstChar(method.name)}Request`).join(' & ')};`;
+output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${uppercaseFirstChar(method.name)}Request`).join(' & ')};`;
 
 
 fs.writeFileSync('index.d.ts', output);

@@ -408,11 +408,6 @@ export interface InaccessibleMessage {
 }
 
 
-/** This object describes a message that can be inaccessible to the bot. It can be one of  https://core.telegram.org/bots/api#maybeinaccessiblemessage */
-export interface MaybeInaccessibleMessage {
-}
-
-
 /** This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.  https://core.telegram.org/bots/api#messageentity */
 export interface MessageEntity {
     /** Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers) */
@@ -514,11 +509,6 @@ export interface ReplyParameters {
     quote_entities?: Array<MessageEntity>;
     /** Optional. Position of the quote in the original message in UTF-16 code units */
     quote_position?: number;
-}
-
-
-/** This object describes the origin of a message. It can be one of  https://core.telegram.org/bots/api#messageorigin */
-export interface MessageOrigin {
 }
 
 
@@ -723,11 +713,6 @@ export interface PaidMediaInfo {
 }
 
 
-/** This object describes paid media. Currently, it can be one of  https://core.telegram.org/bots/api#paidmedia */
-export interface PaidMedia {
-}
-
-
 /** The paid media isn't available before the payment.  https://core.telegram.org/bots/api#paidmediapreview */
 export interface PaidMediaPreview {
     /** Type of the paid media, always “preview” */
@@ -921,11 +906,6 @@ export interface ChatBoostAdded {
 }
 
 
-/** This object describes the way a background is filled based on the selected colors. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundfill */
-export interface BackgroundFill {
-}
-
-
 /** The background is filled using the selected color.  https://core.telegram.org/bots/api#backgroundfillsolid */
 export interface BackgroundFillSolid {
     /** Type of the background fill, always “solid” */
@@ -954,11 +934,6 @@ export interface BackgroundFillFreeformGradient {
     type: string;
     /** A list of the 3 or 4 base colors that are used to generate the freeform gradient in the RGB24 format */
     colors: Array<number>;
-}
-
-
-/** This object describes the type of a background. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundtype */
-export interface BackgroundType {
 }
 
 
@@ -1529,11 +1504,6 @@ export interface ChatMemberUpdated {
 }
 
 
-/** This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:  https://core.telegram.org/bots/api#chatmember */
-export interface ChatMember {
-}
-
-
 /** Represents a chat member that owns the chat and has all administrator privileges.  https://core.telegram.org/bots/api#chatmemberowner */
 export interface ChatMemberOwner {
     /** The member's status in the chat, always “creator” */
@@ -1770,11 +1740,6 @@ export interface ChatLocation {
 }
 
 
-/** This object describes the type of a reaction. Currently, it can be one of  https://core.telegram.org/bots/api#reactiontype */
-export interface ReactionType {
-}
-
-
 /** The reaction is based on an emoji.  https://core.telegram.org/bots/api#reactiontypeemoji */
 export interface ReactionTypeEmoji {
     /** Type of the reaction, always “emoji” */
@@ -1863,11 +1828,6 @@ export interface BotCommand {
 }
 
 
-/** This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:  https://core.telegram.org/bots/api#botcommandscope */
-export interface BotCommandScope {
-}
-
-
 /** Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.  https://core.telegram.org/bots/api#botcommandscopedefault */
 export interface BotCommandScopeDefault {
     /** Scope type, must be default */
@@ -1946,11 +1906,6 @@ export interface BotShortDescription {
 }
 
 
-/** This object describes the bot's menu button in a private chat. It should be one of  https://core.telegram.org/bots/api#menubutton */
-export interface MenuButton {
-}
-
-
 /** Represents a menu button, which opens the bot's list of commands.  https://core.telegram.org/bots/api#menubuttoncommands */
 export interface MenuButtonCommands {
     /** Type of the button, must be commands */
@@ -1973,11 +1928,6 @@ export interface MenuButtonWebApp {
 export interface MenuButtonDefault {
     /** Type of the button, must be default */
     type: string;
-}
-
-
-/** This object describes the source of a chat boost. It can be one of  https://core.telegram.org/bots/api#chatboostsource */
-export interface ChatBoostSource {
 }
 
 
@@ -2088,11 +2038,6 @@ export interface ResponseParameters {
     migrate_to_chat_id?: number;
     /** Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated */
     retry_after?: number;
-}
-
-
-/** This object represents the content of a media message to be sent. It should be one of  https://core.telegram.org/bots/api#inputmedia */
-export interface InputMedia {
 }
 
 
@@ -2215,11 +2160,6 @@ export interface InputMediaDocument {
 
 /** This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.  https://core.telegram.org/bots/api#inputfile */
 export interface InputFile {
-}
-
-
-/** This object describes the paid media to be sent. Currently, it can be one of  https://core.telegram.org/bots/api#inputpaidmedia */
-export interface InputPaidMedia {
 }
 
 
@@ -2354,11 +2294,6 @@ export interface InlineQueryResultsButton {
     web_app?: WebAppInfo;
     /** Optional. Deep-linking parameter for the /start message sent to the bot when a user presses the button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities. */
     start_parameter?: string;
-}
-
-
-/** This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:  https://core.telegram.org/bots/api#inlinequeryresult */
-export interface InlineQueryResult {
 }
 
 
@@ -2910,11 +2845,6 @@ export interface InlineQueryResultCachedAudio {
 }
 
 
-/** This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:  https://core.telegram.org/bots/api#inputmessagecontent */
-export interface InputMessageContent {
-}
-
-
 /** Represents the content of a text message to be sent as the result of an inline query.  https://core.telegram.org/bots/api#inputtextmessagecontent */
 export interface InputTextMessageContent {
     /** Text of the message to be sent, 1-4096 characters */
@@ -3177,11 +3107,6 @@ export interface PreCheckoutQuery {
 }
 
 
-/** This object describes the state of a revenue withdrawal operation. Currently, it can be one of  https://core.telegram.org/bots/api#revenuewithdrawalstate */
-export interface RevenueWithdrawalState {
-}
-
-
 /** The withdrawal is in progress.  https://core.telegram.org/bots/api#revenuewithdrawalstatepending */
 export interface RevenueWithdrawalStatePending {
     /** Type of the state, always “pending” */
@@ -3204,11 +3129,6 @@ export interface RevenueWithdrawalStateSucceeded {
 export interface RevenueWithdrawalStateFailed {
     /** Type of the state, always “failed” */
     type: string;
-}
-
-
-/** This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner */
-export interface TransactionPartner {
 }
 
 
@@ -3325,11 +3245,6 @@ export interface EncryptedCredentials {
     hash: string;
     /** Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption */
     secret: string;
-}
-
-
-/** This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:  https://core.telegram.org/bots/api#passportelementerror */
-export interface PassportElementError {
 }
 
 
@@ -3483,6 +3398,73 @@ export interface GameHighScore {
     /** Score */
     score: number;
 }
+
+/** This object describes a message that can be inaccessible to the bot. It can be one of  https://core.telegram.org/bots/api#maybeinaccessiblemessage */
+export type MaybeInaccessibleMessage = Message | InaccessibleMessage;
+
+
+/** This object describes the origin of a message. It can be one of  https://core.telegram.org/bots/api#messageorigin */
+export type MessageOrigin = MessageOriginUser | MessageOriginHiddenUser | MessageOriginChat | MessageOriginChannel;
+
+
+/** This object describes paid media. Currently, it can be one of  https://core.telegram.org/bots/api#paidmedia */
+export type PaidMedia = PaidMediaPreview | PaidMediaPhoto | PaidMediaVideo;
+
+
+/** This object describes the way a background is filled based on the selected colors. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundfill */
+export type BackgroundFill = BackgroundFillSolid | BackgroundFillGradient | BackgroundFillFreeformGradient;
+
+
+/** This object describes the type of a background. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundtype */
+export type BackgroundType = BackgroundTypeFill | BackgroundTypeWallpaper | BackgroundTypePattern | BackgroundTypeChatTheme;
+
+
+/** This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:  https://core.telegram.org/bots/api#chatmember */
+export type ChatMember = ChatMemberOwner | ChatMemberAdministrator | ChatMemberMember | ChatMemberRestricted | ChatMemberLeft | ChatMemberBanned;
+
+
+/** This object describes the type of a reaction. Currently, it can be one of  https://core.telegram.org/bots/api#reactiontype */
+export type ReactionType = ReactionTypeEmoji | ReactionTypeCustomEmoji | ReactionTypePaid;
+
+
+/** This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:  https://core.telegram.org/bots/api#botcommandscope */
+export type BotCommandScope = BotCommandScopeDefault | BotCommandScopeAllPrivateChats | BotCommandScopeAllGroupChats | BotCommandScopeAllChatAdministrators | BotCommandScopeChat | BotCommandScopeChatAdministrators | BotCommandScopeChatMember;
+
+
+/** This object describes the bot's menu button in a private chat. It should be one of  https://core.telegram.org/bots/api#menubutton */
+export type MenuButton = MenuButtonCommands | MenuButtonWebApp | MenuButtonDefault;
+
+
+/** This object describes the source of a chat boost. It can be one of  https://core.telegram.org/bots/api#chatboostsource */
+export type ChatBoostSource = ChatBoostSourcePremium | ChatBoostSourceGiftCode | ChatBoostSourceGiveaway;
+
+
+/** This object represents the content of a media message to be sent. It should be one of  https://core.telegram.org/bots/api#inputmedia */
+export type InputMedia = InputMediaAnimation | InputMediaDocument | InputMediaAudio | InputMediaPhoto | InputMediaVideo;
+
+
+/** This object describes the paid media to be sent. Currently, it can be one of  https://core.telegram.org/bots/api#inputpaidmedia */
+export type InputPaidMedia = InputPaidMediaPhoto | InputPaidMediaVideo;
+
+
+/** This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:  https://core.telegram.org/bots/api#inlinequeryresult */
+export type InlineQueryResult = InlineQueryResultCachedAudio | InlineQueryResultCachedDocument | InlineQueryResultCachedGif | InlineQueryResultCachedMpeg4Gif | InlineQueryResultCachedPhoto | InlineQueryResultCachedSticker | InlineQueryResultCachedVideo | InlineQueryResultCachedVoice | InlineQueryResultArticle | InlineQueryResultAudio | InlineQueryResultContact | InlineQueryResultGame | InlineQueryResultDocument | InlineQueryResultGif | InlineQueryResultLocation | InlineQueryResultMpeg4Gif | InlineQueryResultPhoto | InlineQueryResultVenue | InlineQueryResultVideo | InlineQueryResultVoice;
+
+
+/** This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:  https://core.telegram.org/bots/api#inputmessagecontent */
+export type InputMessageContent = InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent | InputInvoiceMessageContent;
+
+
+/** This object describes the state of a revenue withdrawal operation. Currently, it can be one of  https://core.telegram.org/bots/api#revenuewithdrawalstate */
+export type RevenueWithdrawalState = RevenueWithdrawalStatePending | RevenueWithdrawalStateSucceeded | RevenueWithdrawalStateFailed;
+
+
+/** This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner */
+export type TransactionPartner = TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerOther;
+
+
+/** This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:  https://core.telegram.org/bots/api#passportelementerror */
+export type PassportElementError = PassportElementErrorDataField | PassportElementErrorFrontSide | PassportElementErrorReverseSide | PassportElementErrorSelfie | PassportElementErrorFile | PassportElementErrorFiles | PassportElementErrorTranslationFile | PassportElementErrorTranslationFiles | PassportElementErrorUnspecified;
 
 
 
@@ -4993,13 +4975,9 @@ export interface GetChatAdministratorsParams {
 }
 
 
-export type GetChatAdministratorsResponse = ResponseSuccess<Array<ChatMember>>;
-
-
 export interface GetChatAdministratorsRequest {
     /** Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects. https://core.telegram.org/bots/api#getchatadministrators */
     getChatAdministrators: (params: GetChatAdministratorsParams) => Promise<Response>;
-    getChatAdministratorsWithReturns: (params: GetChatAdministratorsParams) => Promise<ResponseSuccess<Array<ChatMember>>>;
 }
 
 
@@ -5029,13 +5007,9 @@ export interface GetChatMemberParams {
 }
 
 
-export type GetChatMemberResponse = ResponseSuccess<ChatMember>;
-
-
 export interface GetChatMemberRequest {
     /** Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success. https://core.telegram.org/bots/api#getchatmember */
     getChatMember: (params: GetChatMemberParams) => Promise<Response>;
-    getChatMemberWithReturns: (params: GetChatMemberParams) => Promise<ResponseSuccess<ChatMember>>;
 }
 
 
@@ -5546,13 +5520,9 @@ export interface GetChatMenuButtonParams {
 }
 
 
-export type GetChatMenuButtonResponse = ResponseSuccess<MenuButton>;
-
-
 export interface GetChatMenuButtonRequest {
     /** Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success. https://core.telegram.org/bots/api#getchatmenubutton */
     getChatMenuButton: (params: GetChatMenuButtonParams) => Promise<Response>;
-    getChatMenuButtonWithReturns: (params: GetChatMenuButtonParams) => Promise<ResponseSuccess<MenuButton>>;
 }
 
 
