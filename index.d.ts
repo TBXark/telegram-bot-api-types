@@ -4975,9 +4975,13 @@ export interface GetChatAdministratorsParams {
 }
 
 
+export type GetChatAdministratorsResponse = ResponseSuccess<Array<ChatMember>>;
+
+
 export interface GetChatAdministratorsRequest {
     /** Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects. https://core.telegram.org/bots/api#getchatadministrators */
     getChatAdministrators: (params: GetChatAdministratorsParams) => Promise<Response>;
+    getChatAdministratorsWithReturns: (params: GetChatAdministratorsParams) => Promise<ResponseSuccess<Array<ChatMember>>>;
 }
 
 
@@ -5007,9 +5011,13 @@ export interface GetChatMemberParams {
 }
 
 
+export type GetChatMemberResponse = ResponseSuccess<ChatMember>;
+
+
 export interface GetChatMemberRequest {
     /** Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success. https://core.telegram.org/bots/api#getchatmember */
     getChatMember: (params: GetChatMemberParams) => Promise<Response>;
+    getChatMemberWithReturns: (params: GetChatMemberParams) => Promise<ResponseSuccess<ChatMember>>;
 }
 
 
@@ -5520,9 +5528,13 @@ export interface GetChatMenuButtonParams {
 }
 
 
+export type GetChatMenuButtonResponse = ResponseSuccess<MenuButton>;
+
+
 export interface GetChatMenuButtonRequest {
     /** Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success. https://core.telegram.org/bots/api#getchatmenubutton */
     getChatMenuButton: (params: GetChatMenuButtonParams) => Promise<Response>;
+    getChatMenuButtonWithReturns: (params: GetChatMenuButtonParams) => Promise<ResponseSuccess<MenuButton>>;
 }
 
 

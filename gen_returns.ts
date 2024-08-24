@@ -1,12 +1,13 @@
-import type { TelegramTypes, TelegramMethod } from './type';
+import type { TelegramTypes, TelegramMethod, TelegramUnions } from './type';
 import * as fs from 'node:fs';
 
 
 const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
+const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
 
-const availableTypes = Object.fromEntries(types.map(type => [type.name.toLowerCase(), type]));
 const allMethods = Object.fromEntries(methods.map(method => [method.name, method]));
+const allTypes = new Set(types.map(type => type.name.toLowerCase()).concat(unions.map(union => union.name.toLowerCase())));
 
 allMethods.getMe.returns = 'User';
 allMethods.copyMessage.returns = 'number';
@@ -44,7 +45,7 @@ for (const [name, method] of Object.entries(allMethods)) {
     const matchLink = method.description.match(/Returns the .* link as (a )?(\w+) object/i);
     if (matchLink) {
         const typeName = matchLink[2];
-        if (availableTypes[typeName.toLowerCase()]) {
+        if (allTypes.has(typeName.toLowerCase())) {
             method.returns = typeName;
             console.log(`${method.returns}: ${method.description}\n`);
             continue;
@@ -62,7 +63,7 @@ for (const [name, method] of Object.entries(allMethods)) {
     const matchArray = method.description.match(/Returns an? Array of (\w+) objects/i);
     if (matchArray) {
         const typeName = matchArray[1];
-        if (availableTypes[typeName.toLowerCase()]) {
+        if (allTypes.has(typeName.toLowerCase())) {
             method.returns = `Array<${typeName}>`;
             console.log(`${method.returns}: ${method.description}\n`);
             continue;
@@ -73,7 +74,7 @@ for (const [name, method] of Object.entries(allMethods)) {
     const matchObject = method.description.match(/Returns a (\w+) object/i);
     if (matchObject) {
         const typeName = matchObject[1];
-        if (availableTypes[typeName.toLowerCase()]) {
+        if (allTypes.has(typeName.toLowerCase())) {
             method.returns = typeName;
             console.log(`${method.returns}: ${method.description}\n`);
             continue;
@@ -84,7 +85,7 @@ for (const [name, method] of Object.entries(allMethods)) {
     const matchObject2 = method.description.match(/a (\w+) object is returned/i);
     if (matchObject2) {
         const typeName = matchObject2[1];
-        if (availableTypes[typeName.toLowerCase()]) {
+        if (allTypes.has(typeName.toLowerCase())) {
             method.returns = typeName;
             console.log(`${method.returns}: ${method.description}\n`);
             continue;
@@ -95,7 +96,7 @@ for (const [name, method] of Object.entries(allMethods)) {
     const matchObject3 = method.description.match(/Returns (\w+) on success/i);
     if (matchObject3) {
         const typeName = matchObject3[1];
-        if (availableTypes[typeName.toLowerCase()]) {
+        if (allTypes.has(typeName.toLowerCase())) {
             method.returns = typeName;
             console.log(`${method.returns}: ${method.description}\n`);
             continue;
