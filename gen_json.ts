@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import {load} from 'cheerio';
+import { load } from 'cheerio';
 import type { Cheerio } from 'cheerio';
 import type { TelegramTypes, TelegramField, TelegramMethod } from './type';
 
@@ -17,6 +17,35 @@ const types: TelegramTypes[] = [];
 const methods: TelegramMethod[] = [];
 
 
+const typeGen = (t: string): string => {
+    switch (t) {
+        case 'Integer':
+        case 'Float':
+            return 'number';
+        case 'String':
+            return 'string';
+        case 'Boolean':
+        case 'True':
+        case 'False':
+            return 'boolean';
+        default:
+            if (t.includes(' or ')) {
+                return t.split(' or ').map(typeGen).join(' | ');
+            }
+            if (t.includes(' and ')) {
+                return t.split(' and ').map(typeGen).join(' | ');
+            }
+            if (t.startsWith('Array of ')) {
+                const arrayT = typeGen(t.slice(9))
+                if (arrayT.includes(', ')) {
+                    return arrayT.split(', ').map(typeGen).map(t => `Array<${t}>`).join(' | ');
+                }
+                return `Array<${typeGen(t.slice(9))}>`;
+            }
+            return t;
+    }
+}
+
 
 devPageContent.find('h4').each((i, el) => {
     const name = $(el).text().trim();
@@ -26,11 +55,11 @@ devPageContent.find('h4').each((i, el) => {
     const description = $(el).next().text();
     let table: Cheerio<any> | null = $(el).next();
     while (!table.is('table')) {
-       table = table.next();
-       if (table.is('h4')) {
+        table = table.next();
+        if (table.is('h4')) {
             table = null;
-           break;
-       }
+            break;
+        }
     }
     if (name[0] === name[0].toLowerCase()) {
         const parameters: TelegramField[] = [];
@@ -41,7 +70,7 @@ devPageContent.find('h4').each((i, el) => {
             const type = td.eq(1).text();
             const optional = td.eq(2).text() === 'Optional';
             const description = td.eq(3).text();
-            parameters.push({ name, type, optional, description });
+            parameters.push({ name, type: typeGen(type), optional, description });
         });
         methods.push({ name, description, parameters, returns });
     } else {
@@ -51,7 +80,7 @@ devPageContent.find('h4').each((i, el) => {
             const type = $el.find('td').eq(1).text();
             const description = $el.find('td').eq(2).text();
             const optional = description.includes('Optional');
-            return { name, type, description, optional };
+            return { name, type: typeGen(type), description, optional };
         }).get() || [];
         types.push({ name, description, fields });
     }

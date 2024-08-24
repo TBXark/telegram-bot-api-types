@@ -18,8 +18,15 @@ npm i telegram-bot-api-types
 You can use any HTTP request library you want to encapsulate your API client. Here is a simple example:
 
 ```typescript
+import * as Telegram from ".";
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import type { Response } from 'node-fetch';
+import fetch from 'node-fetch';
+import * as fs from 'node:fs';
+import * as process from 'node:process';
 
-import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod, AllBotMethods } from ".";
+const { token } = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
+const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
 
 class APIClientBase {
     readonly token: string;
@@ -31,8 +38,9 @@ class APIClientBase {
         }
     }
 
-    private jsonRequest<T>(method: BotMethod, params: T): Promise<Response> {
+    private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         return fetch(`${this.baseURL}bot${this.token}/${method}`, {
+            agent,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +49,7 @@ class APIClientBase {
         });
     }
 
-    private formDataRequest<T>(method: BotMethod, params: T): Promise<Response> {
+    private formDataRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         const formData = new FormData();
         for (const key in params) {
             const value = params[key];
@@ -61,7 +69,7 @@ class APIClientBase {
         });
     }
 
-    request<T>(method: BotMethod, params: T): Promise<Response> {
+    request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         for (const key in params) {
             if (params[key] instanceof File || params[key] instanceof Blob) {
                 return this.formDataRequest(method, params);
@@ -70,12 +78,13 @@ class APIClientBase {
         return this.jsonRequest(method, params);
     }
 
-    
+    async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
+        return this.request(method, params).then(res => res.json() as R) 
+    }
 }
 
 
-// type APIClient = APIClientBase &  GetFileRequest & SendPhotoRequest & GetMeRequest; // You can use this type if you want to implement the methods one by one.
-type APIClient = APIClientBase &  AllBotMethods // Or you can use this type to include all methods at once.
+type APIClient = APIClientBase & Telegram.AllBotMethods;
 
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
@@ -85,24 +94,23 @@ export function createAPIClient(token: string): APIClient {
                 return Reflect.get(target, prop, receiver);
             }
             return (...args: any[]) => {
-                return Reflect.apply(target.request, target, [prop as BotMethod, ...args]);
+                if (typeof prop === 'string' && prop.endsWith('WithReturns')) {
+                    const method = prop.slice(0, -11) as Telegram.BotMethod;
+                    return Reflect.apply(target.requestJSON, target, [method, ...args]);
+                }
+                return Reflect.apply(target.request, target, [prop as Telegram.BotMethod, ...args]);
             };
         }
-    }) as APIClient; 
+    }) as APIClient;
 }
 
 
-const client = createAPIClient('YOUR_BOT_TOKEN');
-client.getMe().then(res => res.json()).then(console.log).catch(console.error);
+const client = createAPIClient(token);
+client.getMeWithReturns().then(u => console.log(`Username: ${u.result.username}`));
 
 ```
 
 You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods.
-
-
-## Known Issues
-
-- Missing return type for methods, Maybe in the future, I will add return types for methods by parsing the official documentation with a ChatGPT.
 
 
 ## License

@@ -1,4 +1,12 @@
-import type {  GetFileRequest, GetMeRequest, SendPhotoRequest, BotMethod, SendPhotoParams } from ".";
+import * as Telegram from ".";
+import { HttpsProxyAgent } from 'https-proxy-agent';
+import type { Response } from 'node-fetch';
+import fetch from 'node-fetch';
+import * as fs from 'node:fs';
+import * as process from 'node:process';
+
+const { token } = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
+const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
 
 class APIClientBase {
     readonly token: string;
@@ -10,8 +18,9 @@ class APIClientBase {
         }
     }
 
-    private jsonRequest<T>(method: BotMethod, params: T): Promise<Response> {
+    private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         return fetch(`${this.baseURL}bot${this.token}/${method}`, {
+            agent,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -20,7 +29,7 @@ class APIClientBase {
         });
     }
 
-    private formDataRequest<T>(method: BotMethod, params: T): Promise<Response> {
+    private formDataRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         const formData = new FormData();
         for (const key in params) {
             const value = params[key];
@@ -40,7 +49,7 @@ class APIClientBase {
         });
     }
 
-    request<T>(method: BotMethod, params: T): Promise<Response> {
+    request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         for (const key in params) {
             if (params[key] instanceof File || params[key] instanceof Blob) {
                 return this.formDataRequest(method, params);
@@ -49,11 +58,13 @@ class APIClientBase {
         return this.jsonRequest(method, params);
     }
 
-    
+    async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
+        return this.request(method, params).then(res => res.json() as R) 
+    }
 }
 
 
-type APIClient = APIClientBase &  GetFileRequest & SendPhotoRequest & GetMeRequest;
+type APIClient = APIClientBase & Telegram.AllBotMethods;
 
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
@@ -63,18 +74,16 @@ export function createAPIClient(token: string): APIClient {
                 return Reflect.get(target, prop, receiver);
             }
             return (...args: any[]) => {
-                return Reflect.apply(target.request, target, [prop as BotMethod, ...args]);
+                if (typeof prop === 'string' && prop.endsWith('WithReturns')) {
+                    const method = prop.slice(0, -11) as Telegram.BotMethod;
+                    return Reflect.apply(target.requestJSON, target, [method, ...args]);
+                }
+                return Reflect.apply(target.request, target, [prop as Telegram.BotMethod, ...args]);
             };
         }
-    }) as APIClient; 
+    }) as APIClient;
 }
 
 
-const client = createAPIClient('YOUR_BOT_TOKEN');
-client.getMe().then(res => res.json()).then(console.log).catch(console.error);
-
-const photo: SendPhotoParams = {
-    chat_id: 'YOUR_CHAT_ID',
-    photo: new File(['photo'], 'photo.jpg'),
-    caption: 'Hello, World!',
-};
+const client = createAPIClient(token);
+client.getMeWithReturns().then(u => console.log(`Username: ${u.result.username}`));

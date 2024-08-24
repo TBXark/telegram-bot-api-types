@@ -1,6 +1,6 @@
 {
   "name": "telegram-bot-api-types",
-  "version": "7.9.4",
+  "version": "7.9.5",
   "description": "Telegram Bot API types",
   "repository": "git@github.com:TBXark/telegram-bot-api-types.git",
   "type": "module",
@@ -14,13 +14,17 @@
     "gen:html": "curl https://core.telegram.org/bots/api -o index.html",
     "gen:json": "tsx gen_json.ts",
     "gen:dts": "tsx gen_dts.ts",
-    "gen": "npm run gen:html && npm run gen:json && npm run gen:dts",
+    "gen:returns": "tsx gen_returns.ts",
+    "gen": "npm run gen:html && npm run gen:json && npm run gen:returns && npm run gen:dts",
     "test": "tsx example.ts"
   },
   "dependencies": {},
   "devDependencies": {
     "cheerio": "^1.0.0",
     "@types/node": "^22.5.0",
-    "tsx": "^4.17.0"
+    "tsx": "^4.17.0",
+    "node-fetch": "^3.3.2",
+    "https-proxy-agent": "^7.0.5"
+
   }
 }

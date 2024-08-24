@@ -6,41 +6,13 @@ const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'))
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
 
 
-const typeGen = (t: string): string => {
-    switch (t) {
-        case 'Integer':
-        case 'Float':
-            return 'number';
-        case 'String':
-            return 'string';
-        case 'Boolean':
-        case 'True':
-        case 'False':
-            return 'boolean';
-        default:
-            if (t.includes(' or ')) {
-                return t.split(' or ').map(typeGen).join(' | ');
-            }
-            if (t.includes(' and ')) {
-                return t.split(' and ').map(typeGen).join(' | ');
-            }
-            if (t.startsWith('Array of ')) {
-                const arrayT = typeGen(t.slice(9))
-                if (arrayT.includes(', ')) {
-                    return arrayT.split(', ').map(typeGen).map(t => `Array<${t}>`).join(' | ');
-                }
-                return `Array<${typeGen(t.slice(9))}>`;
-            }
-            return t;
-    }
-}
 
 const genType = (name: string, anchor: string, description: string, fields: TelegramField[]): string => {
-    let typeDef = `/** ${description ? description + ' ' : '' } https://core.telegram.org/bots/api#${anchor.toLowerCase()} */`
+    let typeDef = `/** ${description ? description + ' ' : ''} https://core.telegram.org/bots/api#${anchor.toLowerCase()} */`
     typeDef += `\nexport interface ${name} {`
     for (const field of fields) {
         typeDef += `\n    /** ${field.description} */`
-        typeDef += `\n    ${field.name}${field.optional ? '?' : ''}: ${typeGen(field.type)};`
+        typeDef += `\n    ${field.name}${field.optional ? '?' : ''}: ${field.type};`
     }
     typeDef += `\n}\n\n`
     return typeDef;
@@ -50,35 +22,8 @@ let output = ''
 
 output += types.map(type => genType(type.name, type.name, type.description, type.fields)).join('\n');
 
-const upcaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
-
-methods.forEach(method => {
-    let methodDef = ''
-    let methodReqParams = ''
-    methodDef += `\nexport interface ${upcaseFirstChar(method.name)}Request {`
-    methodDef += `\n    /** ${method.description} https://core.telegram.org/bots/api#${method.name.toLowerCase()} */`
-    methodDef += `\n    ${method.name}: (`
-    if (method.parameters.length > 0) {
-        const name = `${upcaseFirstChar(method.name)}Params`
-        methodReqParams = genType(name, method.name, '', method.parameters)
-        methodDef += `params: ${name}) => Promise<Response>;`  
-    }   else {
-        methodDef += `) => Promise<Response>;`
-    }
-    if (methodReqParams) {
-        output += methodReqParams;
-    }
-    methodDef += `\n}\n\n\n`
-    output += methodDef;
-})
-
-
-output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
-
-output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${upcaseFirstChar(method.name)}Request`).join(' & ')};`;
 
 output += `
-
 
 export interface ResponseSuccess<T> {
     ok: true;
@@ -91,6 +36,51 @@ export interface ResponseError {
     error_code: number;
     description: string;
 }
+
+
+export type SuccessWithOutData = true;
+
+
+export type ResponseWithOutData = ResponseSuccess<SuccessWithOutData>;
+
+export type ResponseWithMessage = ResponseSuccess<Message>;
+
+
 `
+
+const upcaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
+
+methods.forEach(method => {
+    let methodDef = ''
+    const paramsName = `${upcaseFirstChar(method.name)}Params`
+    methodDef += `\nexport interface ${upcaseFirstChar(method.name)}Request {`
+    methodDef += `\n    /** ${method.description} https://core.telegram.org/bots/api#${method.name.toLowerCase()} */`
+    methodDef += `\n    ${method.name}: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<Response>;`
+    if (method.parameters.length > 0) {
+        output += genType(paramsName, method.name, '', method.parameters);
+    }
+    if (method.returns) {
+        let returns = ''
+        if (method.returns === 'true') {
+            returns = 'ResponseWithOutData';
+        } else if (method.returns === 'Message') {
+            returns = 'ResponseWithMessage';
+        } else {
+            returns = `ResponseSuccess<${method.returns}>`;
+        }
+        if (returns && returns !== 'ResponseWithOutData') {
+            methodDef += `\n    ${method.name}WithReturns: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<${returns}>;`
+        }
+        output += `\nexport type ${upcaseFirstChar(method.name)}Response = ${returns};\n\n`
+    }
+    methodDef += `\n}\n\n\n`
+    output += methodDef;
+})
+
+
+output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
+
+output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${upcaseFirstChar(method.name)}Request`).join(' & ')};`;
+
 
 fs.writeFileSync('index.d.ts', output);
