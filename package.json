@@ -1,0 +1,23 @@
+{
+  "name": "telegram-bot-api-types",
+  "version": "7.9",
+  "description": "Telegram Bot API types",
+  "type": "module",
+  "author": "TBXark",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts"
+  ],
+  "scripts": {
+    "gen:json": "tsx gen_json.ts",
+    "gen:dts": "tsx gen_dts.ts",
+    "test": "tsx example.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cheerio": "^1.0.0",
+    "@types/node": "^22.5.0",
+    "tsx": "^4.17.0"
+  }
+}
