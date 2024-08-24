@@ -3,6 +3,12 @@
 This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation.
 
 
+### Installation
+
+```sh
+npm i telegram-bot-api-types
+```
+
 ### Example
 
 ```ts
