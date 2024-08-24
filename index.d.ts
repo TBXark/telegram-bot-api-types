@@ -854,11 +854,11 @@ export interface Poll {
 /** This object represents a point on the map.  https://core.telegram.org/bots/api#location */
 export interface Location {
     /** Latitude as defined by the sender */
-    latitude: boolean;
+    latitude: number;
     /** Longitude as defined by the sender */
-    longitude: boolean;
+    longitude: number;
     /** Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
-    horizontal_accuracy?: boolean;
+    horizontal_accuracy?: number;
     /** Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only. */
     live_period?: number;
     /** Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only. */
@@ -2306,11 +2306,11 @@ export interface MaskPosition {
     /** The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”. */
     point: string;
     /** Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position. */
-    x_shift: boolean;
+    x_shift: number;
     /** Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example, 1.0 will place the mask just below the default mask position. */
-    y_shift: boolean;
+    y_shift: number;
     /** Mask scaling coefficient. For example, 2.0 means double size. */
-    scale: boolean;
+    scale: number;
 }
 
 
@@ -2621,13 +2621,13 @@ export interface InlineQueryResultLocation {
     /** Unique identifier for this result, 1-64 Bytes */
     id: string;
     /** Location latitude in degrees */
-    latitude: boolean;
+    latitude: number;
     /** Location longitude in degrees */
-    longitude: boolean;
+    longitude: number;
     /** Location title */
     title: string;
     /** Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
-    horizontal_accuracy?: boolean;
+    horizontal_accuracy?: number;
     /** Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
     live_period?: number;
     /** Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
@@ -2654,9 +2654,9 @@ export interface InlineQueryResultVenue {
     /** Unique identifier for this result, 1-64 Bytes */
     id: string;
     /** Latitude of the venue location in degrees */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of the venue location in degrees */
-    longitude: boolean;
+    longitude: number;
     /** Title of the venue */
     title: string;
     /** Address of the venue */
@@ -2931,11 +2931,11 @@ export interface InputTextMessageContent {
 /** Represents the content of a location message to be sent as the result of an inline query.  https://core.telegram.org/bots/api#inputlocationmessagecontent */
 export interface InputLocationMessageContent {
     /** Latitude of the location in degrees */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of the location in degrees */
-    longitude: boolean;
+    longitude: number;
     /** Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
-    horizontal_accuracy?: boolean;
+    horizontal_accuracy?: number;
     /** Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
     live_period?: number;
     /** Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
@@ -2948,9 +2948,9 @@ export interface InputLocationMessageContent {
 /** Represents the content of a venue message to be sent as the result of an inline query.  https://core.telegram.org/bots/api#inputvenuemessagecontent */
 export interface InputVenueMessageContent {
     /** Latitude of the venue in degrees */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of the venue in degrees */
-    longitude: boolean;
+    longitude: number;
     /** Name of the venue */
     title: string;
     /** Address of the venue */
@@ -4070,11 +4070,11 @@ export interface SendLocationParams {
     /** Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
     /** Latitude of the location */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of the location */
-    longitude: boolean;
+    longitude: number;
     /** The radius of uncertainty for the location, measured in meters; 0-1500 */
-    horizontal_accuracy?: boolean;
+    horizontal_accuracy?: number;
     /** Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
     live_period?: number;
     /** For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
@@ -4109,9 +4109,9 @@ export interface SendVenueParams {
     /** Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
     /** Latitude of the venue */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of the venue */
-    longitude: boolean;
+    longitude: number;
     /** Name of the venue */
     title: string;
     /** Address of the venue */
@@ -5349,13 +5349,13 @@ export interface EditMessageLiveLocationParams {
     /** Required if chat_id and message_id are not specified. Identifier of the inline message */
     inline_message_id?: string;
     /** Latitude of new location */
-    latitude: boolean;
+    latitude: number;
     /** Longitude of new location */
-    longitude: boolean;
+    longitude: number;
     /** New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged */
     live_period?: number;
     /** The radius of uncertainty for the location, measured in meters; 0-1500 */
-    horizontal_accuracy?: boolean;
+    horizontal_accuracy?: number;
     /** Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
     heading?: number;
     /** The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified. */

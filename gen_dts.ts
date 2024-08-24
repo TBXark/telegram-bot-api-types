@@ -9,13 +9,13 @@ const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'ut
 const typeGen = (t: string): string => {
     switch (t) {
         case 'Integer':
+        case 'Float':
             return 'number';
         case 'String':
             return 'string';
         case 'Boolean':
         case 'True':
         case 'False':
-        case 'Float':
             return 'boolean';
         default:
             if (t.includes(' or ')) {
