@@ -8,11 +8,13 @@ const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8
 
 
 
+const genAnchor = (name: string) => `https://core.telegram.org/bots/api#${name.toLowerCase()}`; 
+
 const genType = (name: string, anchor: string, description: string, fields: TelegramField[]): string => {
-    let typeDef = `/** ${description ? description + ' ' : ''} https://core.telegram.org/bots/api#${anchor.toLowerCase()} */`
+    let typeDef = `/** ${description ? description + ' ' : ''} ${genAnchor(anchor)} */`
     typeDef += `\nexport interface ${name} {`
     for (const field of fields) {
-        typeDef += `\n    /** ${field.description} */`
+        typeDef += `\n    /** ${field.raw_type} | ${field.description} */`
         typeDef += `\n    ${field.name}${field.optional ? '?' : ''}: ${field.type};`
     }
     typeDef += `\n}\n\n`
@@ -20,7 +22,7 @@ const genType = (name: string, anchor: string, description: string, fields: Tele
 }
 
 const genUnion = (name: string, description: string, types: string[]): string => {
-    let unionDef = `/** ${description ? description + ' ' : ''} https://core.telegram.org/bots/api#${name.toLowerCase()} */`
+    let unionDef = `/** ${description ? description + ' ' : ''} ${genAnchor(name)} */`
     unionDef += `\nexport type ${name} = ${types.join(' | ')};`
     unionDef += `\n\n`
     return unionDef;
@@ -62,10 +64,15 @@ const uppercaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 methods.forEach(method => {
     let methodDef = ''
+    
     const paramsName = `${uppercaseFirstChar(method.name)}Params`
+    const isParamsOptional = method.parameters.find(field => !field.optional) ? false : true;
+    const functionParams = `(${method.parameters.length > 0 ? `params${isParamsOptional ? '?' : ''}: ${paramsName}` : ''})`
+
     methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request {`
-    methodDef += `\n    /** ${method.description} https://core.telegram.org/bots/api#${method.name.toLowerCase()} */`
-    methodDef += `\n    ${method.name}: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<Response>;`
+    methodDef += `\n    /** ${method.description} ${genAnchor(method.name)} */`
+    methodDef += `\n    ${method.name}: ${functionParams} => Promise<Response>;`
+
     if (method.parameters.length > 0) {
         output += genType(paramsName, method.name, '', method.parameters);
     }
@@ -79,7 +86,7 @@ methods.forEach(method => {
             returns = `ResponseSuccess<${method.returns}>`;
         }
         if (returns && returns !== 'ResponseWithOutData') {
-            methodDef += `\n    ${method.name}WithReturns: (${method.parameters.length > 0 ? `params: ${paramsName}` : ''}) => Promise<${returns}>;`
+            methodDef += `\n    ${method.name}WithReturns: ${functionParams} => Promise<${returns}>;`
         }
         output += `\nexport type ${uppercaseFirstChar(method.name)}Response = ${returns};\n\n`
     }

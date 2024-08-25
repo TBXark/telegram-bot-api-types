@@ -1,6 +1,7 @@
 export interface TelegramField {
     name: string;
     type: string;
+    raw_type: string;
     optional: boolean;
     description: string;
 }

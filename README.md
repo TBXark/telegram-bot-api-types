@@ -15,18 +15,14 @@ npm i telegram-bot-api-types
 
 ### Example
 
-You can use any HTTP request library you want to encapsulate your API client. Here is a simple example:
+You can use any HTTP request library you want to encapsulate your API client. Here is a simple echo bot.
 
 ```typescript
-import * as Telegram from ".";
-import { HttpsProxyAgent } from 'https-proxy-agent';
-import type { Response } from 'node-fetch';
-import fetch from 'node-fetch';
+import * as Telegram from "telegram-bot-api-types"; // useing the type definitions only
 import * as fs from 'node:fs';
-import * as process from 'node:process';
+
 
 const { token } = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
-const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
 
 class APIClientBase {
     readonly token: string;
@@ -40,7 +36,6 @@ class APIClientBase {
 
     private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         return fetch(`${this.baseURL}bot${this.token}/${method}`, {
-            agent,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,9 +99,22 @@ export function createAPIClient(token: string): APIClient {
     }) as APIClient;
 }
 
+async function main() {
+    const client = createAPIClient(token);
+    const { result: user } = await client.getMeWithReturns()
+    console.log(`Hello! My name is ${user.username}`);
+    await client.deleteWebhook({});
+    while (true) {
+        const { result: updates } = await client.getUpdatesWithReturns({ offset: 0 });
+        for (const update of updates) {
+            if (update.message) {
+                await client.sendMessageWithReturns({ chat_id: update.message.chat.id, text: update.message.text });
+            }
+        }
+    }
+}
 
-const client = createAPIClient(token);
-client.getMeWithReturns().then(u => console.log(`Username: ${u.result.username}`));
+main().catch(console.error);
 
 ```
 

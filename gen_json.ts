@@ -56,12 +56,15 @@ devPageContent.find('h4').each((i, el) => {
     }
     const description = $(el).next().text();
     let table: Cheerio<any> | null = $(el).next();
-    while (!table.is('table')) {
-        table = table.next();
-        if (table.is('h4')) {
+    while (!table?.is('table')) {
+        table = table?.next();
+        if (table?.is('h4')) {
             table = null;
             break;
         }
+    }
+    if (!(table?.is('table'))) { 
+        table = null;
     }
     if (name[0] === name[0].toLowerCase()) {
         const parameters: TelegramField[] = [];
@@ -72,7 +75,7 @@ devPageContent.find('h4').each((i, el) => {
             const type = td.eq(1).text();
             const optional = td.eq(2).text() === 'Optional';
             const description = td.eq(3).text();
-            parameters.push({ name, type: typeGen(type), optional, description });
+            parameters.push({ name, type: typeGen(type), raw_type: type, optional, description });
         });
         methods.push({ name, description, parameters, returns });
     } else {
@@ -92,13 +95,13 @@ devPageContent.find('h4').each((i, el) => {
             unions.push({ name, description, types });
             return;
         }
-        const fields = table?.find('tbody tr').map((i, el) => {
+        const fields = table?.find('tbody tr').map((i, el): TelegramField => {
             const $el = $(el);
             const name = $el.find('td').eq(0).text();
             const type = $el.find('td').eq(1).text();
             const description = $el.find('td').eq(2).text();
             const optional = description.includes('Optional');
-            return { name, type: typeGen(type), description, optional };
+            return { name, type: typeGen(type), raw_type: type, description, optional };
         }).get() || [];
         types.push({ name, description, fields });
     }
