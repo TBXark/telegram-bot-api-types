@@ -6,17 +6,33 @@ const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'))
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
 const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
 
-const allMethods = Object.fromEntries(methods.map(method => [method.name, method]));
+methods.forEach(method => {
+    method.returns = ''; // Reset returns
+    switch (method.name) {
+        case 'getMe':
+            method.returns = 'User';
+            break;
+        case 'copyMessage':
+            method.returns = 'number';
+            break;
+        case 'getChatMemberCount':
+            method.returns = 'number';
+            break;
+        case 'createForumTopic':
+            method.returns = 'ForumTopic';
+            break;
+        case 'stopPoll':
+            method.returns = 'Poll';
+            break;
+        case 'uploadStickerFile':
+            method.returns = 'File';
+            break;
+    }
+});
+
 const allTypes = new Set(types.map(type => type.name.toLowerCase()).concat(unions.map(union => union.name.toLowerCase())));
 
-allMethods.getMe.returns = 'User';
-allMethods.copyMessage.returns = 'number';
-allMethods.getChatMemberCount.returns = 'number';
-allMethods.createForumTopic.returns = 'ForumTopic'
-allMethods.stopPoll.returns = 'Poll'
-allMethods.uploadStickerFile.returns = 'File'
-
-for (const [name, method] of Object.entries(allMethods)) {
+for (const method of methods) {
 
     if (method.returns) {
         continue;
