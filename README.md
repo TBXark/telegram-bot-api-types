@@ -1,6 +1,6 @@
 # @types/telegram-bot-api
 
-A 0KB Telegram Bot API SDK that only includes type definition files. It can be used to conveniently develop Telegram Bots in TypeScript.
+Telegram Bot API SDK compiled size is 0KB that only includes type definition files. It can be used to conveniently develop Telegram Bots in TypeScript. You can wrap your API client with as many web request libraries as you want.
 
 This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
 
@@ -10,7 +10,7 @@ This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegra
 ### Installation
 
 ```sh
-npm i telegram-bot-api-types
+npm i telegram-bot-api-types --save-dev
 ```
 
 ### Example
@@ -18,11 +18,8 @@ npm i telegram-bot-api-types
 You can use any HTTP request library you want to encapsulate your API client. Here is a simple echo bot.
 
 ```typescript
-import * as Telegram from "telegram-bot-api-types"; // useing the type definitions only
+import * as Telegram from "telegram-bot-api-types"; // useing the type definitions with namespace
 import * as fs from 'node:fs';
-
-
-const { token } = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
 
 class APIClientBase {
     readonly token: string;
@@ -100,6 +97,7 @@ export function createAPIClient(token: string): APIClient {
 }
 
 async function main() {
+    const { token } = JSON.parse(fs.readFileSync('config.json', 'utf8'));
     const client = createAPIClient(token);
     const { result: user } = await client.getMeWithReturns()
     console.log(`Hello! My name is ${user.username}`);
