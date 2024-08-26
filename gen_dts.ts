@@ -105,9 +105,9 @@ methods.forEach(method => {
     const isParamsOptional = method.parameters.find(field => !field.optional) ? false : true;
     const functionParams = `(${method.parameters.length > 0 ? `params${isParamsOptional ? '?' : ''}: ${paramsName}` : ''})`
 
-    methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request {`
+    methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request<R> {`
     methodDef += `\n    /** ${method.description} ${genAnchor(method.name)} */`
-    methodDef += `\n    ${method.name}: ${functionParams} => Promise<Response>;`
+    methodDef += `\n    ${method.name}: ${functionParams} => Promise<R>;`
 
     if (method.parameters.length > 0) {
         output += genType(paramsName, method.name, '', method.parameters);
@@ -133,7 +133,7 @@ methods.forEach(method => {
 
 output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
 
-output += `\n\n\nexport type AllBotMethods = ${methods.map(method => `${uppercaseFirstChar(method.name)}Request`).join(' & ')};`;
+output += `\n\n\nexport type AllBotMethods<R> = ${methods.map(method => `${uppercaseFirstChar(method.name)}Request<R>`).join(' & ')};`;
 
 
 fs.writeFileSync('index.d.ts', output);
