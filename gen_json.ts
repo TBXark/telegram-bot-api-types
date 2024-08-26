@@ -48,6 +48,14 @@ const typeGen = (t: string): string => {
     }
 }
 
+const typeConst = (t: string): string | null => {
+    const type = t.match(/always “(\w+)”/i);
+    if (type) {
+        return `"${type[1]}"`
+    }
+    return null
+}
+
 
 devPageContent.find('h4').each((i, el) => {
     const name = $(el).text().trim();
@@ -101,7 +109,7 @@ devPageContent.find('h4').each((i, el) => {
             const type = $el.find('td').eq(1).text();
             const description = $el.find('td').eq(2).text();
             const optional = description.includes('Optional');
-            return { name, type: typeGen(type), raw_type: type, description, optional };
+            return { name, type: typeConst(description) || typeGen(type), raw_type: type, description, optional };
         }).get() || [];
         types.push({ name, description, fields });
     }

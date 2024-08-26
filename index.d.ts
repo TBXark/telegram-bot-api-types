@@ -515,7 +515,7 @@ export interface ReplyParameters {
 /** The message was originally sent by a known user.  https://core.telegram.org/bots/api#messageoriginuser */
 export interface MessageOriginUser {
     /** String | Type of the message origin, always “user” */
-    type: string;
+    type: "user";
     /** Integer | Date the message was sent originally in Unix time */
     date: number;
     /** User | User that sent the message originally */
@@ -526,7 +526,7 @@ export interface MessageOriginUser {
 /** The message was originally sent by an unknown user.  https://core.telegram.org/bots/api#messageoriginhiddenuser */
 export interface MessageOriginHiddenUser {
     /** String | Type of the message origin, always “hidden_user” */
-    type: string;
+    type: "hidden_user";
     /** Integer | Date the message was sent originally in Unix time */
     date: number;
     /** String | Name of the user that sent the message originally */
@@ -537,7 +537,7 @@ export interface MessageOriginHiddenUser {
 /** The message was originally sent on behalf of a chat to a group chat.  https://core.telegram.org/bots/api#messageoriginchat */
 export interface MessageOriginChat {
     /** String | Type of the message origin, always “chat” */
-    type: string;
+    type: "chat";
     /** Integer | Date the message was sent originally in Unix time */
     date: number;
     /** Chat | Chat that sent the message originally */
@@ -550,7 +550,7 @@ export interface MessageOriginChat {
 /** The message was originally sent to a channel chat.  https://core.telegram.org/bots/api#messageoriginchannel */
 export interface MessageOriginChannel {
     /** String | Type of the message origin, always “channel” */
-    type: string;
+    type: "channel";
     /** Integer | Date the message was sent originally in Unix time */
     date: number;
     /** Chat | Channel chat to which the message was originally sent */
@@ -716,7 +716,7 @@ export interface PaidMediaInfo {
 /** The paid media isn't available before the payment.  https://core.telegram.org/bots/api#paidmediapreview */
 export interface PaidMediaPreview {
     /** String | Type of the paid media, always “preview” */
-    type: string;
+    type: "preview";
     /** Integer | Optional. Media width as defined by the sender */
     width?: number;
     /** Integer | Optional. Media height as defined by the sender */
@@ -729,7 +729,7 @@ export interface PaidMediaPreview {
 /** The paid media is a photo.  https://core.telegram.org/bots/api#paidmediaphoto */
 export interface PaidMediaPhoto {
     /** String | Type of the paid media, always “photo” */
-    type: string;
+    type: "photo";
     /** Array of PhotoSize | The photo */
     photo: Array<PhotoSize>;
 }
@@ -738,7 +738,7 @@ export interface PaidMediaPhoto {
 /** The paid media is a video.  https://core.telegram.org/bots/api#paidmediavideo */
 export interface PaidMediaVideo {
     /** String | Type of the paid media, always “video” */
-    type: string;
+    type: "video";
     /** Video | The video */
     video: Video;
 }
@@ -909,7 +909,7 @@ export interface ChatBoostAdded {
 /** The background is filled using the selected color.  https://core.telegram.org/bots/api#backgroundfillsolid */
 export interface BackgroundFillSolid {
     /** String | Type of the background fill, always “solid” */
-    type: string;
+    type: "solid";
     /** Integer | The color of the background fill in the RGB24 format */
     color: number;
 }
@@ -918,7 +918,7 @@ export interface BackgroundFillSolid {
 /** The background is a gradient fill.  https://core.telegram.org/bots/api#backgroundfillgradient */
 export interface BackgroundFillGradient {
     /** String | Type of the background fill, always “gradient” */
-    type: string;
+    type: "gradient";
     /** Integer | Top color of the gradient in the RGB24 format */
     top_color: number;
     /** Integer | Bottom color of the gradient in the RGB24 format */
@@ -931,7 +931,7 @@ export interface BackgroundFillGradient {
 /** The background is a freeform gradient that rotates after every message in the chat.  https://core.telegram.org/bots/api#backgroundfillfreeformgradient */
 export interface BackgroundFillFreeformGradient {
     /** String | Type of the background fill, always “freeform_gradient” */
-    type: string;
+    type: "freeform_gradient";
     /** Array of Integer | A list of the 3 or 4 base colors that are used to generate the freeform gradient in the RGB24 format */
     colors: Array<number>;
 }
@@ -940,7 +940,7 @@ export interface BackgroundFillFreeformGradient {
 /** The background is automatically filled based on the selected colors.  https://core.telegram.org/bots/api#backgroundtypefill */
 export interface BackgroundTypeFill {
     /** String | Type of the background, always “fill” */
-    type: string;
+    type: "fill";
     /** BackgroundFill | The background fill */
     fill: BackgroundFill;
     /** Integer | Dimming of the background in dark themes, as a percentage; 0-100 */
@@ -951,7 +951,7 @@ export interface BackgroundTypeFill {
 /** The background is a wallpaper in the JPEG format.  https://core.telegram.org/bots/api#backgroundtypewallpaper */
 export interface BackgroundTypeWallpaper {
     /** String | Type of the background, always “wallpaper” */
-    type: string;
+    type: "wallpaper";
     /** Document | Document with the wallpaper */
     document: Document;
     /** Integer | Dimming of the background in dark themes, as a percentage; 0-100 */
@@ -966,7 +966,7 @@ export interface BackgroundTypeWallpaper {
 /** The background is a PNG or TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined with the background fill chosen by the user.  https://core.telegram.org/bots/api#backgroundtypepattern */
 export interface BackgroundTypePattern {
     /** String | Type of the background, always “pattern” */
-    type: string;
+    type: "pattern";
     /** Document | Document with the pattern */
     document: Document;
     /** BackgroundFill | The background fill that is combined with the pattern */
@@ -983,7 +983,7 @@ export interface BackgroundTypePattern {
 /** The background is taken directly from a built-in chat theme.  https://core.telegram.org/bots/api#backgroundtypechattheme */
 export interface BackgroundTypeChatTheme {
     /** String | Type of the background, always “chat_theme” */
-    type: string;
+    type: "chat_theme";
     /** String | Name of the chat theme, which is usually an emoji */
     theme_name: string;
 }
@@ -1507,7 +1507,7 @@ export interface ChatMemberUpdated {
 /** Represents a chat member that owns the chat and has all administrator privileges.  https://core.telegram.org/bots/api#chatmemberowner */
 export interface ChatMemberOwner {
     /** String | The member's status in the chat, always “creator” */
-    status: string;
+    status: "creator";
     /** User | Information about the user */
     user: User;
     /** Boolean | True, if the user's presence in the chat is hidden */
@@ -1520,7 +1520,7 @@ export interface ChatMemberOwner {
 /** Represents a chat member that has some additional privileges.  https://core.telegram.org/bots/api#chatmemberadministrator */
 export interface ChatMemberAdministrator {
     /** String | The member's status in the chat, always “administrator” */
-    status: string;
+    status: "administrator";
     /** User | Information about the user */
     user: User;
     /** Boolean | True, if the bot is allowed to edit administrator privileges of that user */
@@ -1563,7 +1563,7 @@ export interface ChatMemberAdministrator {
 /** Represents a chat member that has no additional privileges or restrictions.  https://core.telegram.org/bots/api#chatmembermember */
 export interface ChatMemberMember {
     /** String | The member's status in the chat, always “member” */
-    status: string;
+    status: "member";
     /** User | Information about the user */
     user: User;
     /** Integer | Optional. Date when the user's subscription will expire; Unix time */
@@ -1574,7 +1574,7 @@ export interface ChatMemberMember {
 /** Represents a chat member that is under certain restrictions in the chat. Supergroups only.  https://core.telegram.org/bots/api#chatmemberrestricted */
 export interface ChatMemberRestricted {
     /** String | The member's status in the chat, always “restricted” */
-    status: string;
+    status: "restricted";
     /** User | Information about the user */
     user: User;
     /** Boolean | True, if the user is a member of the chat at the moment of the request */
@@ -1615,7 +1615,7 @@ export interface ChatMemberRestricted {
 /** Represents a chat member that isn't currently a member of the chat, but may join it themselves.  https://core.telegram.org/bots/api#chatmemberleft */
 export interface ChatMemberLeft {
     /** String | The member's status in the chat, always “left” */
-    status: string;
+    status: "left";
     /** User | Information about the user */
     user: User;
 }
@@ -1624,7 +1624,7 @@ export interface ChatMemberLeft {
 /** Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.  https://core.telegram.org/bots/api#chatmemberbanned */
 export interface ChatMemberBanned {
     /** String | The member's status in the chat, always “kicked” */
-    status: string;
+    status: "kicked";
     /** User | Information about the user */
     user: User;
     /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever */
@@ -1743,7 +1743,7 @@ export interface ChatLocation {
 /** The reaction is based on an emoji.  https://core.telegram.org/bots/api#reactiontypeemoji */
 export interface ReactionTypeEmoji {
     /** String | Type of the reaction, always “emoji” */
-    type: string;
+    type: "emoji";
     /** String | Reaction emoji. Currently, it can be one of "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" */
     emoji: string;
 }
@@ -1752,7 +1752,7 @@ export interface ReactionTypeEmoji {
 /** The reaction is based on a custom emoji.  https://core.telegram.org/bots/api#reactiontypecustomemoji */
 export interface ReactionTypeCustomEmoji {
     /** String | Type of the reaction, always “custom_emoji” */
-    type: string;
+    type: "custom_emoji";
     /** String | Custom emoji identifier */
     custom_emoji_id: string;
 }
@@ -1761,7 +1761,7 @@ export interface ReactionTypeCustomEmoji {
 /** The reaction is paid.  https://core.telegram.org/bots/api#reactiontypepaid */
 export interface ReactionTypePaid {
     /** String | Type of the reaction, always “paid” */
-    type: string;
+    type: "paid";
 }
 
 
@@ -1934,7 +1934,7 @@ export interface MenuButtonDefault {
 /** The boost was obtained by subscribing to Telegram Premium or by gifting a Telegram Premium subscription to another user.  https://core.telegram.org/bots/api#chatboostsourcepremium */
 export interface ChatBoostSourcePremium {
     /** String | Source of the boost, always “premium” */
-    source: string;
+    source: "premium";
     /** User | User that boosted the chat */
     user: User;
 }
@@ -1943,7 +1943,7 @@ export interface ChatBoostSourcePremium {
 /** The boost was obtained by the creation of Telegram Premium gift codes to boost a chat. Each such code boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.  https://core.telegram.org/bots/api#chatboostsourcegiftcode */
 export interface ChatBoostSourceGiftCode {
     /** String | Source of the boost, always “gift_code” */
-    source: string;
+    source: "gift_code";
     /** User | User for which the gift code was created */
     user: User;
 }
@@ -1952,7 +1952,7 @@ export interface ChatBoostSourceGiftCode {
 /** The boost was obtained by the creation of a Telegram Premium giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.  https://core.telegram.org/bots/api#chatboostsourcegiveaway */
 export interface ChatBoostSourceGiveaway {
     /** String | Source of the boost, always “giveaway” */
-    source: string;
+    source: "giveaway";
     /** Integer | Identifier of a message in the chat with the giveaway; the message could have been deleted already. May be 0 if the message isn't sent yet. */
     giveaway_message_id: number;
     /** User | Optional. User that won the prize in the giveaway if any */
@@ -3063,7 +3063,7 @@ export interface SuccessfulPayment {
 /** This object contains basic information about a refunded payment.  https://core.telegram.org/bots/api#refundedpayment */
 export interface RefundedPayment {
     /** String | Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars. Currently, always “XTR” */
-    currency: string;
+    currency: "XTR";
     /** Integer | Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). */
     total_amount: number;
     /** String | Bot-specified invoice payload */
@@ -3110,14 +3110,14 @@ export interface PreCheckoutQuery {
 /** The withdrawal is in progress.  https://core.telegram.org/bots/api#revenuewithdrawalstatepending */
 export interface RevenueWithdrawalStatePending {
     /** String | Type of the state, always “pending” */
-    type: string;
+    type: "pending";
 }
 
 
 /** The withdrawal succeeded.  https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded */
 export interface RevenueWithdrawalStateSucceeded {
     /** String | Type of the state, always “succeeded” */
-    type: string;
+    type: "succeeded";
     /** Integer | Date the withdrawal was completed in Unix time */
     date: number;
     /** String | An HTTPS URL that can be used to see transaction details */
@@ -3128,14 +3128,14 @@ export interface RevenueWithdrawalStateSucceeded {
 /** The withdrawal failed and the transaction was refunded.  https://core.telegram.org/bots/api#revenuewithdrawalstatefailed */
 export interface RevenueWithdrawalStateFailed {
     /** String | Type of the state, always “failed” */
-    type: string;
+    type: "failed";
 }
 
 
 /** Describes a transaction with a user.  https://core.telegram.org/bots/api#transactionpartneruser */
 export interface TransactionPartnerUser {
     /** String | Type of the transaction partner, always “user” */
-    type: string;
+    type: "user";
     /** User | Information about the user */
     user: User;
     /** String | Optional. Bot-specified invoice payload */
@@ -3148,7 +3148,7 @@ export interface TransactionPartnerUser {
 /** Describes a withdrawal transaction with Fragment.  https://core.telegram.org/bots/api#transactionpartnerfragment */
 export interface TransactionPartnerFragment {
     /** String | Type of the transaction partner, always “fragment” */
-    type: string;
+    type: "fragment";
     /** RevenueWithdrawalState | Optional. State of the transaction if the transaction is outgoing */
     withdrawal_state?: RevenueWithdrawalState;
 }
@@ -3157,14 +3157,14 @@ export interface TransactionPartnerFragment {
 /** Describes a withdrawal transaction to the Telegram Ads platform.  https://core.telegram.org/bots/api#transactionpartnertelegramads */
 export interface TransactionPartnerTelegramAds {
     /** String | Type of the transaction partner, always “telegram_ads” */
-    type: string;
+    type: "telegram_ads";
 }
 
 
 /** Describes a transaction with an unknown source or recipient.  https://core.telegram.org/bots/api#transactionpartnerother */
 export interface TransactionPartnerOther {
     /** String | Type of the transaction partner, always “other” */
-    type: string;
+    type: "other";
 }
 
 
