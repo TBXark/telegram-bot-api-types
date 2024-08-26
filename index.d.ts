@@ -1,3 +1,16 @@
+
+export type ChatType = "private" | "group" | "supergroup" | "channel";
+
+
+export type ChatAction = "typing"| "upload_photo"| "record_video"| "upload_video"| "record_voice"| "upload_voice"| "upload_document"| "find_location"| "record_video_note"| "upload_video_note";
+
+
+export type MessageEntityType = "mention"| "hashtag"| "cashtag"| "bot_command"| "url"| "email"| "phone_number"| "bold"| "italic"| "underline"| "strikethrough"| "code"| "pre"| "text_link"| "text_mention"| "spoiler"| "custom_emoji";
+
+
+export type ParseMode = "Markdown" | "MarkdownV2" | "HTML";
+
+
 /** This object represents an incoming update.At most one of the optional parameters can be present in any given update.  https://core.telegram.org/bots/api#update */
 export interface Update {
     /** Integer | The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially. */
@@ -108,7 +121,7 @@ export interface Chat {
     /** Integer | Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier. */
     id: number;
     /** String | Type of the chat, can be either “private”, “group”, “supergroup” or “channel” */
-    type: string;
+    type: ChatType;
     /** String | Optional. Title, for supergroups, channels and group chats */
     title?: string;
     /** String | Optional. Username, for private chats, supergroups and channels if available */
@@ -127,7 +140,7 @@ export interface ChatFullInfo {
     /** Integer | Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier. */
     id: number;
     /** String | Type of the chat, can be either “private”, “group”, “supergroup” or “channel” */
-    type: string;
+    type: ChatType;
     /** String | Optional. Title, for supergroups, channels and group chats */
     title?: string;
     /** String | Optional. Username, for private chats, supergroups and channels if available */
@@ -411,7 +424,7 @@ export interface InaccessibleMessage {
 /** This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.  https://core.telegram.org/bots/api#messageentity */
 export interface MessageEntity {
     /** String | Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers) */
-    type: string;
+    type: MessageEntityType;
     /** Integer | Offset in UTF-16 code units to the start of the entity */
     offset: number;
     /** Integer | Length of the entity in UTF-16 code units */
@@ -3486,6 +3499,7 @@ export type SuccessWithOutData = true;
 
 export type ResponseWithOutData = ResponseSuccess<SuccessWithOutData>;
 
+
 export type ResponseWithMessage = ResponseSuccess<Message>;
 
 
@@ -3609,7 +3623,7 @@ export interface SendMessageParams {
     /** String | Text of the message to be sent, 1-4096 characters after entities parsing */
     text: string;
     /** String | Mode for parsing entities in the message text. See formatting options for more details. */
-    parse_mode?: string;
+    parse_mode?: ParseMode;
     /** Array of MessageEntity | A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode */
     entities?: Array<MessageEntity>;
     /** LinkPreviewOptions | Link preview generation options for the message */
@@ -4376,7 +4390,7 @@ export interface SendChatActionParams {
     /** Integer | Unique identifier for the target message thread; for supergroups only */
     message_thread_id?: number;
     /** String | Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes. */
-    action: string;
+    action: ChatAction;
 }
 
 
