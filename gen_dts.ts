@@ -1,7 +1,9 @@
 import type { TelegramTypes, TelegramField, TelegramMethod, TelegramUnions } from './type';
 import * as fs from 'node:fs';
+import * as process from 'node:process';
 
-
+const isGenericEnable = process.env.GENERIC_MODE === 'true';
+const requestSuffix = isGenericEnable ? '<R>' : '';
 const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
 const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
@@ -25,10 +27,10 @@ const typeMapping: Record<string, Record<string, string>> = {
     },
     'SendChatActionParams': {
         'action': 'ChatAction',
-    }   
+    }
 }
 
-const genAnchor = (name: string) => `https://core.telegram.org/bots/api#${name.toLowerCase()}`; 
+const genAnchor = (name: string) => `https://core.telegram.org/bots/api#${name.toLowerCase()}`;
 
 const genType = (name: string, anchor: string, description: string, fields: TelegramField[]): string => {
     let typeDef = `/** ${description ? description + ' ' : ''} ${genAnchor(anchor)} */`
@@ -100,14 +102,14 @@ const uppercaseFirstChar = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 methods.forEach(method => {
     let methodDef = ''
-    
+
     const paramsName = `${uppercaseFirstChar(method.name)}Params`
     const isParamsOptional = method.parameters.find(field => !field.optional) ? false : true;
     const functionParams = `(${method.parameters.length > 0 ? `params${isParamsOptional ? '?' : ''}: ${paramsName}` : ''})`
 
-    methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request<R> {`
+    methodDef += `\nexport interface ${uppercaseFirstChar(method.name)}Request${requestSuffix} {`
     methodDef += `\n    /** ${method.description} ${genAnchor(method.name)} */`
-    methodDef += `\n    ${method.name}: ${functionParams} => Promise<R>;`
+    methodDef += `\n    ${method.name}: ${functionParams} => Promise<${isGenericEnable ? 'R' : 'Response'}>;`
 
     if (method.parameters.length > 0) {
         output += genType(paramsName, method.name, '', method.parameters);
@@ -133,7 +135,7 @@ methods.forEach(method => {
 
 output += `export type BotMethod = ${methods.map(method => `'${method.name}'`).join(' | ')};`;
 
-output += `\n\n\nexport type AllBotMethods<R> = ${methods.map(method => `${uppercaseFirstChar(method.name)}Request<R>`).join(' & ')};`;
+output += `\n\n\nexport type AllBotMethods${requestSuffix} = ${methods.map(method => `${uppercaseFirstChar(method.name)}Request${requestSuffix}`).join(' & ')};`;
 
 
 fs.writeFileSync('index.d.ts', output);

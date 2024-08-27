@@ -59,7 +59,7 @@ class APIClientBase {
     }
 
     async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
-        return this.request(method, params).then(res => res.json() as R) 
+        return this.request(method, params).then(res => res.json() as R)
     }
 }
 

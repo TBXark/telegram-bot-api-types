@@ -71,7 +71,7 @@ devPageContent.find('h4').each((i, el) => {
             break;
         }
     }
-    if (!(table?.is('table'))) { 
+    if (!(table?.is('table'))) {
         table = null;
     }
     if (name[0] === name[0].toLowerCase()) {

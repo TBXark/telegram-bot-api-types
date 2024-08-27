@@ -1,7 +1,6 @@
 import type { TelegramTypes, TelegramMethod, TelegramUnions } from './type';
 import * as fs from 'node:fs';
 
-
 const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
 const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
 const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
