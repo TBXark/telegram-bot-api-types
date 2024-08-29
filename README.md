@@ -11,7 +11,8 @@ This is a `d.ts` and `jsdoc` file for Telegram Bot API. It is based on the offic
 ### Installation
 
 ```sh
-npm i telegram-bot-api-types --save-dev
+npm i telegram-bot-api-types --save-dev # d.ts for TypeScript
+npm i telegram-bot-api-jsdoc --save-dev # jsdoc for JavaScript
 ```
 
 ### Example
