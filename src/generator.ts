@@ -115,7 +115,7 @@ export class JsDocGenerator implements TypesFileGenerator {
             methodDef += `@template ${template}\n`
         }
 
-        const methodName = `${uppercaseFirstChar(name)}Request`
+        const methodName = `${uppercaseFirstChar(name)}Request${this.requestSuffix}`
         methodDef += `@interface ${methodName}\n\n`
         methodDef += `${description}  ${anchorLink(name)}`
         methodDef += `\n@function ${lowercaseFirstChar(name)}\n`
