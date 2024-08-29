@@ -1,6 +1,6 @@
 # telegram-bot-api-types
 
-Telegram Bot API SDK compiled size is 0KB that only includes type definition files. It can be used to conveniently develop Telegram Bots in TypeScript. You can wrap your API client with as many web request libraries as you want.
+Telegram Bot API SDK compiled size is 0KB that only includes type definition files and JSDoc files. It can be used to conveniently develop Telegram Bots in TypeScript and JavaScript. You can wrap your API client with as many web request libraries as you want.
 
 This is a `d.ts` and `jsdoc` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
 
@@ -77,7 +77,7 @@ class APIClientBase {
 }
 
 
-type APIClient = APIClientBase & Telegram.AllBotMethods<Response>;
+type APIClient = APIClientBase & Telegram.AllBotMethods;
 
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
@@ -119,6 +119,7 @@ main().catch(console.error);
 
 You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods.
 
+If you want to use javascript, you can follow the example [`jsdoc.test.js`](test/jsdoc.test.js)
 
 ## License
 

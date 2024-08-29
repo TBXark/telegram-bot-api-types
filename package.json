@@ -19,7 +19,8 @@
     "gen:dts": "tsx src/json2types.ts",
     "gen:returns": "tsx src/json2returns.ts",
     "gen": "npm run gen:html && npm run gen:json && npm run gen:returns && npm run gen:dts",
-    "test": "tsx test/example.ts"
+    "test:dts": "tsx test/dts.test.ts",
+    "test:jsdoc": "node test/jsdoc.test.js"
   },
   "dependencies": {},
   "devDependencies": {

@@ -23,7 +23,7 @@ export class DtsGenerator implements TypesFileGenerator {
         this.responseType = responseType;
     }
 
-    type(name: string, description: string, fields: TelegramField[]): string {
+    type(name: string, description: string, fields: TelegramField[], template?: string): string {
         let typeDef = description === '' ? '' : `/** ${description} */`;
         typeDef += `\nexport interface ${uppercaseFirstChar(name)} {`
         for (const field of fields) {
@@ -40,7 +40,11 @@ export class DtsGenerator implements TypesFileGenerator {
         return unionDef;
     }
 
-    method(name: string, description: string, params: TelegramField[], returns: string): string {
+    enum(name: string, description: string, values: string[]): string {
+        return this.union(name, description, values.map(v => `'${v}'`), ' | ');
+    }
+
+    method(name: string, description: string, params: TelegramField[], returns: string, template?: string): string {
 
         const isAllOptional = params.every(p => p.optional);
         const reqParams = `(${params.length > 0 ? `params${isAllOptional ? '?' : ''}: ${uppercaseFirstChar(name)}Params` : ''})`
@@ -73,8 +77,11 @@ export class JsDocGenerator implements TypesFileGenerator {
         return `/**\n${text.trim().split('\n').map(line => ` * ${line}`).join('\n')}\n */`
     }
 
-    type(name: string, description: string, fields: TelegramField[]): string {
+    type(name: string, description: string, fields: TelegramField[], template?: string): string {
         let typeDef = description;
+        if (template) {
+            typeDef += `\n@template ${template}`;
+        }
         typeDef += `\n@typedef {Object} ${uppercaseFirstChar(name)}`;
         for (const field of fields) {
             let fieldLine = `@property {${this.typeMapping[name]?.[field.name] || field.type}} `;
@@ -91,15 +98,22 @@ export class JsDocGenerator implements TypesFileGenerator {
     }
 
     union(name: string, description: string, types: string[], separator: string): string {
-        return this.toCommonBlock(`@typedef {(${types.join(separator)})} ${uppercaseFirstChar(name)} ${description}`);
+        return this.toCommonBlock(`@typedef {${types.join(separator)}} ${uppercaseFirstChar(name)} ${description}`);
     }
 
-    method(name: string, description: string, params: TelegramField[], returns: string): string {
+    enum(name: string, description: string, values: string[]): string {
+        return this.toCommonBlock(`@typedef {(${values.map(v => `'${v}'`).join(' | ')})} ${uppercaseFirstChar(name)} ${description}`);
+    }
+
+    method(name: string, description: string, params: TelegramField[], returns: string, template?: string): string {
 
         const paramsName = params.every(p => p.optional) ? '[params]' : 'params';
         const reqParams = `${uppercaseFirstChar(name)}Params`
 
         let methodDef = ''
+        if (template) {
+            methodDef += `@template ${template}\n`
+        }
 
         const methodName = `${uppercaseFirstChar(name)}Request`
         methodDef += `@interface ${methodName}\n\n`

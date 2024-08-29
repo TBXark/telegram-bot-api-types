@@ -1,20 +1,20 @@
 /**
- * @typedef {("private" | "group" | "supergroup" | "channel")} ChatType
+ * @typedef {('private' | 'group' | 'supergroup' | 'channel')} ChatType
  */
 
 
 /**
- * @typedef {("typing" | "upload_photo" | "record_video" | "upload_video" | "record_voice" | "upload_voice" | "upload_document" | "find_location" | "record_video_note" | "upload_video_note")} ChatAction
+ * @typedef {('typing' | 'upload_photo' | 'record_video' | 'upload_video' | 'record_voice' | 'upload_voice' | 'upload_document' | 'find_location' | 'record_video_note' | 'upload_video_note')} ChatAction
  */
 
 
 /**
- * @typedef {("mention" | "hashtag" | "cashtag" | "bot_command" | "url" | "email" | "phone_number" | "bold" | "italic" | "underline" | "strikethrough" | "code" | "pre" | "text_link" | "text_mention" | "spoiler" | "custom_emoji")} MessageEntityType
+ * @typedef {('mention' | 'hashtag' | 'cashtag' | 'bot_command' | 'url' | 'email' | 'phone_number' | 'bold' | 'italic' | 'underline' | 'strikethrough' | 'code' | 'pre' | 'text_link' | 'text_mention' | 'spoiler' | 'custom_emoji')} MessageEntityType
  */
 
 
 /**
- * @typedef {("Markdown" | "MarkdownV2" | "HTML")} ParseMode
+ * @typedef {('Markdown' | 'MarkdownV2' | 'HTML')} ParseMode
  */
 
 
@@ -2441,91 +2441,92 @@
 
 
 /**
- * @typedef {(Message | InaccessibleMessage)} MaybeInaccessibleMessage This object describes a message that can be inaccessible to the bot. It can be one of  https://core.telegram.org/bots/api#maybeinaccessiblemessage
+ * @typedef {Message | InaccessibleMessage} MaybeInaccessibleMessage This object describes a message that can be inaccessible to the bot. It can be one of  https://core.telegram.org/bots/api#maybeinaccessiblemessage
  */
 
 
 /**
- * @typedef {(MessageOriginUser | MessageOriginHiddenUser | MessageOriginChat | MessageOriginChannel)} MessageOrigin This object describes the origin of a message. It can be one of  https://core.telegram.org/bots/api#messageorigin
+ * @typedef {MessageOriginUser | MessageOriginHiddenUser | MessageOriginChat | MessageOriginChannel} MessageOrigin This object describes the origin of a message. It can be one of  https://core.telegram.org/bots/api#messageorigin
  */
 
 
 /**
- * @typedef {(PaidMediaPreview | PaidMediaPhoto | PaidMediaVideo)} PaidMedia This object describes paid media. Currently, it can be one of  https://core.telegram.org/bots/api#paidmedia
+ * @typedef {PaidMediaPreview | PaidMediaPhoto | PaidMediaVideo} PaidMedia This object describes paid media. Currently, it can be one of  https://core.telegram.org/bots/api#paidmedia
  */
 
 
 /**
- * @typedef {(BackgroundFillSolid | BackgroundFillGradient | BackgroundFillFreeformGradient)} BackgroundFill This object describes the way a background is filled based on the selected colors. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundfill
+ * @typedef {BackgroundFillSolid | BackgroundFillGradient | BackgroundFillFreeformGradient} BackgroundFill This object describes the way a background is filled based on the selected colors. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundfill
  */
 
 
 /**
- * @typedef {(BackgroundTypeFill | BackgroundTypeWallpaper | BackgroundTypePattern | BackgroundTypeChatTheme)} BackgroundType This object describes the type of a background. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundtype
+ * @typedef {BackgroundTypeFill | BackgroundTypeWallpaper | BackgroundTypePattern | BackgroundTypeChatTheme} BackgroundType This object describes the type of a background. Currently, it can be one of  https://core.telegram.org/bots/api#backgroundtype
  */
 
 
 /**
- * @typedef {(ChatMemberOwner | ChatMemberAdministrator | ChatMemberMember | ChatMemberRestricted | ChatMemberLeft | ChatMemberBanned)} ChatMember This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:  https://core.telegram.org/bots/api#chatmember
+ * @typedef {ChatMemberOwner | ChatMemberAdministrator | ChatMemberMember | ChatMemberRestricted | ChatMemberLeft | ChatMemberBanned} ChatMember This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:  https://core.telegram.org/bots/api#chatmember
  */
 
 
 /**
- * @typedef {(ReactionTypeEmoji | ReactionTypeCustomEmoji | ReactionTypePaid)} ReactionType This object describes the type of a reaction. Currently, it can be one of  https://core.telegram.org/bots/api#reactiontype
+ * @typedef {ReactionTypeEmoji | ReactionTypeCustomEmoji | ReactionTypePaid} ReactionType This object describes the type of a reaction. Currently, it can be one of  https://core.telegram.org/bots/api#reactiontype
  */
 
 
 /**
- * @typedef {(BotCommandScopeDefault | BotCommandScopeAllPrivateChats | BotCommandScopeAllGroupChats | BotCommandScopeAllChatAdministrators | BotCommandScopeChat | BotCommandScopeChatAdministrators | BotCommandScopeChatMember)} BotCommandScope This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:  https://core.telegram.org/bots/api#botcommandscope
+ * @typedef {BotCommandScopeDefault | BotCommandScopeAllPrivateChats | BotCommandScopeAllGroupChats | BotCommandScopeAllChatAdministrators | BotCommandScopeChat | BotCommandScopeChatAdministrators | BotCommandScopeChatMember} BotCommandScope This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:  https://core.telegram.org/bots/api#botcommandscope
  */
 
 
 /**
- * @typedef {(MenuButtonCommands | MenuButtonWebApp | MenuButtonDefault)} MenuButton This object describes the bot's menu button in a private chat. It should be one of  https://core.telegram.org/bots/api#menubutton
+ * @typedef {MenuButtonCommands | MenuButtonWebApp | MenuButtonDefault} MenuButton This object describes the bot's menu button in a private chat. It should be one of  https://core.telegram.org/bots/api#menubutton
  */
 
 
 /**
- * @typedef {(ChatBoostSourcePremium | ChatBoostSourceGiftCode | ChatBoostSourceGiveaway)} ChatBoostSource This object describes the source of a chat boost. It can be one of  https://core.telegram.org/bots/api#chatboostsource
+ * @typedef {ChatBoostSourcePremium | ChatBoostSourceGiftCode | ChatBoostSourceGiveaway} ChatBoostSource This object describes the source of a chat boost. It can be one of  https://core.telegram.org/bots/api#chatboostsource
  */
 
 
 /**
- * @typedef {(InputMediaAnimation | InputMediaDocument | InputMediaAudio | InputMediaPhoto | InputMediaVideo)} InputMedia This object represents the content of a media message to be sent. It should be one of  https://core.telegram.org/bots/api#inputmedia
+ * @typedef {InputMediaAnimation | InputMediaDocument | InputMediaAudio | InputMediaPhoto | InputMediaVideo} InputMedia This object represents the content of a media message to be sent. It should be one of  https://core.telegram.org/bots/api#inputmedia
  */
 
 
 /**
- * @typedef {(InputPaidMediaPhoto | InputPaidMediaVideo)} InputPaidMedia This object describes the paid media to be sent. Currently, it can be one of  https://core.telegram.org/bots/api#inputpaidmedia
+ * @typedef {InputPaidMediaPhoto | InputPaidMediaVideo} InputPaidMedia This object describes the paid media to be sent. Currently, it can be one of  https://core.telegram.org/bots/api#inputpaidmedia
  */
 
 
 /**
- * @typedef {(InlineQueryResultCachedAudio | InlineQueryResultCachedDocument | InlineQueryResultCachedGif | InlineQueryResultCachedMpeg4Gif | InlineQueryResultCachedPhoto | InlineQueryResultCachedSticker | InlineQueryResultCachedVideo | InlineQueryResultCachedVoice | InlineQueryResultArticle | InlineQueryResultAudio | InlineQueryResultContact | InlineQueryResultGame | InlineQueryResultDocument | InlineQueryResultGif | InlineQueryResultLocation | InlineQueryResultMpeg4Gif | InlineQueryResultPhoto | InlineQueryResultVenue | InlineQueryResultVideo | InlineQueryResultVoice)} InlineQueryResult This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:  https://core.telegram.org/bots/api#inlinequeryresult
+ * @typedef {InlineQueryResultCachedAudio | InlineQueryResultCachedDocument | InlineQueryResultCachedGif | InlineQueryResultCachedMpeg4Gif | InlineQueryResultCachedPhoto | InlineQueryResultCachedSticker | InlineQueryResultCachedVideo | InlineQueryResultCachedVoice | InlineQueryResultArticle | InlineQueryResultAudio | InlineQueryResultContact | InlineQueryResultGame | InlineQueryResultDocument | InlineQueryResultGif | InlineQueryResultLocation | InlineQueryResultMpeg4Gif | InlineQueryResultPhoto | InlineQueryResultVenue | InlineQueryResultVideo | InlineQueryResultVoice} InlineQueryResult This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:  https://core.telegram.org/bots/api#inlinequeryresult
  */
 
 
 /**
- * @typedef {(InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent | InputInvoiceMessageContent)} InputMessageContent This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:  https://core.telegram.org/bots/api#inputmessagecontent
+ * @typedef {InputTextMessageContent | InputLocationMessageContent | InputVenueMessageContent | InputContactMessageContent | InputInvoiceMessageContent} InputMessageContent This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:  https://core.telegram.org/bots/api#inputmessagecontent
  */
 
 
 /**
- * @typedef {(RevenueWithdrawalStatePending | RevenueWithdrawalStateSucceeded | RevenueWithdrawalStateFailed)} RevenueWithdrawalState This object describes the state of a revenue withdrawal operation. Currently, it can be one of  https://core.telegram.org/bots/api#revenuewithdrawalstate
+ * @typedef {RevenueWithdrawalStatePending | RevenueWithdrawalStateSucceeded | RevenueWithdrawalStateFailed} RevenueWithdrawalState This object describes the state of a revenue withdrawal operation. Currently, it can be one of  https://core.telegram.org/bots/api#revenuewithdrawalstate
  */
 
 
 /**
- * @typedef {(TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerOther)} TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner
+ * @typedef {TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerOther} TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner
  */
 
 
 /**
- * @typedef {(PassportElementErrorDataField | PassportElementErrorFrontSide | PassportElementErrorReverseSide | PassportElementErrorSelfie | PassportElementErrorFile | PassportElementErrorFiles | PassportElementErrorTranslationFile | PassportElementErrorTranslationFiles | PassportElementErrorUnspecified)} PassportElementError This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:  https://core.telegram.org/bots/api#passportelementerror
+ * @typedef {PassportElementErrorDataField | PassportElementErrorFrontSide | PassportElementErrorReverseSide | PassportElementErrorSelfie | PassportElementErrorFile | PassportElementErrorFiles | PassportElementErrorTranslationFile | PassportElementErrorTranslationFiles | PassportElementErrorUnspecified} PassportElementError This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:  https://core.telegram.org/bots/api#passportelementerror
  */
 
 
 /**
+ * @template T
  * @typedef {Object} ResponseSuccess<T>
  * @property {true} ok 
  * @property {T} result
@@ -2541,17 +2542,17 @@
 
 
 /**
- * @typedef {(true)} SuccessWithOutData
+ * @typedef {true} SuccessWithOutData
  */
 
 
 /**
- * @typedef {(ResponseSuccess<SuccessWithOutData>)} ResponseWithOutData
+ * @typedef {ResponseSuccess<SuccessWithOutData>} ResponseWithOutData
  */
 
 
 /**
- * @typedef {(ResponseSuccess<Message>)} ResponseWithMessage
+ * @typedef {ResponseSuccess<Message>} ResponseWithMessage
  */
 
 
@@ -2566,7 +2567,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<Update>>)} GetUpdatesResponse
+ * @typedef {ResponseSuccess<Array<Update>>} GetUpdatesResponse
  */
 
 
@@ -2600,7 +2601,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetWebhookResponse
+ * @typedef {ResponseWithOutData} SetWebhookResponse
  */
 
 
@@ -2623,7 +2624,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteWebhookResponse
+ * @typedef {ResponseWithOutData} DeleteWebhookResponse
  */
 
 
@@ -2639,7 +2640,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<WebhookInfo>)} GetWebhookInfoResponse
+ * @typedef {ResponseSuccess<WebhookInfo>} GetWebhookInfoResponse
  */
 
 
@@ -2658,7 +2659,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<User>)} GetMeResponse
+ * @typedef {ResponseSuccess<User>} GetMeResponse
  */
 
 
@@ -2677,7 +2678,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} LogOutResponse
+ * @typedef {ResponseWithOutData} LogOutResponse
  */
 
 
@@ -2692,7 +2693,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} CloseResponse
+ * @typedef {ResponseWithOutData} CloseResponse
  */
 
 
@@ -2725,7 +2726,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendMessageResponse
+ * @typedef {ResponseWithMessage} SendMessageResponse
  */
 
 
@@ -2758,7 +2759,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} ForwardMessageResponse
+ * @typedef {ResponseWithMessage} ForwardMessageResponse
  */
 
 
@@ -2791,7 +2792,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<number>>)} ForwardMessagesResponse
+ * @typedef {ResponseSuccess<Array<number>>} ForwardMessagesResponse
  */
 
 
@@ -2830,7 +2831,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<number>)} CopyMessageResponse
+ * @typedef {ResponseSuccess<number>} CopyMessageResponse
  */
 
 
@@ -2864,7 +2865,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<number>>)} CopyMessagesResponse
+ * @typedef {ResponseSuccess<Array<number>>} CopyMessagesResponse
  */
 
 
@@ -2905,7 +2906,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendPhotoResponse
+ * @typedef {ResponseWithMessage} SendPhotoResponse
  */
 
 
@@ -2948,7 +2949,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendAudioResponse
+ * @typedef {ResponseWithMessage} SendAudioResponse
  */
 
 
@@ -2989,7 +2990,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendDocumentResponse
+ * @typedef {ResponseWithMessage} SendDocumentResponse
  */
 
 
@@ -3035,7 +3036,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendVideoResponse
+ * @typedef {ResponseWithMessage} SendVideoResponse
  */
 
 
@@ -3080,7 +3081,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendAnimationResponse
+ * @typedef {ResponseWithMessage} SendAnimationResponse
  */
 
 
@@ -3120,7 +3121,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendVoiceResponse
+ * @typedef {ResponseWithMessage} SendVoiceResponse
  */
 
 
@@ -3159,7 +3160,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendVideoNoteResponse
+ * @typedef {ResponseWithMessage} SendVideoNoteResponse
  */
 
 
@@ -3198,7 +3199,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendPaidMediaResponse
+ * @typedef {ResponseWithMessage} SendPaidMediaResponse
  */
 
 
@@ -3233,7 +3234,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<Message>>)} SendMediaGroupResponse
+ * @typedef {ResponseSuccess<Array<Message>>} SendMediaGroupResponse
  */
 
 
@@ -3274,7 +3275,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendLocationResponse
+ * @typedef {ResponseWithMessage} SendLocationResponse
  */
 
 
@@ -3317,7 +3318,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendVenueResponse
+ * @typedef {ResponseWithMessage} SendVenueResponse
  */
 
 
@@ -3356,7 +3357,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendContactResponse
+ * @typedef {ResponseWithMessage} SendContactResponse
  */
 
 
@@ -3405,7 +3406,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendPollResponse
+ * @typedef {ResponseWithMessage} SendPollResponse
  */
 
 
@@ -3441,7 +3442,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendDiceResponse
+ * @typedef {ResponseWithMessage} SendDiceResponse
  */
 
 
@@ -3472,7 +3473,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SendChatActionResponse
+ * @typedef {ResponseWithOutData} SendChatActionResponse
  */
 
 
@@ -3498,7 +3499,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMessageReactionResponse
+ * @typedef {ResponseWithOutData} SetMessageReactionResponse
  */
 
 
@@ -3523,7 +3524,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<UserProfilePhotos>)} GetUserProfilePhotosResponse
+ * @typedef {ResponseSuccess<UserProfilePhotos>} GetUserProfilePhotosResponse
  */
 
 
@@ -3551,7 +3552,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<File>)} GetFileResponse
+ * @typedef {ResponseSuccess<File>} GetFileResponse
  */
 
 
@@ -3582,7 +3583,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} BanChatMemberResponse
+ * @typedef {ResponseWithOutData} BanChatMemberResponse
  */
 
 
@@ -3607,7 +3608,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnbanChatMemberResponse
+ * @typedef {ResponseWithOutData} UnbanChatMemberResponse
  */
 
 
@@ -3634,7 +3635,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} RestrictChatMemberResponse
+ * @typedef {ResponseWithOutData} RestrictChatMemberResponse
  */
 
 
@@ -3673,7 +3674,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} PromoteChatMemberResponse
+ * @typedef {ResponseWithOutData} PromoteChatMemberResponse
  */
 
 
@@ -3698,7 +3699,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatAdministratorCustomTitleResponse
+ * @typedef {ResponseWithOutData} SetChatAdministratorCustomTitleResponse
  */
 
 
@@ -3722,7 +3723,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} BanChatSenderChatResponse
+ * @typedef {ResponseWithOutData} BanChatSenderChatResponse
  */
 
 
@@ -3746,7 +3747,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnbanChatSenderChatResponse
+ * @typedef {ResponseWithOutData} UnbanChatSenderChatResponse
  */
 
 
@@ -3771,7 +3772,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatPermissionsResponse
+ * @typedef {ResponseWithOutData} SetChatPermissionsResponse
  */
 
 
@@ -3794,7 +3795,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<string>)} ExportChatInviteLinkResponse
+ * @typedef {ResponseSuccess<string>} ExportChatInviteLinkResponse
  */
 
 
@@ -3826,7 +3827,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatInviteLink>)} CreateChatInviteLinkResponse
+ * @typedef {ResponseSuccess<ChatInviteLink>} CreateChatInviteLinkResponse
  */
 
 
@@ -3859,7 +3860,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatInviteLink>)} EditChatInviteLinkResponse
+ * @typedef {ResponseSuccess<ChatInviteLink>} EditChatInviteLinkResponse
  */
 
 
@@ -3890,7 +3891,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatInviteLink>)} CreateChatSubscriptionInviteLinkResponse
+ * @typedef {ResponseSuccess<ChatInviteLink>} CreateChatSubscriptionInviteLinkResponse
  */
 
 
@@ -3920,7 +3921,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatInviteLink>)} EditChatSubscriptionInviteLinkResponse
+ * @typedef {ResponseSuccess<ChatInviteLink>} EditChatSubscriptionInviteLinkResponse
  */
 
 
@@ -3949,7 +3950,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatInviteLink>)} RevokeChatInviteLinkResponse
+ * @typedef {ResponseSuccess<ChatInviteLink>} RevokeChatInviteLinkResponse
  */
 
 
@@ -3978,7 +3979,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} ApproveChatJoinRequestResponse
+ * @typedef {ResponseWithOutData} ApproveChatJoinRequestResponse
  */
 
 
@@ -4002,7 +4003,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeclineChatJoinRequestResponse
+ * @typedef {ResponseWithOutData} DeclineChatJoinRequestResponse
  */
 
 
@@ -4026,7 +4027,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatPhotoResponse
+ * @typedef {ResponseWithOutData} SetChatPhotoResponse
  */
 
 
@@ -4049,7 +4050,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteChatPhotoResponse
+ * @typedef {ResponseWithOutData} DeleteChatPhotoResponse
  */
 
 
@@ -4073,7 +4074,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatTitleResponse
+ * @typedef {ResponseWithOutData} SetChatTitleResponse
  */
 
 
@@ -4097,7 +4098,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatDescriptionResponse
+ * @typedef {ResponseWithOutData} SetChatDescriptionResponse
  */
 
 
@@ -4123,7 +4124,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} PinChatMessageResponse
+ * @typedef {ResponseWithOutData} PinChatMessageResponse
  */
 
 
@@ -4148,7 +4149,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnpinChatMessageResponse
+ * @typedef {ResponseWithOutData} UnpinChatMessageResponse
  */
 
 
@@ -4171,7 +4172,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnpinAllChatMessagesResponse
+ * @typedef {ResponseWithOutData} UnpinAllChatMessagesResponse
  */
 
 
@@ -4194,7 +4195,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} LeaveChatResponse
+ * @typedef {ResponseWithOutData} LeaveChatResponse
  */
 
 
@@ -4217,7 +4218,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatFullInfo>)} GetChatResponse
+ * @typedef {ResponseSuccess<ChatFullInfo>} GetChatResponse
  */
 
 
@@ -4245,7 +4246,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<ChatMember>>)} GetChatAdministratorsResponse
+ * @typedef {ResponseSuccess<Array<ChatMember>>} GetChatAdministratorsResponse
  */
 
 
@@ -4273,7 +4274,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<number>)} GetChatMemberCountResponse
+ * @typedef {ResponseSuccess<number>} GetChatMemberCountResponse
  */
 
 
@@ -4302,7 +4303,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatMember>)} GetChatMemberResponse
+ * @typedef {ResponseSuccess<ChatMember>} GetChatMemberResponse
  */
 
 
@@ -4331,7 +4332,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatStickerSetResponse
+ * @typedef {ResponseWithOutData} SetChatStickerSetResponse
  */
 
 
@@ -4354,7 +4355,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteChatStickerSetResponse
+ * @typedef {ResponseWithOutData} DeleteChatStickerSetResponse
  */
 
 
@@ -4370,7 +4371,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<Sticker>>)} GetForumTopicIconStickersResponse
+ * @typedef {ResponseSuccess<Array<Sticker>>} GetForumTopicIconStickersResponse
  */
 
 
@@ -4399,7 +4400,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ForumTopic>)} CreateForumTopicResponse
+ * @typedef {ResponseSuccess<ForumTopic>} CreateForumTopicResponse
  */
 
 
@@ -4430,7 +4431,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditForumTopicResponse
+ * @typedef {ResponseWithOutData} EditForumTopicResponse
  */
 
 
@@ -4454,7 +4455,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} CloseForumTopicResponse
+ * @typedef {ResponseWithOutData} CloseForumTopicResponse
  */
 
 
@@ -4478,7 +4479,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} ReopenForumTopicResponse
+ * @typedef {ResponseWithOutData} ReopenForumTopicResponse
  */
 
 
@@ -4502,7 +4503,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteForumTopicResponse
+ * @typedef {ResponseWithOutData} DeleteForumTopicResponse
  */
 
 
@@ -4526,7 +4527,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnpinAllForumTopicMessagesResponse
+ * @typedef {ResponseWithOutData} UnpinAllForumTopicMessagesResponse
  */
 
 
@@ -4550,7 +4551,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditGeneralForumTopicResponse
+ * @typedef {ResponseWithOutData} EditGeneralForumTopicResponse
  */
 
 
@@ -4573,7 +4574,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} CloseGeneralForumTopicResponse
+ * @typedef {ResponseWithOutData} CloseGeneralForumTopicResponse
  */
 
 
@@ -4596,7 +4597,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} ReopenGeneralForumTopicResponse
+ * @typedef {ResponseWithOutData} ReopenGeneralForumTopicResponse
  */
 
 
@@ -4619,7 +4620,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} HideGeneralForumTopicResponse
+ * @typedef {ResponseWithOutData} HideGeneralForumTopicResponse
  */
 
 
@@ -4642,7 +4643,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnhideGeneralForumTopicResponse
+ * @typedef {ResponseWithOutData} UnhideGeneralForumTopicResponse
  */
 
 
@@ -4665,7 +4666,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} UnpinAllGeneralForumTopicMessagesResponse
+ * @typedef {ResponseWithOutData} UnpinAllGeneralForumTopicMessagesResponse
  */
 
 
@@ -4692,7 +4693,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} AnswerCallbackQueryResponse
+ * @typedef {ResponseWithOutData} AnswerCallbackQueryResponse
  */
 
 
@@ -4716,7 +4717,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<UserChatBoosts>)} GetUserChatBoostsResponse
+ * @typedef {ResponseSuccess<UserChatBoosts>} GetUserChatBoostsResponse
  */
 
 
@@ -4744,7 +4745,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<BusinessConnection>)} GetBusinessConnectionResponse
+ * @typedef {ResponseSuccess<BusinessConnection>} GetBusinessConnectionResponse
  */
 
 
@@ -4774,7 +4775,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMyCommandsResponse
+ * @typedef {ResponseWithOutData} SetMyCommandsResponse
  */
 
 
@@ -4798,7 +4799,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteMyCommandsResponse
+ * @typedef {ResponseWithOutData} DeleteMyCommandsResponse
  */
 
 
@@ -4822,7 +4823,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<BotCommand>>)} GetMyCommandsResponse
+ * @typedef {ResponseSuccess<Array<BotCommand>>} GetMyCommandsResponse
  */
 
 
@@ -4851,7 +4852,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMyNameResponse
+ * @typedef {ResponseWithOutData} SetMyNameResponse
  */
 
 
@@ -4874,7 +4875,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<BotName>)} GetMyNameResponse
+ * @typedef {ResponseSuccess<BotName>} GetMyNameResponse
  */
 
 
@@ -4903,7 +4904,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMyDescriptionResponse
+ * @typedef {ResponseWithOutData} SetMyDescriptionResponse
  */
 
 
@@ -4926,7 +4927,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<BotDescription>)} GetMyDescriptionResponse
+ * @typedef {ResponseSuccess<BotDescription>} GetMyDescriptionResponse
  */
 
 
@@ -4955,7 +4956,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMyShortDescriptionResponse
+ * @typedef {ResponseWithOutData} SetMyShortDescriptionResponse
  */
 
 
@@ -4978,7 +4979,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<BotShortDescription>)} GetMyShortDescriptionResponse
+ * @typedef {ResponseSuccess<BotShortDescription>} GetMyShortDescriptionResponse
  */
 
 
@@ -5007,7 +5008,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetChatMenuButtonResponse
+ * @typedef {ResponseWithOutData} SetChatMenuButtonResponse
  */
 
 
@@ -5030,7 +5031,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<MenuButton>)} GetChatMenuButtonResponse
+ * @typedef {ResponseSuccess<MenuButton>} GetChatMenuButtonResponse
  */
 
 
@@ -5059,7 +5060,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetMyDefaultAdministratorRightsResponse
+ * @typedef {ResponseWithOutData} SetMyDefaultAdministratorRightsResponse
  */
 
 
@@ -5082,7 +5083,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<ChatAdministratorRights>)} GetMyDefaultAdministratorRightsResponse
+ * @typedef {ResponseSuccess<ChatAdministratorRights>} GetMyDefaultAdministratorRightsResponse
  */
 
 
@@ -5118,7 +5119,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditMessageTextResponse
+ * @typedef {ResponseWithOutData} EditMessageTextResponse
  */
 
 
@@ -5149,7 +5150,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditMessageCaptionResponse
+ * @typedef {ResponseWithOutData} EditMessageCaptionResponse
  */
 
 
@@ -5177,7 +5178,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditMessageMediaResponse
+ * @typedef {ResponseWithOutData} EditMessageMediaResponse
  */
 
 
@@ -5210,7 +5211,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditMessageLiveLocationResponse
+ * @typedef {ResponseWithOutData} EditMessageLiveLocationResponse
  */
 
 
@@ -5237,7 +5238,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} StopMessageLiveLocationResponse
+ * @typedef {ResponseWithOutData} StopMessageLiveLocationResponse
  */
 
 
@@ -5264,7 +5265,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} EditMessageReplyMarkupResponse
+ * @typedef {ResponseWithOutData} EditMessageReplyMarkupResponse
  */
 
 
@@ -5290,7 +5291,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Poll>)} StopPollResponse
+ * @typedef {ResponseSuccess<Poll>} StopPollResponse
  */
 
 
@@ -5319,7 +5320,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteMessageResponse
+ * @typedef {ResponseWithOutData} DeleteMessageResponse
  */
 
 
@@ -5343,7 +5344,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteMessagesResponse
+ * @typedef {ResponseWithOutData} DeleteMessagesResponse
  */
 
 
@@ -5375,7 +5376,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendStickerResponse
+ * @typedef {ResponseWithMessage} SendStickerResponse
  */
 
 
@@ -5403,7 +5404,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<StickerSet>)} GetStickerSetResponse
+ * @typedef {ResponseSuccess<StickerSet>} GetStickerSetResponse
  */
 
 
@@ -5431,7 +5432,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<Sticker>>)} GetCustomEmojiStickersResponse
+ * @typedef {ResponseSuccess<Array<Sticker>>} GetCustomEmojiStickersResponse
  */
 
 
@@ -5461,7 +5462,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<File>)} UploadStickerFileResponse
+ * @typedef {ResponseSuccess<File>} UploadStickerFileResponse
  */
 
 
@@ -5494,7 +5495,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} CreateNewStickerSetResponse
+ * @typedef {ResponseWithOutData} CreateNewStickerSetResponse
  */
 
 
@@ -5519,7 +5520,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} AddStickerToSetResponse
+ * @typedef {ResponseWithOutData} AddStickerToSetResponse
  */
 
 
@@ -5543,7 +5544,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerPositionInSetResponse
+ * @typedef {ResponseWithOutData} SetStickerPositionInSetResponse
  */
 
 
@@ -5566,7 +5567,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteStickerFromSetResponse
+ * @typedef {ResponseWithOutData} DeleteStickerFromSetResponse
  */
 
 
@@ -5592,7 +5593,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} ReplaceStickerInSetResponse
+ * @typedef {ResponseWithOutData} ReplaceStickerInSetResponse
  */
 
 
@@ -5616,7 +5617,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerEmojiListResponse
+ * @typedef {ResponseWithOutData} SetStickerEmojiListResponse
  */
 
 
@@ -5640,7 +5641,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerKeywordsResponse
+ * @typedef {ResponseWithOutData} SetStickerKeywordsResponse
  */
 
 
@@ -5664,7 +5665,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerMaskPositionResponse
+ * @typedef {ResponseWithOutData} SetStickerMaskPositionResponse
  */
 
 
@@ -5688,7 +5689,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerSetTitleResponse
+ * @typedef {ResponseWithOutData} SetStickerSetTitleResponse
  */
 
 
@@ -5714,7 +5715,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetStickerSetThumbnailResponse
+ * @typedef {ResponseWithOutData} SetStickerSetThumbnailResponse
  */
 
 
@@ -5738,7 +5739,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetCustomEmojiStickerSetThumbnailResponse
+ * @typedef {ResponseWithOutData} SetCustomEmojiStickerSetThumbnailResponse
  */
 
 
@@ -5761,7 +5762,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} DeleteStickerSetResponse
+ * @typedef {ResponseWithOutData} DeleteStickerSetResponse
  */
 
 
@@ -5789,7 +5790,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} AnswerInlineQueryResponse
+ * @typedef {ResponseWithOutData} AnswerInlineQueryResponse
  */
 
 
@@ -5813,7 +5814,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<SentWebAppMessage>)} AnswerWebAppQueryResponse
+ * @typedef {ResponseSuccess<SentWebAppMessage>} AnswerWebAppQueryResponse
  */
 
 
@@ -5868,7 +5869,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendInvoiceResponse
+ * @typedef {ResponseWithMessage} SendInvoiceResponse
  */
 
 
@@ -5915,7 +5916,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<string>)} CreateInvoiceLinkResponse
+ * @typedef {ResponseSuccess<string>} CreateInvoiceLinkResponse
  */
 
 
@@ -5946,7 +5947,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} AnswerShippingQueryResponse
+ * @typedef {ResponseWithOutData} AnswerShippingQueryResponse
  */
 
 
@@ -5971,7 +5972,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} AnswerPreCheckoutQueryResponse
+ * @typedef {ResponseWithOutData} AnswerPreCheckoutQueryResponse
  */
 
 
@@ -5995,7 +5996,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<StarTransactions>)} GetStarTransactionsResponse
+ * @typedef {ResponseSuccess<StarTransactions>} GetStarTransactionsResponse
  */
 
 
@@ -6024,7 +6025,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} RefundStarPaymentResponse
+ * @typedef {ResponseWithOutData} RefundStarPaymentResponse
  */
 
 
@@ -6048,7 +6049,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetPassportDataErrorsResponse
+ * @typedef {ResponseWithOutData} SetPassportDataErrorsResponse
  */
 
 
@@ -6079,7 +6080,7 @@
 
 
 /**
- * @typedef {(ResponseWithMessage)} SendGameResponse
+ * @typedef {ResponseWithMessage} SendGameResponse
  */
 
 
@@ -6113,7 +6114,7 @@
 
 
 /**
- * @typedef {(ResponseWithOutData)} SetGameScoreResponse
+ * @typedef {ResponseWithOutData} SetGameScoreResponse
  */
 
 
@@ -6139,7 +6140,7 @@
 
 
 /**
- * @typedef {(ResponseSuccess<Array<GameHighScore>>)} GetGameHighScoresResponse
+ * @typedef {ResponseSuccess<Array<GameHighScore>>} GetGameHighScoresResponse
  */
 
 
@@ -6160,10 +6161,10 @@
 
 
 /**
- * @typedef {("getUpdates" | "setWebhook" | "deleteWebhook" | "getWebhookInfo" | "getMe" | "logOut" | "close" | "sendMessage" | "forwardMessage" | "forwardMessages" | "copyMessage" | "copyMessages" | "sendPhoto" | "sendAudio" | "sendDocument" | "sendVideo" | "sendAnimation" | "sendVoice" | "sendVideoNote" | "sendPaidMedia" | "sendMediaGroup" | "sendLocation" | "sendVenue" | "sendContact" | "sendPoll" | "sendDice" | "sendChatAction" | "setMessageReaction" | "getUserProfilePhotos" | "getFile" | "banChatMember" | "unbanChatMember" | "restrictChatMember" | "promoteChatMember" | "setChatAdministratorCustomTitle" | "banChatSenderChat" | "unbanChatSenderChat" | "setChatPermissions" | "exportChatInviteLink" | "createChatInviteLink" | "editChatInviteLink" | "createChatSubscriptionInviteLink" | "editChatSubscriptionInviteLink" | "revokeChatInviteLink" | "approveChatJoinRequest" | "declineChatJoinRequest" | "setChatPhoto" | "deleteChatPhoto" | "setChatTitle" | "setChatDescription" | "pinChatMessage" | "unpinChatMessage" | "unpinAllChatMessages" | "leaveChat" | "getChat" | "getChatAdministrators" | "getChatMemberCount" | "getChatMember" | "setChatStickerSet" | "deleteChatStickerSet" | "getForumTopicIconStickers" | "createForumTopic" | "editForumTopic" | "closeForumTopic" | "reopenForumTopic" | "deleteForumTopic" | "unpinAllForumTopicMessages" | "editGeneralForumTopic" | "closeGeneralForumTopic" | "reopenGeneralForumTopic" | "hideGeneralForumTopic" | "unhideGeneralForumTopic" | "unpinAllGeneralForumTopicMessages" | "answerCallbackQuery" | "getUserChatBoosts" | "getBusinessConnection" | "setMyCommands" | "deleteMyCommands" | "getMyCommands" | "setMyName" | "getMyName" | "setMyDescription" | "getMyDescription" | "setMyShortDescription" | "getMyShortDescription" | "setChatMenuButton" | "getChatMenuButton" | "setMyDefaultAdministratorRights" | "getMyDefaultAdministratorRights" | "editMessageText" | "editMessageCaption" | "editMessageMedia" | "editMessageLiveLocation" | "stopMessageLiveLocation" | "editMessageReplyMarkup" | "stopPoll" | "deleteMessage" | "deleteMessages" | "sendSticker" | "getStickerSet" | "getCustomEmojiStickers" | "uploadStickerFile" | "createNewStickerSet" | "addStickerToSet" | "setStickerPositionInSet" | "deleteStickerFromSet" | "replaceStickerInSet" | "setStickerEmojiList" | "setStickerKeywords" | "setStickerMaskPosition" | "setStickerSetTitle" | "setStickerSetThumbnail" | "setCustomEmojiStickerSetThumbnail" | "deleteStickerSet" | "answerInlineQuery" | "answerWebAppQuery" | "sendInvoice" | "createInvoiceLink" | "answerShippingQuery" | "answerPreCheckoutQuery" | "getStarTransactions" | "refundStarPayment" | "setPassportDataErrors" | "sendGame" | "setGameScore" | "getGameHighScores")} BotMethod
+ * @typedef {('getUpdates' | 'setWebhook' | 'deleteWebhook' | 'getWebhookInfo' | 'getMe' | 'logOut' | 'close' | 'sendMessage' | 'forwardMessage' | 'forwardMessages' | 'copyMessage' | 'copyMessages' | 'sendPhoto' | 'sendAudio' | 'sendDocument' | 'sendVideo' | 'sendAnimation' | 'sendVoice' | 'sendVideoNote' | 'sendPaidMedia' | 'sendMediaGroup' | 'sendLocation' | 'sendVenue' | 'sendContact' | 'sendPoll' | 'sendDice' | 'sendChatAction' | 'setMessageReaction' | 'getUserProfilePhotos' | 'getFile' | 'banChatMember' | 'unbanChatMember' | 'restrictChatMember' | 'promoteChatMember' | 'setChatAdministratorCustomTitle' | 'banChatSenderChat' | 'unbanChatSenderChat' | 'setChatPermissions' | 'exportChatInviteLink' | 'createChatInviteLink' | 'editChatInviteLink' | 'createChatSubscriptionInviteLink' | 'editChatSubscriptionInviteLink' | 'revokeChatInviteLink' | 'approveChatJoinRequest' | 'declineChatJoinRequest' | 'setChatPhoto' | 'deleteChatPhoto' | 'setChatTitle' | 'setChatDescription' | 'pinChatMessage' | 'unpinChatMessage' | 'unpinAllChatMessages' | 'leaveChat' | 'getChat' | 'getChatAdministrators' | 'getChatMemberCount' | 'getChatMember' | 'setChatStickerSet' | 'deleteChatStickerSet' | 'getForumTopicIconStickers' | 'createForumTopic' | 'editForumTopic' | 'closeForumTopic' | 'reopenForumTopic' | 'deleteForumTopic' | 'unpinAllForumTopicMessages' | 'editGeneralForumTopic' | 'closeGeneralForumTopic' | 'reopenGeneralForumTopic' | 'hideGeneralForumTopic' | 'unhideGeneralForumTopic' | 'unpinAllGeneralForumTopicMessages' | 'answerCallbackQuery' | 'getUserChatBoosts' | 'getBusinessConnection' | 'setMyCommands' | 'deleteMyCommands' | 'getMyCommands' | 'setMyName' | 'getMyName' | 'setMyDescription' | 'getMyDescription' | 'setMyShortDescription' | 'getMyShortDescription' | 'setChatMenuButton' | 'getChatMenuButton' | 'setMyDefaultAdministratorRights' | 'getMyDefaultAdministratorRights' | 'editMessageText' | 'editMessageCaption' | 'editMessageMedia' | 'editMessageLiveLocation' | 'stopMessageLiveLocation' | 'editMessageReplyMarkup' | 'stopPoll' | 'deleteMessage' | 'deleteMessages' | 'sendSticker' | 'getStickerSet' | 'getCustomEmojiStickers' | 'uploadStickerFile' | 'createNewStickerSet' | 'addStickerToSet' | 'setStickerPositionInSet' | 'deleteStickerFromSet' | 'replaceStickerInSet' | 'setStickerEmojiList' | 'setStickerKeywords' | 'setStickerMaskPosition' | 'setStickerSetTitle' | 'setStickerSetThumbnail' | 'setCustomEmojiStickerSetThumbnail' | 'deleteStickerSet' | 'answerInlineQuery' | 'answerWebAppQuery' | 'sendInvoice' | 'createInvoiceLink' | 'answerShippingQuery' | 'answerPreCheckoutQuery' | 'getStarTransactions' | 'refundStarPayment' | 'setPassportDataErrors' | 'sendGame' | 'setGameScore' | 'getGameHighScores')} BotMethod
  */
 
 
 /**
- * @typedef {(GetUpdatesRequest & SetWebhookRequest & DeleteWebhookRequest & GetWebhookInfoRequest & GetMeRequest & LogOutRequest & CloseRequest & SendMessageRequest & ForwardMessageRequest & ForwardMessagesRequest & CopyMessageRequest & CopyMessagesRequest & SendPhotoRequest & SendAudioRequest & SendDocumentRequest & SendVideoRequest & SendAnimationRequest & SendVoiceRequest & SendVideoNoteRequest & SendPaidMediaRequest & SendMediaGroupRequest & SendLocationRequest & SendVenueRequest & SendContactRequest & SendPollRequest & SendDiceRequest & SendChatActionRequest & SetMessageReactionRequest & GetUserProfilePhotosRequest & GetFileRequest & BanChatMemberRequest & UnbanChatMemberRequest & RestrictChatMemberRequest & PromoteChatMemberRequest & SetChatAdministratorCustomTitleRequest & BanChatSenderChatRequest & UnbanChatSenderChatRequest & SetChatPermissionsRequest & ExportChatInviteLinkRequest & CreateChatInviteLinkRequest & EditChatInviteLinkRequest & CreateChatSubscriptionInviteLinkRequest & EditChatSubscriptionInviteLinkRequest & RevokeChatInviteLinkRequest & ApproveChatJoinRequestRequest & DeclineChatJoinRequestRequest & SetChatPhotoRequest & DeleteChatPhotoRequest & SetChatTitleRequest & SetChatDescriptionRequest & PinChatMessageRequest & UnpinChatMessageRequest & UnpinAllChatMessagesRequest & LeaveChatRequest & GetChatRequest & GetChatAdministratorsRequest & GetChatMemberCountRequest & GetChatMemberRequest & SetChatStickerSetRequest & DeleteChatStickerSetRequest & GetForumTopicIconStickersRequest & CreateForumTopicRequest & EditForumTopicRequest & CloseForumTopicRequest & ReopenForumTopicRequest & DeleteForumTopicRequest & UnpinAllForumTopicMessagesRequest & EditGeneralForumTopicRequest & CloseGeneralForumTopicRequest & ReopenGeneralForumTopicRequest & HideGeneralForumTopicRequest & UnhideGeneralForumTopicRequest & UnpinAllGeneralForumTopicMessagesRequest & AnswerCallbackQueryRequest & GetUserChatBoostsRequest & GetBusinessConnectionRequest & SetMyCommandsRequest & DeleteMyCommandsRequest & GetMyCommandsRequest & SetMyNameRequest & GetMyNameRequest & SetMyDescriptionRequest & GetMyDescriptionRequest & SetMyShortDescriptionRequest & GetMyShortDescriptionRequest & SetChatMenuButtonRequest & GetChatMenuButtonRequest & SetMyDefaultAdministratorRightsRequest & GetMyDefaultAdministratorRightsRequest & EditMessageTextRequest & EditMessageCaptionRequest & EditMessageMediaRequest & EditMessageLiveLocationRequest & StopMessageLiveLocationRequest & EditMessageReplyMarkupRequest & StopPollRequest & DeleteMessageRequest & DeleteMessagesRequest & SendStickerRequest & GetStickerSetRequest & GetCustomEmojiStickersRequest & UploadStickerFileRequest & CreateNewStickerSetRequest & AddStickerToSetRequest & SetStickerPositionInSetRequest & DeleteStickerFromSetRequest & ReplaceStickerInSetRequest & SetStickerEmojiListRequest & SetStickerKeywordsRequest & SetStickerMaskPositionRequest & SetStickerSetTitleRequest & SetStickerSetThumbnailRequest & SetCustomEmojiStickerSetThumbnailRequest & DeleteStickerSetRequest & AnswerInlineQueryRequest & AnswerWebAppQueryRequest & SendInvoiceRequest & CreateInvoiceLinkRequest & AnswerShippingQueryRequest & AnswerPreCheckoutQueryRequest & GetStarTransactionsRequest & RefundStarPaymentRequest & SetPassportDataErrorsRequest & SendGameRequest & SetGameScoreRequest & GetGameHighScoresRequest)} AllBotMethods
+ * @typedef {GetUpdatesRequest & SetWebhookRequest & DeleteWebhookRequest & GetWebhookInfoRequest & GetMeRequest & LogOutRequest & CloseRequest & SendMessageRequest & ForwardMessageRequest & ForwardMessagesRequest & CopyMessageRequest & CopyMessagesRequest & SendPhotoRequest & SendAudioRequest & SendDocumentRequest & SendVideoRequest & SendAnimationRequest & SendVoiceRequest & SendVideoNoteRequest & SendPaidMediaRequest & SendMediaGroupRequest & SendLocationRequest & SendVenueRequest & SendContactRequest & SendPollRequest & SendDiceRequest & SendChatActionRequest & SetMessageReactionRequest & GetUserProfilePhotosRequest & GetFileRequest & BanChatMemberRequest & UnbanChatMemberRequest & RestrictChatMemberRequest & PromoteChatMemberRequest & SetChatAdministratorCustomTitleRequest & BanChatSenderChatRequest & UnbanChatSenderChatRequest & SetChatPermissionsRequest & ExportChatInviteLinkRequest & CreateChatInviteLinkRequest & EditChatInviteLinkRequest & CreateChatSubscriptionInviteLinkRequest & EditChatSubscriptionInviteLinkRequest & RevokeChatInviteLinkRequest & ApproveChatJoinRequestRequest & DeclineChatJoinRequestRequest & SetChatPhotoRequest & DeleteChatPhotoRequest & SetChatTitleRequest & SetChatDescriptionRequest & PinChatMessageRequest & UnpinChatMessageRequest & UnpinAllChatMessagesRequest & LeaveChatRequest & GetChatRequest & GetChatAdministratorsRequest & GetChatMemberCountRequest & GetChatMemberRequest & SetChatStickerSetRequest & DeleteChatStickerSetRequest & GetForumTopicIconStickersRequest & CreateForumTopicRequest & EditForumTopicRequest & CloseForumTopicRequest & ReopenForumTopicRequest & DeleteForumTopicRequest & UnpinAllForumTopicMessagesRequest & EditGeneralForumTopicRequest & CloseGeneralForumTopicRequest & ReopenGeneralForumTopicRequest & HideGeneralForumTopicRequest & UnhideGeneralForumTopicRequest & UnpinAllGeneralForumTopicMessagesRequest & AnswerCallbackQueryRequest & GetUserChatBoostsRequest & GetBusinessConnectionRequest & SetMyCommandsRequest & DeleteMyCommandsRequest & GetMyCommandsRequest & SetMyNameRequest & GetMyNameRequest & SetMyDescriptionRequest & GetMyDescriptionRequest & SetMyShortDescriptionRequest & GetMyShortDescriptionRequest & SetChatMenuButtonRequest & GetChatMenuButtonRequest & SetMyDefaultAdministratorRightsRequest & GetMyDefaultAdministratorRightsRequest & EditMessageTextRequest & EditMessageCaptionRequest & EditMessageMediaRequest & EditMessageLiveLocationRequest & StopMessageLiveLocationRequest & EditMessageReplyMarkupRequest & StopPollRequest & DeleteMessageRequest & DeleteMessagesRequest & SendStickerRequest & GetStickerSetRequest & GetCustomEmojiStickersRequest & UploadStickerFileRequest & CreateNewStickerSetRequest & AddStickerToSetRequest & SetStickerPositionInSetRequest & DeleteStickerFromSetRequest & ReplaceStickerInSetRequest & SetStickerEmojiListRequest & SetStickerKeywordsRequest & SetStickerMaskPositionRequest & SetStickerSetTitleRequest & SetStickerSetThumbnailRequest & SetCustomEmojiStickerSetThumbnailRequest & DeleteStickerSetRequest & AnswerInlineQueryRequest & AnswerWebAppQueryRequest & SendInvoiceRequest & CreateInvoiceLinkRequest & AnswerShippingQueryRequest & AnswerPreCheckoutQueryRequest & GetStarTransactionsRequest & RefundStarPaymentRequest & SetPassportDataErrorsRequest & SendGameRequest & SetGameScoreRequest & GetGameHighScoresRequest} AllBotMethods
  */

@@ -38,10 +38,10 @@ function runGen(gen: TypesFileGenerator): string[] {
 
     const output: string[] = [];
 // 添加常量
-    output.push(gen.union('ChatType', '', ['"private"', '"group"', '"supergroup"', '"channel"'], UNION_OR))
-    output.push(gen.union('ChatAction', '', ['"typing"', '"upload_photo"', '"record_video"', '"upload_video"', '"record_voice"', '"upload_voice"', '"upload_document"', '"find_location"', '"record_video_note"', '"upload_video_note"'], UNION_OR))
-    output.push(gen.union('MessageEntityType', '', ['"mention"', '"hashtag"', '"cashtag"', '"bot_command"', '"url"', '"email"', '"phone_number"', '"bold"', '"italic"', '"underline"', '"strikethrough"', '"code"', '"pre"', '"text_link"', '"text_mention"', '"spoiler"', '"custom_emoji"'], UNION_OR))
-    output.push(gen.union('ParseMode', '', ['"Markdown"', '"MarkdownV2"', '"HTML"'], UNION_OR))
+    output.push(gen.enum('ChatType', '', ['private', 'group', 'supergroup', 'channel']))
+    output.push(gen.enum('ChatAction', '', ['typing', 'upload_photo', 'record_video', 'upload_video', 'record_voice', 'upload_voice', 'upload_document', 'find_location', 'record_video_note', 'upload_video_note']))
+    output.push(gen.enum('MessageEntityType', '', ['mention', 'hashtag', 'cashtag', 'bot_command', 'url', 'email', 'phone_number', 'bold', 'italic', 'underline', 'strikethrough', 'code', 'pre', 'text_link', 'text_mention', 'spoiler', 'custom_emoji']))
+    output.push(gen.enum('ParseMode', '', ['Markdown', 'MarkdownV2', 'HTML']))
 
 // 添加类型
     output.push(...types.map(type => gen.type(uppercaseFirstChar(type.name), `${type.description}  ${anchorLink(type.name)}`, type.fields)))
@@ -53,7 +53,7 @@ function runGen(gen: TypesFileGenerator): string[] {
     output.push(gen.type('ResponseSuccess<T>', '', [
         {name: 'ok', type: 'true', raw_type: 'true', optional: false, description: ''},
         {name: 'result', type: 'T', raw_type: 'T', optional: false, description: ''},
-    ]))
+    ], 'T'))
 
     output.push(gen.type('ResponseError', '', [
         {name: 'ok', type: 'false', raw_type: 'false', optional: false, description: ''},
@@ -83,12 +83,12 @@ function runGen(gen: TypesFileGenerator): string[] {
         }
 
         output.push(gen.union(`${uppercaseFirstChar(method.name)}Response`, '', [returns], UNION_OR))
-        output.push(gen.method(uppercaseFirstChar(method.name), method.description, method.parameters, returns))
+        output.push(gen.method(uppercaseFirstChar(method.name), method.description, method.parameters, returns, isGenericEnable ? 'R' : undefined))
     })
 
 
 // 添加 API 类型
-    output.push(gen.union('BotMethod', '', methods.map(method => `"${method.name}"`), UNION_OR))
+    output.push(gen.enum('BotMethod', '', methods.map(method => method.name)))
     output.push(gen.union(`AllBotMethods${requestSuffix}`, '', methods.map(method => `${uppercaseFirstChar(method.name)}Request${requestSuffix}`), UNION_AND))
 
     return output;

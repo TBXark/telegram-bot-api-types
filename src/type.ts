@@ -26,9 +26,11 @@ export interface TelegramMethod {
 }
 
 export interface TypesFileGenerator {
-    type(name: string, description: string, fields: TelegramField[]): string
+    type(name: string, description: string, fields: TelegramField[], template?: string): string
 
     union(name: string, description: string, types: string[], separator: string): string
 
-    method(name: string, description: string, params: TelegramField[], returns: string): string
+    enum(name: string, description: string, values: string[]): string
+
+    method(name: string, description: string, params: TelegramField[], returns: string, template?: string): string
 }
