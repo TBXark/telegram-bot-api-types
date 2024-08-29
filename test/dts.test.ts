@@ -57,7 +57,7 @@ class APIClientBase {
                 formData.append(key, JSON.stringify(value));
             }
         }
-        return fetch(`${this.baseURL}bot${this.token}/${method}`, {
+        return fetch(`${this.baseURL}/bot${this.token}/${method}`, {
             method: 'POST',
             body: formData,
         });
