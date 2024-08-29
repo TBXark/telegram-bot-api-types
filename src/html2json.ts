@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
-import { load } from 'cheerio';
-import type { Cheerio } from 'cheerio';
-import type { TelegramTypes, TelegramField, TelegramMethod, TelegramUnions } from './type';
+import type {Cheerio} from 'cheerio';
+import {load} from 'cheerio';
+import type {TelegramField, TelegramMethod, TelegramTypes, TelegramUnions} from './type';
 
 
 if (!fs.existsSync('index.html')) {
@@ -83,9 +83,9 @@ devPageContent.find('h4').each((i, el) => {
             const type = td.eq(1).text();
             const optional = td.eq(2).text() === 'Optional';
             const description = td.eq(3).text();
-            parameters.push({ name, type: typeGen(type), raw_type: type, optional, description });
+            parameters.push({name, type: typeGen(type), raw_type: type, optional, description});
         });
-        methods.push({ name, description, parameters, returns });
+        methods.push({name, description, parameters, returns});
     } else {
         let ul: Cheerio<any> | null = $(el).next();
         if (table === null) {
@@ -100,7 +100,7 @@ devPageContent.find('h4').each((i, el) => {
         if (ul && ul.is('ul')) {
             // 如果 ul 说明是 union
             const types = ul?.find('li').map((i, li) => $(li).text()).get();
-            unions.push({ name, description, types });
+            unions.push({name, description, types});
             return;
         }
         const fields = table?.find('tbody tr').map((i, el): TelegramField => {
@@ -109,9 +109,9 @@ devPageContent.find('h4').each((i, el) => {
             const type = $el.find('td').eq(1).text();
             const description = $el.find('td').eq(2).text();
             const optional = description.includes('Optional');
-            return { name, type: typeConst(description) || typeGen(type), raw_type: type, description, optional };
+            return {name, type: typeConst(description) || typeGen(type), raw_type: type, description, optional};
         }).get() || [];
-        types.push({ name, description, fields });
+        types.push({name, description, fields});
     }
 })
 

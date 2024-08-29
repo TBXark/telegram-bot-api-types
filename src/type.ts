@@ -24,3 +24,11 @@ export interface TelegramMethod {
     parameters: TelegramField[];
     returns: string;
 }
+
+export interface TypesFileGenerator {
+    type(name: string, description: string, fields: TelegramField[]): string
+
+    union(name: string, description: string, types: string[], separator: string): string
+
+    method(name: string, description: string, params: TelegramField[], returns: string): string
+}

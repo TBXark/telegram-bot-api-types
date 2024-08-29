@@ -2,7 +2,8 @@
 
 Telegram Bot API SDK compiled size is 0KB that only includes type definition files. It can be used to conveniently develop Telegram Bots in TypeScript. You can wrap your API client with as many web request libraries as you want.
 
-This is a `d.ts` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
+This is a `d.ts` and `jsdoc` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
+
 
 ![](./preview.jpg)
 

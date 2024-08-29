@@ -1,21 +1,35 @@
-import * as Telegram from ".";
-import { HttpsProxyAgent } from 'https-proxy-agent';
-import type { Response } from 'node-fetch';
+import * as Telegram from "../index";
+import {HttpsProxyAgent} from 'https-proxy-agent';
+import type {Response} from 'node-fetch';
 import fetch from 'node-fetch';
 import * as fs from 'node:fs';
 import * as process from 'node:process';
 
-const { token } = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
+const {token} = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
 const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
 
 class APIClientBase {
     readonly token: string;
     readonly baseURL: string = `https://api.telegram.org/`;
+
     constructor(token: string, baseURL?: string) {
         this.token = token;
         if (baseURL) {
             this.baseURL = baseURL;
         }
+    }
+
+    request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
+        for (const key in params) {
+            if (params[key] instanceof File || params[key] instanceof Blob) {
+                return this.formDataRequest(method, params);
+            }
+        }
+        return this.jsonRequest(method, params);
+    }
+
+    async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
+        return this.request(method, params).then(res => res.json() as R)
     }
 
     private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
@@ -48,23 +62,10 @@ class APIClientBase {
             body: formData,
         });
     }
-
-    request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
-        for (const key in params) {
-            if (params[key] instanceof File || params[key] instanceof Blob) {
-                return this.formDataRequest(method, params);
-            }
-        }
-        return this.jsonRequest(method, params);
-    }
-
-    async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
-        return this.request(method, params).then(res => res.json() as R)
-    }
 }
 
 
-type APIClient = APIClientBase & Telegram.AllBotMethods<Response>;
+type APIClient = APIClientBase & Telegram.AllBotMethods;
 
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
@@ -86,16 +87,16 @@ export function createAPIClient(token: string): APIClient {
 
 async function main() {
     const client = createAPIClient(token);
-    const { result: user } = await client.getMeWithReturns()
+    const {result: user} = await client.getMeWithReturns()
     console.log(`Hello! My name is ${user.username}`);
     await client.deleteWebhook();
     let offset = 0
     while (true) {
-        const { result: updates } = await client.getUpdatesWithReturns({ offset: offset });
+        const {result: updates} = await client.getUpdatesWithReturns({offset: offset});
         for (const update of updates) {
             offset = update.update_id + 1;
             if (update.message?.text) {
-                await client.sendMessageWithReturns({ chat_id: update.message.chat.id, text: update.message.text });
+                await client.sendMessageWithReturns({chat_id: update.message.chat.id, text: update.message.text});
             }
         }
     }

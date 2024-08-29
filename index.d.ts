@@ -1,11 +1,10 @@
-
 export type ChatType = "private" | "group" | "supergroup" | "channel";
 
 
-export type ChatAction = "typing"| "upload_photo"| "record_video"| "upload_video"| "record_voice"| "upload_voice"| "upload_document"| "find_location"| "record_video_note"| "upload_video_note";
+export type ChatAction = "typing" | "upload_photo" | "record_video" | "upload_video" | "record_voice" | "upload_voice" | "upload_document" | "find_location" | "record_video_note" | "upload_video_note";
 
 
-export type MessageEntityType = "mention"| "hashtag"| "cashtag"| "bot_command"| "url"| "email"| "phone_number"| "bold"| "italic"| "underline"| "strikethrough"| "code"| "pre"| "text_link"| "text_mention"| "spoiler"| "custom_emoji";
+export type MessageEntityType = "mention" | "hashtag" | "cashtag" | "bot_command" | "url" | "email" | "phone_number" | "bold" | "italic" | "underline" | "strikethrough" | "code" | "pre" | "text_link" | "text_mention" | "spoiler" | "custom_emoji";
 
 
 export type ParseMode = "Markdown" | "MarkdownV2" | "HTML";
@@ -3412,6 +3411,7 @@ export interface GameHighScore {
     score: number;
 }
 
+
 /** This object describes a message that can be inaccessible to the bot. It can be one of  https://core.telegram.org/bots/api#maybeinaccessiblemessage */
 export type MaybeInaccessibleMessage = Message | InaccessibleMessage;
 
@@ -3480,7 +3480,6 @@ export type TransactionPartner = TransactionPartnerUser | TransactionPartnerFrag
 export type PassportElementError = PassportElementErrorDataField | PassportElementErrorFrontSide | PassportElementErrorReverseSide | PassportElementErrorSelfie | PassportElementErrorFile | PassportElementErrorFiles | PassportElementErrorTranslationFile | PassportElementErrorTranslationFiles | PassportElementErrorUnspecified;
 
 
-
 export interface ResponseSuccess<T> {
     ok: true;
     result: T;
@@ -3503,7 +3502,7 @@ export type ResponseWithOutData = ResponseSuccess<SuccessWithOutData>;
 export type ResponseWithMessage = ResponseSuccess<Message>;
 
 
-/**  https://core.telegram.org/bots/api#getupdates */
+/** https://core.telegram.org/bots/api#getupdates */
 export interface GetUpdatesParams {
     /** Integer | Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from -offset update from the end of the updates queue. All previous updates will be forgotten. */
     offset?: number;
@@ -3520,13 +3519,13 @@ export type GetUpdatesResponse = ResponseSuccess<Array<Update>>;
 
 
 export interface GetUpdatesRequest {
-    /** Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects. https://core.telegram.org/bots/api#getupdates */
+    /** Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.  https://core.telegram.org/bots/api#getupdates */
     getUpdates: (params?: GetUpdatesParams) => Promise<Response>;
     getUpdatesWithReturns: (params?: GetUpdatesParams) => Promise<ResponseSuccess<Array<Update>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setwebhook */
+/** https://core.telegram.org/bots/api#setwebhook */
 export interface SetWebhookParams {
     /** String | HTTPS URL to send updates to. Use an empty string to remove webhook integration */
     url: string;
@@ -3549,12 +3548,12 @@ export type SetWebhookResponse = ResponseWithOutData;
 
 
 export interface SetWebhookRequest {
-    /** Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success. https://core.telegram.org/bots/api#setwebhook */
+    /** Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.  https://core.telegram.org/bots/api#setwebhook */
     setWebhook: (params: SetWebhookParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletewebhook */
+/** https://core.telegram.org/bots/api#deletewebhook */
 export interface DeleteWebhookParams {
     /** Boolean | Pass True to drop all pending updates */
     drop_pending_updates?: boolean;
@@ -3565,54 +3564,50 @@ export type DeleteWebhookResponse = ResponseWithOutData;
 
 
 export interface DeleteWebhookRequest {
-    /** Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. https://core.telegram.org/bots/api#deletewebhook */
+    /** Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.  https://core.telegram.org/bots/api#deletewebhook */
     deleteWebhook: (params?: DeleteWebhookParams) => Promise<Response>;
 }
-
 
 
 export type GetWebhookInfoResponse = ResponseSuccess<WebhookInfo>;
 
 
 export interface GetWebhookInfoRequest {
-    /** Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty. https://core.telegram.org/bots/api#getwebhookinfo */
+    /** Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.  https://core.telegram.org/bots/api#getwebhookinfo */
     getWebhookInfo: () => Promise<Response>;
     getWebhookInfoWithReturns: () => Promise<ResponseSuccess<WebhookInfo>>;
 }
-
 
 
 export type GetMeResponse = ResponseSuccess<User>;
 
 
 export interface GetMeRequest {
-    /** A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object. https://core.telegram.org/bots/api#getme */
+    /** A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.  https://core.telegram.org/bots/api#getme */
     getMe: () => Promise<Response>;
     getMeWithReturns: () => Promise<ResponseSuccess<User>>;
 }
-
 
 
 export type LogOutResponse = ResponseWithOutData;
 
 
 export interface LogOutRequest {
-    /** Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters. https://core.telegram.org/bots/api#logout */
+    /** Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.  https://core.telegram.org/bots/api#logout */
     logOut: () => Promise<Response>;
 }
-
 
 
 export type CloseResponse = ResponseWithOutData;
 
 
 export interface CloseRequest {
-    /** Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters. https://core.telegram.org/bots/api#close */
+    /** Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.  https://core.telegram.org/bots/api#close */
     close: () => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendmessage */
+/** https://core.telegram.org/bots/api#sendmessage */
 export interface SendMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -3645,13 +3640,13 @@ export type SendMessageResponse = ResponseWithMessage;
 
 
 export interface SendMessageRequest {
-    /** Use this method to send text messages. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendmessage */
+    /** Use this method to send text messages. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendmessage */
     sendMessage: (params: SendMessageParams) => Promise<Response>;
     sendMessageWithReturns: (params: SendMessageParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#forwardmessage */
+/** https://core.telegram.org/bots/api#forwardmessage */
 export interface ForwardMessageParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -3672,13 +3667,13 @@ export type ForwardMessageResponse = ResponseWithMessage;
 
 
 export interface ForwardMessageRequest {
-    /** Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned. https://core.telegram.org/bots/api#forwardmessage */
+    /** Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned.  https://core.telegram.org/bots/api#forwardmessage */
     forwardMessage: (params: ForwardMessageParams) => Promise<Response>;
     forwardMessageWithReturns: (params: ForwardMessageParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#forwardmessages */
+/** https://core.telegram.org/bots/api#forwardmessages */
 export interface ForwardMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -3699,13 +3694,13 @@ export type ForwardMessagesResponse = ResponseSuccess<Array<number>>;
 
 
 export interface ForwardMessagesRequest {
-    /** Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned. https://core.telegram.org/bots/api#forwardmessages */
+    /** Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned.  https://core.telegram.org/bots/api#forwardmessages */
     forwardMessages: (params: ForwardMessagesParams) => Promise<Response>;
     forwardMessagesWithReturns: (params: ForwardMessagesParams) => Promise<ResponseSuccess<Array<number>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#copymessage */
+/** https://core.telegram.org/bots/api#copymessage */
 export interface CopyMessageParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -3738,13 +3733,13 @@ export type CopyMessageResponse = ResponseSuccess<number>;
 
 
 export interface CopyMessageRequest {
-    /** Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success. https://core.telegram.org/bots/api#copymessage */
+    /** Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.  https://core.telegram.org/bots/api#copymessage */
     copyMessage: (params: CopyMessageParams) => Promise<Response>;
     copyMessageWithReturns: (params: CopyMessageParams) => Promise<ResponseSuccess<number>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#copymessages */
+/** https://core.telegram.org/bots/api#copymessages */
 export interface CopyMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -3767,13 +3762,13 @@ export type CopyMessagesResponse = ResponseSuccess<Array<number>>;
 
 
 export interface CopyMessagesRequest {
-    /** Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned. https://core.telegram.org/bots/api#copymessages */
+    /** Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.  https://core.telegram.org/bots/api#copymessages */
     copyMessages: (params: CopyMessagesParams) => Promise<Response>;
     copyMessagesWithReturns: (params: CopyMessagesParams) => Promise<ResponseSuccess<Array<number>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendphoto */
+/** https://core.telegram.org/bots/api#sendphoto */
 export interface SendPhotoParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -3810,13 +3805,13 @@ export type SendPhotoResponse = ResponseWithMessage;
 
 
 export interface SendPhotoRequest {
-    /** Use this method to send photos. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendphoto */
+    /** Use this method to send photos. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendphoto */
     sendPhoto: (params: SendPhotoParams) => Promise<Response>;
     sendPhotoWithReturns: (params: SendPhotoParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendaudio */
+/** https://core.telegram.org/bots/api#sendaudio */
 export interface SendAudioParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -3857,13 +3852,13 @@ export type SendAudioResponse = ResponseWithMessage;
 
 
 export interface SendAudioRequest {
-    /** Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future. https://core.telegram.org/bots/api#sendaudio */
+    /** Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.  https://core.telegram.org/bots/api#sendaudio */
     sendAudio: (params: SendAudioParams) => Promise<Response>;
     sendAudioWithReturns: (params: SendAudioParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#senddocument */
+/** https://core.telegram.org/bots/api#senddocument */
 export interface SendDocumentParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -3900,13 +3895,13 @@ export type SendDocumentResponse = ResponseWithMessage;
 
 
 export interface SendDocumentRequest {
-    /** Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future. https://core.telegram.org/bots/api#senddocument */
+    /** Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.  https://core.telegram.org/bots/api#senddocument */
     sendDocument: (params: SendDocumentParams) => Promise<Response>;
     sendDocumentWithReturns: (params: SendDocumentParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendvideo */
+/** https://core.telegram.org/bots/api#sendvideo */
 export interface SendVideoParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -3953,13 +3948,13 @@ export type SendVideoResponse = ResponseWithMessage;
 
 
 export interface SendVideoRequest {
-    /** Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future. https://core.telegram.org/bots/api#sendvideo */
+    /** Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.  https://core.telegram.org/bots/api#sendvideo */
     sendVideo: (params: SendVideoParams) => Promise<Response>;
     sendVideoWithReturns: (params: SendVideoParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendanimation */
+/** https://core.telegram.org/bots/api#sendanimation */
 export interface SendAnimationParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4004,13 +3999,13 @@ export type SendAnimationResponse = ResponseWithMessage;
 
 
 export interface SendAnimationRequest {
-    /** Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future. https://core.telegram.org/bots/api#sendanimation */
+    /** Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.  https://core.telegram.org/bots/api#sendanimation */
     sendAnimation: (params: SendAnimationParams) => Promise<Response>;
     sendAnimationWithReturns: (params: SendAnimationParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendvoice */
+/** https://core.telegram.org/bots/api#sendvoice */
 export interface SendVoiceParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4045,13 +4040,13 @@ export type SendVoiceResponse = ResponseWithMessage;
 
 
 export interface SendVoiceRequest {
-    /** Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future. https://core.telegram.org/bots/api#sendvoice */
+    /** Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.  https://core.telegram.org/bots/api#sendvoice */
     sendVoice: (params: SendVoiceParams) => Promise<Response>;
     sendVoiceWithReturns: (params: SendVoiceParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendvideonote */
+/** https://core.telegram.org/bots/api#sendvideonote */
 export interface SendVideoNoteParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4084,13 +4079,13 @@ export type SendVideoNoteResponse = ResponseWithMessage;
 
 
 export interface SendVideoNoteRequest {
-    /** As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendvideonote */
+    /** As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendvideonote */
     sendVideoNote: (params: SendVideoNoteParams) => Promise<Response>;
     sendVideoNoteWithReturns: (params: SendVideoNoteParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendpaidmedia */
+/** https://core.telegram.org/bots/api#sendpaidmedia */
 export interface SendPaidMediaParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4123,13 +4118,13 @@ export type SendPaidMediaResponse = ResponseWithMessage;
 
 
 export interface SendPaidMediaRequest {
-    /** Use this method to send paid media. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendpaidmedia */
+    /** Use this method to send paid media. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendpaidmedia */
     sendPaidMedia: (params: SendPaidMediaParams) => Promise<Response>;
     sendPaidMediaWithReturns: (params: SendPaidMediaParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendmediagroup */
+/** https://core.telegram.org/bots/api#sendmediagroup */
 export interface SendMediaGroupParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4154,13 +4149,13 @@ export type SendMediaGroupResponse = ResponseSuccess<Array<Message>>;
 
 
 export interface SendMediaGroupRequest {
-    /** Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned. https://core.telegram.org/bots/api#sendmediagroup */
+    /** Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.  https://core.telegram.org/bots/api#sendmediagroup */
     sendMediaGroup: (params: SendMediaGroupParams) => Promise<Response>;
     sendMediaGroupWithReturns: (params: SendMediaGroupParams) => Promise<ResponseSuccess<Array<Message>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendlocation */
+/** https://core.telegram.org/bots/api#sendlocation */
 export interface SendLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4197,13 +4192,13 @@ export type SendLocationResponse = ResponseWithMessage;
 
 
 export interface SendLocationRequest {
-    /** Use this method to send point on the map. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendlocation */
+    /** Use this method to send point on the map. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendlocation */
     sendLocation: (params: SendLocationParams) => Promise<Response>;
     sendLocationWithReturns: (params: SendLocationParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendvenue */
+/** https://core.telegram.org/bots/api#sendvenue */
 export interface SendVenueParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4244,13 +4239,13 @@ export type SendVenueResponse = ResponseWithMessage;
 
 
 export interface SendVenueRequest {
-    /** Use this method to send information about a venue. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendvenue */
+    /** Use this method to send information about a venue. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendvenue */
     sendVenue: (params: SendVenueParams) => Promise<Response>;
     sendVenueWithReturns: (params: SendVenueParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendcontact */
+/** https://core.telegram.org/bots/api#sendcontact */
 export interface SendContactParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4283,13 +4278,13 @@ export type SendContactResponse = ResponseWithMessage;
 
 
 export interface SendContactRequest {
-    /** Use this method to send phone contacts. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendcontact */
+    /** Use this method to send phone contacts. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendcontact */
     sendContact: (params: SendContactParams) => Promise<Response>;
     sendContactWithReturns: (params: SendContactParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendpoll */
+/** https://core.telegram.org/bots/api#sendpoll */
 export interface SendPollParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4342,13 +4337,13 @@ export type SendPollResponse = ResponseWithMessage;
 
 
 export interface SendPollRequest {
-    /** Use this method to send a native poll. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendpoll */
+    /** Use this method to send a native poll. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendpoll */
     sendPoll: (params: SendPollParams) => Promise<Response>;
     sendPollWithReturns: (params: SendPollParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#senddice */
+/** https://core.telegram.org/bots/api#senddice */
 export interface SendDiceParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -4375,13 +4370,13 @@ export type SendDiceResponse = ResponseWithMessage;
 
 
 export interface SendDiceRequest {
-    /** Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned. https://core.telegram.org/bots/api#senddice */
+    /** Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.  https://core.telegram.org/bots/api#senddice */
     sendDice: (params: SendDiceParams) => Promise<Response>;
     sendDiceWithReturns: (params: SendDiceParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendchataction */
+/** https://core.telegram.org/bots/api#sendchataction */
 export interface SendChatActionParams {
     /** String | Unique identifier of the business connection on behalf of which the action will be sent */
     business_connection_id?: string;
@@ -4398,12 +4393,12 @@ export type SendChatActionResponse = ResponseWithOutData;
 
 
 export interface SendChatActionRequest {
-    /** Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success. https://core.telegram.org/bots/api#sendchataction */
+    /** Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.  https://core.telegram.org/bots/api#sendchataction */
     sendChatAction: (params: SendChatActionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmessagereaction */
+/** https://core.telegram.org/bots/api#setmessagereaction */
 export interface SetMessageReactionParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4420,12 +4415,12 @@ export type SetMessageReactionResponse = ResponseWithOutData;
 
 
 export interface SetMessageReactionRequest {
-    /** Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success. https://core.telegram.org/bots/api#setmessagereaction */
+    /** Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.  https://core.telegram.org/bots/api#setmessagereaction */
     setMessageReaction: (params: SetMessageReactionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getuserprofilephotos */
+/** https://core.telegram.org/bots/api#getuserprofilephotos */
 export interface GetUserProfilePhotosParams {
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -4440,13 +4435,13 @@ export type GetUserProfilePhotosResponse = ResponseSuccess<UserProfilePhotos>;
 
 
 export interface GetUserProfilePhotosRequest {
-    /** Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object. https://core.telegram.org/bots/api#getuserprofilephotos */
+    /** Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.  https://core.telegram.org/bots/api#getuserprofilephotos */
     getUserProfilePhotos: (params: GetUserProfilePhotosParams) => Promise<Response>;
     getUserProfilePhotosWithReturns: (params: GetUserProfilePhotosParams) => Promise<ResponseSuccess<UserProfilePhotos>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getfile */
+/** https://core.telegram.org/bots/api#getfile */
 export interface GetFileParams {
     /** String | File identifier to get information about */
     file_id: string;
@@ -4457,13 +4452,13 @@ export type GetFileResponse = ResponseSuccess<File>;
 
 
 export interface GetFileRequest {
-    /** Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again. https://core.telegram.org/bots/api#getfile */
+    /** Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.  https://core.telegram.org/bots/api#getfile */
     getFile: (params: GetFileParams) => Promise<Response>;
     getFileWithReturns: (params: GetFileParams) => Promise<ResponseSuccess<File>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#banchatmember */
+/** https://core.telegram.org/bots/api#banchatmember */
 export interface BanChatMemberParams {
     /** Integer or String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4480,12 +4475,12 @@ export type BanChatMemberResponse = ResponseWithOutData;
 
 
 export interface BanChatMemberRequest {
-    /** Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#banchatmember */
+    /** Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#banchatmember */
     banChatMember: (params: BanChatMemberParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unbanchatmember */
+/** https://core.telegram.org/bots/api#unbanchatmember */
 export interface UnbanChatMemberParams {
     /** Integer or String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4500,12 +4495,12 @@ export type UnbanChatMemberResponse = ResponseWithOutData;
 
 
 export interface UnbanChatMemberRequest {
-    /** Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success. https://core.telegram.org/bots/api#unbanchatmember */
+    /** Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.  https://core.telegram.org/bots/api#unbanchatmember */
     unbanChatMember: (params: UnbanChatMemberParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#restrictchatmember */
+/** https://core.telegram.org/bots/api#restrictchatmember */
 export interface RestrictChatMemberParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -4524,12 +4519,12 @@ export type RestrictChatMemberResponse = ResponseWithOutData;
 
 
 export interface RestrictChatMemberRequest {
-    /** Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success. https://core.telegram.org/bots/api#restrictchatmember */
+    /** Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.  https://core.telegram.org/bots/api#restrictchatmember */
     restrictChatMember: (params: RestrictChatMemberParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#promotechatmember */
+/** https://core.telegram.org/bots/api#promotechatmember */
 export interface PromoteChatMemberParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4572,12 +4567,12 @@ export type PromoteChatMemberResponse = ResponseWithOutData;
 
 
 export interface PromoteChatMemberRequest {
-    /** Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success. https://core.telegram.org/bots/api#promotechatmember */
+    /** Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.  https://core.telegram.org/bots/api#promotechatmember */
     promoteChatMember: (params: PromoteChatMemberParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatadministratorcustomtitle */
+/** https://core.telegram.org/bots/api#setchatadministratorcustomtitle */
 export interface SetChatAdministratorCustomTitleParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -4592,12 +4587,12 @@ export type SetChatAdministratorCustomTitleResponse = ResponseWithOutData;
 
 
 export interface SetChatAdministratorCustomTitleRequest {
-    /** Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success. https://core.telegram.org/bots/api#setchatadministratorcustomtitle */
+    /** Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.  https://core.telegram.org/bots/api#setchatadministratorcustomtitle */
     setChatAdministratorCustomTitle: (params: SetChatAdministratorCustomTitleParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#banchatsenderchat */
+/** https://core.telegram.org/bots/api#banchatsenderchat */
 export interface BanChatSenderChatParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4610,12 +4605,12 @@ export type BanChatSenderChatResponse = ResponseWithOutData;
 
 
 export interface BanChatSenderChatRequest {
-    /** Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#banchatsenderchat */
+    /** Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#banchatsenderchat */
     banChatSenderChat: (params: BanChatSenderChatParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unbanchatsenderchat */
+/** https://core.telegram.org/bots/api#unbanchatsenderchat */
 export interface UnbanChatSenderChatParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4628,12 +4623,12 @@ export type UnbanChatSenderChatResponse = ResponseWithOutData;
 
 
 export interface UnbanChatSenderChatRequest {
-    /** Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#unbanchatsenderchat */
+    /** Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#unbanchatsenderchat */
     unbanChatSenderChat: (params: UnbanChatSenderChatParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatpermissions */
+/** https://core.telegram.org/bots/api#setchatpermissions */
 export interface SetChatPermissionsParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -4648,12 +4643,12 @@ export type SetChatPermissionsResponse = ResponseWithOutData;
 
 
 export interface SetChatPermissionsRequest {
-    /** Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success. https://core.telegram.org/bots/api#setchatpermissions */
+    /** Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.  https://core.telegram.org/bots/api#setchatpermissions */
     setChatPermissions: (params: SetChatPermissionsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#exportchatinvitelink */
+/** https://core.telegram.org/bots/api#exportchatinvitelink */
 export interface ExportChatInviteLinkParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4664,13 +4659,13 @@ export type ExportChatInviteLinkResponse = ResponseSuccess<string>;
 
 
 export interface ExportChatInviteLinkRequest {
-    /** Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success. https://core.telegram.org/bots/api#exportchatinvitelink */
+    /** Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.  https://core.telegram.org/bots/api#exportchatinvitelink */
     exportChatInviteLink: (params: ExportChatInviteLinkParams) => Promise<Response>;
     exportChatInviteLinkWithReturns: (params: ExportChatInviteLinkParams) => Promise<ResponseSuccess<string>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#createchatinvitelink */
+/** https://core.telegram.org/bots/api#createchatinvitelink */
 export interface CreateChatInviteLinkParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4689,13 +4684,13 @@ export type CreateChatInviteLinkResponse = ResponseSuccess<ChatInviteLink>;
 
 
 export interface CreateChatInviteLinkRequest {
-    /** Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object. https://core.telegram.org/bots/api#createchatinvitelink */
+    /** Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.  https://core.telegram.org/bots/api#createchatinvitelink */
     createChatInviteLink: (params: CreateChatInviteLinkParams) => Promise<Response>;
     createChatInviteLinkWithReturns: (params: CreateChatInviteLinkParams) => Promise<ResponseSuccess<ChatInviteLink>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editchatinvitelink */
+/** https://core.telegram.org/bots/api#editchatinvitelink */
 export interface EditChatInviteLinkParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4716,13 +4711,13 @@ export type EditChatInviteLinkResponse = ResponseSuccess<ChatInviteLink>;
 
 
 export interface EditChatInviteLinkRequest {
-    /** Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object. https://core.telegram.org/bots/api#editchatinvitelink */
+    /** Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.  https://core.telegram.org/bots/api#editchatinvitelink */
     editChatInviteLink: (params: EditChatInviteLinkParams) => Promise<Response>;
     editChatInviteLinkWithReturns: (params: EditChatInviteLinkParams) => Promise<ResponseSuccess<ChatInviteLink>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#createchatsubscriptioninvitelink */
+/** https://core.telegram.org/bots/api#createchatsubscriptioninvitelink */
 export interface CreateChatSubscriptionInviteLinkParams {
     /** Integer or String | Unique identifier for the target channel chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4739,13 +4734,13 @@ export type CreateChatSubscriptionInviteLinkResponse = ResponseSuccess<ChatInvit
 
 
 export interface CreateChatSubscriptionInviteLinkRequest {
-    /** Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object. https://core.telegram.org/bots/api#createchatsubscriptioninvitelink */
+    /** Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.  https://core.telegram.org/bots/api#createchatsubscriptioninvitelink */
     createChatSubscriptionInviteLink: (params: CreateChatSubscriptionInviteLinkParams) => Promise<Response>;
     createChatSubscriptionInviteLinkWithReturns: (params: CreateChatSubscriptionInviteLinkParams) => Promise<ResponseSuccess<ChatInviteLink>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editchatsubscriptioninvitelink */
+/** https://core.telegram.org/bots/api#editchatsubscriptioninvitelink */
 export interface EditChatSubscriptionInviteLinkParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4760,13 +4755,13 @@ export type EditChatSubscriptionInviteLinkResponse = ResponseSuccess<ChatInviteL
 
 
 export interface EditChatSubscriptionInviteLinkRequest {
-    /** Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object. https://core.telegram.org/bots/api#editchatsubscriptioninvitelink */
+    /** Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.  https://core.telegram.org/bots/api#editchatsubscriptioninvitelink */
     editChatSubscriptionInviteLink: (params: EditChatSubscriptionInviteLinkParams) => Promise<Response>;
     editChatSubscriptionInviteLinkWithReturns: (params: EditChatSubscriptionInviteLinkParams) => Promise<ResponseSuccess<ChatInviteLink>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#revokechatinvitelink */
+/** https://core.telegram.org/bots/api#revokechatinvitelink */
 export interface RevokeChatInviteLinkParams {
     /** Integer or String | Unique identifier of the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4779,13 +4774,13 @@ export type RevokeChatInviteLinkResponse = ResponseSuccess<ChatInviteLink>;
 
 
 export interface RevokeChatInviteLinkRequest {
-    /** Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object. https://core.telegram.org/bots/api#revokechatinvitelink */
+    /** Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.  https://core.telegram.org/bots/api#revokechatinvitelink */
     revokeChatInviteLink: (params: RevokeChatInviteLinkParams) => Promise<Response>;
     revokeChatInviteLinkWithReturns: (params: RevokeChatInviteLinkParams) => Promise<ResponseSuccess<ChatInviteLink>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#approvechatjoinrequest */
+/** https://core.telegram.org/bots/api#approvechatjoinrequest */
 export interface ApproveChatJoinRequestParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4798,12 +4793,12 @@ export type ApproveChatJoinRequestResponse = ResponseWithOutData;
 
 
 export interface ApproveChatJoinRequestRequest {
-    /** Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success. https://core.telegram.org/bots/api#approvechatjoinrequest */
+    /** Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.  https://core.telegram.org/bots/api#approvechatjoinrequest */
     approveChatJoinRequest: (params: ApproveChatJoinRequestParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#declinechatjoinrequest */
+/** https://core.telegram.org/bots/api#declinechatjoinrequest */
 export interface DeclineChatJoinRequestParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4816,12 +4811,12 @@ export type DeclineChatJoinRequestResponse = ResponseWithOutData;
 
 
 export interface DeclineChatJoinRequestRequest {
-    /** Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success. https://core.telegram.org/bots/api#declinechatjoinrequest */
+    /** Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.  https://core.telegram.org/bots/api#declinechatjoinrequest */
     declineChatJoinRequest: (params: DeclineChatJoinRequestParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatphoto */
+/** https://core.telegram.org/bots/api#setchatphoto */
 export interface SetChatPhotoParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4834,12 +4829,12 @@ export type SetChatPhotoResponse = ResponseWithOutData;
 
 
 export interface SetChatPhotoRequest {
-    /** Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#setchatphoto */
+    /** Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#setchatphoto */
     setChatPhoto: (params: SetChatPhotoParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletechatphoto */
+/** https://core.telegram.org/bots/api#deletechatphoto */
 export interface DeleteChatPhotoParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4850,12 +4845,12 @@ export type DeleteChatPhotoResponse = ResponseWithOutData;
 
 
 export interface DeleteChatPhotoRequest {
-    /** Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#deletechatphoto */
+    /** Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#deletechatphoto */
     deleteChatPhoto: (params: DeleteChatPhotoParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchattitle */
+/** https://core.telegram.org/bots/api#setchattitle */
 export interface SetChatTitleParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4868,12 +4863,12 @@ export type SetChatTitleResponse = ResponseWithOutData;
 
 
 export interface SetChatTitleRequest {
-    /** Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#setchattitle */
+    /** Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#setchattitle */
     setChatTitle: (params: SetChatTitleParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatdescription */
+/** https://core.telegram.org/bots/api#setchatdescription */
 export interface SetChatDescriptionParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4886,12 +4881,12 @@ export type SetChatDescriptionResponse = ResponseWithOutData;
 
 
 export interface SetChatDescriptionRequest {
-    /** Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success. https://core.telegram.org/bots/api#setchatdescription */
+    /** Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.  https://core.telegram.org/bots/api#setchatdescription */
     setChatDescription: (params: SetChatDescriptionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#pinchatmessage */
+/** https://core.telegram.org/bots/api#pinchatmessage */
 export interface PinChatMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be pinned */
     business_connection_id?: string;
@@ -4908,12 +4903,12 @@ export type PinChatMessageResponse = ResponseWithOutData;
 
 
 export interface PinChatMessageRequest {
-    /** Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success. https://core.telegram.org/bots/api#pinchatmessage */
+    /** Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.  https://core.telegram.org/bots/api#pinchatmessage */
     pinChatMessage: (params: PinChatMessageParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unpinchatmessage */
+/** https://core.telegram.org/bots/api#unpinchatmessage */
 export interface UnpinChatMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be unpinned */
     business_connection_id?: string;
@@ -4928,12 +4923,12 @@ export type UnpinChatMessageResponse = ResponseWithOutData;
 
 
 export interface UnpinChatMessageRequest {
-    /** Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success. https://core.telegram.org/bots/api#unpinchatmessage */
+    /** Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.  https://core.telegram.org/bots/api#unpinchatmessage */
     unpinChatMessage: (params: UnpinChatMessageParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unpinallchatmessages */
+/** https://core.telegram.org/bots/api#unpinallchatmessages */
 export interface UnpinAllChatMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4944,12 +4939,12 @@ export type UnpinAllChatMessagesResponse = ResponseWithOutData;
 
 
 export interface UnpinAllChatMessagesRequest {
-    /** Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success. https://core.telegram.org/bots/api#unpinallchatmessages */
+    /** Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.  https://core.telegram.org/bots/api#unpinallchatmessages */
     unpinAllChatMessages: (params: UnpinAllChatMessagesParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#leavechat */
+/** https://core.telegram.org/bots/api#leavechat */
 export interface LeaveChatParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4960,12 +4955,12 @@ export type LeaveChatResponse = ResponseWithOutData;
 
 
 export interface LeaveChatRequest {
-    /** Use this method for your bot to leave a group, supergroup or channel. Returns True on success. https://core.telegram.org/bots/api#leavechat */
+    /** Use this method for your bot to leave a group, supergroup or channel. Returns True on success.  https://core.telegram.org/bots/api#leavechat */
     leaveChat: (params: LeaveChatParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getchat */
+/** https://core.telegram.org/bots/api#getchat */
 export interface GetChatParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4976,13 +4971,13 @@ export type GetChatResponse = ResponseSuccess<ChatFullInfo>;
 
 
 export interface GetChatRequest {
-    /** Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success. https://core.telegram.org/bots/api#getchat */
+    /** Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.  https://core.telegram.org/bots/api#getchat */
     getChat: (params: GetChatParams) => Promise<Response>;
     getChatWithReturns: (params: GetChatParams) => Promise<ResponseSuccess<ChatFullInfo>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getchatadministrators */
+/** https://core.telegram.org/bots/api#getchatadministrators */
 export interface GetChatAdministratorsParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -4993,13 +4988,13 @@ export type GetChatAdministratorsResponse = ResponseSuccess<Array<ChatMember>>;
 
 
 export interface GetChatAdministratorsRequest {
-    /** Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects. https://core.telegram.org/bots/api#getchatadministrators */
+    /** Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.  https://core.telegram.org/bots/api#getchatadministrators */
     getChatAdministrators: (params: GetChatAdministratorsParams) => Promise<Response>;
     getChatAdministratorsWithReturns: (params: GetChatAdministratorsParams) => Promise<ResponseSuccess<Array<ChatMember>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getchatmembercount */
+/** https://core.telegram.org/bots/api#getchatmembercount */
 export interface GetChatMemberCountParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -5010,13 +5005,13 @@ export type GetChatMemberCountResponse = ResponseSuccess<number>;
 
 
 export interface GetChatMemberCountRequest {
-    /** Use this method to get the number of members in a chat. Returns Int on success. https://core.telegram.org/bots/api#getchatmembercount */
+    /** Use this method to get the number of members in a chat. Returns Int on success.  https://core.telegram.org/bots/api#getchatmembercount */
     getChatMemberCount: (params: GetChatMemberCountParams) => Promise<Response>;
     getChatMemberCountWithReturns: (params: GetChatMemberCountParams) => Promise<ResponseSuccess<number>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getchatmember */
+/** https://core.telegram.org/bots/api#getchatmember */
 export interface GetChatMemberParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
@@ -5029,13 +5024,13 @@ export type GetChatMemberResponse = ResponseSuccess<ChatMember>;
 
 
 export interface GetChatMemberRequest {
-    /** Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success. https://core.telegram.org/bots/api#getchatmember */
+    /** Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.  https://core.telegram.org/bots/api#getchatmember */
     getChatMember: (params: GetChatMemberParams) => Promise<Response>;
     getChatMemberWithReturns: (params: GetChatMemberParams) => Promise<ResponseSuccess<ChatMember>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatstickerset */
+/** https://core.telegram.org/bots/api#setchatstickerset */
 export interface SetChatStickerSetParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5048,12 +5043,12 @@ export type SetChatStickerSetResponse = ResponseWithOutData;
 
 
 export interface SetChatStickerSetRequest {
-    /** Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success. https://core.telegram.org/bots/api#setchatstickerset */
+    /** Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.  https://core.telegram.org/bots/api#setchatstickerset */
     setChatStickerSet: (params: SetChatStickerSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletechatstickerset */
+/** https://core.telegram.org/bots/api#deletechatstickerset */
 export interface DeleteChatStickerSetParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5064,23 +5059,22 @@ export type DeleteChatStickerSetResponse = ResponseWithOutData;
 
 
 export interface DeleteChatStickerSetRequest {
-    /** Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success. https://core.telegram.org/bots/api#deletechatstickerset */
+    /** Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.  https://core.telegram.org/bots/api#deletechatstickerset */
     deleteChatStickerSet: (params: DeleteChatStickerSetParams) => Promise<Response>;
 }
-
 
 
 export type GetForumTopicIconStickersResponse = ResponseSuccess<Array<Sticker>>;
 
 
 export interface GetForumTopicIconStickersRequest {
-    /** Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects. https://core.telegram.org/bots/api#getforumtopiciconstickers */
+    /** Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.  https://core.telegram.org/bots/api#getforumtopiciconstickers */
     getForumTopicIconStickers: () => Promise<Response>;
     getForumTopicIconStickersWithReturns: () => Promise<ResponseSuccess<Array<Sticker>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#createforumtopic */
+/** https://core.telegram.org/bots/api#createforumtopic */
 export interface CreateForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5097,13 +5091,13 @@ export type CreateForumTopicResponse = ResponseSuccess<ForumTopic>;
 
 
 export interface CreateForumTopicRequest {
-    /** Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object. https://core.telegram.org/bots/api#createforumtopic */
+    /** Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.  https://core.telegram.org/bots/api#createforumtopic */
     createForumTopic: (params: CreateForumTopicParams) => Promise<Response>;
     createForumTopicWithReturns: (params: CreateForumTopicParams) => Promise<ResponseSuccess<ForumTopic>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editforumtopic */
+/** https://core.telegram.org/bots/api#editforumtopic */
 export interface EditForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5120,12 +5114,12 @@ export type EditForumTopicResponse = ResponseWithOutData;
 
 
 export interface EditForumTopicRequest {
-    /** Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success. https://core.telegram.org/bots/api#editforumtopic */
+    /** Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.  https://core.telegram.org/bots/api#editforumtopic */
     editForumTopic: (params: EditForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#closeforumtopic */
+/** https://core.telegram.org/bots/api#closeforumtopic */
 export interface CloseForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5138,12 +5132,12 @@ export type CloseForumTopicResponse = ResponseWithOutData;
 
 
 export interface CloseForumTopicRequest {
-    /** Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success. https://core.telegram.org/bots/api#closeforumtopic */
+    /** Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.  https://core.telegram.org/bots/api#closeforumtopic */
     closeForumTopic: (params: CloseForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#reopenforumtopic */
+/** https://core.telegram.org/bots/api#reopenforumtopic */
 export interface ReopenForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5156,12 +5150,12 @@ export type ReopenForumTopicResponse = ResponseWithOutData;
 
 
 export interface ReopenForumTopicRequest {
-    /** Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success. https://core.telegram.org/bots/api#reopenforumtopic */
+    /** Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.  https://core.telegram.org/bots/api#reopenforumtopic */
     reopenForumTopic: (params: ReopenForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deleteforumtopic */
+/** https://core.telegram.org/bots/api#deleteforumtopic */
 export interface DeleteForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5174,12 +5168,12 @@ export type DeleteForumTopicResponse = ResponseWithOutData;
 
 
 export interface DeleteForumTopicRequest {
-    /** Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success. https://core.telegram.org/bots/api#deleteforumtopic */
+    /** Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.  https://core.telegram.org/bots/api#deleteforumtopic */
     deleteForumTopic: (params: DeleteForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unpinallforumtopicmessages */
+/** https://core.telegram.org/bots/api#unpinallforumtopicmessages */
 export interface UnpinAllForumTopicMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5192,12 +5186,12 @@ export type UnpinAllForumTopicMessagesResponse = ResponseWithOutData;
 
 
 export interface UnpinAllForumTopicMessagesRequest {
-    /** Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success. https://core.telegram.org/bots/api#unpinallforumtopicmessages */
+    /** Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.  https://core.telegram.org/bots/api#unpinallforumtopicmessages */
     unpinAllForumTopicMessages: (params: UnpinAllForumTopicMessagesParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editgeneralforumtopic */
+/** https://core.telegram.org/bots/api#editgeneralforumtopic */
 export interface EditGeneralForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5210,12 +5204,12 @@ export type EditGeneralForumTopicResponse = ResponseWithOutData;
 
 
 export interface EditGeneralForumTopicRequest {
-    /** Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success. https://core.telegram.org/bots/api#editgeneralforumtopic */
+    /** Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.  https://core.telegram.org/bots/api#editgeneralforumtopic */
     editGeneralForumTopic: (params: EditGeneralForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#closegeneralforumtopic */
+/** https://core.telegram.org/bots/api#closegeneralforumtopic */
 export interface CloseGeneralForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5226,12 +5220,12 @@ export type CloseGeneralForumTopicResponse = ResponseWithOutData;
 
 
 export interface CloseGeneralForumTopicRequest {
-    /** Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success. https://core.telegram.org/bots/api#closegeneralforumtopic */
+    /** Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.  https://core.telegram.org/bots/api#closegeneralforumtopic */
     closeGeneralForumTopic: (params: CloseGeneralForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#reopengeneralforumtopic */
+/** https://core.telegram.org/bots/api#reopengeneralforumtopic */
 export interface ReopenGeneralForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5242,12 +5236,12 @@ export type ReopenGeneralForumTopicResponse = ResponseWithOutData;
 
 
 export interface ReopenGeneralForumTopicRequest {
-    /** Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success. https://core.telegram.org/bots/api#reopengeneralforumtopic */
+    /** Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.  https://core.telegram.org/bots/api#reopengeneralforumtopic */
     reopenGeneralForumTopic: (params: ReopenGeneralForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#hidegeneralforumtopic */
+/** https://core.telegram.org/bots/api#hidegeneralforumtopic */
 export interface HideGeneralForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5258,12 +5252,12 @@ export type HideGeneralForumTopicResponse = ResponseWithOutData;
 
 
 export interface HideGeneralForumTopicRequest {
-    /** Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success. https://core.telegram.org/bots/api#hidegeneralforumtopic */
+    /** Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.  https://core.telegram.org/bots/api#hidegeneralforumtopic */
     hideGeneralForumTopic: (params: HideGeneralForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unhidegeneralforumtopic */
+/** https://core.telegram.org/bots/api#unhidegeneralforumtopic */
 export interface UnhideGeneralForumTopicParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5274,12 +5268,12 @@ export type UnhideGeneralForumTopicResponse = ResponseWithOutData;
 
 
 export interface UnhideGeneralForumTopicRequest {
-    /** Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success. https://core.telegram.org/bots/api#unhidegeneralforumtopic */
+    /** Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.  https://core.telegram.org/bots/api#unhidegeneralforumtopic */
     unhideGeneralForumTopic: (params: UnhideGeneralForumTopicParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages */
+/** https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages */
 export interface UnpinAllGeneralForumTopicMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
@@ -5290,12 +5284,12 @@ export type UnpinAllGeneralForumTopicMessagesResponse = ResponseWithOutData;
 
 
 export interface UnpinAllGeneralForumTopicMessagesRequest {
-    /** Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success. https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages */
+    /** Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.  https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages */
     unpinAllGeneralForumTopicMessages: (params: UnpinAllGeneralForumTopicMessagesParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#answercallbackquery */
+/** https://core.telegram.org/bots/api#answercallbackquery */
 export interface AnswerCallbackQueryParams {
     /** String | Unique identifier for the query to be answered */
     callback_query_id: string;
@@ -5314,12 +5308,12 @@ export type AnswerCallbackQueryResponse = ResponseWithOutData;
 
 
 export interface AnswerCallbackQueryRequest {
-    /** Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned. https://core.telegram.org/bots/api#answercallbackquery */
+    /** Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.  https://core.telegram.org/bots/api#answercallbackquery */
     answerCallbackQuery: (params: AnswerCallbackQueryParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getuserchatboosts */
+/** https://core.telegram.org/bots/api#getuserchatboosts */
 export interface GetUserChatBoostsParams {
     /** Integer or String | Unique identifier for the chat or username of the channel (in the format @channelusername) */
     chat_id: number | string;
@@ -5332,13 +5326,13 @@ export type GetUserChatBoostsResponse = ResponseSuccess<UserChatBoosts>;
 
 
 export interface GetUserChatBoostsRequest {
-    /** Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object. https://core.telegram.org/bots/api#getuserchatboosts */
+    /** Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.  https://core.telegram.org/bots/api#getuserchatboosts */
     getUserChatBoosts: (params: GetUserChatBoostsParams) => Promise<Response>;
     getUserChatBoostsWithReturns: (params: GetUserChatBoostsParams) => Promise<ResponseSuccess<UserChatBoosts>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getbusinessconnection */
+/** https://core.telegram.org/bots/api#getbusinessconnection */
 export interface GetBusinessConnectionParams {
     /** String | Unique identifier of the business connection */
     business_connection_id: string;
@@ -5349,13 +5343,13 @@ export type GetBusinessConnectionResponse = ResponseSuccess<BusinessConnection>;
 
 
 export interface GetBusinessConnectionRequest {
-    /** Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success. https://core.telegram.org/bots/api#getbusinessconnection */
+    /** Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.  https://core.telegram.org/bots/api#getbusinessconnection */
     getBusinessConnection: (params: GetBusinessConnectionParams) => Promise<Response>;
     getBusinessConnectionWithReturns: (params: GetBusinessConnectionParams) => Promise<ResponseSuccess<BusinessConnection>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmycommands */
+/** https://core.telegram.org/bots/api#setmycommands */
 export interface SetMyCommandsParams {
     /** Array of BotCommand | A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified. */
     commands: Array<BotCommand>;
@@ -5370,12 +5364,12 @@ export type SetMyCommandsResponse = ResponseWithOutData;
 
 
 export interface SetMyCommandsRequest {
-    /** Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success. https://core.telegram.org/bots/api#setmycommands */
+    /** Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.  https://core.telegram.org/bots/api#setmycommands */
     setMyCommands: (params: SetMyCommandsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletemycommands */
+/** https://core.telegram.org/bots/api#deletemycommands */
 export interface DeleteMyCommandsParams {
     /** BotCommandScope | A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
     scope?: BotCommandScope;
@@ -5388,12 +5382,12 @@ export type DeleteMyCommandsResponse = ResponseWithOutData;
 
 
 export interface DeleteMyCommandsRequest {
-    /** Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success. https://core.telegram.org/bots/api#deletemycommands */
+    /** Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.  https://core.telegram.org/bots/api#deletemycommands */
     deleteMyCommands: (params?: DeleteMyCommandsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getmycommands */
+/** https://core.telegram.org/bots/api#getmycommands */
 export interface GetMyCommandsParams {
     /** BotCommandScope | A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault. */
     scope?: BotCommandScope;
@@ -5406,13 +5400,13 @@ export type GetMyCommandsResponse = ResponseSuccess<Array<BotCommand>>;
 
 
 export interface GetMyCommandsRequest {
-    /** Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned. https://core.telegram.org/bots/api#getmycommands */
+    /** Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.  https://core.telegram.org/bots/api#getmycommands */
     getMyCommands: (params?: GetMyCommandsParams) => Promise<Response>;
     getMyCommandsWithReturns: (params?: GetMyCommandsParams) => Promise<ResponseSuccess<Array<BotCommand>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmyname */
+/** https://core.telegram.org/bots/api#setmyname */
 export interface SetMyNameParams {
     /** String | New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language. */
     name?: string;
@@ -5425,12 +5419,12 @@ export type SetMyNameResponse = ResponseWithOutData;
 
 
 export interface SetMyNameRequest {
-    /** Use this method to change the bot's name. Returns True on success. https://core.telegram.org/bots/api#setmyname */
+    /** Use this method to change the bot's name. Returns True on success.  https://core.telegram.org/bots/api#setmyname */
     setMyName: (params?: SetMyNameParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getmyname */
+/** https://core.telegram.org/bots/api#getmyname */
 export interface GetMyNameParams {
     /** String | A two-letter ISO 639-1 language code or an empty string */
     language_code?: string;
@@ -5441,13 +5435,13 @@ export type GetMyNameResponse = ResponseSuccess<BotName>;
 
 
 export interface GetMyNameRequest {
-    /** Use this method to get the current bot name for the given user language. Returns BotName on success. https://core.telegram.org/bots/api#getmyname */
+    /** Use this method to get the current bot name for the given user language. Returns BotName on success.  https://core.telegram.org/bots/api#getmyname */
     getMyName: (params?: GetMyNameParams) => Promise<Response>;
     getMyNameWithReturns: (params?: GetMyNameParams) => Promise<ResponseSuccess<BotName>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmydescription */
+/** https://core.telegram.org/bots/api#setmydescription */
 export interface SetMyDescriptionParams {
     /** String | New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given language. */
     description?: string;
@@ -5460,12 +5454,12 @@ export type SetMyDescriptionResponse = ResponseWithOutData;
 
 
 export interface SetMyDescriptionRequest {
-    /** Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success. https://core.telegram.org/bots/api#setmydescription */
+    /** Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.  https://core.telegram.org/bots/api#setmydescription */
     setMyDescription: (params?: SetMyDescriptionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getmydescription */
+/** https://core.telegram.org/bots/api#getmydescription */
 export interface GetMyDescriptionParams {
     /** String | A two-letter ISO 639-1 language code or an empty string */
     language_code?: string;
@@ -5476,13 +5470,13 @@ export type GetMyDescriptionResponse = ResponseSuccess<BotDescription>;
 
 
 export interface GetMyDescriptionRequest {
-    /** Use this method to get the current bot description for the given user language. Returns BotDescription on success. https://core.telegram.org/bots/api#getmydescription */
+    /** Use this method to get the current bot description for the given user language. Returns BotDescription on success.  https://core.telegram.org/bots/api#getmydescription */
     getMyDescription: (params?: GetMyDescriptionParams) => Promise<Response>;
     getMyDescriptionWithReturns: (params?: GetMyDescriptionParams) => Promise<ResponseSuccess<BotDescription>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmyshortdescription */
+/** https://core.telegram.org/bots/api#setmyshortdescription */
 export interface SetMyShortDescriptionParams {
     /** String | New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short description for the given language. */
     short_description?: string;
@@ -5495,12 +5489,12 @@ export type SetMyShortDescriptionResponse = ResponseWithOutData;
 
 
 export interface SetMyShortDescriptionRequest {
-    /** Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success. https://core.telegram.org/bots/api#setmyshortdescription */
+    /** Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.  https://core.telegram.org/bots/api#setmyshortdescription */
     setMyShortDescription: (params?: SetMyShortDescriptionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getmyshortdescription */
+/** https://core.telegram.org/bots/api#getmyshortdescription */
 export interface GetMyShortDescriptionParams {
     /** String | A two-letter ISO 639-1 language code or an empty string */
     language_code?: string;
@@ -5511,13 +5505,13 @@ export type GetMyShortDescriptionResponse = ResponseSuccess<BotShortDescription>
 
 
 export interface GetMyShortDescriptionRequest {
-    /** Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success. https://core.telegram.org/bots/api#getmyshortdescription */
+    /** Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.  https://core.telegram.org/bots/api#getmyshortdescription */
     getMyShortDescription: (params?: GetMyShortDescriptionParams) => Promise<Response>;
     getMyShortDescriptionWithReturns: (params?: GetMyShortDescriptionParams) => Promise<ResponseSuccess<BotShortDescription>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setchatmenubutton */
+/** https://core.telegram.org/bots/api#setchatmenubutton */
 export interface SetChatMenuButtonParams {
     /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed */
     chat_id?: number;
@@ -5530,12 +5524,12 @@ export type SetChatMenuButtonResponse = ResponseWithOutData;
 
 
 export interface SetChatMenuButtonRequest {
-    /** Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success. https://core.telegram.org/bots/api#setchatmenubutton */
+    /** Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.  https://core.telegram.org/bots/api#setchatmenubutton */
     setChatMenuButton: (params?: SetChatMenuButtonParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getchatmenubutton */
+/** https://core.telegram.org/bots/api#getchatmenubutton */
 export interface GetChatMenuButtonParams {
     /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned */
     chat_id?: number;
@@ -5546,13 +5540,13 @@ export type GetChatMenuButtonResponse = ResponseSuccess<MenuButton>;
 
 
 export interface GetChatMenuButtonRequest {
-    /** Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success. https://core.telegram.org/bots/api#getchatmenubutton */
+    /** Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.  https://core.telegram.org/bots/api#getchatmenubutton */
     getChatMenuButton: (params?: GetChatMenuButtonParams) => Promise<Response>;
     getChatMenuButtonWithReturns: (params?: GetChatMenuButtonParams) => Promise<ResponseSuccess<MenuButton>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setmydefaultadministratorrights */
+/** https://core.telegram.org/bots/api#setmydefaultadministratorrights */
 export interface SetMyDefaultAdministratorRightsParams {
     /** ChatAdministratorRights | A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared. */
     rights?: ChatAdministratorRights;
@@ -5565,12 +5559,12 @@ export type SetMyDefaultAdministratorRightsResponse = ResponseWithOutData;
 
 
 export interface SetMyDefaultAdministratorRightsRequest {
-    /** Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success. https://core.telegram.org/bots/api#setmydefaultadministratorrights */
+    /** Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.  https://core.telegram.org/bots/api#setmydefaultadministratorrights */
     setMyDefaultAdministratorRights: (params?: SetMyDefaultAdministratorRightsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getmydefaultadministratorrights */
+/** https://core.telegram.org/bots/api#getmydefaultadministratorrights */
 export interface GetMyDefaultAdministratorRightsParams {
     /** Boolean | Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned. */
     for_channels?: boolean;
@@ -5581,13 +5575,13 @@ export type GetMyDefaultAdministratorRightsResponse = ResponseSuccess<ChatAdmini
 
 
 export interface GetMyDefaultAdministratorRightsRequest {
-    /** Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success. https://core.telegram.org/bots/api#getmydefaultadministratorrights */
+    /** Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.  https://core.telegram.org/bots/api#getmydefaultadministratorrights */
     getMyDefaultAdministratorRights: (params?: GetMyDefaultAdministratorRightsParams) => Promise<Response>;
     getMyDefaultAdministratorRightsWithReturns: (params?: GetMyDefaultAdministratorRightsParams) => Promise<ResponseSuccess<ChatAdministratorRights>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editmessagetext */
+/** https://core.telegram.org/bots/api#editmessagetext */
 export interface EditMessageTextParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5614,12 +5608,12 @@ export type EditMessageTextResponse = ResponseWithOutData;
 
 
 export interface EditMessageTextRequest {
-    /** Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent. https://core.telegram.org/bots/api#editmessagetext */
+    /** Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagetext */
     editMessageText: (params: EditMessageTextParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editmessagecaption */
+/** https://core.telegram.org/bots/api#editmessagecaption */
 export interface EditMessageCaptionParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5646,12 +5640,12 @@ export type EditMessageCaptionResponse = ResponseWithOutData;
 
 
 export interface EditMessageCaptionRequest {
-    /** Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent. https://core.telegram.org/bots/api#editmessagecaption */
+    /** Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagecaption */
     editMessageCaption: (params?: EditMessageCaptionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editmessagemedia */
+/** https://core.telegram.org/bots/api#editmessagemedia */
 export interface EditMessageMediaParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5672,12 +5666,12 @@ export type EditMessageMediaResponse = ResponseWithOutData;
 
 
 export interface EditMessageMediaRequest {
-    /** Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent. https://core.telegram.org/bots/api#editmessagemedia */
+    /** Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagemedia */
     editMessageMedia: (params: EditMessageMediaParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editmessagelivelocation */
+/** https://core.telegram.org/bots/api#editmessagelivelocation */
 export interface EditMessageLiveLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5708,12 +5702,12 @@ export type EditMessageLiveLocationResponse = ResponseWithOutData;
 
 
 export interface EditMessageLiveLocationRequest {
-    /** Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. https://core.telegram.org/bots/api#editmessagelivelocation */
+    /** Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.  https://core.telegram.org/bots/api#editmessagelivelocation */
     editMessageLiveLocation: (params: EditMessageLiveLocationParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#stopmessagelivelocation */
+/** https://core.telegram.org/bots/api#stopmessagelivelocation */
 export interface StopMessageLiveLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5732,12 +5726,12 @@ export type StopMessageLiveLocationResponse = ResponseWithOutData;
 
 
 export interface StopMessageLiveLocationRequest {
-    /** Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned. https://core.telegram.org/bots/api#stopmessagelivelocation */
+    /** Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.  https://core.telegram.org/bots/api#stopmessagelivelocation */
     stopMessageLiveLocation: (params?: StopMessageLiveLocationParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#editmessagereplymarkup */
+/** https://core.telegram.org/bots/api#editmessagereplymarkup */
 export interface EditMessageReplyMarkupParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5756,12 +5750,12 @@ export type EditMessageReplyMarkupResponse = ResponseWithOutData;
 
 
 export interface EditMessageReplyMarkupRequest {
-    /** Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent. https://core.telegram.org/bots/api#editmessagereplymarkup */
+    /** Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagereplymarkup */
     editMessageReplyMarkup: (params?: EditMessageReplyMarkupParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#stoppoll */
+/** https://core.telegram.org/bots/api#stoppoll */
 export interface StopPollParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
@@ -5778,13 +5772,13 @@ export type StopPollResponse = ResponseSuccess<Poll>;
 
 
 export interface StopPollRequest {
-    /** Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned. https://core.telegram.org/bots/api#stoppoll */
+    /** Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.  https://core.telegram.org/bots/api#stoppoll */
     stopPoll: (params: StopPollParams) => Promise<Response>;
     stopPollWithReturns: (params: StopPollParams) => Promise<ResponseSuccess<Poll>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletemessage */
+/** https://core.telegram.org/bots/api#deletemessage */
 export interface DeleteMessageParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -5797,12 +5791,12 @@ export type DeleteMessageResponse = ResponseWithOutData;
 
 
 export interface DeleteMessageRequest {
-    /** Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success. https://core.telegram.org/bots/api#deletemessage */
+    /** Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.  https://core.telegram.org/bots/api#deletemessage */
     deleteMessage: (params: DeleteMessageParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletemessages */
+/** https://core.telegram.org/bots/api#deletemessages */
 export interface DeleteMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -5815,12 +5809,12 @@ export type DeleteMessagesResponse = ResponseWithOutData;
 
 
 export interface DeleteMessagesRequest {
-    /** Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success. https://core.telegram.org/bots/api#deletemessages */
+    /** Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.  https://core.telegram.org/bots/api#deletemessages */
     deleteMessages: (params: DeleteMessagesParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendsticker */
+/** https://core.telegram.org/bots/api#sendsticker */
 export interface SendStickerParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -5849,13 +5843,13 @@ export type SendStickerResponse = ResponseWithMessage;
 
 
 export interface SendStickerRequest {
-    /** Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendsticker */
+    /** Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendsticker */
     sendSticker: (params: SendStickerParams) => Promise<Response>;
     sendStickerWithReturns: (params: SendStickerParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getstickerset */
+/** https://core.telegram.org/bots/api#getstickerset */
 export interface GetStickerSetParams {
     /** String | Name of the sticker set */
     name: string;
@@ -5866,13 +5860,13 @@ export type GetStickerSetResponse = ResponseSuccess<StickerSet>;
 
 
 export interface GetStickerSetRequest {
-    /** Use this method to get a sticker set. On success, a StickerSet object is returned. https://core.telegram.org/bots/api#getstickerset */
+    /** Use this method to get a sticker set. On success, a StickerSet object is returned.  https://core.telegram.org/bots/api#getstickerset */
     getStickerSet: (params: GetStickerSetParams) => Promise<Response>;
     getStickerSetWithReturns: (params: GetStickerSetParams) => Promise<ResponseSuccess<StickerSet>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getcustomemojistickers */
+/** https://core.telegram.org/bots/api#getcustomemojistickers */
 export interface GetCustomEmojiStickersParams {
     /** Array of String | A JSON-serialized list of custom emoji identifiers. At most 200 custom emoji identifiers can be specified. */
     custom_emoji_ids: Array<string>;
@@ -5883,13 +5877,13 @@ export type GetCustomEmojiStickersResponse = ResponseSuccess<Array<Sticker>>;
 
 
 export interface GetCustomEmojiStickersRequest {
-    /** Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects. https://core.telegram.org/bots/api#getcustomemojistickers */
+    /** Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.  https://core.telegram.org/bots/api#getcustomemojistickers */
     getCustomEmojiStickers: (params: GetCustomEmojiStickersParams) => Promise<Response>;
     getCustomEmojiStickersWithReturns: (params: GetCustomEmojiStickersParams) => Promise<ResponseSuccess<Array<Sticker>>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#uploadstickerfile */
+/** https://core.telegram.org/bots/api#uploadstickerfile */
 export interface UploadStickerFileParams {
     /** Integer | User identifier of sticker file owner */
     user_id: number;
@@ -5904,13 +5898,13 @@ export type UploadStickerFileResponse = ResponseSuccess<File>;
 
 
 export interface UploadStickerFileRequest {
-    /** Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success. https://core.telegram.org/bots/api#uploadstickerfile */
+    /** Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.  https://core.telegram.org/bots/api#uploadstickerfile */
     uploadStickerFile: (params: UploadStickerFileParams) => Promise<Response>;
     uploadStickerFileWithReturns: (params: UploadStickerFileParams) => Promise<ResponseSuccess<File>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#createnewstickerset */
+/** https://core.telegram.org/bots/api#createnewstickerset */
 export interface CreateNewStickerSetParams {
     /** Integer | User identifier of created sticker set owner */
     user_id: number;
@@ -5931,12 +5925,12 @@ export type CreateNewStickerSetResponse = ResponseWithOutData;
 
 
 export interface CreateNewStickerSetRequest {
-    /** Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success. https://core.telegram.org/bots/api#createnewstickerset */
+    /** Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.  https://core.telegram.org/bots/api#createnewstickerset */
     createNewStickerSet: (params: CreateNewStickerSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#addstickertoset */
+/** https://core.telegram.org/bots/api#addstickertoset */
 export interface AddStickerToSetParams {
     /** Integer | User identifier of sticker set owner */
     user_id: number;
@@ -5951,12 +5945,12 @@ export type AddStickerToSetResponse = ResponseWithOutData;
 
 
 export interface AddStickerToSetRequest {
-    /** Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success. https://core.telegram.org/bots/api#addstickertoset */
+    /** Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.  https://core.telegram.org/bots/api#addstickertoset */
     addStickerToSet: (params: AddStickerToSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickerpositioninset */
+/** https://core.telegram.org/bots/api#setstickerpositioninset */
 export interface SetStickerPositionInSetParams {
     /** String | File identifier of the sticker */
     sticker: string;
@@ -5969,12 +5963,12 @@ export type SetStickerPositionInSetResponse = ResponseWithOutData;
 
 
 export interface SetStickerPositionInSetRequest {
-    /** Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success. https://core.telegram.org/bots/api#setstickerpositioninset */
+    /** Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.  https://core.telegram.org/bots/api#setstickerpositioninset */
     setStickerPositionInSet: (params: SetStickerPositionInSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletestickerfromset */
+/** https://core.telegram.org/bots/api#deletestickerfromset */
 export interface DeleteStickerFromSetParams {
     /** String | File identifier of the sticker */
     sticker: string;
@@ -5985,12 +5979,12 @@ export type DeleteStickerFromSetResponse = ResponseWithOutData;
 
 
 export interface DeleteStickerFromSetRequest {
-    /** Use this method to delete a sticker from a set created by the bot. Returns True on success. https://core.telegram.org/bots/api#deletestickerfromset */
+    /** Use this method to delete a sticker from a set created by the bot. Returns True on success.  https://core.telegram.org/bots/api#deletestickerfromset */
     deleteStickerFromSet: (params: DeleteStickerFromSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#replacestickerinset */
+/** https://core.telegram.org/bots/api#replacestickerinset */
 export interface ReplaceStickerInSetParams {
     /** Integer | User identifier of the sticker set owner */
     user_id: number;
@@ -6007,12 +6001,12 @@ export type ReplaceStickerInSetResponse = ResponseWithOutData;
 
 
 export interface ReplaceStickerInSetRequest {
-    /** Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success. https://core.telegram.org/bots/api#replacestickerinset */
+    /** Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.  https://core.telegram.org/bots/api#replacestickerinset */
     replaceStickerInSet: (params: ReplaceStickerInSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickeremojilist */
+/** https://core.telegram.org/bots/api#setstickeremojilist */
 export interface SetStickerEmojiListParams {
     /** String | File identifier of the sticker */
     sticker: string;
@@ -6025,12 +6019,12 @@ export type SetStickerEmojiListResponse = ResponseWithOutData;
 
 
 export interface SetStickerEmojiListRequest {
-    /** Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success. https://core.telegram.org/bots/api#setstickeremojilist */
+    /** Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.  https://core.telegram.org/bots/api#setstickeremojilist */
     setStickerEmojiList: (params: SetStickerEmojiListParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickerkeywords */
+/** https://core.telegram.org/bots/api#setstickerkeywords */
 export interface SetStickerKeywordsParams {
     /** String | File identifier of the sticker */
     sticker: string;
@@ -6043,12 +6037,12 @@ export type SetStickerKeywordsResponse = ResponseWithOutData;
 
 
 export interface SetStickerKeywordsRequest {
-    /** Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success. https://core.telegram.org/bots/api#setstickerkeywords */
+    /** Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.  https://core.telegram.org/bots/api#setstickerkeywords */
     setStickerKeywords: (params: SetStickerKeywordsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickermaskposition */
+/** https://core.telegram.org/bots/api#setstickermaskposition */
 export interface SetStickerMaskPositionParams {
     /** String | File identifier of the sticker */
     sticker: string;
@@ -6061,12 +6055,12 @@ export type SetStickerMaskPositionResponse = ResponseWithOutData;
 
 
 export interface SetStickerMaskPositionRequest {
-    /** Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success. https://core.telegram.org/bots/api#setstickermaskposition */
+    /** Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.  https://core.telegram.org/bots/api#setstickermaskposition */
     setStickerMaskPosition: (params: SetStickerMaskPositionParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickersettitle */
+/** https://core.telegram.org/bots/api#setstickersettitle */
 export interface SetStickerSetTitleParams {
     /** String | Sticker set name */
     name: string;
@@ -6079,12 +6073,12 @@ export type SetStickerSetTitleResponse = ResponseWithOutData;
 
 
 export interface SetStickerSetTitleRequest {
-    /** Use this method to set the title of a created sticker set. Returns True on success. https://core.telegram.org/bots/api#setstickersettitle */
+    /** Use this method to set the title of a created sticker set. Returns True on success.  https://core.telegram.org/bots/api#setstickersettitle */
     setStickerSetTitle: (params: SetStickerSetTitleParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setstickersetthumbnail */
+/** https://core.telegram.org/bots/api#setstickersetthumbnail */
 export interface SetStickerSetThumbnailParams {
     /** String | Sticker set name */
     name: string;
@@ -6101,12 +6095,12 @@ export type SetStickerSetThumbnailResponse = ResponseWithOutData;
 
 
 export interface SetStickerSetThumbnailRequest {
-    /** Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success. https://core.telegram.org/bots/api#setstickersetthumbnail */
+    /** Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.  https://core.telegram.org/bots/api#setstickersetthumbnail */
     setStickerSetThumbnail: (params: SetStickerSetThumbnailParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail */
+/** https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail */
 export interface SetCustomEmojiStickerSetThumbnailParams {
     /** String | Sticker set name */
     name: string;
@@ -6119,12 +6113,12 @@ export type SetCustomEmojiStickerSetThumbnailResponse = ResponseWithOutData;
 
 
 export interface SetCustomEmojiStickerSetThumbnailRequest {
-    /** Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success. https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail */
+    /** Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.  https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail */
     setCustomEmojiStickerSetThumbnail: (params: SetCustomEmojiStickerSetThumbnailParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#deletestickerset */
+/** https://core.telegram.org/bots/api#deletestickerset */
 export interface DeleteStickerSetParams {
     /** String | Sticker set name */
     name: string;
@@ -6135,12 +6129,12 @@ export type DeleteStickerSetResponse = ResponseWithOutData;
 
 
 export interface DeleteStickerSetRequest {
-    /** Use this method to delete a sticker set that was created by the bot. Returns True on success. https://core.telegram.org/bots/api#deletestickerset */
+    /** Use this method to delete a sticker set that was created by the bot. Returns True on success.  https://core.telegram.org/bots/api#deletestickerset */
     deleteStickerSet: (params: DeleteStickerSetParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#answerinlinequery */
+/** https://core.telegram.org/bots/api#answerinlinequery */
 export interface AnswerInlineQueryParams {
     /** String | Unique identifier for the answered query */
     inline_query_id: string;
@@ -6161,12 +6155,12 @@ export type AnswerInlineQueryResponse = ResponseWithOutData;
 
 
 export interface AnswerInlineQueryRequest {
-    /** Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed. https://core.telegram.org/bots/api#answerinlinequery */
+    /** Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed.  https://core.telegram.org/bots/api#answerinlinequery */
     answerInlineQuery: (params: AnswerInlineQueryParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#answerwebappquery */
+/** https://core.telegram.org/bots/api#answerwebappquery */
 export interface AnswerWebAppQueryParams {
     /** String | Unique identifier for the query to be answered */
     web_app_query_id: string;
@@ -6179,13 +6173,13 @@ export type AnswerWebAppQueryResponse = ResponseSuccess<SentWebAppMessage>;
 
 
 export interface AnswerWebAppQueryRequest {
-    /** Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned. https://core.telegram.org/bots/api#answerwebappquery */
+    /** Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.  https://core.telegram.org/bots/api#answerwebappquery */
     answerWebAppQuery: (params: AnswerWebAppQueryParams) => Promise<Response>;
     answerWebAppQueryWithReturns: (params: AnswerWebAppQueryParams) => Promise<ResponseSuccess<SentWebAppMessage>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendinvoice */
+/** https://core.telegram.org/bots/api#sendinvoice */
 export interface SendInvoiceParams {
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
@@ -6250,13 +6244,13 @@ export type SendInvoiceResponse = ResponseWithMessage;
 
 
 export interface SendInvoiceRequest {
-    /** Use this method to send invoices. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendinvoice */
+    /** Use this method to send invoices. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendinvoice */
     sendInvoice: (params: SendInvoiceParams) => Promise<Response>;
     sendInvoiceWithReturns: (params: SendInvoiceParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#createinvoicelink */
+/** https://core.telegram.org/bots/api#createinvoicelink */
 export interface CreateInvoiceLinkParams {
     /** String | Product name, 1-32 characters */
     title: string;
@@ -6305,13 +6299,13 @@ export type CreateInvoiceLinkResponse = ResponseSuccess<string>;
 
 
 export interface CreateInvoiceLinkRequest {
-    /** Use this method to create a link for an invoice. Returns the created invoice link as String on success. https://core.telegram.org/bots/api#createinvoicelink */
+    /** Use this method to create a link for an invoice. Returns the created invoice link as String on success.  https://core.telegram.org/bots/api#createinvoicelink */
     createInvoiceLink: (params: CreateInvoiceLinkParams) => Promise<Response>;
     createInvoiceLinkWithReturns: (params: CreateInvoiceLinkParams) => Promise<ResponseSuccess<string>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#answershippingquery */
+/** https://core.telegram.org/bots/api#answershippingquery */
 export interface AnswerShippingQueryParams {
     /** String | Unique identifier for the query to be answered */
     shipping_query_id: string;
@@ -6328,12 +6322,12 @@ export type AnswerShippingQueryResponse = ResponseWithOutData;
 
 
 export interface AnswerShippingQueryRequest {
-    /** If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned. https://core.telegram.org/bots/api#answershippingquery */
+    /** If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.  https://core.telegram.org/bots/api#answershippingquery */
     answerShippingQuery: (params: AnswerShippingQueryParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#answerprecheckoutquery */
+/** https://core.telegram.org/bots/api#answerprecheckoutquery */
 export interface AnswerPreCheckoutQueryParams {
     /** String | Unique identifier for the query to be answered */
     pre_checkout_query_id: string;
@@ -6348,12 +6342,12 @@ export type AnswerPreCheckoutQueryResponse = ResponseWithOutData;
 
 
 export interface AnswerPreCheckoutQueryRequest {
-    /** Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent. https://core.telegram.org/bots/api#answerprecheckoutquery */
+    /** Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.  https://core.telegram.org/bots/api#answerprecheckoutquery */
     answerPreCheckoutQuery: (params: AnswerPreCheckoutQueryParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getstartransactions */
+/** https://core.telegram.org/bots/api#getstartransactions */
 export interface GetStarTransactionsParams {
     /** Integer | Number of transactions to skip in the response */
     offset?: number;
@@ -6366,13 +6360,13 @@ export type GetStarTransactionsResponse = ResponseSuccess<StarTransactions>;
 
 
 export interface GetStarTransactionsRequest {
-    /** Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object. https://core.telegram.org/bots/api#getstartransactions */
+    /** Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.  https://core.telegram.org/bots/api#getstartransactions */
     getStarTransactions: (params?: GetStarTransactionsParams) => Promise<Response>;
     getStarTransactionsWithReturns: (params?: GetStarTransactionsParams) => Promise<ResponseSuccess<StarTransactions>>;
 }
 
 
-/**  https://core.telegram.org/bots/api#refundstarpayment */
+/** https://core.telegram.org/bots/api#refundstarpayment */
 export interface RefundStarPaymentParams {
     /** Integer | Identifier of the user whose payment will be refunded */
     user_id: number;
@@ -6385,12 +6379,12 @@ export type RefundStarPaymentResponse = ResponseWithOutData;
 
 
 export interface RefundStarPaymentRequest {
-    /** Refunds a successful payment in Telegram Stars. Returns True on success. https://core.telegram.org/bots/api#refundstarpayment */
+    /** Refunds a successful payment in Telegram Stars. Returns True on success.  https://core.telegram.org/bots/api#refundstarpayment */
     refundStarPayment: (params: RefundStarPaymentParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setpassportdataerrors */
+/** https://core.telegram.org/bots/api#setpassportdataerrors */
 export interface SetPassportDataErrorsParams {
     /** Integer | User identifier */
     user_id: number;
@@ -6403,12 +6397,12 @@ export type SetPassportDataErrorsResponse = ResponseWithOutData;
 
 
 export interface SetPassportDataErrorsRequest {
-    /** Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success. https://core.telegram.org/bots/api#setpassportdataerrors */
+    /** Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.  https://core.telegram.org/bots/api#setpassportdataerrors */
     setPassportDataErrors: (params: SetPassportDataErrorsParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#sendgame */
+/** https://core.telegram.org/bots/api#sendgame */
 export interface SendGameParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
@@ -6435,13 +6429,13 @@ export type SendGameResponse = ResponseWithMessage;
 
 
 export interface SendGameRequest {
-    /** Use this method to send a game. On success, the sent Message is returned. https://core.telegram.org/bots/api#sendgame */
+    /** Use this method to send a game. On success, the sent Message is returned.  https://core.telegram.org/bots/api#sendgame */
     sendGame: (params: SendGameParams) => Promise<Response>;
     sendGameWithReturns: (params: SendGameParams) => Promise<ResponseWithMessage>;
 }
 
 
-/**  https://core.telegram.org/bots/api#setgamescore */
+/** https://core.telegram.org/bots/api#setgamescore */
 export interface SetGameScoreParams {
     /** Integer | User identifier */
     user_id: number;
@@ -6464,12 +6458,12 @@ export type SetGameScoreResponse = ResponseWithOutData;
 
 
 export interface SetGameScoreRequest {
-    /** Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False. https://core.telegram.org/bots/api#setgamescore */
+    /** Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.  https://core.telegram.org/bots/api#setgamescore */
     setGameScore: (params: SetGameScoreParams) => Promise<Response>;
 }
 
 
-/**  https://core.telegram.org/bots/api#getgamehighscores */
+/** https://core.telegram.org/bots/api#getgamehighscores */
 export interface GetGameHighScoresParams {
     /** Integer | Target user id */
     user_id: number;
@@ -6486,13 +6480,13 @@ export type GetGameHighScoresResponse = ResponseSuccess<Array<GameHighScore>>;
 
 
 export interface GetGameHighScoresRequest {
-    /** Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects. https://core.telegram.org/bots/api#getgamehighscores */
+    /** Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.  https://core.telegram.org/bots/api#getgamehighscores */
     getGameHighScores: (params: GetGameHighScoresParams) => Promise<Response>;
     getGameHighScoresWithReturns: (params: GetGameHighScoresParams) => Promise<ResponseSuccess<Array<GameHighScore>>>;
 }
 
 
-export type BotMethod = 'getUpdates' | 'setWebhook' | 'deleteWebhook' | 'getWebhookInfo' | 'getMe' | 'logOut' | 'close' | 'sendMessage' | 'forwardMessage' | 'forwardMessages' | 'copyMessage' | 'copyMessages' | 'sendPhoto' | 'sendAudio' | 'sendDocument' | 'sendVideo' | 'sendAnimation' | 'sendVoice' | 'sendVideoNote' | 'sendPaidMedia' | 'sendMediaGroup' | 'sendLocation' | 'sendVenue' | 'sendContact' | 'sendPoll' | 'sendDice' | 'sendChatAction' | 'setMessageReaction' | 'getUserProfilePhotos' | 'getFile' | 'banChatMember' | 'unbanChatMember' | 'restrictChatMember' | 'promoteChatMember' | 'setChatAdministratorCustomTitle' | 'banChatSenderChat' | 'unbanChatSenderChat' | 'setChatPermissions' | 'exportChatInviteLink' | 'createChatInviteLink' | 'editChatInviteLink' | 'createChatSubscriptionInviteLink' | 'editChatSubscriptionInviteLink' | 'revokeChatInviteLink' | 'approveChatJoinRequest' | 'declineChatJoinRequest' | 'setChatPhoto' | 'deleteChatPhoto' | 'setChatTitle' | 'setChatDescription' | 'pinChatMessage' | 'unpinChatMessage' | 'unpinAllChatMessages' | 'leaveChat' | 'getChat' | 'getChatAdministrators' | 'getChatMemberCount' | 'getChatMember' | 'setChatStickerSet' | 'deleteChatStickerSet' | 'getForumTopicIconStickers' | 'createForumTopic' | 'editForumTopic' | 'closeForumTopic' | 'reopenForumTopic' | 'deleteForumTopic' | 'unpinAllForumTopicMessages' | 'editGeneralForumTopic' | 'closeGeneralForumTopic' | 'reopenGeneralForumTopic' | 'hideGeneralForumTopic' | 'unhideGeneralForumTopic' | 'unpinAllGeneralForumTopicMessages' | 'answerCallbackQuery' | 'getUserChatBoosts' | 'getBusinessConnection' | 'setMyCommands' | 'deleteMyCommands' | 'getMyCommands' | 'setMyName' | 'getMyName' | 'setMyDescription' | 'getMyDescription' | 'setMyShortDescription' | 'getMyShortDescription' | 'setChatMenuButton' | 'getChatMenuButton' | 'setMyDefaultAdministratorRights' | 'getMyDefaultAdministratorRights' | 'editMessageText' | 'editMessageCaption' | 'editMessageMedia' | 'editMessageLiveLocation' | 'stopMessageLiveLocation' | 'editMessageReplyMarkup' | 'stopPoll' | 'deleteMessage' | 'deleteMessages' | 'sendSticker' | 'getStickerSet' | 'getCustomEmojiStickers' | 'uploadStickerFile' | 'createNewStickerSet' | 'addStickerToSet' | 'setStickerPositionInSet' | 'deleteStickerFromSet' | 'replaceStickerInSet' | 'setStickerEmojiList' | 'setStickerKeywords' | 'setStickerMaskPosition' | 'setStickerSetTitle' | 'setStickerSetThumbnail' | 'setCustomEmojiStickerSetThumbnail' | 'deleteStickerSet' | 'answerInlineQuery' | 'answerWebAppQuery' | 'sendInvoice' | 'createInvoiceLink' | 'answerShippingQuery' | 'answerPreCheckoutQuery' | 'getStarTransactions' | 'refundStarPayment' | 'setPassportDataErrors' | 'sendGame' | 'setGameScore' | 'getGameHighScores';
+export type BotMethod = "getUpdates" | "setWebhook" | "deleteWebhook" | "getWebhookInfo" | "getMe" | "logOut" | "close" | "sendMessage" | "forwardMessage" | "forwardMessages" | "copyMessage" | "copyMessages" | "sendPhoto" | "sendAudio" | "sendDocument" | "sendVideo" | "sendAnimation" | "sendVoice" | "sendVideoNote" | "sendPaidMedia" | "sendMediaGroup" | "sendLocation" | "sendVenue" | "sendContact" | "sendPoll" | "sendDice" | "sendChatAction" | "setMessageReaction" | "getUserProfilePhotos" | "getFile" | "banChatMember" | "unbanChatMember" | "restrictChatMember" | "promoteChatMember" | "setChatAdministratorCustomTitle" | "banChatSenderChat" | "unbanChatSenderChat" | "setChatPermissions" | "exportChatInviteLink" | "createChatInviteLink" | "editChatInviteLink" | "createChatSubscriptionInviteLink" | "editChatSubscriptionInviteLink" | "revokeChatInviteLink" | "approveChatJoinRequest" | "declineChatJoinRequest" | "setChatPhoto" | "deleteChatPhoto" | "setChatTitle" | "setChatDescription" | "pinChatMessage" | "unpinChatMessage" | "unpinAllChatMessages" | "leaveChat" | "getChat" | "getChatAdministrators" | "getChatMemberCount" | "getChatMember" | "setChatStickerSet" | "deleteChatStickerSet" | "getForumTopicIconStickers" | "createForumTopic" | "editForumTopic" | "closeForumTopic" | "reopenForumTopic" | "deleteForumTopic" | "unpinAllForumTopicMessages" | "editGeneralForumTopic" | "closeGeneralForumTopic" | "reopenGeneralForumTopic" | "hideGeneralForumTopic" | "unhideGeneralForumTopic" | "unpinAllGeneralForumTopicMessages" | "answerCallbackQuery" | "getUserChatBoosts" | "getBusinessConnection" | "setMyCommands" | "deleteMyCommands" | "getMyCommands" | "setMyName" | "getMyName" | "setMyDescription" | "getMyDescription" | "setMyShortDescription" | "getMyShortDescription" | "setChatMenuButton" | "getChatMenuButton" | "setMyDefaultAdministratorRights" | "getMyDefaultAdministratorRights" | "editMessageText" | "editMessageCaption" | "editMessageMedia" | "editMessageLiveLocation" | "stopMessageLiveLocation" | "editMessageReplyMarkup" | "stopPoll" | "deleteMessage" | "deleteMessages" | "sendSticker" | "getStickerSet" | "getCustomEmojiStickers" | "uploadStickerFile" | "createNewStickerSet" | "addStickerToSet" | "setStickerPositionInSet" | "deleteStickerFromSet" | "replaceStickerInSet" | "setStickerEmojiList" | "setStickerKeywords" | "setStickerMaskPosition" | "setStickerSetTitle" | "setStickerSetThumbnail" | "setCustomEmojiStickerSetThumbnail" | "deleteStickerSet" | "answerInlineQuery" | "answerWebAppQuery" | "sendInvoice" | "createInvoiceLink" | "answerShippingQuery" | "answerPreCheckoutQuery" | "getStarTransactions" | "refundStarPayment" | "setPassportDataErrors" | "sendGame" | "setGameScore" | "getGameHighScores";
 
 
 export type AllBotMethods = GetUpdatesRequest & SetWebhookRequest & DeleteWebhookRequest & GetWebhookInfoRequest & GetMeRequest & LogOutRequest & CloseRequest & SendMessageRequest & ForwardMessageRequest & ForwardMessagesRequest & CopyMessageRequest & CopyMessagesRequest & SendPhotoRequest & SendAudioRequest & SendDocumentRequest & SendVideoRequest & SendAnimationRequest & SendVoiceRequest & SendVideoNoteRequest & SendPaidMediaRequest & SendMediaGroupRequest & SendLocationRequest & SendVenueRequest & SendContactRequest & SendPollRequest & SendDiceRequest & SendChatActionRequest & SetMessageReactionRequest & GetUserProfilePhotosRequest & GetFileRequest & BanChatMemberRequest & UnbanChatMemberRequest & RestrictChatMemberRequest & PromoteChatMemberRequest & SetChatAdministratorCustomTitleRequest & BanChatSenderChatRequest & UnbanChatSenderChatRequest & SetChatPermissionsRequest & ExportChatInviteLinkRequest & CreateChatInviteLinkRequest & EditChatInviteLinkRequest & CreateChatSubscriptionInviteLinkRequest & EditChatSubscriptionInviteLinkRequest & RevokeChatInviteLinkRequest & ApproveChatJoinRequestRequest & DeclineChatJoinRequestRequest & SetChatPhotoRequest & DeleteChatPhotoRequest & SetChatTitleRequest & SetChatDescriptionRequest & PinChatMessageRequest & UnpinChatMessageRequest & UnpinAllChatMessagesRequest & LeaveChatRequest & GetChatRequest & GetChatAdministratorsRequest & GetChatMemberCountRequest & GetChatMemberRequest & SetChatStickerSetRequest & DeleteChatStickerSetRequest & GetForumTopicIconStickersRequest & CreateForumTopicRequest & EditForumTopicRequest & CloseForumTopicRequest & ReopenForumTopicRequest & DeleteForumTopicRequest & UnpinAllForumTopicMessagesRequest & EditGeneralForumTopicRequest & CloseGeneralForumTopicRequest & ReopenGeneralForumTopicRequest & HideGeneralForumTopicRequest & UnhideGeneralForumTopicRequest & UnpinAllGeneralForumTopicMessagesRequest & AnswerCallbackQueryRequest & GetUserChatBoostsRequest & GetBusinessConnectionRequest & SetMyCommandsRequest & DeleteMyCommandsRequest & GetMyCommandsRequest & SetMyNameRequest & GetMyNameRequest & SetMyDescriptionRequest & GetMyDescriptionRequest & SetMyShortDescriptionRequest & GetMyShortDescriptionRequest & SetChatMenuButtonRequest & GetChatMenuButtonRequest & SetMyDefaultAdministratorRightsRequest & GetMyDefaultAdministratorRightsRequest & EditMessageTextRequest & EditMessageCaptionRequest & EditMessageMediaRequest & EditMessageLiveLocationRequest & StopMessageLiveLocationRequest & EditMessageReplyMarkupRequest & StopPollRequest & DeleteMessageRequest & DeleteMessagesRequest & SendStickerRequest & GetStickerSetRequest & GetCustomEmojiStickersRequest & UploadStickerFileRequest & CreateNewStickerSetRequest & AddStickerToSetRequest & SetStickerPositionInSetRequest & DeleteStickerFromSetRequest & ReplaceStickerInSetRequest & SetStickerEmojiListRequest & SetStickerKeywordsRequest & SetStickerMaskPositionRequest & SetStickerSetTitleRequest & SetStickerSetThumbnailRequest & SetCustomEmojiStickerSetThumbnailRequest & DeleteStickerSetRequest & AnswerInlineQueryRequest & AnswerWebAppQueryRequest & SendInvoiceRequest & CreateInvoiceLinkRequest & AnswerShippingQueryRequest & AnswerPreCheckoutQueryRequest & GetStarTransactionsRequest & RefundStarPaymentRequest & SetPassportDataErrorsRequest & SendGameRequest & SetGameScoreRequest & GetGameHighScoresRequest;
