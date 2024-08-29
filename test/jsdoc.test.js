@@ -10,7 +10,10 @@ const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_p
 class APIClientBase {
     constructor(token, baseURL) {
         this.token = token;
-        this.baseURL = baseURL || `https://api.telegram.org/`;
+        this.baseURL = baseURL || `https://api.telegram.org`;
+        while (this.baseURL.endsWith('/')) {
+            this.baseURL = this.baseURL.slice(0, -1);
+        }
     }
     request(method, params) {
         for (const key in params) {
@@ -23,8 +26,13 @@ class APIClientBase {
     async requestJSON(method, params) {
         return this.request(method, params).then(res => res.json());
     }
+
+    uri(method) {
+        return `${this.baseURL}/bot${this.token}/${method}`
+    }
+
     jsonRequest(method, params) {
-        return fetch(`${this.baseURL}bot${this.token}/${method}`, {
+        return fetch(this.uri(method), {
             agent,
             method: 'POST',
             headers: {
@@ -47,7 +55,7 @@ class APIClientBase {
                 formData.append(key, JSON.stringify(value));
             }
         }
-        return fetch(`${this.baseURL}/bot${this.token}/${method}`, {
+        return fetch(this.uri(method), {
             method: 'POST',
             body: formData
         });

@@ -10,13 +10,20 @@ const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_p
 
 class APIClientBase {
     readonly token: string;
-    readonly baseURL: string = `https://api.telegram.org/`;
+    readonly baseURL: string = `https://api.telegram.org`;
 
     constructor(token: string, baseURL?: string) {
         this.token = token;
         if (baseURL) {
             this.baseURL = baseURL;
         }
+        while (this.baseURL.endsWith('/')) {
+            this.baseURL = this.baseURL.slice(0, -1);
+        }
+    }
+
+    private uri(method: Telegram.BotMethod): string {
+        return `${this.baseURL}/bot${this.token}/${method}`
     }
 
     request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
@@ -33,7 +40,7 @@ class APIClientBase {
     }
 
     private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
-        return fetch(`${this.baseURL}bot${this.token}/${method}`, {
+        return fetch(this.uri(method), {
             agent, // Disable this line if you don't need proxy
             method: 'POST',
             headers: {
@@ -57,7 +64,7 @@ class APIClientBase {
                 formData.append(key, JSON.stringify(value));
             }
         }
-        return fetch(`${this.baseURL}/bot${this.token}/${method}`, {
+        return fetch(this.uri(method), {
             method: 'POST',
             body: formData,
         });

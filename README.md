@@ -24,62 +24,14 @@ import * as Telegram from "telegram-bot-api-types"; // useing the type definitio
 import * as fs from 'node:fs';
 
 class APIClientBase {
-    readonly token: string;
-    readonly baseURL: string = `https://api.telegram.org/`;
-    constructor(token: string, baseURL?: string) {
-        this.token = token;
-        if (baseURL) {
-            this.baseURL = baseURL;
-        }
-    }
-
-    private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
-        return fetch(`${this.baseURL}bot${this.token}/${method}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params),
-        });
-    }
-
-    private formDataRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
-        const formData = new FormData();
-        for (const key in params) {
-            const value = params[key];
-            if (value instanceof File) {
-                formData.append(key, value, value.name);
-            } else if (value instanceof Blob) {
-                formData.append(key, value, 'blob');
-            } else if (typeof value === 'string') {
-                formData.append(key, value);
-            } else {
-                formData.append(key, JSON.stringify(value));
-            }
-        }
-        return fetch(`${this.baseURL}/bot${this.token}/${method}`, {
-            method: 'POST',
-            body: formData,
-        });
-    }
-
-    request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
-        for (const key in params) {
-            if (params[key] instanceof File || params[key] instanceof Blob) {
-                return this.formDataRequest(method, params);
-            }
-        }
-        return this.jsonRequest(method, params);
-    }
-
-    async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
-        return this.request(method, params).then(res => res.json() as R) 
-    }
+    // Implement your request method
+    // you can use any http request library you want
+    // You can go to `test` to see an example of the implementation
 }
-
 
 type APIClient = APIClientBase & Telegram.AllBotMethods;
 
+// Use Proxy to automatically call the methods
 export function createAPIClient(token: string): APIClient {
     const client = new APIClientBase(token);
     return new Proxy(client, {
