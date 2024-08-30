@@ -20,7 +20,7 @@ npm i telegram-bot-api-jsdoc --save-dev # jsdoc for JavaScript
 You can use any HTTP request library you want to encapsulate your API client. Here is a simple echo bot.
 
 ```typescript
-import * as Telegram from "telegram-bot-api-types"; // useing the type definitions with namespace
+import type * as Telegram from "telegram-bot-api-types"; // Import the types with namespace
 import * as fs from 'node:fs';
 
 class APIClientBase {

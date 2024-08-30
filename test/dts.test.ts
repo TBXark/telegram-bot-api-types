@@ -1,4 +1,4 @@
-import * as Telegram from "../dist/dts";
+import type * as Telegram from "../dist/dts";
 import {HttpsProxyAgent} from 'https-proxy-agent';
 import type {Response} from 'node-fetch';
 import fetch from 'node-fetch';
