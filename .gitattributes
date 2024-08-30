@@ -1,4 +1,3 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-index.js linguist-generated=true
-index.d.ts linguist-generated=true
+dist/** linguist-generated=true

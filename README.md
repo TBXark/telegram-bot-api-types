@@ -70,7 +70,7 @@ main().catch(console.error);
 
 ```
 
-You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods.
+You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods. You can find the implementation of the `APIClientBase` class in the [`test`](test/dts.test.ts) folder.
 
 If you want to use javascript, you can follow the example [`jsdoc.test.js`](test/jsdoc.test.js)
 
