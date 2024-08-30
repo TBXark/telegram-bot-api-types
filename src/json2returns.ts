@@ -1,9 +1,10 @@
 import type {TelegramMethod, TelegramTypes, TelegramUnions} from './type';
 import * as fs from 'node:fs';
+import {METHODS_JSON_PATH, TYPES_JSON_PATH, UNIONS_JSON_PATH} from "./const";
 
-const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
-const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
-const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
+const types: TelegramTypes[] = JSON.parse(fs.readFileSync(TYPES_JSON_PATH, 'utf8'));
+const methods: TelegramMethod[] = JSON.parse(fs.readFileSync(METHODS_JSON_PATH, 'utf8'));
+const unions: TelegramUnions[] = JSON.parse(fs.readFileSync(UNIONS_JSON_PATH, 'utf8'));
 
 methods.forEach(method => {
     method.returns = ''; // Reset returns
@@ -122,4 +123,4 @@ for (const method of methods) {
 }
 
 
-fs.writeFileSync('methods.json', JSON.stringify(methods, null, 4));
+fs.writeFileSync(METHODS_JSON_PATH, JSON.stringify(methods, null, 4));

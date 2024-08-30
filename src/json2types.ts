@@ -2,6 +2,7 @@ import type {TelegramMethod, TelegramTypes, TelegramUnions, TypesFileGenerator} 
 import * as fs from 'node:fs';
 import * as process from 'node:process';
 import {anchorLink, DtsGenerator, JsDocGenerator, uppercaseFirstChar} from "./generator";
+import {DTS_PATH, JSDOC_PATH, METHODS_JSON_PATH, TYPES_JSON_PATH, UNIONS_JSON_PATH} from "./const";
 
 const UNION_AND = ' & ';
 const UNION_OR = ' | ';
@@ -9,9 +10,9 @@ const isGenericEnable = process.env.GENERIC_MODE === 'true';
 const requestSuffix = isGenericEnable ? '<R>' : '';
 const responseType = isGenericEnable ? 'R' : 'Response'
 
-const types: TelegramTypes[] = JSON.parse(fs.readFileSync('types.json', 'utf8'));
-const methods: TelegramMethod[] = JSON.parse(fs.readFileSync('methods.json', 'utf8'));
-const unions: TelegramUnions[] = JSON.parse(fs.readFileSync('unions.json', 'utf8'));
+const types: TelegramTypes[] = JSON.parse(fs.readFileSync(TYPES_JSON_PATH, 'utf8'));
+const methods: TelegramMethod[] = JSON.parse(fs.readFileSync(METHODS_JSON_PATH, 'utf8'));
+const unions: TelegramUnions[] = JSON.parse(fs.readFileSync(UNIONS_JSON_PATH, 'utf8'));
 
 const typeMapping: Record<string, Record<string, string>> = {
     'Chat': {
@@ -96,5 +97,5 @@ function runGen(gen: TypesFileGenerator): string[] {
 
 const dts = new DtsGenerator(typeMapping, requestSuffix, responseType);
 const json = new JsDocGenerator(typeMapping, requestSuffix, responseType);
-fs.writeFileSync('index.d.ts', runGen(dts).map(r => r.trim()).join('\n\n\n'));
-fs.writeFileSync('index.js', runGen(json).map(r => r.trim()).join('\n\n\n'));
+fs.writeFileSync(DTS_PATH, runGen(dts).map(r => r.trim()).join('\n\n\n'));
+fs.writeFileSync(JSDOC_PATH, runGen(json).map(r => r.trim()).join('\n\n\n'));

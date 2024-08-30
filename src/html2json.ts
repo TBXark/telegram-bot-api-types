@@ -2,14 +2,15 @@ import * as fs from 'node:fs';
 import type {Cheerio} from 'cheerio';
 import {load} from 'cheerio';
 import type {TelegramField, TelegramMethod, TelegramTypes, TelegramUnions} from './type';
+import {HTML_PATH, METHODS_JSON_PATH, TYPES_JSON_PATH, UNIONS_JSON_PATH} from "./const";
 
 
-if (!fs.existsSync('index.html')) {
+if (!fs.existsSync(HTML_PATH)) {
     console.error('Please download the HTML file from https://core.telegram.org/bots/api and save it as index.html');
     process.exit(1);
 }
 
-const html = fs.readFileSync('index.html', 'utf8');
+const html = fs.readFileSync(HTML_PATH, 'utf8');
 const $ = load(html);
 
 const devPageContent = $('#dev_page_content');
@@ -116,6 +117,6 @@ devPageContent.find('h4').each((i, el) => {
 })
 
 
-fs.writeFileSync('types.json', JSON.stringify(types, null, 2));
-fs.writeFileSync('unions.json', JSON.stringify(unions, null, 2));
-fs.writeFileSync('methods.json', JSON.stringify(methods, null, 2));
+fs.writeFileSync(TYPES_JSON_PATH, JSON.stringify(types, null, 2));
+fs.writeFileSync(UNIONS_JSON_PATH, JSON.stringify(unions, null, 2));
+fs.writeFileSync(METHODS_JSON_PATH, JSON.stringify(methods, null, 2));

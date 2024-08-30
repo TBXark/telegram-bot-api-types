@@ -1,11 +1,11 @@
-import * as Telegram from "../index";
+import * as Telegram from "../dist/dts";
 import {HttpsProxyAgent} from 'https-proxy-agent';
 import type {Response} from 'node-fetch';
 import fetch from 'node-fetch';
 import * as fs from 'node:fs';
 import * as process from 'node:process';
 
-const {token} = JSON.parse(fs.readFileSync('example_config.json', 'utf8'));
+const {token} = JSON.parse(fs.readFileSync('test/config.json', 'utf8'));
 const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
 
 class APIClientBase {
@@ -22,10 +22,6 @@ class APIClientBase {
         }
     }
 
-    private uri(method: Telegram.BotMethod): string {
-        return `${this.baseURL}/bot${this.token}/${method}`
-    }
-
     request<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         for (const key in params) {
             if (params[key] instanceof File || params[key] instanceof Blob) {
@@ -37,6 +33,10 @@ class APIClientBase {
 
     async requestJSON<T, R>(method: Telegram.BotMethod, params: T): Promise<R> {
         return this.request(method, params).then(res => res.json() as R)
+    }
+
+    private uri(method: Telegram.BotMethod): string {
+        return `${this.baseURL}/bot${this.token}/${method}`
     }
 
     private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
