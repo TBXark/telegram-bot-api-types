@@ -37,6 +37,7 @@
  * @property {CallbackQuery} [callback_query] Optional. New incoming callback query
  * @property {ShippingQuery} [shipping_query] Optional. New incoming shipping query. Only for invoices with flexible price
  * @property {PreCheckoutQuery} [pre_checkout_query] Optional. New incoming pre-checkout query. Contains full information about checkout
+ * @property {PaidMediaPurchased} [purchased_paid_media] Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
  * @property {Poll} [poll] Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot
  * @property {PollAnswer} [poll_answer] Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
  * @property {ChatMemberUpdated} [my_chat_member] Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
@@ -147,7 +148,7 @@
 /**
  * This object represents a message.  https://core.telegram.org/bots/api#message
  * @typedef {Object} Message
- * @property {number} message_id Unique message identifier inside this chat
+ * @property {number} message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
  * @property {number} [message_thread_id] Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
  * @property {User} [from] Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
  * @property {Chat} [sender_chat] Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
@@ -238,7 +239,7 @@
 /**
  * This object represents a unique message identifier.  https://core.telegram.org/bots/api#messageid
  * @typedef {Object} MessageId
- * @property {number} message_id Unique message identifier
+ * @property {number} message_id Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
  */
 
 
@@ -254,7 +255,7 @@
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.  https://core.telegram.org/bots/api#messageentity
  * @typedef {Object} MessageEntity
- * @property {MessageEntityType} type Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers)
+ * @property {MessageEntityType} type Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag or #hashtag@chatusername), “cashtag” ($USD or $USD@chatusername), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers)
  * @property {number} offset Offset in UTF-16 code units to the start of the entity
  * @property {number} length Length of the entity in UTF-16 code units
  * @property {string} [url] Optional. For “text_link” only, URL that will be opened after user taps on the text
@@ -793,8 +794,9 @@
 
 
 /**
- * This object represents a service message about the creation of a scheduled giveaway. Currently holds no information.  https://core.telegram.org/bots/api#giveawaycreated
+ * This object represents a service message about the creation of a scheduled giveaway.  https://core.telegram.org/bots/api#giveawaycreated
  * @typedef {Object} GiveawayCreated
+ * @property {number} [prize_star_count] Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
  */
 
 
@@ -808,7 +810,8 @@
  * @property {boolean} [has_public_winners] Optional. True, if the list of giveaway winners will be visible to everyone
  * @property {string} [prize_description] Optional. Description of additional giveaway prize
  * @property {Array<string>} [country_codes] Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which eligible users for the giveaway must come. If empty, then all users can participate in the giveaway. Users with a phone number that was bought on Fragment can always participate in giveaways.
- * @property {number} [premium_subscription_month_count] Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
+ * @property {number} [prize_star_count] Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
+ * @property {number} [premium_subscription_month_count] Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only
  */
 
 
@@ -821,7 +824,8 @@
  * @property {number} winner_count Total number of winners in the giveaway
  * @property {Array<User>} winners List of up to 100 winners of the giveaway
  * @property {number} [additional_chat_count] Optional. The number of other chats the user had to join in order to be eligible for the giveaway
- * @property {number} [premium_subscription_month_count] Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for
+ * @property {number} [prize_star_count] Optional. The number of Telegram Stars that were split between giveaway winners; for Telegram Star giveaways only
+ * @property {number} [premium_subscription_month_count] Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only
  * @property {number} [unclaimed_prize_count] Optional. Number of undistributed prizes
  * @property {boolean} [only_new_members] Optional. True, if only users who had joined the chats after the giveaway started were eligible to win
  * @property {boolean} [was_refunded] Optional. True, if the giveaway was canceled because the payment for it was refunded
@@ -835,6 +839,7 @@
  * @property {number} winner_count Number of winners in the giveaway
  * @property {number} [unclaimed_prize_count] Optional. Number of undistributed prizes
  * @property {Message} [giveaway_message] Optional. Message with the giveaway that was completed, if it wasn't deleted
+ * @property {boolean} [is_star_giveaway] Optional. True, if the giveaway is a Telegram Star giveaway. Otherwise, currently, the giveaway is a Telegram Premium giveaway.
  */
 
 
@@ -962,6 +967,7 @@
  * @property {string} [switch_inline_query] Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent on behalf of a Telegram Business account.
  * @property {string} [switch_inline_query_current_chat] Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent on behalf of a Telegram Business account.
  * @property {SwitchInlineQueryChosenChat} [switch_inline_query_chosen_chat] Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent on behalf of a Telegram Business account.
+ * @property {CopyTextButton} [copy_text] Optional. Description of the button that copies the specified text to the clipboard.
  * @property {CallbackGame} [callback_game] Optional. Description of the game that will be launched when the user presses the button.NOTE: This type of button must always be the first button in the first row.
  * @property {boolean} [pay] Optional. Specify True, to send a Pay button. Substrings “” and “XTR” in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
  */
@@ -985,6 +991,13 @@
  * @property {boolean} [allow_bot_chats] Optional. True, if private chats with bots can be chosen
  * @property {boolean} [allow_group_chats] Optional. True, if group and supergroup chats can be chosen
  * @property {boolean} [allow_channel_chats] Optional. True, if channel chats can be chosen
+ */
+
+
+/**
+ * This object represents an inline keyboard button that copies specified text to the clipboard.  https://core.telegram.org/bots/api#copytextbutton
+ * @typedef {Object} CopyTextButton
+ * @property {string} text The text to be copied to the clipboard; 1-256 characters
  */
 
 
@@ -1425,11 +1438,12 @@
 
 
 /**
- * The boost was obtained by the creation of a Telegram Premium giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.  https://core.telegram.org/bots/api#chatboostsourcegiveaway
+ * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.  https://core.telegram.org/bots/api#chatboostsourcegiveaway
  * @typedef {Object} ChatBoostSourceGiveaway
  * @property {"giveaway"} source Source of the boost, always “giveaway”
  * @property {number} giveaway_message_id Identifier of a message in the chat with the giveaway; the message could have been deleted already. May be 0 if the message isn't sent yet.
- * @property {User} [user] Optional. User that won the prize in the giveaway if any
+ * @property {User} [user] Optional. User that won the prize in the giveaway if any; for Telegram Premium giveaways only
+ * @property {number} [prize_star_count] Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
  * @property {boolean} [is_unclaimed] Optional. True, if the giveaway was completed, but there was no user to win the prize
  */
 
@@ -2070,7 +2084,7 @@
  * @typedef {Object} InputInvoiceMessageContent
  * @property {string} title Product name, 1-32 characters
  * @property {string} description Product description, 1-255 characters
- * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+ * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property {string} [provider_token] Optional. Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
  * @property {string} currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
  * @property {Array<LabeledPrice>} prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
@@ -2207,6 +2221,14 @@
 
 
 /**
+ * This object contains information about a paid media purchase.  https://core.telegram.org/bots/api#paidmediapurchased
+ * @typedef {Object} PaidMediaPurchased
+ * @property {User} from User who purchased the media
+ * @property {string} paid_media_payload Bot-specified paid media payload
+ */
+
+
+/**
  * The withdrawal is in progress.  https://core.telegram.org/bots/api#revenuewithdrawalstatepending
  * @typedef {Object} RevenueWithdrawalStatePending
  * @property {"pending"} type Type of the state, always “pending”
@@ -2236,6 +2258,7 @@
  * @property {User} user Information about the user
  * @property {string} [invoice_payload] Optional. Bot-specified invoice payload
  * @property {Array<PaidMedia>} [paid_media] Optional. Information about the paid media bought by the user
+ * @property {string} [paid_media_payload] Optional. Bot-specified paid media payload
  */
 
 
@@ -2255,6 +2278,14 @@
 
 
 /**
+ * Describes a transaction with payment for paid broadcasting.  https://core.telegram.org/bots/api#transactionpartnertelegramapi
+ * @typedef {Object} TransactionPartnerTelegramApi
+ * @property {"telegram_api"} type Type of the transaction partner, always “telegram_api”
+ * @property {number} request_count The number of successful requests that exceeded regular limits and were therefore billed
+ */
+
+
+/**
  * Describes a transaction with an unknown source or recipient.  https://core.telegram.org/bots/api#transactionpartnerother
  * @typedef {Object} TransactionPartnerOther
  * @property {"other"} type Type of the transaction partner, always “other”
@@ -2264,7 +2295,7 @@
 /**
  * Describes a Telegram Star transaction.  https://core.telegram.org/bots/api#startransaction
  * @typedef {Object} StarTransaction
- * @property {string} id Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
+ * @property {string} id Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
  * @property {number} amount Number of Telegram Stars transferred by the transaction
  * @property {number} date Date the transaction was created in Unix time
  * @property {TransactionPartner} [source] Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions
@@ -2516,7 +2547,7 @@
 
 
 /**
- * @typedef {TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerOther} TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner
+ * @typedef {TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerTelegramApi | TransactionPartnerOther} TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner
  */
 
 
@@ -2719,6 +2750,7 @@
  * @property {LinkPreviewOptions} [link_preview_options] Link preview generation options for the message
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -2825,6 +2857,7 @@
  * @property {boolean} [show_caption_above_media] Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  */
@@ -2899,6 +2932,7 @@
  * @property {boolean} [has_spoiler] Pass True if the photo needs to be covered with a spoiler animation
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -2942,6 +2976,7 @@
  * @property {InputFile | string} [thumbnail] Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -2983,6 +3018,7 @@
  * @property {boolean} [disable_content_type_detection] Disables automatic server-side content type detection for files uploaded using multipart/form-data
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3029,6 +3065,7 @@
  * @property {boolean} [supports_streaming] Pass True if the uploaded video is suitable for streaming
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3074,6 +3111,7 @@
  * @property {boolean} [has_spoiler] Pass True if the animation needs to be covered with a spoiler animation
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3114,6 +3152,7 @@
  * @property {number} [duration] Duration of the voice message in seconds
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3153,6 +3192,7 @@
  * @property {InputFile | string} [thumbnail] Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3185,14 +3225,16 @@
  * @typedef {Object} SendPaidMediaParams
  * @property {string} [business_connection_id] Unique identifier of the business connection on behalf of which the message will be sent
  * @property {number | string} chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
- * @property {number} star_count The number of Telegram Stars that must be paid to buy access to the media
+ * @property {number} star_count The number of Telegram Stars that must be paid to buy access to the media; 1-2500
  * @property {Array<InputPaidMedia>} media A JSON-serialized array describing the media to be sent; up to 10 items
+ * @property {string} [payload] Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property {string} [caption] Media caption, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] Mode for parsing entities in the media caption. See formatting options for more details.
  * @property {Array<MessageEntity>} [caption_entities] A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
  * @property {boolean} [show_caption_above_media] Pass True, if the caption must be shown above the message media
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  */
@@ -3228,6 +3270,7 @@
  * @property {Array<InputMediaAudio> | Array<InputMediaDocument> | Array<InputMediaPhoto> | InputMediaVideo} media A JSON-serialized array describing messages to be sent, must include 2-10 items
  * @property {boolean} [disable_notification] Sends messages silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent messages from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  */
@@ -3268,6 +3311,7 @@
  * @property {number} [proximity_alert_radius] For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3311,6 +3355,7 @@
  * @property {string} [google_place_type] Google Places type of the venue. (See supported types.)
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3350,6 +3395,7 @@
  * @property {string} [vcard] Additional data about the contact in the form of a vCard, 0-2048 bytes
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3399,6 +3445,7 @@
  * @property {boolean} [is_closed] Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3435,6 +3482,7 @@
  * @property {string} [emoji] Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”, and values 1-64 for “”. Defaults to “”
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -5185,7 +5233,7 @@
 /**
  * @interface EditMessageMediaRequest
  * 
- * Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagemedia
+ * Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagemedia
  * @function editMessageMedia
  * @memberof EditMessageMediaRequest
  * @param {EditMessageMediaParams} params
@@ -5369,6 +5417,7 @@
  * @property {string} [emoji] Emoji associated with the sticker; only for just uploaded stickers
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -5841,7 +5890,7 @@
  * @property {number} [message_thread_id] Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property {string} title Product name, 1-32 characters
  * @property {string} description Product description, 1-255 characters
- * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+ * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property {string} [provider_token] Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
  * @property {string} currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
  * @property {Array<LabeledPrice>} prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
@@ -5862,6 +5911,7 @@
  * @property {boolean} [is_flexible] Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup} [reply_markup] A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.
@@ -5894,7 +5944,7 @@
  * @typedef {Object} CreateInvoiceLinkParams
  * @property {string} title Product name, 1-32 characters
  * @property {string} description Product description, 1-255 characters
- * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+ * @property {string} payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property {string} [provider_token] Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
  * @property {string} currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
  * @property {Array<LabeledPrice>} prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
@@ -6073,6 +6123,7 @@
  * @property {string} game_short_name Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
  * @property {boolean} [disable_notification] Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] Protects the contents of the sent message from forwarding and saving
+ * @property {boolean} [allow_paid_broadcast] Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property {string} [message_effect_id] Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] Description of the message to reply to
  * @property {InlineKeyboardMarkup} [reply_markup] A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game.

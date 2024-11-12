@@ -44,6 +44,8 @@ export interface Update {
     shipping_query?: ShippingQuery;
     /** PreCheckoutQuery | Optional. New incoming pre-checkout query. Contains full information about checkout */
     pre_checkout_query?: PreCheckoutQuery;
+    /** PaidMediaPurchased | Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat */
+    purchased_paid_media?: PaidMediaPurchased;
     /** Poll | Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot */
     poll?: Poll;
     /** PollAnswer | Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself. */
@@ -229,7 +231,7 @@ export interface ChatFullInfo {
 
 /** This object represents a message.  https://core.telegram.org/bots/api#message */
 export interface Message {
-    /** Integer | Unique message identifier inside this chat */
+    /** Integer | Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
     message_id: number;
     /** Integer | Optional. Unique identifier of a message thread to which the message belongs; for supergroups only */
     message_thread_id?: number;
@@ -404,7 +406,7 @@ export interface Message {
 
 /** This object represents a unique message identifier.  https://core.telegram.org/bots/api#messageid */
 export interface MessageId {
-    /** Integer | Unique message identifier */
+    /** Integer | Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
     message_id: number;
 }
 
@@ -422,7 +424,7 @@ export interface InaccessibleMessage {
 
 /** This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.  https://core.telegram.org/bots/api#messageentity */
 export interface MessageEntity {
-    /** String | Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers) */
+    /** String | Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag or #hashtag@chatusername), “cashtag” ($USD or $USD@chatusername), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers) */
     type: MessageEntityType;
     /** Integer | Offset in UTF-16 code units to the start of the entity */
     offset: number;
@@ -1124,8 +1126,10 @@ export interface VideoChatParticipantsInvited {
 }
 
 
-/** This object represents a service message about the creation of a scheduled giveaway. Currently holds no information.  https://core.telegram.org/bots/api#giveawaycreated */
+/** This object represents a service message about the creation of a scheduled giveaway.  https://core.telegram.org/bots/api#giveawaycreated */
 export interface GiveawayCreated {
+    /** Integer | Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only */
+    prize_star_count?: number;
 }
 
 
@@ -1145,7 +1149,9 @@ export interface Giveaway {
     prize_description?: string;
     /** Array of String | Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which eligible users for the giveaway must come. If empty, then all users can participate in the giveaway. Users with a phone number that was bought on Fragment can always participate in giveaways. */
     country_codes?: Array<string>;
-    /** Integer | Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for */
+    /** Integer | Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only */
+    prize_star_count?: number;
+    /** Integer | Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only */
     premium_subscription_month_count?: number;
 }
 
@@ -1164,7 +1170,9 @@ export interface GiveawayWinners {
     winners: Array<User>;
     /** Integer | Optional. The number of other chats the user had to join in order to be eligible for the giveaway */
     additional_chat_count?: number;
-    /** Integer | Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for */
+    /** Integer | Optional. The number of Telegram Stars that were split between giveaway winners; for Telegram Star giveaways only */
+    prize_star_count?: number;
+    /** Integer | Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only */
     premium_subscription_month_count?: number;
     /** Integer | Optional. Number of undistributed prizes */
     unclaimed_prize_count?: number;
@@ -1185,6 +1193,8 @@ export interface GiveawayCompleted {
     unclaimed_prize_count?: number;
     /** Message | Optional. Message with the giveaway that was completed, if it wasn't deleted */
     giveaway_message?: Message;
+    /** True | Optional. True, if the giveaway is a Telegram Star giveaway. Otherwise, currently, the giveaway is a Telegram Premium giveaway. */
+    is_star_giveaway?: boolean;
 }
 
 
@@ -1355,6 +1365,8 @@ export interface InlineKeyboardButton {
     switch_inline_query_current_chat?: string;
     /** SwitchInlineQueryChosenChat | Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent on behalf of a Telegram Business account. */
     switch_inline_query_chosen_chat?: SwitchInlineQueryChosenChat;
+    /** CopyTextButton | Optional. Description of the button that copies the specified text to the clipboard. */
+    copy_text?: CopyTextButton;
     /** CallbackGame | Optional. Description of the game that will be launched when the user presses the button.NOTE: This type of button must always be the first button in the first row. */
     callback_game?: CallbackGame;
     /** Boolean | Optional. Specify True, to send a Pay button. Substrings “” and “XTR” in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages. */
@@ -1387,6 +1399,13 @@ export interface SwitchInlineQueryChosenChat {
     allow_group_chats?: boolean;
     /** Boolean | Optional. True, if channel chats can be chosen */
     allow_channel_chats?: boolean;
+}
+
+
+/** This object represents an inline keyboard button that copies specified text to the clipboard.  https://core.telegram.org/bots/api#copytextbutton */
+export interface CopyTextButton {
+    /** String | The text to be copied to the clipboard; 1-256 characters */
+    text: string;
 }
 
 
@@ -1961,14 +1980,16 @@ export interface ChatBoostSourceGiftCode {
 }
 
 
-/** The boost was obtained by the creation of a Telegram Premium giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.  https://core.telegram.org/bots/api#chatboostsourcegiveaway */
+/** The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.  https://core.telegram.org/bots/api#chatboostsourcegiveaway */
 export interface ChatBoostSourceGiveaway {
     /** String | Source of the boost, always “giveaway” */
     source: "giveaway";
     /** Integer | Identifier of a message in the chat with the giveaway; the message could have been deleted already. May be 0 if the message isn't sent yet. */
     giveaway_message_id: number;
-    /** User | Optional. User that won the prize in the giveaway if any */
+    /** User | Optional. User that won the prize in the giveaway if any; for Telegram Premium giveaways only */
     user?: User;
+    /** Integer | Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only */
+    prize_star_count?: number;
     /** True | Optional. True, if the giveaway was completed, but there was no user to win the prize */
     is_unclaimed?: boolean;
 }
@@ -2927,7 +2948,7 @@ export interface InputInvoiceMessageContent {
     title: string;
     /** String | Product description, 1-255 characters */
     description: string;
-    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes. */
+    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes. */
     payload: string;
     /** String | Optional. Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars. */
     provider_token?: string;
@@ -3119,6 +3140,15 @@ export interface PreCheckoutQuery {
 }
 
 
+/** This object contains information about a paid media purchase.  https://core.telegram.org/bots/api#paidmediapurchased */
+export interface PaidMediaPurchased {
+    /** User | User who purchased the media */
+    from: User;
+    /** String | Bot-specified paid media payload */
+    paid_media_payload: string;
+}
+
+
 /** The withdrawal is in progress.  https://core.telegram.org/bots/api#revenuewithdrawalstatepending */
 export interface RevenueWithdrawalStatePending {
     /** String | Type of the state, always “pending” */
@@ -3154,6 +3184,8 @@ export interface TransactionPartnerUser {
     invoice_payload?: string;
     /** Array of PaidMedia | Optional. Information about the paid media bought by the user */
     paid_media?: Array<PaidMedia>;
+    /** String | Optional. Bot-specified paid media payload */
+    paid_media_payload?: string;
 }
 
 
@@ -3173,6 +3205,15 @@ export interface TransactionPartnerTelegramAds {
 }
 
 
+/** Describes a transaction with payment for paid broadcasting.  https://core.telegram.org/bots/api#transactionpartnertelegramapi */
+export interface TransactionPartnerTelegramApi {
+    /** String | Type of the transaction partner, always “telegram_api” */
+    type: "telegram_api";
+    /** Integer | The number of successful requests that exceeded regular limits and were therefore billed */
+    request_count: number;
+}
+
+
 /** Describes a transaction with an unknown source or recipient.  https://core.telegram.org/bots/api#transactionpartnerother */
 export interface TransactionPartnerOther {
     /** String | Type of the transaction partner, always “other” */
@@ -3182,7 +3223,7 @@ export interface TransactionPartnerOther {
 
 /** Describes a Telegram Star transaction.  https://core.telegram.org/bots/api#startransaction */
 export interface StarTransaction {
-    /** String | Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users. */
+    /** String | Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users. */
     id: string;
     /** Integer | Number of Telegram Stars transferred by the transaction */
     amount: number;
@@ -3473,7 +3514,7 @@ export type RevenueWithdrawalState = RevenueWithdrawalStatePending | RevenueWith
 
 
 /** This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of  https://core.telegram.org/bots/api#transactionpartner */
-export type TransactionPartner = TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerOther;
+export type TransactionPartner = TransactionPartnerUser | TransactionPartnerFragment | TransactionPartnerTelegramAds | TransactionPartnerTelegramApi | TransactionPartnerOther;
 
 
 /** This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:  https://core.telegram.org/bots/api#passportelementerror */
@@ -3627,6 +3668,8 @@ export interface SendMessageParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -3722,6 +3765,8 @@ export interface CopyMessageParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
     /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
@@ -3792,6 +3837,8 @@ export interface SendPhotoParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -3839,6 +3886,8 @@ export interface SendAudioParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -3882,6 +3931,8 @@ export interface SendDocumentParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -3935,6 +3986,8 @@ export interface SendVideoParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -3986,6 +4039,8 @@ export interface SendAnimationParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4027,6 +4082,8 @@ export interface SendVoiceParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4066,6 +4123,8 @@ export interface SendVideoNoteParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4091,10 +4150,12 @@ export interface SendPaidMediaParams {
     business_connection_id?: string;
     /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance. */
     chat_id: number | string;
-    /** Integer | The number of Telegram Stars that must be paid to buy access to the media */
+    /** Integer | The number of Telegram Stars that must be paid to buy access to the media; 1-2500 */
     star_count: number;
     /** Array of InputPaidMedia | A JSON-serialized array describing the media to be sent; up to 10 items */
     media: Array<InputPaidMedia>;
+    /** String | Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes. */
+    payload?: string;
     /** String | Media caption, 0-1024 characters after entities parsing */
     caption?: string;
     /** String | Mode for parsing entities in the media caption. See formatting options for more details. */
@@ -4107,6 +4168,8 @@ export interface SendPaidMediaParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
     /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
@@ -4138,6 +4201,8 @@ export interface SendMediaGroupParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent messages from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4179,6 +4244,8 @@ export interface SendLocationParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4226,6 +4293,8 @@ export interface SendVenueParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4265,6 +4334,8 @@ export interface SendContactParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4324,6 +4395,8 @@ export interface SendPollParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -4357,6 +4430,8 @@ export interface SendDiceParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -5666,7 +5741,7 @@ export type EditMessageMediaResponse = ResponseWithOutData;
 
 
 export interface EditMessageMediaRequest {
-    /** Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagemedia */
+    /** Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.  https://core.telegram.org/bots/api#editmessagemedia */
     editMessageMedia: (params: EditMessageMediaParams) => Promise<Response>;
 }
 
@@ -5830,6 +5905,8 @@ export interface SendStickerParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -6189,7 +6266,7 @@ export interface SendInvoiceParams {
     title: string;
     /** String | Product description, 1-255 characters */
     description: string;
-    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes. */
+    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes. */
     payload: string;
     /** String | Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars. */
     provider_token?: string;
@@ -6231,6 +6308,8 @@ export interface SendInvoiceParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
@@ -6256,7 +6335,7 @@ export interface CreateInvoiceLinkParams {
     title: string;
     /** String | Product description, 1-255 characters */
     description: string;
-    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes. */
+    /** String | Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes. */
     payload: string;
     /** String | Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars. */
     provider_token?: string;
@@ -6416,6 +6495,8 @@ export interface SendGameParams {
     disable_notification?: boolean;
     /** Boolean | Protects the contents of the sent message from forwarding and saving */
     protect_content?: boolean;
+    /** Boolean | Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance */
+    allow_paid_broadcast?: boolean;
     /** String | Unique identifier of the message effect to be added to the message; for private chats only */
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
