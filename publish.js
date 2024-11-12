@@ -18,7 +18,7 @@ try {
     fs.copyFileSync('LICENSE', 'dist/jsdoc/LICENSE');
     fs.copyFileSync('README.md', 'dist/jsdoc/README.md');
     fs.writeFileSync('dist/jsdoc/package.json', JSON.stringify(jsdocJson, null, 2));
-    execSync('cd dist/jsdoc && npm pack', {stdio: 'inherit'});
+    execSync('cd dist/jsdoc && npm publish', {stdio: 'inherit'});
 } catch (e) {
     console.error(e);
 }
@@ -38,7 +38,7 @@ try {
     fs.copyFileSync('LICENSE', 'dist/dts/LICENSE');
     fs.copyFileSync('README.md', 'dist/dts/README.md');
     fs.writeFileSync('dist/dts/package.json', JSON.stringify(dtsJSON, null, 2));
-    execSync('cd dist/dts && npm pack', {stdio: 'inherit'});
+    execSync('cd dist/dts && npm publish', {stdio: 'inherit'});
 
 } catch (e) {
     console.error(e)
