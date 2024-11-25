@@ -2,6 +2,7 @@ package typescript
 
 import (
 	"encoding/json"
+	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
 	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
 	"os"
 	"path/filepath"
@@ -36,11 +37,11 @@ const typesTemplate = `
  * {{.}}{{end}}
 */
 {{- if IsAbstractType .}}
-export type {{.Name}} = {{ToTsTypes .Subtypes}};
+export type {{.Name}} = {{UnionsTypes .Subtypes}};
 {{- else}}
 export interface {{.Name}} {
     {{- range .Fields}}
-    /** {{ToTypeDoc .Types}} | {{.Description}} */
+    /** {{ToTypesDoc .Types}} | {{.Description}} */
     {{.Name}}{{if .Required}}: {{else}}?: {{end}}{{ToFieldTypes .}};
     {{- end}}
 }
@@ -51,7 +52,7 @@ const paramsTemplate = `
 /** {{.Href}} */
 export interface {{ToPascalCase .Name}}Params {
     {{- range .Fields}}
-    /** {{ToTypeDoc .Types}} | {{.Description}} */
+    /** {{ToTypesDoc .Types}} | {{.Description}} */
     {{.Name}}{{if .Required}}: {{else}}?: {{end}}{{ToFieldTypes .}};
     {{- end}}
 }
@@ -60,7 +61,7 @@ export interface {{ToPascalCase .Name}}Params {
 const methodTemplate = `
 {{if HasResponse .Returns -}}
 /** {{.Href}} */
-export type {{ToPascalCase .Name}}Response = ResponseSuccess<{{ToTsTypes .Returns}}>;
+export type {{ToPascalCase .Name}}Response = ResponseSuccess<{{UnionsTypes .Returns}}>;
 
 {{end -}}
 export interface {{ToPascalCase .Name}}Request {
@@ -98,7 +99,7 @@ func RenderDTS(resp *scrape.APIResponse, dir string) error {
 		return err
 	}
 
-	err = render(templateConf{
+	err = Render(tmpl.Conf{
 		EnumsTemplate:   enumsTemplate,
 		TypesTemplate:   typesTemplate,
 		ParamsTemplate:  paramsTemplate,

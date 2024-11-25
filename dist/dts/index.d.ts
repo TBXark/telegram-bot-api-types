@@ -543,7 +543,7 @@ export interface ExternalReplyInfo {
 export interface ReplyParameters {
     /** Integer | Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it is specified */
     message_id: number;
-    /** Integer,String | Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account. */
+    /** Integer or String | Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account. */
     chat_id?: number | string;
     /** Boolean | Optional. Pass True if the message should be sent even if the specified message to be replied to is not found. Always False for replies in another chat or forum topic. Always True for messages sent on behalf of a business account. */
     allow_sending_without_reply?: boolean;
@@ -2201,7 +2201,7 @@ export interface BotCommandScopeAllChatAdministrators {
 export interface BotCommandScopeChat {
     /** String | Scope type, must be chat */
     type: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -2212,7 +2212,7 @@ export interface BotCommandScopeChat {
 export interface BotCommandScopeChatAdministrators {
     /** String | Scope type, must be chat_administrators */
     type: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -2223,7 +2223,7 @@ export interface BotCommandScopeChatAdministrators {
 export interface BotCommandScopeChatMember {
     /** String | Scope type, must be chat_member */
     type: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -2479,7 +2479,7 @@ export interface InputMediaVideo {
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
-    /** InputFile,String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Optional. Caption of the video to be sent, 0-1024 characters after entities parsing */
     caption?: string;
@@ -2510,7 +2510,7 @@ export interface InputMediaAnimation {
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
-    /** InputFile,String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing */
     caption?: string;
@@ -2539,7 +2539,7 @@ export interface InputMediaAudio {
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
-    /** InputFile,String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Optional. Caption of the audio to be sent, 0-1024 characters after entities parsing */
     caption?: string;
@@ -2564,7 +2564,7 @@ export interface InputMediaDocument {
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
-    /** InputFile,String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Optional. Caption of the document to be sent, 0-1024 characters after entities parsing */
     caption?: string;
@@ -2611,7 +2611,7 @@ export interface InputPaidMediaVideo {
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
-    /** InputFile,String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** Integer | Optional. Video width */
     width?: number;
@@ -2697,7 +2697,7 @@ export interface MaskPosition {
  * This object describes a sticker to be added to a sticker set.
 */
 export interface InputSticker {
-    /** InputFile,String | The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, upload a new one using multipart/form-data, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, upload a new one using multipart/form-data, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     sticker: InputFile | string;
     /** String | Format of the added sticker, must be one of "static" for a .WEBP or .PNG image, "animated" for a .TGS animation, "video" for a WEBM video */
     format: string;
@@ -4246,7 +4246,7 @@ export interface CloseRequest {
 export interface SendMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -4268,7 +4268,7 @@ export interface SendMessageParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4289,11 +4289,11 @@ export interface SendMessageRequest {
 
 /** https://core.telegram.org/bots/api#forwardmessage */
 export interface ForwardMessageParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** Integer,String | Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername) */
+    /** Integer or String | Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername) */
     from_chat_id: number | string;
     /** Boolean | Sends the message silently. Users will receive a notification with no sound. */
     disable_notification?: boolean;
@@ -4320,11 +4320,11 @@ export interface ForwardMessageRequest {
 
 /** https://core.telegram.org/bots/api#forwardmessages */
 export interface ForwardMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** Integer,String | Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername) */
+    /** Integer or String | Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername) */
     from_chat_id: number | string;
     /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order. */
     message_ids: Array<number>;
@@ -4351,11 +4351,11 @@ export interface ForwardMessagesRequest {
 
 /** https://core.telegram.org/bots/api#copymessage */
 export interface CopyMessageParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** Integer,String | Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername) */
+    /** Integer or String | Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername) */
     from_chat_id: number | string;
     /** Integer | Message identifier in the chat specified in from_chat_id */
     message_id: number;
@@ -4375,7 +4375,7 @@ export interface CopyMessageParams {
     allow_paid_broadcast?: boolean;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4396,11 +4396,11 @@ export interface CopyMessageRequest {
 
 /** https://core.telegram.org/bots/api#copymessages */
 export interface CopyMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** Integer,String | Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername) */
+    /** Integer or String | Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername) */
     from_chat_id: number | string;
     /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The identifiers must be specified in a strictly increasing order. */
     message_ids: Array<number>;
@@ -4431,11 +4431,11 @@ export interface CopyMessagesRequest {
 export interface SendPhotoParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     photo: InputFile | string;
     /** String | Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing */
     caption?: string;
@@ -4457,7 +4457,7 @@ export interface SendPhotoParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4480,11 +4480,11 @@ export interface SendPhotoRequest {
 export interface SendAudioParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     audio: InputFile | string;
     /** String | Audio caption, 0-1024 characters after entities parsing */
     caption?: string;
@@ -4498,7 +4498,7 @@ export interface SendAudioParams {
     performer?: string;
     /** String | Track name */
     title?: string;
-    /** InputFile,String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** Boolean | Sends the message silently. Users will receive a notification with no sound. */
     disable_notification?: boolean;
@@ -4510,7 +4510,7 @@ export interface SendAudioParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4535,13 +4535,13 @@ export interface SendAudioRequest {
 export interface SendDocumentParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     document: InputFile | string;
-    /** InputFile,String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing */
     caption?: string;
@@ -4561,7 +4561,7 @@ export interface SendDocumentParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4584,11 +4584,11 @@ export interface SendDocumentRequest {
 export interface SendVideoParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     video: InputFile | string;
     /** Integer | Duration of sent video in seconds */
     duration?: number;
@@ -4596,7 +4596,7 @@ export interface SendVideoParams {
     width?: number;
     /** Integer | Video height */
     height?: number;
-    /** InputFile,String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing */
     caption?: string;
@@ -4620,7 +4620,7 @@ export interface SendVideoParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4643,11 +4643,11 @@ export interface SendVideoRequest {
 export interface SendAnimationParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     animation: InputFile | string;
     /** Integer | Duration of sent animation in seconds */
     duration?: number;
@@ -4655,7 +4655,7 @@ export interface SendAnimationParams {
     width?: number;
     /** Integer | Animation height */
     height?: number;
-    /** InputFile,String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** String | Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing */
     caption?: string;
@@ -4677,7 +4677,7 @@ export interface SendAnimationParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4700,11 +4700,11 @@ export interface SendAnimationRequest {
 export interface SendVoiceParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     voice: InputFile | string;
     /** String | Voice message caption, 0-1024 characters after entities parsing */
     caption?: string;
@@ -4724,7 +4724,7 @@ export interface SendVoiceParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4747,17 +4747,17 @@ export interface SendVoiceRequest {
 export interface SendVideoNoteParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported */
+    /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported */
     video_note: InputFile | string;
     /** Integer | Duration of sent video in seconds */
     duration?: number;
     /** Integer | Video width and height, i.e. diameter of the video message */
     length?: number;
-    /** InputFile,String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
+    /** InputFile or String | Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     thumbnail?: InputFile | string;
     /** Boolean | Sends the message silently. Users will receive a notification with no sound. */
     disable_notification?: boolean;
@@ -4769,7 +4769,7 @@ export interface SendVideoNoteParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4792,7 +4792,7 @@ export interface SendVideoNoteRequest {
 export interface SendPaidMediaParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance. */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance. */
     chat_id: number | string;
     /** Integer | The number of Telegram Stars that must be paid to buy access to the media; 1-2500 */
     star_count: number;
@@ -4816,7 +4816,7 @@ export interface SendPaidMediaParams {
     allow_paid_broadcast?: boolean;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4839,11 +4839,11 @@ export interface SendPaidMediaRequest {
 export interface SendMediaGroupParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** Array of InputMediaAudio,Array of InputMediaDocument,Array of InputMediaPhoto,Array of InputMediaVideo | A JSON-serialized array describing messages to be sent, must include 2-10 items */
+    /** Array of InputMediaAudio or Array of InputMediaDocument or Array of InputMediaPhoto or Array of InputMediaVideo | A JSON-serialized array describing messages to be sent, must include 2-10 items */
     media: Array<InputMediaAudio> | Array<InputMediaDocument> | Array<InputMediaPhoto> | Array<InputMediaVideo>;
     /** Boolean | Sends messages silently. Users will receive a notification with no sound. */
     disable_notification?: boolean;
@@ -4876,7 +4876,7 @@ export interface SendMediaGroupRequest {
 export interface SendLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -4902,7 +4902,7 @@ export interface SendLocationParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4925,7 +4925,7 @@ export interface SendLocationRequest {
 export interface SendVenueParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -4955,7 +4955,7 @@ export interface SendVenueParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -4978,7 +4978,7 @@ export interface SendVenueRequest {
 export interface SendContactParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -5000,7 +5000,7 @@ export interface SendContactParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5023,7 +5023,7 @@ export interface SendContactRequest {
 export interface SendPollParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -5065,7 +5065,7 @@ export interface SendPollParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5088,7 +5088,7 @@ export interface SendPollRequest {
 export interface SendDiceParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
@@ -5104,7 +5104,7 @@ export interface SendDiceParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5127,7 +5127,7 @@ export interface SendDiceRequest {
 export interface SendChatActionParams {
     /** String | Unique identifier of the business connection on behalf of which the action will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread; for supergroups only */
     message_thread_id?: number;
@@ -5146,7 +5146,7 @@ export interface SendChatActionRequest {
 
 /** https://core.telegram.org/bots/api#setmessagereaction */
 export interface SetMessageReactionParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead. */
     message_id: number;
@@ -5232,7 +5232,7 @@ export interface GetFileRequest {
 
 /** https://core.telegram.org/bots/api#banchatmember */
 export interface BanChatMemberParams {
-    /** Integer,String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5252,7 +5252,7 @@ export interface BanChatMemberRequest {
 
 /** https://core.telegram.org/bots/api#unbanchatmember */
 export interface UnbanChatMemberParams {
-    /** Integer,String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5270,7 +5270,7 @@ export interface UnbanChatMemberRequest {
 
 /** https://core.telegram.org/bots/api#restrictchatmember */
 export interface RestrictChatMemberParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5292,7 +5292,7 @@ export interface RestrictChatMemberRequest {
 
 /** https://core.telegram.org/bots/api#promotechatmember */
 export interface PromoteChatMemberParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5338,7 +5338,7 @@ export interface PromoteChatMemberRequest {
 
 /** https://core.telegram.org/bots/api#setchatadministratorcustomtitle */
 export interface SetChatAdministratorCustomTitleParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5356,7 +5356,7 @@ export interface SetChatAdministratorCustomTitleRequest {
 
 /** https://core.telegram.org/bots/api#banchatsenderchat */
 export interface BanChatSenderChatParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target sender chat */
     sender_chat_id: number;
@@ -5372,7 +5372,7 @@ export interface BanChatSenderChatRequest {
 
 /** https://core.telegram.org/bots/api#unbanchatsenderchat */
 export interface UnbanChatSenderChatParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target sender chat */
     sender_chat_id: number;
@@ -5388,7 +5388,7 @@ export interface UnbanChatSenderChatRequest {
 
 /** https://core.telegram.org/bots/api#setchatpermissions */
 export interface SetChatPermissionsParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** ChatPermissions | A JSON-serialized object for new default chat permissions */
     permissions: ChatPermissions;
@@ -5406,7 +5406,7 @@ export interface SetChatPermissionsRequest {
 
 /** https://core.telegram.org/bots/api#exportchatinvitelink */
 export interface ExportChatInviteLinkParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5427,7 +5427,7 @@ export interface ExportChatInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#createchatinvitelink */
 export interface CreateChatInviteLinkParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | Invite link name; 0-32 characters */
     name?: string;
@@ -5456,7 +5456,7 @@ export interface CreateChatInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#editchatinvitelink */
 export interface EditChatInviteLinkParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | The invite link to edit */
     invite_link: string;
@@ -5487,7 +5487,7 @@ export interface EditChatInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#createchatsubscriptioninvitelink */
 export interface CreateChatSubscriptionInviteLinkParams {
-    /** Integer,String | Unique identifier for the target channel chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target channel chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | Invite link name; 0-32 characters */
     name?: string;
@@ -5514,7 +5514,7 @@ export interface CreateChatSubscriptionInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#editchatsubscriptioninvitelink */
 export interface EditChatSubscriptionInviteLinkParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | The invite link to edit */
     invite_link: string;
@@ -5539,7 +5539,7 @@ export interface EditChatSubscriptionInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#revokechatinvitelink */
 export interface RevokeChatInviteLinkParams {
-    /** Integer,String | Unique identifier of the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier of the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | The invite link to revoke */
     invite_link: string;
@@ -5562,7 +5562,7 @@ export interface RevokeChatInviteLinkRequest {
 
 /** https://core.telegram.org/bots/api#approvechatjoinrequest */
 export interface ApproveChatJoinRequestParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5578,7 +5578,7 @@ export interface ApproveChatJoinRequestRequest {
 
 /** https://core.telegram.org/bots/api#declinechatjoinrequest */
 export interface DeclineChatJoinRequestParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5594,7 +5594,7 @@ export interface DeclineChatJoinRequestRequest {
 
 /** https://core.telegram.org/bots/api#setchatphoto */
 export interface SetChatPhotoParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** InputFile | New chat photo, uploaded using multipart/form-data */
     photo: InputFile;
@@ -5610,7 +5610,7 @@ export interface SetChatPhotoRequest {
 
 /** https://core.telegram.org/bots/api#deletechatphoto */
 export interface DeleteChatPhotoParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5624,7 +5624,7 @@ export interface DeleteChatPhotoRequest {
 
 /** https://core.telegram.org/bots/api#setchattitle */
 export interface SetChatTitleParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | New chat title, 1-128 characters */
     title: string;
@@ -5640,7 +5640,7 @@ export interface SetChatTitleRequest {
 
 /** https://core.telegram.org/bots/api#setchatdescription */
 export interface SetChatDescriptionParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** String | New chat description, 0-255 characters */
     description?: string;
@@ -5658,7 +5658,7 @@ export interface SetChatDescriptionRequest {
 export interface PinChatMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be pinned */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Identifier of a message to pin */
     message_id: number;
@@ -5678,7 +5678,7 @@ export interface PinChatMessageRequest {
 export interface UnpinChatMessageParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be unpinned */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Identifier of the message to unpin. Required if business_connection_id is specified. If not specified, the most recent pinned message (by sending date) will be unpinned. */
     message_id?: number;
@@ -5694,7 +5694,7 @@ export interface UnpinChatMessageRequest {
 
 /** https://core.telegram.org/bots/api#unpinallchatmessages */
 export interface UnpinAllChatMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5708,7 +5708,7 @@ export interface UnpinAllChatMessagesRequest {
 
 /** https://core.telegram.org/bots/api#leavechat */
 export interface LeaveChatParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5722,7 +5722,7 @@ export interface LeaveChatRequest {
 
 /** https://core.telegram.org/bots/api#getchat */
 export interface GetChatParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5743,7 +5743,7 @@ export interface GetChatRequest {
 
 /** https://core.telegram.org/bots/api#getchatadministrators */
 export interface GetChatAdministratorsParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5764,7 +5764,7 @@ export interface GetChatAdministratorsRequest {
 
 /** https://core.telegram.org/bots/api#getchatmembercount */
 export interface GetChatMemberCountParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
 }
 
@@ -5785,7 +5785,7 @@ export interface GetChatMemberCountRequest {
 
 /** https://core.telegram.org/bots/api#getchatmember */
 export interface GetChatMemberParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -5808,7 +5808,7 @@ export interface GetChatMemberRequest {
 
 /** https://core.telegram.org/bots/api#setchatstickerset */
 export interface SetChatStickerSetParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** String | Name of the sticker set to be set as the group sticker set */
     sticker_set_name: string;
@@ -5824,7 +5824,7 @@ export interface SetChatStickerSetRequest {
 
 /** https://core.telegram.org/bots/api#deletechatstickerset */
 export interface DeleteChatStickerSetParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -5853,7 +5853,7 @@ export interface GetForumTopicIconStickersRequest {
 
 /** https://core.telegram.org/bots/api#createforumtopic */
 export interface CreateForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** String | Topic name, 1-128 characters */
     name: string;
@@ -5880,7 +5880,7 @@ export interface CreateForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#editforumtopic */
 export interface EditForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
@@ -5900,7 +5900,7 @@ export interface EditForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#closeforumtopic */
 export interface CloseForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
@@ -5916,7 +5916,7 @@ export interface CloseForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#reopenforumtopic */
 export interface ReopenForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
@@ -5932,7 +5932,7 @@ export interface ReopenForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#deleteforumtopic */
 export interface DeleteForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
@@ -5948,7 +5948,7 @@ export interface DeleteForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#unpinallforumtopicmessages */
 export interface UnpinAllForumTopicMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
@@ -5964,7 +5964,7 @@ export interface UnpinAllForumTopicMessagesRequest {
 
 /** https://core.telegram.org/bots/api#editgeneralforumtopic */
 export interface EditGeneralForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
     /** String | New topic name, 1-128 characters */
     name: string;
@@ -5980,7 +5980,7 @@ export interface EditGeneralForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#closegeneralforumtopic */
 export interface CloseGeneralForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -5994,7 +5994,7 @@ export interface CloseGeneralForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#reopengeneralforumtopic */
 export interface ReopenGeneralForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -6008,7 +6008,7 @@ export interface ReopenGeneralForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#hidegeneralforumtopic */
 export interface HideGeneralForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -6022,7 +6022,7 @@ export interface HideGeneralForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#unhidegeneralforumtopic */
 export interface UnhideGeneralForumTopicParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -6036,7 +6036,7 @@ export interface UnhideGeneralForumTopicRequest {
 
 /** https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages */
 export interface UnpinAllGeneralForumTopicMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername) */
     chat_id: number | string;
 }
 
@@ -6072,7 +6072,7 @@ export interface AnswerCallbackQueryRequest {
 
 /** https://core.telegram.org/bots/api#getuserchatboosts */
 export interface GetUserChatBoostsParams {
-    /** Integer,String | Unique identifier for the chat or username of the channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the chat or username of the channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier of the target user */
     user_id: number;
@@ -6360,7 +6360,7 @@ export interface GetMyDefaultAdministratorRightsRequest {
 export interface EditMessageTextParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
     message_id?: number;
@@ -6397,7 +6397,7 @@ export interface EditMessageTextRequest {
 export interface EditMessageCaptionParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
     message_id?: number;
@@ -6434,7 +6434,7 @@ export interface EditMessageCaptionRequest {
 export interface EditMessageMediaParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
     message_id?: number;
@@ -6465,7 +6465,7 @@ export interface EditMessageMediaRequest {
 export interface EditMessageLiveLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
     message_id?: number;
@@ -6506,7 +6506,7 @@ export interface EditMessageLiveLocationRequest {
 export interface StopMessageLiveLocationParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message with live location to stop */
     message_id?: number;
@@ -6535,7 +6535,7 @@ export interface StopMessageLiveLocationRequest {
 export interface EditMessageReplyMarkupParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id?: number | string;
     /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
     message_id?: number;
@@ -6564,7 +6564,7 @@ export interface EditMessageReplyMarkupRequest {
 export interface StopPollParams {
     /** String | Unique identifier of the business connection on behalf of which the message to be edited was sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Identifier of the original message with the poll */
     message_id: number;
@@ -6589,7 +6589,7 @@ export interface StopPollRequest {
 
 /** https://core.telegram.org/bots/api#deletemessage */
 export interface DeleteMessageParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Identifier of the message to delete */
     message_id: number;
@@ -6614,7 +6614,7 @@ export interface DeleteMessageRequest {
 
 /** https://core.telegram.org/bots/api#deletemessages */
 export interface DeleteMessagesParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted */
     message_ids: Array<number>;
@@ -6632,11 +6632,11 @@ export interface DeleteMessagesRequest {
 export interface SendStickerParams {
     /** String | Unique identifier of the business connection on behalf of which the message will be sent */
     business_connection_id?: string;
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;
-    /** InputFile,String | Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Video and animated stickers can't be sent via an HTTP URL. */
+    /** InputFile or String | Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Video and animated stickers can't be sent via an HTTP URL. */
     sticker: InputFile | string;
     /** String | Emoji associated with the sticker; only for just uploaded stickers */
     emoji?: string;
@@ -6650,7 +6650,7 @@ export interface SendStickerParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup,ReplyKeyboardMarkup,ReplyKeyboardRemove,ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6898,7 +6898,7 @@ export interface SetStickerSetThumbnailParams {
     name: string;
     /** Integer | User identifier of the sticker set owner */
     user_id: number;
-    /** InputFile,String | A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail. */
+    /** InputFile or String | A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail. */
     thumbnail?: InputFile | string;
     /** String | Format of the thumbnail, must be one of "static" for a .WEBP or .PNG image, "animated" for a .TGS animation, or "video" for a WEBM video */
     format: string;
@@ -7060,7 +7060,7 @@ export interface SavePreparedInlineMessageRequest {
 
 /** https://core.telegram.org/bots/api#sendinvoice */
 export interface SendInvoiceParams {
-    /** Integer,String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
+    /** Integer or String | Unique identifier for the target chat or username of the target channel (in the format @channelusername) */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread (topic) of the forum; for forum supergroups only */
     message_thread_id?: number;

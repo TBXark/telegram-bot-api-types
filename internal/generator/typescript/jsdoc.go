@@ -2,6 +2,7 @@ package typescript
 
 import (
 	"encoding/json"
+	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
 	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
 	"os"
 	"path/filepath"
@@ -46,7 +47,7 @@ const typesJsDocTemplate = `
  * {{.Href}}  {{range .Description}}
  * {{.}}{{end}}
 {{- if IsAbstractType .}}
- * @typedef { {{- ToTsTypes .Subtypes -}} } {{.Name}}
+ * @typedef { {{- UnionsTypes .Subtypes -}} } {{.Name}}
 {{- else}}
  * @typedef {Object} {{.Name}}
 {{- range .Fields}}
@@ -70,7 +71,7 @@ const paramsJsDocTemplate = `
 const methodJsDocTemplate = `
 {{- if HasResponse .Returns}}
 /**
- * @typedef {ResponseSuccess<{{ToTsTypes .Returns}}>} {{ToPascalCase .Name}}Response
+ * @typedef {ResponseSuccess<{{UnionsTypes .Returns}}>} {{ToPascalCase .Name}}Response
  */
 {{end}}
 /**
@@ -118,7 +119,7 @@ func RenderJsDoc(resp *scrape.APIResponse, dir string) error {
 		return err
 	}
 
-	err = render(templateConf{
+	err = Render(tmpl.Conf{
 		EnumsTemplate:   enumsJsDocTemplate,
 		TypesTemplate:   typesJsDocTemplate,
 		ParamsTemplate:  paramsJsDocTemplate,
