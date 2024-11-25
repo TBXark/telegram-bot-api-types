@@ -1,4 +1,4 @@
-import '../dist/jsdoc/index.js'
+import 'telegram-bot-api-jsdoc'
 import {HttpsProxyAgent} from 'https-proxy-agent';
 import fetch from 'node-fetch';
 import * as fs from 'node:fs';

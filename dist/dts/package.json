@@ -1,0 +1,13 @@
+{
+  "name": "telegram-bot-api-types",
+  "version": "8.0.0",
+  "description": "Telegram Bot API types",
+  "repository": "git@github.com:TBXark/telegram-bot-api-types.git",
+  "type": "module",
+  "author": "TBXark",
+  "license": "MIT",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts"
+  ]
+}

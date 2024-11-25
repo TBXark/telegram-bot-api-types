@@ -1,0 +1,24 @@
+{
+  "name": "telegram-bot-api-types",
+  "version": "8.0.0",
+  "description": "Telegram Bot API types",
+  "repository": "git@github.com:TBXark/telegram-bot-api-types.git",
+  "type": "module",
+  "author": "TBXark",
+  "license": "MIT",
+  "scripts": {
+    "test:dts": "../node_modules/.bin/tsx test/dts.test.ts",
+    "test:jsdoc": "node jsdoc.test.js"
+  },
+  "dependencies": {
+    "telegram-bot-api-jsdoc": "../dist/jsdoc",
+    "telegram-bot-api-types": "../dist/dts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "cheerio": "^1.0.0",
+    "https-proxy-agent": "^7.0.5",
+    "node-fetch": "^3.3.2",
+    "tsx": "^4.17.0"
+  }
+}

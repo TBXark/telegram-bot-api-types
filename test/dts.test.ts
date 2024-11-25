@@ -1,4 +1,4 @@
-import type * as Telegram from "../dist/dts";
+import type * as Telegram from "telegram-bot-api-types";
 import {HttpsProxyAgent} from 'https-proxy-agent';
 import type {Response} from 'node-fetch';
 import fetch from 'node-fetch';
@@ -94,7 +94,7 @@ export function createAPIClient(token: string): APIClient {
 
 async function main() {
     const client = createAPIClient(token);
-    const {result: user} = await client.getMeWithReturns()
+    const {result: user} = await client.getMeWithReturns();
     console.log(`Hello! My name is ${user.username}`);
     await client.deleteWebhook();
     let offset = 0

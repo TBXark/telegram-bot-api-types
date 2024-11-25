@@ -5,7 +5,7 @@ Telegram Bot API SDK compiled size is 0KB that only includes type definition fil
 This is a `d.ts` and `jsdoc` file for Telegram Bot API. It is based on the official [Telegram Bot API](https://core.telegram.org/bots/api) documentation. 
 
 
-![](./preview.jpg)
+![](https://github.com/TBXark/telegram-bot-api-types/raw/master/preview.jpg)
 
 
 ### Installation
@@ -73,6 +73,10 @@ main().catch(console.error);
 You don't need to implement the methods one by one, you can use the `Proxy` object to create a client that automatically calls the methods. You can find the implementation of the `APIClientBase` class in the [`test`](test/dts.test.ts) folder.
 
 If you want to use javascript, you can follow the example [`jsdoc.test.js`](test/jsdoc.test.js)
+
+## Thanks
+
+I refactored this project based on the [PaulSonOfLars/telegram-bot-api-spec](https://github.com/PaulSonOfLars/telegram-bot-api-spec) project, thanks to his work.
 
 ## License
 
