@@ -98,6 +98,13 @@ func RenderSwift(resp *scrape.APIResponse, dir string) error {
 			}
 		}
 	}
+	for _, m := range copyResp.Methods {
+		for _, f := range m.Fields {
+			if len(f.Types) > maxEither {
+				maxEither = len(f.Types)
+			}
+		}
+	}
 	swiftPath := filepath.Join(dir, "swift", "index.swift")
 	file, err := os.Create(swiftPath)
 	if err != nil {

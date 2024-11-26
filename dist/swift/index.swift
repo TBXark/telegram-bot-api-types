@@ -11805,4 +11805,76 @@ extension TelegramAPI {
         }
     }
 
+    public enum Either3<A: Codable, B: Codable, C: Codable>: Codable {
+        case a(A)
+        case b(B)
+        case c(C)
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            if let value = try? container.decode(A.self) {
+                self = .a(value)
+            }
+            else if let value = try? container.decode(B.self) {
+                self = .b(value)
+            }
+            else if let value = try? container.decode(C.self) {
+                self = .c(value)
+            }else {
+                throw DecodingError.typeMismatch(Either3.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Either3"))
+            }
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+                case .a(let value):
+                    try container.encode(value)
+                case .b(let value):
+                    try container.encode(value)
+                case .c(let value):
+                    try container.encode(value)
+            }
+        }
+    }
+
+    public enum Either4<A: Codable, B: Codable, C: Codable, D: Codable>: Codable {
+        case a(A)
+        case b(B)
+        case c(C)
+        case d(D)
+
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            if let value = try? container.decode(A.self) {
+                self = .a(value)
+            }
+            else if let value = try? container.decode(B.self) {
+                self = .b(value)
+            }
+            else if let value = try? container.decode(C.self) {
+                self = .c(value)
+            }
+            else if let value = try? container.decode(D.self) {
+                self = .d(value)
+            }else {
+                throw DecodingError.typeMismatch(Either4.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Either4"))
+            }
+        }
+
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            switch self {
+                case .a(let value):
+                    try container.encode(value)
+                case .b(let value):
+                    try container.encode(value)
+                case .c(let value):
+                    try container.encode(value)
+                case .d(let value):
+                    try container.encode(value)
+            }
+        }
+    }
+
 }
