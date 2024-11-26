@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/TBXark/telegram-bot-api-types/internal/generator/spec"
+	"github.com/TBXark/telegram-bot-api-types/internal/generator/swift"
 	"github.com/TBXark/telegram-bot-api-types/internal/generator/typescript"
 	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
 	"log"
@@ -31,6 +32,7 @@ func main() {
 		GeneratorFunc(typescript.RenderDTS),
 		GeneratorFunc(typescript.RenderJsDoc),
 		GeneratorFunc(spec.RenderSpec),
+		GeneratorFunc(swift.RenderSwift),
 	}
 
 	for _, gen := range generator {
