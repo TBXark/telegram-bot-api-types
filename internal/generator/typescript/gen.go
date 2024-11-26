@@ -20,20 +20,21 @@ func toTypeScriptType(t string) string {
 }
 
 func UnionsTypes(types []string) string {
-	var sb strings.Builder
-	for i, t := range types {
+	if len(types) == 0 {
+		return "never"
+	}
+	either := make([]string, 0, len(types))
+	for _, t := range types {
 		arrayWrap := 0
 		_type := t
 		for strings.HasPrefix(_type, "Array of ") {
 			_type = _type[len("Array of "):]
 			arrayWrap++
 		}
-		if i > 0 {
-			sb.WriteString(" | ")
-		}
 		if arrayWrap == 0 {
-			sb.WriteString(toTypeScriptType(_type))
+			either = append(either, toTypeScriptType(_type))
 		} else {
+			var sb strings.Builder
 			for i := 0; i < arrayWrap; i++ {
 				sb.WriteString("Array<")
 			}
@@ -41,9 +42,10 @@ func UnionsTypes(types []string) string {
 			for i := 0; i < arrayWrap; i++ {
 				sb.WriteString(">")
 			}
+			either = append(either, sb.String())
 		}
 	}
-	return sb.String()
+	return strings.Join(either, " | ")
 }
 
 func ToFieldTypes(field *scrape.Field) string {

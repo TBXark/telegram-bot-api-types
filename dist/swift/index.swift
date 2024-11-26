@@ -15,6 +15,8 @@ public struct TelegramAPI {
             self.value = value
         }
     }
+
+    public struct Empty: Codable {}
 }
 
 

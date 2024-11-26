@@ -33,6 +33,9 @@ func toSwiftType(t string) string {
 }
 
 func UnionsTypes(types []string) string {
+	if len(types) == 0 {
+		return "Empty"
+	}
 	either := make([]string, 0, len(types))
 	for _, t := range types {
 		arrayWrap := 0
@@ -54,9 +57,6 @@ func UnionsTypes(types []string) string {
 			}
 			either = append(either, sb.String())
 		}
-	}
-	if len(either) == 0 {
-		return "void"
 	}
 	if len(either) == 1 {
 		return either[0]
