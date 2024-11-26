@@ -1,4 +1,4 @@
-name: build
+name: Scrape API
 
 on:
     workflow_dispatch: {}
@@ -32,7 +32,7 @@ jobs:
       uses: peter-evans/create-pull-request@v6
       with:
         commit-message: >
-          feat: Update bot API docs to version ${{ env.TG_BPT_API_VERSION }}
+          chore: Update bot API docs to version ${{ env.TG_BPT_API_VERSION }}
         title: >
           Update bot API docs based on the latest changes
         body: >

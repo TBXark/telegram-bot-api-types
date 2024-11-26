@@ -1,6 +1,6 @@
 # telegram-bot-api-types
 
-This is a project of a type definition file for the Telegram Bot API that generates multilingual automatically.
+Automatically generate type definition files for the Telegram Bot API in multiple programming languages.
 
 ![](https://github.com/TBXark/telegram-bot-api-types/raw/master/preview.jpg)
 
@@ -32,9 +32,9 @@ telegram-bot-api-types --help
         The output language (default "typescript,jsdoc,spec,swift")
 ```
 
-## Thanks
+## Reference
 
-I refactored this project based on the [PaulSonOfLars/telegram-bot-api-spec](https://github.com/PaulSonOfLars/telegram-bot-api-spec) project, thanks to his work.
+- Refactored the scraper inspired by [telegram-bot-api-spec](https://github.com/PaulSonOfLars/telegram-bot-api-spec).
 
 ## License
 
