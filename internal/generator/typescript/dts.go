@@ -1,6 +1,7 @@
 package typescript
 
 import (
+	_ "embed"
 	"encoding/json"
 	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
 	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
@@ -8,89 +9,14 @@ import (
 	"path/filepath"
 )
 
-const responseGeneric = `
-export interface ResponseSuccess<T> {
-    ok: true;
-    result: T;
-}
-
-export interface ResponseError {
-    ok: false;
-    error_code: number;
-    description: string;
-}
-
-export type SuccessWithOutData = true;
-
-export type ResponseWithOutData = ResponseSuccess<SuccessWithOutData>;
-
-export type ResponseWithMessage = ResponseSuccess<Message>;
-`
-
-const enumsTemplate = `
-export type {{.Name}} = {{ToEnumValues .Values}};
-`
-
-const typesTemplate = `
-/** 
- * {{.Href}}  {{range .Description}}
- * {{.}}{{end}}
-*/
-{{- if IsAbstractType .}}
-export type {{.Name}} = {{UnionsTypes .Subtypes}};
-{{- else}}
-export interface {{.Name}} {
-    {{- range .Fields}}
-    /** {{ToTypesDoc .Types}} | {{.Description}} */
-    {{.Name}}{{if .Required}}: {{else}}?: {{end}}{{ToFieldTypes .}};
-    {{- end}}
-}
-{{- end}}
-`
-
-const paramsTemplate = `
-/** {{.Href}} */
-export interface {{ToPascalCase .Name}}Params {
-    {{- range .Fields}}
-    /** {{ToTypesDoc .Types}} | {{.Description}} */
-    {{.Name}}{{if .Required}}: {{else}}?: {{end}}{{ToFieldTypes .}};
-    {{- end}}
-}
-`
-
-const methodTemplate = `
-{{if HasResponse .Returns -}}
-/** {{.Href}} */
-export type {{ToPascalCase .Name}}Response = ResponseSuccess<{{UnionsTypes .Returns}}>;
-
-{{end -}}
-export interface {{ToPascalCase .Name}}Request {
-    /** 
-     * {{.Href}}{{range .Description}}
-     * {{.}}{{end}}
-     */
-    {{.Name}}: {{if HasParams .}}(params{{if IsParamsOptional .Fields}}?: {{else}}: {{end}}{{ToPascalCase .Name}}Params){{else}}(){{end}} => Promise<Response>;
-    {{- if HasResponse .Returns}}
-    /** * {{.Href}}{{range .Description}}
-     * {{.}}{{end}}
-     */
-    {{.Name}}WithReturns: {{if HasParams .}}(params{{if IsParamsOptional .Fields}}?: {{else}}: {{end}}{{ToPascalCase .Name}}Params){{else}}(){{end}} => Promise<{{ToPascalCase .Name}}Response>;
-    {{- end}}
-}
-`
-
-const footerTemplate = `
-export type BotMethod = {{.BotMethod}}
-
-export type AllBotMethods = {{.AllBotMethods}}
-`
+//go:embed dts.tmpl
+var dtsTemplate string
 
 func RenderDTS(resp *scrape.APIResponse, dir string) error {
-
 	dtsPath := filepath.Join(dir, "dts", "index.d.ts")
 	packageJsonPath := filepath.Join(dir, "dts", "package.json")
 
-	jsDoc, err := os.Create(dtsPath)
+	dts, err := os.Create(dtsPath)
 	if err != nil {
 		return err
 	}
@@ -98,15 +24,13 @@ func RenderDTS(resp *scrape.APIResponse, dir string) error {
 	if err != nil {
 		return err
 	}
-
-	err = Render(tmpl.Conf{
-		EnumsTemplate:   enumsTemplate,
-		TypesTemplate:   typesTemplate,
-		ParamsTemplate:  paramsTemplate,
-		MethodTemplate:  methodTemplate,
-		FooterTemplate:  footerTemplate,
-		ResponseGeneric: responseGeneric,
-	}, resp, jsDoc)
+	err = tmpl.Render(tmpl.Conf{
+		Template: dtsTemplate,
+		FuncMap: tmpl.FuncMap{
+			UnionsTypes:  UnionsTypes,
+			ToFieldTypes: ToFieldTypes,
+		},
+	}, resp, dts)
 	if err != nil {
 		return err
 	}

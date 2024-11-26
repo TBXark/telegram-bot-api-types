@@ -2,9 +2,7 @@ package typescript
 
 import (
 	"fmt"
-	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
 	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
-	"io"
 	"strings"
 )
 
@@ -53,21 +51,4 @@ func ToFieldTypes(field *scrape.Field) string {
 		return fmt.Sprintf("'%s'", field.Const)
 	}
 	return UnionsTypes(field.Types)
-}
-
-func ToEnumValues(values []string) string {
-	v := make([]string, 0, len(values))
-	for _, val := range values {
-		v = append(v, fmt.Sprintf("'%s'", val))
-	}
-	return strings.Join(v, " | ")
-}
-
-func Render(conf tmpl.Conf, resp *scrape.APIResponse, writer io.Writer) error {
-	conf.FuncMap = tmpl.FuncMap{
-		ToEnumValues: ToEnumValues,
-		ToFieldTypes: ToFieldTypes,
-		UnionsTypes:  UnionsTypes,
-	}
-	return tmpl.Render(conf, resp, writer)
 }
