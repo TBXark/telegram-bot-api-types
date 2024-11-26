@@ -18,7 +18,6 @@ public struct TelegramAPI {
 
     public struct Empty: Codable {}
 }
-
 {{range .Enums}}
 extension TelegramAPI {
     public enum {{.Name}}: String, Codable {
@@ -28,7 +27,6 @@ extension TelegramAPI {
     }
 }
 {{end -}}
-
 {{range .Types}}
 extension TelegramAPI {
     /**
@@ -79,7 +77,6 @@ extension TelegramAPI {
     {{- end}}
 }
 {{end -}}
-
 extension TelegramAPI {
     public struct ResponseSuccess<T: Codable>: Codable {
         public let ok: Bool
@@ -96,7 +93,6 @@ extension TelegramAPI {
     public typealias ResponseWithOutData = ResponseSuccess<SuccessWithOutData>
     public typealias ResponseWithMessage = ResponseSuccess<Message>
 }
-
 {{range .Methods}}
 {{- if HasParams .}}
 extension TelegramAPI {

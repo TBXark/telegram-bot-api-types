@@ -19,7 +19,6 @@ public struct TelegramAPI {
     public struct Empty: Codable {}
 }
 
-
 extension TelegramAPI {
     public enum ChatType: String, Codable {
         case `private` = "private"
@@ -7026,7 +7025,6 @@ extension TelegramAPI {
     public typealias ResponseWithOutData = ResponseSuccess<SuccessWithOutData>
     public typealias ResponseWithMessage = ResponseSuccess<Message>
 }
-
 
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#getupdates */
