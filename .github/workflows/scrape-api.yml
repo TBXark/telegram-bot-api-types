@@ -29,7 +29,7 @@ jobs:
       run: echo "TG_BPT_API_VERSION=$(jq -r .version dist/spec/latest.json)" >> $GITHUB_ENV
 
     - name: Open Pull Request
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v7
       with:
         commit-message: >
           chore: Update bot API docs to version ${{ env.TG_BPT_API_VERSION }}
