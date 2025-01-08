@@ -16,32 +16,6 @@ const (
 	botDocURL = "https://core.telegram.org/bots/api"
 )
 
-var (
-	defaultEnums      = []string{"ChatType", "InlineQueryChatType", "ChatAction", "MessageEntityType", "ParseMode"}
-	typeFieldEnumsMap = map[string]map[string]string{
-		"Chat": {
-			"type": "ChatType",
-		},
-		"ChatFullInfo": {
-			"type": "ChatType",
-		},
-		"InlineQuery": {
-			"chat_type": "InlineQueryChatType",
-		},
-		"MessageEntity": {
-			"type": "MessageEntityType",
-		},
-	}
-	methodFieldEnumsMap = map[string]map[string]string{
-		"sendMessage": {
-			"parse_mode": "ParseMode",
-		},
-		"sendChatAction": {
-			"action": "ChatAction",
-		},
-	}
-)
-
 // RetrieveInfo is equivalent to retrieve_info in Python
 func RetrieveInfo() (*APIResponse, error) {
 	url := botDocURL
@@ -120,7 +94,7 @@ func RetrieveInfo() (*APIResponse, error) {
 			}
 		}
 	})
-	fixDefaultEnums(items)
+	getEnumTypes(items)
 	fixEnumsType(items)
 	return items, nil
 }
@@ -221,6 +195,10 @@ func cleanTGDescription(t *goquery.Selection, url string) []string {
 	return result
 }
 
+func cleanTGFieldDescription(t *goquery.Selection, url string) string {
+	return strings.Join(cleanTGDescription(t, url), " ")
+}
+
 func getFields(currData BaseData, s *goquery.Selection, url string) {
 	body := s.Find("tbody")
 	var fields []*Field
@@ -313,10 +291,6 @@ func extractReturnType(method *Method, retStr string) {
 	}
 }
 
-func cleanTGFieldDescription(t *goquery.Selection, url string) string {
-	return strings.Join(cleanTGDescription(t, url), " ")
-}
-
 func getProperType(t string) string {
 	switch t {
 	case "Messages": // Avoids https://core.telegram.org/bots/api#sendmediagroup
@@ -362,11 +336,37 @@ func cleanTGType(t string) []string {
 	return result
 }
 
-func fixDefaultEnums(resp *APIResponse) {
+var (
+	defaultEnums      = []string{"ChatType", "InlineQueryChatType", "ChatAction", "MessageEntityType", "ParseMode"}
+	typeFieldEnumsMap = map[string]map[string]string{
+		"Chat": {
+			"type": "ChatType",
+		},
+		"ChatFullInfo": {
+			"type": "ChatType",
+		},
+		"InlineQuery": {
+			"chat_type": "InlineQueryChatType",
+		},
+		"MessageEntity": {
+			"type": "MessageEntityType",
+		},
+	}
+	methodFieldEnumsMap = map[string]map[string]string{
+		"sendMessage": {
+			"parse_mode": "ParseMode",
+		},
+		"sendChatAction": {
+			"action": "ChatAction",
+		},
+	}
+)
+
+func getEnumTypes(resp *APIResponse) {
 	var allDefaultEnums []*Enum
 	findFieldDesc := func(target string) string {
 		for k, v := range typeFieldEnumsMap {
-			i, ok := FindIndex(resp.Types, func(t *Type) bool {
+			i, ok := findIndex(resp.Types, func(t *Type) bool {
 				return t.Name == k
 			})
 			if !ok {
@@ -375,7 +375,7 @@ func fixDefaultEnums(resp *APIResponse) {
 			ty := resp.Types[i]
 			for field, fieldType := range v {
 				if fieldType == target {
-					index, exist := FindIndex(ty.Fields, func(f *Field) bool {
+					index, exist := findIndex(ty.Fields, func(f *Field) bool {
 						return f.Name == field
 					})
 					if exist {
@@ -394,7 +394,7 @@ func fixDefaultEnums(resp *APIResponse) {
 		case "ChatAction":
 			en.Values = []string{"typing", "upload_photo", "record_video", "upload_video", "record_voice", "upload_voice", "upload_document", "find_location", "record_video_note", "upload_video_note"}
 		default:
-			en.Values = DescriptionToEnums(findFieldDesc(en.Name))
+			en.Values = descriptionToEnums(findFieldDesc(en.Name))
 		}
 		allDefaultEnums = append(allDefaultEnums, en)
 	}
@@ -422,7 +422,7 @@ func fixEnumsType(resp *APIResponse) {
 	}
 }
 
-func FindIndex[T any](arr []T, f func(T) bool) (int, bool) {
+func findIndex[T any](arr []T, f func(T) bool) (int, bool) {
 	for i, v := range arr {
 		if f(v) {
 			return i, true
@@ -431,7 +431,7 @@ func FindIndex[T any](arr []T, f func(T) bool) (int, bool) {
 	return 0, false
 }
 
-func DescriptionToEnums(text string) []string {
+func descriptionToEnums(text string) []string {
 	re := regexp.MustCompile(`"([^"]+)"`)
 	matches := re.FindAllStringSubmatch(text, -1)
 	var enums []string
