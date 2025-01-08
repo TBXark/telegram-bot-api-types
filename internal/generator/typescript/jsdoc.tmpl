@@ -2,7 +2,7 @@
 // Version {{.Version}}
 {{range .Enums}}
 /**
- * @typedef {({{range $i, $v := .Values}}{{if gt $i 0}} | {{end}}'{{.}}'{{end}})}{{.Name}}
+ * @typedef {({{range $i, $v := .Values}}{{if gt $i 0}} | {{end}}'{{.}}'{{end}})} {{.Name}}
  */
 {{end -}}
 

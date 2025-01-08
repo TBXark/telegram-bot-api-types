@@ -29,6 +29,16 @@ extension TelegramAPI {
 }
 
 extension TelegramAPI {
+    public enum InlineQueryChatType: String, Codable {
+        case sender = "sender"
+        case `private` = "private"
+        case group = "group"
+        case supergroup = "supergroup"
+        case channel = "channel"
+    }
+}
+
+extension TelegramAPI {
     public enum ChatAction: String, Codable {
         case typing = "typing"
         case upload_photo = "upload_photo"
@@ -56,11 +66,13 @@ extension TelegramAPI {
         case italic = "italic"
         case underline = "underline"
         case strikethrough = "strikethrough"
+        case spoiler = "spoiler"
+        case blockquote = "blockquote"
+        case expandable_blockquote = "expandable_blockquote"
         case code = "code"
         case pre = "pre"
         case text_link = "text_link"
         case text_mention = "text_mention"
-        case spoiler = "spoiler"
         case custom_emoji = "custom_emoji"
     }
 }
@@ -4785,12 +4797,12 @@ extension TelegramAPI {
         public let query: String
         /** String | Offset of the results to be returned, can be controlled by the bot */
         public let offset: String
-        /** ChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat */
-        public let chat_type: ChatType?
+        /** InlineQueryChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat */
+        public let chat_type: InlineQueryChatType?
         /** Location | Optional. Sender location, only for bots that request user location */
         public let location: Location?
 
-        public init(id: String, from: User, query: String, offset: String, chat_type: ChatType? = nil, location: Location? = nil) {
+        public init(id: String, from: User, query: String, offset: String, chat_type: InlineQueryChatType? = nil, location: Location? = nil) {
             self.id = id
             self.from = from
             self.query = query

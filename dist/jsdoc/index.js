@@ -2,19 +2,23 @@
 // Version 8.2
 
 /**
- * @typedef {('private' | 'group' | 'supergroup' | 'channel')}ChatType
+ * @typedef {('private' | 'group' | 'supergroup' | 'channel')} ChatType
  */
 
 /**
- * @typedef {('typing' | 'upload_photo' | 'record_video' | 'upload_video' | 'record_voice' | 'upload_voice' | 'upload_document' | 'find_location' | 'record_video_note' | 'upload_video_note')}ChatAction
+ * @typedef {('sender' | 'private' | 'group' | 'supergroup' | 'channel')} InlineQueryChatType
  */
 
 /**
- * @typedef {('mention' | 'hashtag' | 'cashtag' | 'bot_command' | 'url' | 'email' | 'phone_number' | 'bold' | 'italic' | 'underline' | 'strikethrough' | 'code' | 'pre' | 'text_link' | 'text_mention' | 'spoiler' | 'custom_emoji')}MessageEntityType
+ * @typedef {('typing' | 'upload_photo' | 'record_video' | 'upload_video' | 'record_voice' | 'upload_voice' | 'upload_document' | 'find_location' | 'record_video_note' | 'upload_video_note')} ChatAction
  */
 
 /**
- * @typedef {('Markdown' | 'MarkdownV2' | 'HTML')}ParseMode
+ * @typedef {('mention' | 'hashtag' | 'cashtag' | 'bot_command' | 'url' | 'email' | 'phone_number' | 'bold' | 'italic' | 'underline' | 'strikethrough' | 'spoiler' | 'blockquote' | 'expandable_blockquote' | 'code' | 'pre' | 'text_link' | 'text_mention' | 'custom_emoji')} MessageEntityType
+ */
+
+/**
+ * @typedef {('Markdown' | 'MarkdownV2' | 'HTML')} ParseMode
  */
 
 /**
@@ -1815,7 +1819,7 @@
  * @property {User} from - Sender
  * @property {string} query - Text of the query (up to 256 characters)
  * @property {string} offset - Offset of the results to be returned, can be controlled by the bot
- * @property {ChatType} [chat_type] - Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
+ * @property {InlineQueryChatType} [chat_type] - Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
  * @property {Location} [location] - Optional. Sender location, only for bots that request user location
  */
 

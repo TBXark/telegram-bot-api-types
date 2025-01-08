@@ -17,24 +17,7 @@ const (
 )
 
 var (
-	defaultEnums = []*Enum{
-		{
-			Name:   "ChatType",
-			Values: []string{"private", "group", "supergroup", "channel"},
-		},
-		{
-			Name:   "ChatAction",
-			Values: []string{"typing", "upload_photo", "record_video", "upload_video", "record_voice", "upload_voice", "upload_document", "find_location", "record_video_note", "upload_video_note"},
-		},
-		{
-			Name:   "MessageEntityType",
-			Values: []string{"mention", "hashtag", "cashtag", "bot_command", "url", "email", "phone_number", "bold", "italic", "underline", "strikethrough", "code", "pre", "text_link", "text_mention", "spoiler", "custom_emoji"},
-		},
-		{
-			Name:   "ParseMode",
-			Values: []string{"Markdown", "MarkdownV2", "HTML"},
-		},
-	}
+	defaultEnums      = []string{"ChatType", "InlineQueryChatType", "ChatAction", "MessageEntityType", "ParseMode"}
 	typeFieldEnumsMap = map[string]map[string]string{
 		"Chat": {
 			"type": "ChatType",
@@ -43,7 +26,7 @@ var (
 			"type": "ChatType",
 		},
 		"InlineQuery": {
-			"chat_type": "ChatType",
+			"chat_type": "InlineQueryChatType",
 		},
 		"MessageEntity": {
 			"type": "MessageEntityType",
@@ -82,7 +65,7 @@ func RetrieveInfo() (*APIResponse, error) {
 	items := &APIResponse{
 		Methods: make([]*Method, 0, 100),
 		Types:   make([]*Type, 0, 100),
-		Enums:   defaultEnums,
+		Enums:   nil,
 	}
 
 	// Get version and release date
@@ -137,6 +120,7 @@ func RetrieveInfo() (*APIResponse, error) {
 			}
 		}
 	})
+	fixDefaultEnums(items)
 	fixEnumsType(items)
 	return items, nil
 }
@@ -378,6 +362,45 @@ func cleanTGType(t string) []string {
 	return result
 }
 
+func fixDefaultEnums(resp *APIResponse) {
+	var allDefaultEnums []*Enum
+	findFieldDesc := func(target string) string {
+		for k, v := range typeFieldEnumsMap {
+			i, ok := FindIndex(resp.Types, func(t *Type) bool {
+				return t.Name == k
+			})
+			if !ok {
+				continue
+			}
+			ty := resp.Types[i]
+			for field, fieldType := range v {
+				if fieldType == target {
+					index, exist := FindIndex(ty.Fields, func(f *Field) bool {
+						return f.Name == field
+					})
+					if exist {
+						return ty.Fields[index].Description
+					}
+				}
+			}
+		}
+		return ""
+	}
+	for _, e := range defaultEnums {
+		en := &Enum{Name: e}
+		switch en.Name {
+		case "ParseMode":
+			en.Values = []string{"Markdown", "MarkdownV2", "HTML"}
+		case "ChatAction":
+			en.Values = []string{"typing", "upload_photo", "record_video", "upload_video", "record_voice", "upload_voice", "upload_document", "find_location", "record_video_note", "upload_video_note"}
+		default:
+			en.Values = DescriptionToEnums(findFieldDesc(en.Name))
+		}
+		allDefaultEnums = append(allDefaultEnums, en)
+	}
+	resp.Enums = allDefaultEnums
+}
+
 func fixEnumsType(resp *APIResponse) {
 	for _, method := range resp.Methods {
 		if enums, ok := methodFieldEnumsMap[method.Name]; ok {
@@ -397,4 +420,25 @@ func fixEnumsType(resp *APIResponse) {
 			}
 		}
 	}
+}
+
+func FindIndex[T any](arr []T, f func(T) bool) (int, bool) {
+	for i, v := range arr {
+		if f(v) {
+			return i, true
+		}
+	}
+	return 0, false
+}
+
+func DescriptionToEnums(text string) []string {
+	re := regexp.MustCompile(`"([^"]+)"`)
+	matches := re.FindAllStringSubmatch(text, -1)
+	var enums []string
+	for _, match := range matches {
+		if len(match) > 1 {
+			enums = append(enums, match[1])
+		}
+	}
+	return enums
 }
