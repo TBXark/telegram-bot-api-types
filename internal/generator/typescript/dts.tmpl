@@ -38,7 +38,7 @@ export type ResponseWithOutData = ResponseSuccess<SuccessWithOutData>;
 export type ResponseWithMessage = ResponseSuccess<Message>;
 
 {{range .Methods}}
-{{- if HasParams .}}
+{{if HasParams .}}
 /** {{.Href}} */
 export interface {{ToPascalCase .Name}}Params {
     {{- range .Fields}}
@@ -65,7 +65,7 @@ export interface {{ToPascalCase .Name}}Request {
     {{.Name}}WithReturns: {{if HasParams .}}(params{{if IsParamsOptional .Fields}}?: {{else}}: {{end}}{{ToPascalCase .Name}}Params){{else}}(){{end}} => Promise<{{ToPascalCase .Name}}Response>;
     {{- end}}
 }
-{{end -}}
+{{- end}}
 
 export type BotMethod = {{range $i, $v := .Methods}}{{if gt $i 0}} | {{end}}'{{.Name}}'{{end}};
 

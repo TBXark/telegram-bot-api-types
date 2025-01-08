@@ -10,6 +10,7 @@ import (
 type FuncMap struct {
 	UnionsTypes  func(types []string) string
 	ToFieldTypes func(*scrape.Field) string
+	ExtraFunc    map[string]any
 }
 
 type Conf struct {
@@ -56,6 +57,17 @@ func ToTypesDoc(types []string) string {
 	return strings.Join(types, " or ")
 }
 
+func IsKeyword(words []string) func(word string) bool {
+	wordSet := make(map[string]struct{}, len(words))
+	for _, w := range words {
+		wordSet[w] = struct{}{}
+	}
+	return func(word string) bool {
+		_, ok := wordSet[word]
+		return ok
+	}
+}
+
 func Render(conf Conf, resp *scrape.APIResponse, writer io.Writer) error {
 	funcMap := template.FuncMap{
 		"UnionsTypes":      conf.FuncMap.UnionsTypes,
@@ -67,6 +79,11 @@ func Render(conf Conf, resp *scrape.APIResponse, writer io.Writer) error {
 		"HasParams":        HasParams,
 		"IsAbstractType":   IsAbstractType,
 		"IsParamsOptional": IsParamsOptional,
+	}
+	if conf.FuncMap.ExtraFunc != nil {
+		for k, v := range conf.FuncMap.ExtraFunc {
+			funcMap[k] = v
+		}
 	}
 	tmpl, err := template.New("tmpl").Funcs(funcMap).Parse(conf.Template)
 	if err != nil {

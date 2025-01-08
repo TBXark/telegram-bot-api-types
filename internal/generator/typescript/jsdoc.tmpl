@@ -8,7 +8,7 @@
 
 {{range .Types}}
 /**
- * {{.Href}}  {{range .Description}}
+ * {{.Href}}{{range .Description}}
  * {{.}}{{end}}
 {{- if IsAbstractType .}}
  * @typedef { {{- UnionsTypes .Subtypes -}} } {{.Name}}
@@ -49,7 +49,7 @@
 {{range .Methods}}
 {{if HasParams .}}
 /**
- * {{.Href}}  {{range .Description}}
+ * {{.Href}}{{range .Description}}
  * {{.}}{{end}}
  * @typedef {Object} {{ToPascalCase .Name}}Params
 {{- range .Fields}}

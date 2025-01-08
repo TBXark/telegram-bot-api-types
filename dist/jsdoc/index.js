@@ -18,7 +18,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#update  
+ * https://core.telegram.org/bots/api#update
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  * @typedef {Object} Update
@@ -49,7 +49,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#webhookinfo  
+ * https://core.telegram.org/bots/api#webhookinfo
  * Describes the current status of a webhook.
  * @typedef {Object} WebhookInfo
  * @property {string} url - Webhook URL, may be empty if webhook is not set up
@@ -64,7 +64,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#user  
+ * https://core.telegram.org/bots/api#user
  * This object represents a Telegram user or bot.
  * @typedef {Object} User
  * @property {number} id - Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
@@ -83,7 +83,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chat  
+ * https://core.telegram.org/bots/api#chat
  * This object represents a chat.
  * @typedef {Object} Chat
  * @property {number} id - Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
@@ -96,7 +96,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatfullinfo  
+ * https://core.telegram.org/bots/api#chatfullinfo
  * This object contains full information about a chat.
  * @typedef {Object} ChatFullInfo
  * @property {number} id - Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
@@ -146,7 +146,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#message  
+ * https://core.telegram.org/bots/api#message
  * This object represents a message.
  * @typedef {Object} Message
  * @property {number} message_id - Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
@@ -237,14 +237,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageid  
+ * https://core.telegram.org/bots/api#messageid
  * This object represents a unique message identifier.
  * @typedef {Object} MessageId
  * @property {number} message_id - Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
  */
 
 /**
- * https://core.telegram.org/bots/api#inaccessiblemessage  
+ * https://core.telegram.org/bots/api#inaccessiblemessage
  * This object describes a message that was deleted or is otherwise inaccessible to the bot.
  * @typedef {Object} InaccessibleMessage
  * @property {Chat} chat - Chat the message belonged to
@@ -253,7 +253,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#maybeinaccessiblemessage  
+ * https://core.telegram.org/bots/api#maybeinaccessiblemessage
  * This object describes a message that can be inaccessible to the bot. It can be one of
  * - Message
  * - InaccessibleMessage
@@ -261,7 +261,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageentity  
+ * https://core.telegram.org/bots/api#messageentity
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  * @typedef {Object} MessageEntity
  * @property {MessageEntityType} type - Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers)
@@ -274,7 +274,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#textquote  
+ * https://core.telegram.org/bots/api#textquote
  * This object contains information about the quoted part of a message that is replied to by the given message.
  * @typedef {Object} TextQuote
  * @property {string} text - Text of the quoted part of a message that is replied to by the given message
@@ -284,7 +284,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#externalreplyinfo  
+ * https://core.telegram.org/bots/api#externalreplyinfo
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  * @typedef {Object} ExternalReplyInfo
  * @property {MessageOrigin} origin - Origin of the message replied to by the given message
@@ -314,7 +314,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#replyparameters  
+ * https://core.telegram.org/bots/api#replyparameters
  * Describes reply parameters for the message that is being sent.
  * @typedef {Object} ReplyParameters
  * @property {number} message_id - Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it is specified
@@ -327,7 +327,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageorigin  
+ * https://core.telegram.org/bots/api#messageorigin
  * This object describes the origin of a message. It can be one of
  * - MessageOriginUser
  * - MessageOriginHiddenUser
@@ -337,7 +337,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageoriginuser  
+ * https://core.telegram.org/bots/api#messageoriginuser
  * The message was originally sent by a known user.
  * @typedef {Object} MessageOriginUser
  * @property {'user'} type - Type of the message origin, always "user"
@@ -346,7 +346,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageoriginhiddenuser  
+ * https://core.telegram.org/bots/api#messageoriginhiddenuser
  * The message was originally sent by an unknown user.
  * @typedef {Object} MessageOriginHiddenUser
  * @property {'hidden_user'} type - Type of the message origin, always "hidden_user"
@@ -355,7 +355,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageoriginchat  
+ * https://core.telegram.org/bots/api#messageoriginchat
  * The message was originally sent on behalf of a chat to a group chat.
  * @typedef {Object} MessageOriginChat
  * @property {'chat'} type - Type of the message origin, always "chat"
@@ -365,7 +365,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageoriginchannel  
+ * https://core.telegram.org/bots/api#messageoriginchannel
  * The message was originally sent to a channel chat.
  * @typedef {Object} MessageOriginChannel
  * @property {'channel'} type - Type of the message origin, always "channel"
@@ -376,7 +376,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#photosize  
+ * https://core.telegram.org/bots/api#photosize
  * This object represents one size of a photo or a file / sticker thumbnail.
  * @typedef {Object} PhotoSize
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -387,7 +387,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#animation  
+ * https://core.telegram.org/bots/api#animation
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  * @typedef {Object} Animation
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -402,7 +402,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#audio  
+ * https://core.telegram.org/bots/api#audio
  * This object represents an audio file to be treated as music by the Telegram clients.
  * @typedef {Object} Audio
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -417,7 +417,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#document  
+ * https://core.telegram.org/bots/api#document
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  * @typedef {Object} Document
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -429,7 +429,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#story  
+ * https://core.telegram.org/bots/api#story
  * This object represents a story.
  * @typedef {Object} Story
  * @property {Chat} chat - Chat that posted the story
@@ -437,7 +437,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#video  
+ * https://core.telegram.org/bots/api#video
  * This object represents a video file.
  * @typedef {Object} Video
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -452,7 +452,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#videonote  
+ * https://core.telegram.org/bots/api#videonote
  * This object represents a video message (available in Telegram apps as of v.4.0).
  * @typedef {Object} VideoNote
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -464,7 +464,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#voice  
+ * https://core.telegram.org/bots/api#voice
  * This object represents a voice note.
  * @typedef {Object} Voice
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -475,7 +475,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmediainfo  
+ * https://core.telegram.org/bots/api#paidmediainfo
  * Describes the paid media added to a message.
  * @typedef {Object} PaidMediaInfo
  * @property {number} star_count - The number of Telegram Stars that must be paid to buy access to the media
@@ -483,7 +483,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmedia  
+ * https://core.telegram.org/bots/api#paidmedia
  * This object describes paid media. Currently, it can be one of
  * - PaidMediaPreview
  * - PaidMediaPhoto
@@ -492,7 +492,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmediapreview  
+ * https://core.telegram.org/bots/api#paidmediapreview
  * The paid media isn't available before the payment.
  * @typedef {Object} PaidMediaPreview
  * @property {'preview'} type - Type of the paid media, always "preview"
@@ -502,7 +502,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmediaphoto  
+ * https://core.telegram.org/bots/api#paidmediaphoto
  * The paid media is a photo.
  * @typedef {Object} PaidMediaPhoto
  * @property {'photo'} type - Type of the paid media, always "photo"
@@ -510,7 +510,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmediavideo  
+ * https://core.telegram.org/bots/api#paidmediavideo
  * The paid media is a video.
  * @typedef {Object} PaidMediaVideo
  * @property {'video'} type - Type of the paid media, always "video"
@@ -518,7 +518,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#contact  
+ * https://core.telegram.org/bots/api#contact
  * This object represents a phone contact.
  * @typedef {Object} Contact
  * @property {string} phone_number - Contact's phone number
@@ -529,7 +529,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#dice  
+ * https://core.telegram.org/bots/api#dice
  * This object represents an animated emoji that displays a random value.
  * @typedef {Object} Dice
  * @property {string} emoji - Emoji on which the dice throw animation is based
@@ -537,7 +537,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#polloption  
+ * https://core.telegram.org/bots/api#polloption
  * This object contains information about one answer option in a poll.
  * @typedef {Object} PollOption
  * @property {string} text - Option text, 1-100 characters
@@ -546,7 +546,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputpolloption  
+ * https://core.telegram.org/bots/api#inputpolloption
  * This object contains information about one answer option in a poll to be sent.
  * @typedef {Object} InputPollOption
  * @property {string} text - Option text, 1-100 characters
@@ -555,7 +555,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#pollanswer  
+ * https://core.telegram.org/bots/api#pollanswer
  * This object represents an answer of a user in a non-anonymous poll.
  * @typedef {Object} PollAnswer
  * @property {string} poll_id - Unique poll identifier
@@ -565,7 +565,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#poll  
+ * https://core.telegram.org/bots/api#poll
  * This object contains information about a poll.
  * @typedef {Object} Poll
  * @property {string} id - Unique poll identifier
@@ -585,7 +585,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#location  
+ * https://core.telegram.org/bots/api#location
  * This object represents a point on the map.
  * @typedef {Object} Location
  * @property {number} latitude - Latitude as defined by the sender
@@ -597,7 +597,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#venue  
+ * https://core.telegram.org/bots/api#venue
  * This object represents a venue.
  * @typedef {Object} Venue
  * @property {Location} location - Venue location. Can't be a live location
@@ -610,7 +610,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#webappdata  
+ * https://core.telegram.org/bots/api#webappdata
  * Describes data sent from a Web App to the bot.
  * @typedef {Object} WebAppData
  * @property {string} data - The data. Be aware that a bad client can send arbitrary data in this field.
@@ -618,7 +618,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#proximityalerttriggered  
+ * https://core.telegram.org/bots/api#proximityalerttriggered
  * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
  * @typedef {Object} ProximityAlertTriggered
  * @property {User} traveler - User that triggered the alert
@@ -627,21 +627,21 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messageautodeletetimerchanged  
+ * https://core.telegram.org/bots/api#messageautodeletetimerchanged
  * This object represents a service message about a change in auto-delete timer settings.
  * @typedef {Object} MessageAutoDeleteTimerChanged
  * @property {number} message_auto_delete_time - New auto-delete time for messages in the chat; in seconds
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostadded  
+ * https://core.telegram.org/bots/api#chatboostadded
  * This object represents a service message about a user boosting a chat.
  * @typedef {Object} ChatBoostAdded
  * @property {number} boost_count - Number of boosts added by the user
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundfill  
+ * https://core.telegram.org/bots/api#backgroundfill
  * This object describes the way a background is filled based on the selected colors. Currently, it can be one of
  * - BackgroundFillSolid
  * - BackgroundFillGradient
@@ -650,7 +650,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundfillsolid  
+ * https://core.telegram.org/bots/api#backgroundfillsolid
  * The background is filled using the selected color.
  * @typedef {Object} BackgroundFillSolid
  * @property {'solid'} type - Type of the background fill, always "solid"
@@ -658,7 +658,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundfillgradient  
+ * https://core.telegram.org/bots/api#backgroundfillgradient
  * The background is a gradient fill.
  * @typedef {Object} BackgroundFillGradient
  * @property {'gradient'} type - Type of the background fill, always "gradient"
@@ -668,7 +668,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundfillfreeformgradient  
+ * https://core.telegram.org/bots/api#backgroundfillfreeformgradient
  * The background is a freeform gradient that rotates after every message in the chat.
  * @typedef {Object} BackgroundFillFreeformGradient
  * @property {'freeform_gradient'} type - Type of the background fill, always "freeform_gradient"
@@ -676,7 +676,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundtype  
+ * https://core.telegram.org/bots/api#backgroundtype
  * This object describes the type of a background. Currently, it can be one of
  * - BackgroundTypeFill
  * - BackgroundTypeWallpaper
@@ -686,7 +686,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundtypefill  
+ * https://core.telegram.org/bots/api#backgroundtypefill
  * The background is automatically filled based on the selected colors.
  * @typedef {Object} BackgroundTypeFill
  * @property {'fill'} type - Type of the background, always "fill"
@@ -695,7 +695,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundtypewallpaper  
+ * https://core.telegram.org/bots/api#backgroundtypewallpaper
  * The background is a wallpaper in the JPEG format.
  * @typedef {Object} BackgroundTypeWallpaper
  * @property {'wallpaper'} type - Type of the background, always "wallpaper"
@@ -706,7 +706,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundtypepattern  
+ * https://core.telegram.org/bots/api#backgroundtypepattern
  * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user.
  * @typedef {Object} BackgroundTypePattern
  * @property {'pattern'} type - Type of the background, always "pattern"
@@ -718,7 +718,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#backgroundtypechattheme  
+ * https://core.telegram.org/bots/api#backgroundtypechattheme
  * The background is taken directly from a built-in chat theme.
  * @typedef {Object} BackgroundTypeChatTheme
  * @property {'chat_theme'} type - Type of the background, always "chat_theme"
@@ -726,14 +726,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatbackground  
+ * https://core.telegram.org/bots/api#chatbackground
  * This object represents a chat background.
  * @typedef {Object} ChatBackground
  * @property {BackgroundType} type - Type of the background
  */
 
 /**
- * https://core.telegram.org/bots/api#forumtopiccreated  
+ * https://core.telegram.org/bots/api#forumtopiccreated
  * This object represents a service message about a new forum topic created in the chat.
  * @typedef {Object} ForumTopicCreated
  * @property {string} name - Name of the topic
@@ -742,13 +742,13 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#forumtopicclosed  
+ * https://core.telegram.org/bots/api#forumtopicclosed
  * This object represents a service message about a forum topic closed in the chat. Currently holds no information.
  * @typedef {Object} ForumTopicClosed
  */
 
 /**
- * https://core.telegram.org/bots/api#forumtopicedited  
+ * https://core.telegram.org/bots/api#forumtopicedited
  * This object represents a service message about an edited forum topic.
  * @typedef {Object} ForumTopicEdited
  * @property {string} [name] - Optional. New name of the topic, if it was edited
@@ -756,25 +756,25 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#forumtopicreopened  
+ * https://core.telegram.org/bots/api#forumtopicreopened
  * This object represents a service message about a forum topic reopened in the chat. Currently holds no information.
  * @typedef {Object} ForumTopicReopened
  */
 
 /**
- * https://core.telegram.org/bots/api#generalforumtopichidden  
+ * https://core.telegram.org/bots/api#generalforumtopichidden
  * This object represents a service message about General forum topic hidden in the chat. Currently holds no information.
  * @typedef {Object} GeneralForumTopicHidden
  */
 
 /**
- * https://core.telegram.org/bots/api#generalforumtopicunhidden  
+ * https://core.telegram.org/bots/api#generalforumtopicunhidden
  * This object represents a service message about General forum topic unhidden in the chat. Currently holds no information.
  * @typedef {Object} GeneralForumTopicUnhidden
  */
 
 /**
- * https://core.telegram.org/bots/api#shareduser  
+ * https://core.telegram.org/bots/api#shareduser
  * This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUsers button.
  * @typedef {Object} SharedUser
  * @property {number} user_id - Identifier of the shared user. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so 64-bit integers or double-precision float types are safe for storing these identifiers. The bot may not have access to the user and could be unable to use this identifier, unless the user is already known to the bot by some other means.
@@ -785,7 +785,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#usersshared  
+ * https://core.telegram.org/bots/api#usersshared
  * This object contains information about the users whose identifiers were shared with the bot using a KeyboardButtonRequestUsers button.
  * @typedef {Object} UsersShared
  * @property {number} request_id - Identifier of the request
@@ -793,7 +793,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatshared  
+ * https://core.telegram.org/bots/api#chatshared
  * This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
  * @typedef {Object} ChatShared
  * @property {number} request_id - Identifier of the request
@@ -804,7 +804,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#writeaccessallowed  
+ * https://core.telegram.org/bots/api#writeaccessallowed
  * This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
  * @typedef {Object} WriteAccessAllowed
  * @property {boolean} [from_request] - Optional. True, if the access was granted after the user accepted an explicit request from a Web App sent by the method requestWriteAccess
@@ -813,41 +813,41 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#videochatscheduled  
+ * https://core.telegram.org/bots/api#videochatscheduled
  * This object represents a service message about a video chat scheduled in the chat.
  * @typedef {Object} VideoChatScheduled
  * @property {number} start_date - Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
  */
 
 /**
- * https://core.telegram.org/bots/api#videochatstarted  
+ * https://core.telegram.org/bots/api#videochatstarted
  * This object represents a service message about a video chat started in the chat. Currently holds no information.
  * @typedef {Object} VideoChatStarted
  */
 
 /**
- * https://core.telegram.org/bots/api#videochatended  
+ * https://core.telegram.org/bots/api#videochatended
  * This object represents a service message about a video chat ended in the chat.
  * @typedef {Object} VideoChatEnded
  * @property {number} duration - Video chat duration in seconds
  */
 
 /**
- * https://core.telegram.org/bots/api#videochatparticipantsinvited  
+ * https://core.telegram.org/bots/api#videochatparticipantsinvited
  * This object represents a service message about new members invited to a video chat.
  * @typedef {Object} VideoChatParticipantsInvited
  * @property {Array<User>} users - New members that were invited to the video chat
  */
 
 /**
- * https://core.telegram.org/bots/api#giveawaycreated  
+ * https://core.telegram.org/bots/api#giveawaycreated
  * This object represents a service message about the creation of a scheduled giveaway.
  * @typedef {Object} GiveawayCreated
  * @property {number} [prize_star_count] - Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
  */
 
 /**
- * https://core.telegram.org/bots/api#giveaway  
+ * https://core.telegram.org/bots/api#giveaway
  * This object represents a message about a scheduled giveaway.
  * @typedef {Object} Giveaway
  * @property {Array<Chat>} chats - The list of chats which the user must join to participate in the giveaway
@@ -862,7 +862,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#giveawaywinners  
+ * https://core.telegram.org/bots/api#giveawaywinners
  * This object represents a message about the completion of a giveaway with public winners.
  * @typedef {Object} GiveawayWinners
  * @property {Chat} chat - The chat that created the giveaway
@@ -880,7 +880,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#giveawaycompleted  
+ * https://core.telegram.org/bots/api#giveawaycompleted
  * This object represents a service message about the completion of a giveaway without public winners.
  * @typedef {Object} GiveawayCompleted
  * @property {number} winner_count - Number of winners in the giveaway
@@ -890,7 +890,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#linkpreviewoptions  
+ * https://core.telegram.org/bots/api#linkpreviewoptions
  * Describes the options used for link preview generation.
  * @typedef {Object} LinkPreviewOptions
  * @property {boolean} [is_disabled] - Optional. True, if the link preview is disabled
@@ -901,7 +901,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#userprofilephotos  
+ * https://core.telegram.org/bots/api#userprofilephotos
  * This object represent a user's profile pictures.
  * @typedef {Object} UserProfilePhotos
  * @property {number} total_count - Total number of profile pictures the target user has
@@ -909,7 +909,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#file  
+ * https://core.telegram.org/bots/api#file
  * This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
  * @typedef {Object} File
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -919,14 +919,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#webappinfo  
+ * https://core.telegram.org/bots/api#webappinfo
  * Describes a Web App.
  * @typedef {Object} WebAppInfo
  * @property {string} url - An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
  */
 
 /**
- * https://core.telegram.org/bots/api#replykeyboardmarkup  
+ * https://core.telegram.org/bots/api#replykeyboardmarkup
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported in channels and for messages sent on behalf of a Telegram Business account.
  * @typedef {Object} ReplyKeyboardMarkup
  * @property {Array<Array<KeyboardButton>>} keyboard - Array of button rows, each represented by an Array of KeyboardButton objects
@@ -938,7 +938,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#keyboardbutton  
+ * https://core.telegram.org/bots/api#keyboardbutton
  * This object represents one button of the reply keyboard. At most one of the optional fields must be used to specify type of the button. For simple text buttons, String can be used instead of this object to specify the button text.
  * Note: request_users and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message.
  * @typedef {Object} KeyboardButton
@@ -952,7 +952,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#keyboardbuttonrequestusers  
+ * https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users: https://core.telegram.org/bots/features#chat-and-user-selection
  * @typedef {Object} KeyboardButtonRequestUsers
  * @property {number} request_id - Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message
@@ -965,7 +965,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#keyboardbuttonrequestchat  
+ * https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats: https://core.telegram.org/bots/features#chat-and-user-selection.
  * @typedef {Object} KeyboardButtonRequestChat
  * @property {number} request_id - Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message
@@ -982,14 +982,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#keyboardbuttonpolltype  
+ * https://core.telegram.org/bots/api#keyboardbuttonpolltype
  * This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
  * @typedef {Object} KeyboardButtonPollType
  * @property {string} [type] - Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode. If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
  */
 
 /**
- * https://core.telegram.org/bots/api#replykeyboardremove  
+ * https://core.telegram.org/bots/api#replykeyboardremove
  * Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup). Not supported in channels and for messages sent on behalf of a Telegram Business account.
  * @typedef {Object} ReplyKeyboardRemove
  * @property {boolean} remove_keyboard - Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)
@@ -997,14 +997,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinekeyboardmarkup  
+ * https://core.telegram.org/bots/api#inlinekeyboardmarkup
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  * @typedef {Object} InlineKeyboardMarkup
  * @property {Array<Array<InlineKeyboardButton>>} inline_keyboard - Array of button rows, each represented by an Array of InlineKeyboardButton objects
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinekeyboardbutton  
+ * https://core.telegram.org/bots/api#inlinekeyboardbutton
  * This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of the button.
  * @typedef {Object} InlineKeyboardButton
  * @property {string} text - Label text on the button
@@ -1021,7 +1021,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#loginurl  
+ * https://core.telegram.org/bots/api#loginurl
  * This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
  * Telegram apps support these buttons as of version 5.7.
  * @typedef {Object} LoginUrl
@@ -1032,7 +1032,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#switchinlinequerychosenchat  
+ * https://core.telegram.org/bots/api#switchinlinequerychosenchat
  * This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
  * @typedef {Object} SwitchInlineQueryChosenChat
  * @property {string} [query] - Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
@@ -1043,14 +1043,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#copytextbutton  
+ * https://core.telegram.org/bots/api#copytextbutton
  * This object represents an inline keyboard button that copies specified text to the clipboard.
  * @typedef {Object} CopyTextButton
  * @property {string} text - The text to be copied to the clipboard; 1-256 characters
  */
 
 /**
- * https://core.telegram.org/bots/api#callbackquery  
+ * https://core.telegram.org/bots/api#callbackquery
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
  * @typedef {Object} CallbackQuery
  * @property {string} id - Unique identifier for this query
@@ -1063,7 +1063,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#forcereply  
+ * https://core.telegram.org/bots/api#forcereply
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a Telegram Business account.
  * @typedef {Object} ForceReply
  * @property {boolean} force_reply - Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
@@ -1072,7 +1072,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatphoto  
+ * https://core.telegram.org/bots/api#chatphoto
  * This object represents a chat photo.
  * @typedef {Object} ChatPhoto
  * @property {string} small_file_id - File identifier of small (160x160) chat photo. This file_id can be used only for photo download and only for as long as the photo is not changed.
@@ -1082,7 +1082,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatinvitelink  
+ * https://core.telegram.org/bots/api#chatinvitelink
  * Represents an invite link for a chat.
  * @typedef {Object} ChatInviteLink
  * @property {string} invite_link - The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with "...".
@@ -1099,7 +1099,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatadministratorrights  
+ * https://core.telegram.org/bots/api#chatadministratorrights
  * Represents the rights of an administrator in a chat.
  * @typedef {Object} ChatAdministratorRights
  * @property {boolean} is_anonymous - True, if the user's presence in the chat is hidden
@@ -1120,7 +1120,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberupdated  
+ * https://core.telegram.org/bots/api#chatmemberupdated
  * This object represents changes in the status of a chat member.
  * @typedef {Object} ChatMemberUpdated
  * @property {Chat} chat - Chat the user belongs to
@@ -1134,7 +1134,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmember  
+ * https://core.telegram.org/bots/api#chatmember
  * This object contains information about one member of a chat. Currently, the following 6 types of chat members are supported:
  * - ChatMemberOwner
  * - ChatMemberAdministrator
@@ -1146,7 +1146,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberowner  
+ * https://core.telegram.org/bots/api#chatmemberowner
  * Represents a chat member that owns the chat and has all administrator privileges.
  * @typedef {Object} ChatMemberOwner
  * @property {'creator'} status - The member's status in the chat, always "creator"
@@ -1156,7 +1156,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberadministrator  
+ * https://core.telegram.org/bots/api#chatmemberadministrator
  * Represents a chat member that has some additional privileges.
  * @typedef {Object} ChatMemberAdministrator
  * @property {'administrator'} status - The member's status in the chat, always "administrator"
@@ -1181,7 +1181,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmembermember  
+ * https://core.telegram.org/bots/api#chatmembermember
  * Represents a chat member that has no additional privileges or restrictions.
  * @typedef {Object} ChatMemberMember
  * @property {'member'} status - The member's status in the chat, always "member"
@@ -1190,7 +1190,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberrestricted  
+ * https://core.telegram.org/bots/api#chatmemberrestricted
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  * @typedef {Object} ChatMemberRestricted
  * @property {'restricted'} status - The member's status in the chat, always "restricted"
@@ -1214,7 +1214,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberleft  
+ * https://core.telegram.org/bots/api#chatmemberleft
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
  * @typedef {Object} ChatMemberLeft
  * @property {'left'} status - The member's status in the chat, always "left"
@@ -1222,7 +1222,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatmemberbanned  
+ * https://core.telegram.org/bots/api#chatmemberbanned
  * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
  * @typedef {Object} ChatMemberBanned
  * @property {'kicked'} status - The member's status in the chat, always "kicked"
@@ -1231,7 +1231,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatjoinrequest  
+ * https://core.telegram.org/bots/api#chatjoinrequest
  * Represents a join request sent to a chat.
  * @typedef {Object} ChatJoinRequest
  * @property {Chat} chat - Chat to which the request was sent
@@ -1243,7 +1243,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatpermissions  
+ * https://core.telegram.org/bots/api#chatpermissions
  * Describes actions that a non-administrator user is allowed to take in a chat.
  * @typedef {Object} ChatPermissions
  * @property {boolean} [can_send_messages] - Optional. True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners, invoices, locations and venues
@@ -1263,7 +1263,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#birthdate  
+ * https://core.telegram.org/bots/api#birthdate
  * Describes the birthdate of a user.
  * @typedef {Object} Birthdate
  * @property {number} day - Day of the user's birth; 1-31
@@ -1272,7 +1272,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#businessintro  
+ * https://core.telegram.org/bots/api#businessintro
  * Contains information about the start page settings of a Telegram Business account.
  * @typedef {Object} BusinessIntro
  * @property {string} [title] - Optional. Title text of the business intro
@@ -1281,7 +1281,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#businesslocation  
+ * https://core.telegram.org/bots/api#businesslocation
  * Contains information about the location of a Telegram Business account.
  * @typedef {Object} BusinessLocation
  * @property {string} address - Address of the business
@@ -1289,7 +1289,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#businessopeninghoursinterval  
+ * https://core.telegram.org/bots/api#businessopeninghoursinterval
  * Describes an interval of time during which a business is open.
  * @typedef {Object} BusinessOpeningHoursInterval
  * @property {number} opening_minute - The minute's sequence number in a week, starting on Monday, marking the start of the time interval during which the business is open; 0 - 7 * 24 * 60
@@ -1297,7 +1297,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#businessopeninghours  
+ * https://core.telegram.org/bots/api#businessopeninghours
  * Describes the opening hours of a business.
  * @typedef {Object} BusinessOpeningHours
  * @property {string} time_zone_name - Unique name of the time zone for which the opening hours are defined
@@ -1305,7 +1305,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatlocation  
+ * https://core.telegram.org/bots/api#chatlocation
  * Represents a location to which a chat is connected.
  * @typedef {Object} ChatLocation
  * @property {Location} location - The location to which the supergroup is connected. Can't be a live location.
@@ -1313,7 +1313,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#reactiontype  
+ * https://core.telegram.org/bots/api#reactiontype
  * This object describes the type of a reaction. Currently, it can be one of
  * - ReactionTypeEmoji
  * - ReactionTypeCustomEmoji
@@ -1322,7 +1322,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#reactiontypeemoji  
+ * https://core.telegram.org/bots/api#reactiontypeemoji
  * The reaction is based on an emoji.
  * @typedef {Object} ReactionTypeEmoji
  * @property {'emoji'} type - Type of the reaction, always "emoji"
@@ -1330,7 +1330,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#reactiontypecustomemoji  
+ * https://core.telegram.org/bots/api#reactiontypecustomemoji
  * The reaction is based on a custom emoji.
  * @typedef {Object} ReactionTypeCustomEmoji
  * @property {'custom_emoji'} type - Type of the reaction, always "custom_emoji"
@@ -1338,14 +1338,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#reactiontypepaid  
+ * https://core.telegram.org/bots/api#reactiontypepaid
  * The reaction is paid.
  * @typedef {Object} ReactionTypePaid
  * @property {'paid'} type - Type of the reaction, always "paid"
  */
 
 /**
- * https://core.telegram.org/bots/api#reactioncount  
+ * https://core.telegram.org/bots/api#reactioncount
  * Represents a reaction added to a message along with the number of times it was added.
  * @typedef {Object} ReactionCount
  * @property {ReactionType} type - Type of the reaction
@@ -1353,7 +1353,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messagereactionupdated  
+ * https://core.telegram.org/bots/api#messagereactionupdated
  * This object represents a change of a reaction on a message performed by a user.
  * @typedef {Object} MessageReactionUpdated
  * @property {Chat} chat - The chat containing the message the user reacted to
@@ -1366,7 +1366,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#messagereactioncountupdated  
+ * https://core.telegram.org/bots/api#messagereactioncountupdated
  * This object represents reaction changes on a message with anonymous reactions.
  * @typedef {Object} MessageReactionCountUpdated
  * @property {Chat} chat - The chat containing the message
@@ -1376,7 +1376,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#forumtopic  
+ * https://core.telegram.org/bots/api#forumtopic
  * This object represents a forum topic.
  * @typedef {Object} ForumTopic
  * @property {number} message_thread_id - Unique identifier of the forum topic
@@ -1386,7 +1386,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommand  
+ * https://core.telegram.org/bots/api#botcommand
  * This object represents a bot command.
  * @typedef {Object} BotCommand
  * @property {string} command - Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
@@ -1394,7 +1394,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscope  
+ * https://core.telegram.org/bots/api#botcommandscope
  * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:
  * - BotCommandScopeDefault
  * - BotCommandScopeAllPrivateChats
@@ -1407,35 +1407,35 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopedefault  
+ * https://core.telegram.org/bots/api#botcommandscopedefault
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified for the user.
  * @typedef {Object} BotCommandScopeDefault
  * @property {string} type - Scope type, must be default
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopeallprivatechats  
+ * https://core.telegram.org/bots/api#botcommandscopeallprivatechats
  * Represents the scope of bot commands, covering all private chats.
  * @typedef {Object} BotCommandScopeAllPrivateChats
  * @property {string} type - Scope type, must be all_private_chats
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopeallgroupchats  
+ * https://core.telegram.org/bots/api#botcommandscopeallgroupchats
  * Represents the scope of bot commands, covering all group and supergroup chats.
  * @typedef {Object} BotCommandScopeAllGroupChats
  * @property {string} type - Scope type, must be all_group_chats
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopeallchatadministrators  
+ * https://core.telegram.org/bots/api#botcommandscopeallchatadministrators
  * Represents the scope of bot commands, covering all group and supergroup chat administrators.
  * @typedef {Object} BotCommandScopeAllChatAdministrators
  * @property {string} type - Scope type, must be all_chat_administrators
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopechat  
+ * https://core.telegram.org/bots/api#botcommandscopechat
  * Represents the scope of bot commands, covering a specific chat.
  * @typedef {Object} BotCommandScopeChat
  * @property {string} type - Scope type, must be chat
@@ -1443,7 +1443,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopechatadministrators  
+ * https://core.telegram.org/bots/api#botcommandscopechatadministrators
  * Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
  * @typedef {Object} BotCommandScopeChatAdministrators
  * @property {string} type - Scope type, must be chat_administrators
@@ -1451,7 +1451,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botcommandscopechatmember  
+ * https://core.telegram.org/bots/api#botcommandscopechatmember
  * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
  * @typedef {Object} BotCommandScopeChatMember
  * @property {string} type - Scope type, must be chat_member
@@ -1460,28 +1460,28 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#botname  
+ * https://core.telegram.org/bots/api#botname
  * This object represents the bot's name.
  * @typedef {Object} BotName
  * @property {string} name - The bot's name
  */
 
 /**
- * https://core.telegram.org/bots/api#botdescription  
+ * https://core.telegram.org/bots/api#botdescription
  * This object represents the bot's description.
  * @typedef {Object} BotDescription
  * @property {string} description - The bot's description
  */
 
 /**
- * https://core.telegram.org/bots/api#botshortdescription  
+ * https://core.telegram.org/bots/api#botshortdescription
  * This object represents the bot's short description.
  * @typedef {Object} BotShortDescription
  * @property {string} short_description - The bot's short description
  */
 
 /**
- * https://core.telegram.org/bots/api#menubutton  
+ * https://core.telegram.org/bots/api#menubutton
  * This object describes the bot's menu button in a private chat. It should be one of
  * - MenuButtonCommands
  * - MenuButtonWebApp
@@ -1491,14 +1491,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#menubuttoncommands  
+ * https://core.telegram.org/bots/api#menubuttoncommands
  * Represents a menu button, which opens the bot's list of commands.
  * @typedef {Object} MenuButtonCommands
  * @property {string} type - Type of the button, must be commands
  */
 
 /**
- * https://core.telegram.org/bots/api#menubuttonwebapp  
+ * https://core.telegram.org/bots/api#menubuttonwebapp
  * Represents a menu button, which launches a Web App.
  * @typedef {Object} MenuButtonWebApp
  * @property {string} type - Type of the button, must be web_app
@@ -1507,14 +1507,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#menubuttondefault  
+ * https://core.telegram.org/bots/api#menubuttondefault
  * Describes that no specific value for the menu button was set.
  * @typedef {Object} MenuButtonDefault
  * @property {string} type - Type of the button, must be default
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostsource  
+ * https://core.telegram.org/bots/api#chatboostsource
  * This object describes the source of a chat boost. It can be one of
  * - ChatBoostSourcePremium
  * - ChatBoostSourceGiftCode
@@ -1523,7 +1523,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostsourcepremium  
+ * https://core.telegram.org/bots/api#chatboostsourcepremium
  * The boost was obtained by subscribing to Telegram Premium or by gifting a Telegram Premium subscription to another user.
  * @typedef {Object} ChatBoostSourcePremium
  * @property {'premium'} source - Source of the boost, always "premium"
@@ -1531,7 +1531,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostsourcegiftcode  
+ * https://core.telegram.org/bots/api#chatboostsourcegiftcode
  * The boost was obtained by the creation of Telegram Premium gift codes to boost a chat. Each such code boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.
  * @typedef {Object} ChatBoostSourceGiftCode
  * @property {'gift_code'} source - Source of the boost, always "gift_code"
@@ -1539,7 +1539,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostsourcegiveaway  
+ * https://core.telegram.org/bots/api#chatboostsourcegiveaway
  * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.
  * @typedef {Object} ChatBoostSourceGiveaway
  * @property {'giveaway'} source - Source of the boost, always "giveaway"
@@ -1550,7 +1550,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboost  
+ * https://core.telegram.org/bots/api#chatboost
  * This object contains information about a chat boost.
  * @typedef {Object} ChatBoost
  * @property {string} boost_id - Unique identifier of the boost
@@ -1560,7 +1560,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostupdated  
+ * https://core.telegram.org/bots/api#chatboostupdated
  * This object represents a boost added to a chat or changed.
  * @typedef {Object} ChatBoostUpdated
  * @property {Chat} chat - Chat which was boosted
@@ -1568,7 +1568,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#chatboostremoved  
+ * https://core.telegram.org/bots/api#chatboostremoved
  * This object represents a boost removed from a chat.
  * @typedef {Object} ChatBoostRemoved
  * @property {Chat} chat - Chat which was boosted
@@ -1578,14 +1578,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#userchatboosts  
+ * https://core.telegram.org/bots/api#userchatboosts
  * This object represents a list of boosts added to a chat by a user.
  * @typedef {Object} UserChatBoosts
  * @property {Array<ChatBoost>} boosts - The list of boosts added to the chat by the user
  */
 
 /**
- * https://core.telegram.org/bots/api#businessconnection  
+ * https://core.telegram.org/bots/api#businessconnection
  * Describes the connection of the bot with a business account.
  * @typedef {Object} BusinessConnection
  * @property {string} id - Unique identifier of the business connection
@@ -1597,7 +1597,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#businessmessagesdeleted  
+ * https://core.telegram.org/bots/api#businessmessagesdeleted
  * This object is received when messages are deleted from a connected business account.
  * @typedef {Object} BusinessMessagesDeleted
  * @property {string} business_connection_id - Unique identifier of the business connection
@@ -1606,7 +1606,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#responseparameters  
+ * https://core.telegram.org/bots/api#responseparameters
  * Describes why a request was unsuccessful.
  * @typedef {Object} ResponseParameters
  * @property {number} [migrate_to_chat_id] - Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
@@ -1614,7 +1614,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmedia  
+ * https://core.telegram.org/bots/api#inputmedia
  * This object represents the content of a media message to be sent. It should be one of
  * - InputMediaAnimation
  * - InputMediaDocument
@@ -1625,7 +1625,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmediaphoto  
+ * https://core.telegram.org/bots/api#inputmediaphoto
  * Represents a photo to be sent.
  * @typedef {Object} InputMediaPhoto
  * @property {string} type - Type of the result, must be photo
@@ -1638,7 +1638,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmediavideo  
+ * https://core.telegram.org/bots/api#inputmediavideo
  * Represents a video to be sent.
  * @typedef {Object} InputMediaVideo
  * @property {string} type - Type of the result, must be video
@@ -1656,7 +1656,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmediaanimation  
+ * https://core.telegram.org/bots/api#inputmediaanimation
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  * @typedef {Object} InputMediaAnimation
  * @property {string} type - Type of the result, must be animation
@@ -1673,7 +1673,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmediaaudio  
+ * https://core.telegram.org/bots/api#inputmediaaudio
  * Represents an audio file to be treated as music to be sent.
  * @typedef {Object} InputMediaAudio
  * @property {string} type - Type of the result, must be audio
@@ -1688,7 +1688,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmediadocument  
+ * https://core.telegram.org/bots/api#inputmediadocument
  * Represents a general file to be sent.
  * @typedef {Object} InputMediaDocument
  * @property {string} type - Type of the result, must be document
@@ -1701,13 +1701,13 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputfile  
+ * https://core.telegram.org/bots/api#inputfile
  * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
  * @typedef {Object} InputFile
  */
 
 /**
- * https://core.telegram.org/bots/api#inputpaidmedia  
+ * https://core.telegram.org/bots/api#inputpaidmedia
  * This object describes the paid media to be sent. Currently, it can be one of
  * - InputPaidMediaPhoto
  * - InputPaidMediaVideo
@@ -1715,7 +1715,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputpaidmediaphoto  
+ * https://core.telegram.org/bots/api#inputpaidmediaphoto
  * The paid media to send is a photo.
  * @typedef {Object} InputPaidMediaPhoto
  * @property {string} type - Type of the media, must be photo
@@ -1723,7 +1723,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputpaidmediavideo  
+ * https://core.telegram.org/bots/api#inputpaidmediavideo
  * The paid media to send is a video.
  * @typedef {Object} InputPaidMediaVideo
  * @property {string} type - Type of the media, must be video
@@ -1736,7 +1736,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#sticker  
+ * https://core.telegram.org/bots/api#sticker
  * This object represents a sticker.
  * @typedef {Object} Sticker
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -1757,7 +1757,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#stickerset  
+ * https://core.telegram.org/bots/api#stickerset
  * This object represents a sticker set.
  * @typedef {Object} StickerSet
  * @property {string} name - Sticker set name
@@ -1768,7 +1768,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#maskposition  
+ * https://core.telegram.org/bots/api#maskposition
  * This object describes the position on faces where a mask should be placed by default.
  * @typedef {Object} MaskPosition
  * @property {string} point - The part of the face relative to which the mask should be placed. One of "forehead", "eyes", "mouth", or "chin".
@@ -1778,7 +1778,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputsticker  
+ * https://core.telegram.org/bots/api#inputsticker
  * This object describes a sticker to be added to a sticker set.
  * @typedef {Object} InputSticker
  * @property {InputFile | string} sticker - The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, upload a new one using multipart/form-data, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
@@ -1789,7 +1789,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#gift  
+ * https://core.telegram.org/bots/api#gift
  * This object represents a gift that can be sent by the bot.
  * @typedef {Object} Gift
  * @property {string} id - Unique identifier of the gift
@@ -1801,14 +1801,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#gifts  
+ * https://core.telegram.org/bots/api#gifts
  * This object represent a list of gifts.
  * @typedef {Object} Gifts
  * @property {Array<Gift>} gifts - The list of gifts
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequery  
+ * https://core.telegram.org/bots/api#inlinequery
  * This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
  * @typedef {Object} InlineQuery
  * @property {string} id - Unique identifier for this query
@@ -1820,7 +1820,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultsbutton  
+ * https://core.telegram.org/bots/api#inlinequeryresultsbutton
  * This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
  * @typedef {Object} InlineQueryResultsButton
  * @property {string} text - Label text on the button
@@ -1829,7 +1829,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresult  
+ * https://core.telegram.org/bots/api#inlinequeryresult
  * This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
  * - InlineQueryResultCachedAudio
  * - InlineQueryResultCachedDocument
@@ -1856,7 +1856,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultarticle  
+ * https://core.telegram.org/bots/api#inlinequeryresultarticle
  * Represents a link to an article or web page.
  * @typedef {Object} InlineQueryResultArticle
  * @property {string} type - Type of the result, must be article
@@ -1872,7 +1872,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultphoto  
+ * https://core.telegram.org/bots/api#inlinequeryresultphoto
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
  * @typedef {Object} InlineQueryResultPhoto
  * @property {string} type - Type of the result, must be photo
@@ -1892,7 +1892,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultgif  
+ * https://core.telegram.org/bots/api#inlinequeryresultgif
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @typedef {Object} InlineQueryResultGif
  * @property {string} type - Type of the result, must be gif
@@ -1913,7 +1913,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif  
+ * https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
  * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @typedef {Object} InlineQueryResultMpeg4Gif
  * @property {string} type - Type of the result, must be mpeg4_gif
@@ -1934,7 +1934,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultvideo  
+ * https://core.telegram.org/bots/api#inlinequeryresultvideo
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  * @typedef {Object} InlineQueryResultVideo
  * @property {string} type - Type of the result, must be video
@@ -1956,7 +1956,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultaudio  
+ * https://core.telegram.org/bots/api#inlinequeryresultaudio
  * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  * @typedef {Object} InlineQueryResultAudio
  * @property {string} type - Type of the result, must be audio
@@ -1973,7 +1973,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultvoice  
+ * https://core.telegram.org/bots/api#inlinequeryresultvoice
  * Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
  * @typedef {Object} InlineQueryResultVoice
  * @property {string} type - Type of the result, must be voice
@@ -1989,7 +1989,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultdocument  
+ * https://core.telegram.org/bots/api#inlinequeryresultdocument
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
  * @typedef {Object} InlineQueryResultDocument
  * @property {string} type - Type of the result, must be document
@@ -2009,7 +2009,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultlocation  
+ * https://core.telegram.org/bots/api#inlinequeryresultlocation
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
  * @typedef {Object} InlineQueryResultLocation
  * @property {string} type - Type of the result, must be location
@@ -2029,7 +2029,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultvenue  
+ * https://core.telegram.org/bots/api#inlinequeryresultvenue
  * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
  * @typedef {Object} InlineQueryResultVenue
  * @property {string} type - Type of the result, must be venue
@@ -2050,7 +2050,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcontact  
+ * https://core.telegram.org/bots/api#inlinequeryresultcontact
  * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
  * @typedef {Object} InlineQueryResultContact
  * @property {string} type - Type of the result, must be contact
@@ -2067,7 +2067,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultgame  
+ * https://core.telegram.org/bots/api#inlinequeryresultgame
  * Represents a Game.
  * @typedef {Object} InlineQueryResultGame
  * @property {string} type - Type of the result, must be game
@@ -2077,7 +2077,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedphoto  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
  * Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
  * @typedef {Object} InlineQueryResultCachedPhoto
  * @property {string} type - Type of the result, must be photo
@@ -2094,7 +2094,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedgif  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedgif
  * Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
  * @typedef {Object} InlineQueryResultCachedGif
  * @property {string} type - Type of the result, must be gif
@@ -2110,7 +2110,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @typedef {Object} InlineQueryResultCachedMpeg4Gif
  * @property {string} type - Type of the result, must be mpeg4_gif
@@ -2126,7 +2126,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedsticker  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
  * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
  * @typedef {Object} InlineQueryResultCachedSticker
  * @property {string} type - Type of the result, must be sticker
@@ -2137,7 +2137,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcacheddocument  
+ * https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
  * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
  * @typedef {Object} InlineQueryResultCachedDocument
  * @property {string} type - Type of the result, must be document
@@ -2153,7 +2153,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedvideo  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
  * Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  * @typedef {Object} InlineQueryResultCachedVideo
  * @property {string} type - Type of the result, must be video
@@ -2170,7 +2170,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedvoice  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedvoice
  * Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
  * @typedef {Object} InlineQueryResultCachedVoice
  * @property {string} type - Type of the result, must be voice
@@ -2185,7 +2185,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inlinequeryresultcachedaudio  
+ * https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
  * Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  * @typedef {Object} InlineQueryResultCachedAudio
  * @property {string} type - Type of the result, must be audio
@@ -2199,7 +2199,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputmessagecontent  
+ * https://core.telegram.org/bots/api#inputmessagecontent
  * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:
  * - InputTextMessageContent
  * - InputLocationMessageContent
@@ -2210,7 +2210,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputtextmessagecontent  
+ * https://core.telegram.org/bots/api#inputtextmessagecontent
  * Represents the content of a text message to be sent as the result of an inline query.
  * @typedef {Object} InputTextMessageContent
  * @property {string} message_text - Text of the message to be sent, 1-4096 characters
@@ -2220,7 +2220,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputlocationmessagecontent  
+ * https://core.telegram.org/bots/api#inputlocationmessagecontent
  * Represents the content of a location message to be sent as the result of an inline query.
  * @typedef {Object} InputLocationMessageContent
  * @property {number} latitude - Latitude of the location in degrees
@@ -2232,7 +2232,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputvenuemessagecontent  
+ * https://core.telegram.org/bots/api#inputvenuemessagecontent
  * Represents the content of a venue message to be sent as the result of an inline query.
  * @typedef {Object} InputVenueMessageContent
  * @property {number} latitude - Latitude of the venue in degrees
@@ -2246,7 +2246,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputcontactmessagecontent  
+ * https://core.telegram.org/bots/api#inputcontactmessagecontent
  * Represents the content of a contact message to be sent as the result of an inline query.
  * @typedef {Object} InputContactMessageContent
  * @property {string} phone_number - Contact's phone number
@@ -2256,7 +2256,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#inputinvoicemessagecontent  
+ * https://core.telegram.org/bots/api#inputinvoicemessagecontent
  * Represents the content of an invoice message to be sent as the result of an inline query.
  * @typedef {Object} InputInvoiceMessageContent
  * @property {string} title - Product name, 1-32 characters
@@ -2282,7 +2282,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#choseninlineresult  
+ * https://core.telegram.org/bots/api#choseninlineresult
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  * Note: It is necessary to enable inline feedback via @BotFather in order to receive these objects in updates.
  * @typedef {Object} ChosenInlineResult
@@ -2294,14 +2294,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#sentwebappmessage  
+ * https://core.telegram.org/bots/api#sentwebappmessage
  * Describes an inline message sent by a Web App on behalf of a user.
  * @typedef {Object} SentWebAppMessage
  * @property {string} [inline_message_id] - Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
  */
 
 /**
- * https://core.telegram.org/bots/api#preparedinlinemessage  
+ * https://core.telegram.org/bots/api#preparedinlinemessage
  * Describes an inline message to be sent by a user of a Mini App.
  * @typedef {Object} PreparedInlineMessage
  * @property {string} id - Unique identifier of the prepared message
@@ -2309,7 +2309,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#labeledprice  
+ * https://core.telegram.org/bots/api#labeledprice
  * This object represents a portion of the price for goods or services.
  * @typedef {Object} LabeledPrice
  * @property {string} label - Portion label
@@ -2317,7 +2317,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#invoice  
+ * https://core.telegram.org/bots/api#invoice
  * This object contains basic information about an invoice.
  * @typedef {Object} Invoice
  * @property {string} title - Product name
@@ -2328,7 +2328,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#shippingaddress  
+ * https://core.telegram.org/bots/api#shippingaddress
  * This object represents a shipping address.
  * @typedef {Object} ShippingAddress
  * @property {string} country_code - Two-letter ISO 3166-1 alpha-2 country code
@@ -2340,7 +2340,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#orderinfo  
+ * https://core.telegram.org/bots/api#orderinfo
  * This object represents information about an order.
  * @typedef {Object} OrderInfo
  * @property {string} [name] - Optional. User name
@@ -2350,7 +2350,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#shippingoption  
+ * https://core.telegram.org/bots/api#shippingoption
  * This object represents one shipping option.
  * @typedef {Object} ShippingOption
  * @property {string} id - Shipping option identifier
@@ -2359,8 +2359,8 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#successfulpayment  
- * This object contains basic information about a successful payment.
+ * https://core.telegram.org/bots/api#successfulpayment
+ * This object contains basic information about a successful payment. Note that if the buyer initiates a chargeback with the relevant payment provider following this transaction, the funds may be debited from your balance. This is outside of Telegram's control.
  * @typedef {Object} SuccessfulPayment
  * @property {string} currency - Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars
  * @property {number} total_amount - Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
@@ -2375,7 +2375,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#refundedpayment  
+ * https://core.telegram.org/bots/api#refundedpayment
  * This object contains basic information about a refunded payment.
  * @typedef {Object} RefundedPayment
  * @property {'XTR'} currency - Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR"
@@ -2386,7 +2386,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#shippingquery  
+ * https://core.telegram.org/bots/api#shippingquery
  * This object contains information about an incoming shipping query.
  * @typedef {Object} ShippingQuery
  * @property {string} id - Unique query identifier
@@ -2396,7 +2396,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#precheckoutquery  
+ * https://core.telegram.org/bots/api#precheckoutquery
  * This object contains information about an incoming pre-checkout query.
  * @typedef {Object} PreCheckoutQuery
  * @property {string} id - Unique query identifier
@@ -2409,7 +2409,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#paidmediapurchased  
+ * https://core.telegram.org/bots/api#paidmediapurchased
  * This object contains information about a paid media purchase.
  * @typedef {Object} PaidMediaPurchased
  * @property {User} from - User who purchased the media
@@ -2417,7 +2417,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#revenuewithdrawalstate  
+ * https://core.telegram.org/bots/api#revenuewithdrawalstate
  * This object describes the state of a revenue withdrawal operation. Currently, it can be one of
  * - RevenueWithdrawalStatePending
  * - RevenueWithdrawalStateSucceeded
@@ -2426,14 +2426,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#revenuewithdrawalstatepending  
+ * https://core.telegram.org/bots/api#revenuewithdrawalstatepending
  * The withdrawal is in progress.
  * @typedef {Object} RevenueWithdrawalStatePending
  * @property {'pending'} type - Type of the state, always "pending"
  */
 
 /**
- * https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded  
+ * https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
  * The withdrawal succeeded.
  * @typedef {Object} RevenueWithdrawalStateSucceeded
  * @property {'succeeded'} type - Type of the state, always "succeeded"
@@ -2442,14 +2442,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#revenuewithdrawalstatefailed  
+ * https://core.telegram.org/bots/api#revenuewithdrawalstatefailed
  * The withdrawal failed and the transaction was refunded.
  * @typedef {Object} RevenueWithdrawalStateFailed
  * @property {'failed'} type - Type of the state, always "failed"
  */
 
 /**
- * https://core.telegram.org/bots/api#affiliateinfo  
+ * https://core.telegram.org/bots/api#affiliateinfo
  * Contains information about the affiliate that received a commission via this transaction.
  * @typedef {Object} AffiliateInfo
  * @property {User} [affiliate_user] - Optional. The bot or the user that received an affiliate commission if it was received by a bot or a user
@@ -2460,7 +2460,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartner  
+ * https://core.telegram.org/bots/api#transactionpartner
  * This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of
  * - TransactionPartnerUser
  * - TransactionPartnerAffiliateProgram
@@ -2472,7 +2472,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartneruser  
+ * https://core.telegram.org/bots/api#transactionpartneruser
  * Describes a transaction with a user.
  * @typedef {Object} TransactionPartnerUser
  * @property {'user'} type - Type of the transaction partner, always "user"
@@ -2486,7 +2486,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartneraffiliateprogram  
+ * https://core.telegram.org/bots/api#transactionpartneraffiliateprogram
  * Describes the affiliate program that issued the affiliate commission received via this transaction.
  * @typedef {Object} TransactionPartnerAffiliateProgram
  * @property {'affiliate_program'} type - Type of the transaction partner, always "affiliate_program"
@@ -2495,7 +2495,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartnerfragment  
+ * https://core.telegram.org/bots/api#transactionpartnerfragment
  * Describes a withdrawal transaction with Fragment.
  * @typedef {Object} TransactionPartnerFragment
  * @property {'fragment'} type - Type of the transaction partner, always "fragment"
@@ -2503,14 +2503,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartnertelegramads  
+ * https://core.telegram.org/bots/api#transactionpartnertelegramads
  * Describes a withdrawal transaction to the Telegram Ads platform.
  * @typedef {Object} TransactionPartnerTelegramAds
  * @property {'telegram_ads'} type - Type of the transaction partner, always "telegram_ads"
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartnertelegramapi  
+ * https://core.telegram.org/bots/api#transactionpartnertelegramapi
  * Describes a transaction with payment for paid broadcasting.
  * @typedef {Object} TransactionPartnerTelegramApi
  * @property {'telegram_api'} type - Type of the transaction partner, always "telegram_api"
@@ -2518,15 +2518,15 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#transactionpartnerother  
+ * https://core.telegram.org/bots/api#transactionpartnerother
  * Describes a transaction with an unknown source or recipient.
  * @typedef {Object} TransactionPartnerOther
  * @property {'other'} type - Type of the transaction partner, always "other"
  */
 
 /**
- * https://core.telegram.org/bots/api#startransaction  
- * Describes a Telegram Star transaction.
+ * https://core.telegram.org/bots/api#startransaction
+ * Describes a Telegram Star transaction. Note that if the buyer initiates a chargeback with the payment provider from whom they acquired Stars (e.g., Apple, Google) following this transaction, the refunded Stars will be deducted from the bot's balance. This is outside of Telegram's control.
  * @typedef {Object} StarTransaction
  * @property {string} id - Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
  * @property {number} amount - Integer amount of Telegram Stars transferred by the transaction
@@ -2537,14 +2537,14 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#startransactions  
+ * https://core.telegram.org/bots/api#startransactions
  * Contains a list of Telegram Star transactions.
  * @typedef {Object} StarTransactions
  * @property {Array<StarTransaction>} transactions - The list of transactions
  */
 
 /**
- * https://core.telegram.org/bots/api#passportdata  
+ * https://core.telegram.org/bots/api#passportdata
  * Describes Telegram Passport data shared with the bot by the user.
  * @typedef {Object} PassportData
  * @property {Array<EncryptedPassportElement>} data - Array with information about documents and other Telegram Passport elements that was shared with the bot
@@ -2552,7 +2552,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportfile  
+ * https://core.telegram.org/bots/api#passportfile
  * This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
  * @typedef {Object} PassportFile
  * @property {string} file_id - Identifier for this file, which can be used to download or reuse the file
@@ -2562,7 +2562,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#encryptedpassportelement  
+ * https://core.telegram.org/bots/api#encryptedpassportelement
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  * @typedef {Object} EncryptedPassportElement
  * @property {string} type - Element type. One of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration", "phone_number", "email".
@@ -2578,7 +2578,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#encryptedcredentials  
+ * https://core.telegram.org/bots/api#encryptedcredentials
  * Describes data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
  * @typedef {Object} EncryptedCredentials
  * @property {string} data - Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication
@@ -2587,7 +2587,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerror  
+ * https://core.telegram.org/bots/api#passportelementerror
  * This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:
  * - PassportElementErrorDataField
  * - PassportElementErrorFrontSide
@@ -2602,7 +2602,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrordatafield  
+ * https://core.telegram.org/bots/api#passportelementerrordatafield
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  * @typedef {Object} PassportElementErrorDataField
  * @property {string} source - Error source, must be data
@@ -2613,7 +2613,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorfrontside  
+ * https://core.telegram.org/bots/api#passportelementerrorfrontside
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
  * @typedef {Object} PassportElementErrorFrontSide
  * @property {string} source - Error source, must be front_side
@@ -2623,7 +2623,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorreverseside  
+ * https://core.telegram.org/bots/api#passportelementerrorreverseside
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes.
  * @typedef {Object} PassportElementErrorReverseSide
  * @property {string} source - Error source, must be reverse_side
@@ -2633,7 +2633,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorselfie  
+ * https://core.telegram.org/bots/api#passportelementerrorselfie
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
  * @typedef {Object} PassportElementErrorSelfie
  * @property {string} source - Error source, must be selfie
@@ -2643,7 +2643,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorfile  
+ * https://core.telegram.org/bots/api#passportelementerrorfile
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
  * @typedef {Object} PassportElementErrorFile
  * @property {string} source - Error source, must be file
@@ -2653,7 +2653,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorfiles  
+ * https://core.telegram.org/bots/api#passportelementerrorfiles
  * Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
  * @typedef {Object} PassportElementErrorFiles
  * @property {string} source - Error source, must be files
@@ -2663,7 +2663,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrortranslationfile  
+ * https://core.telegram.org/bots/api#passportelementerrortranslationfile
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
  * @typedef {Object} PassportElementErrorTranslationFile
  * @property {string} source - Error source, must be translation_file
@@ -2673,7 +2673,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrortranslationfiles  
+ * https://core.telegram.org/bots/api#passportelementerrortranslationfiles
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
  * @typedef {Object} PassportElementErrorTranslationFiles
  * @property {string} source - Error source, must be translation_files
@@ -2683,7 +2683,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#passportelementerrorunspecified  
+ * https://core.telegram.org/bots/api#passportelementerrorunspecified
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  * @typedef {Object} PassportElementErrorUnspecified
  * @property {string} source - Error source, must be unspecified
@@ -2693,7 +2693,7 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#game  
+ * https://core.telegram.org/bots/api#game
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  * @typedef {Object} Game
  * @property {string} title - Title of the game
@@ -2705,13 +2705,13 @@
  */
 
 /**
- * https://core.telegram.org/bots/api#callbackgame  
+ * https://core.telegram.org/bots/api#callbackgame
  * A placeholder, currently holds no information. Use BotFather to set up your game.
  * @typedef {Object} CallbackGame
  */
 
 /**
- * https://core.telegram.org/bots/api#gamehighscore  
+ * https://core.telegram.org/bots/api#gamehighscore
  * This object represents one row of the high scores table for a game.
  * @typedef {Object} GameHighScore
  * @property {number} position - Position in high score table for the game
@@ -2748,7 +2748,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getupdates  
+ * https://core.telegram.org/bots/api#getupdates
  * Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.
  * @typedef {Object} GetUpdatesParams
  * @property {number} [offset] - Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from -offset update from the end of the updates queue. All previous updates will be forgotten.
@@ -2779,7 +2779,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setwebhook  
+ * https://core.telegram.org/bots/api#setwebhook
  * Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable amount of attempts. Returns True on success.
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header "X-Telegram-Bot-Api-Secret-Token" with the secret token as content.
  * @typedef {Object} SetWebhookParams
@@ -2808,7 +2808,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletewebhook  
+ * https://core.telegram.org/bots/api#deletewebhook
  * Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
  * @typedef {Object} DeleteWebhookParams
  * @property {boolean} [drop_pending_updates] - Pass True to drop all pending updates
@@ -2896,7 +2896,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendmessage  
+ * https://core.telegram.org/bots/api#sendmessage
  * Use this method to send text messages. On success, the sent Message is returned.
  * @typedef {Object} SendMessageParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -2936,7 +2936,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#forwardmessage  
+ * https://core.telegram.org/bots/api#forwardmessage
  * Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned.
  * @typedef {Object} ForwardMessageParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -2969,7 +2969,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#forwardmessages  
+ * https://core.telegram.org/bots/api#forwardmessages
  * Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned.
  * @typedef {Object} ForwardMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3002,7 +3002,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#copymessage  
+ * https://core.telegram.org/bots/api#copymessage
  * Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
  * @typedef {Object} CopyMessageParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3042,7 +3042,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#copymessages  
+ * https://core.telegram.org/bots/api#copymessages
  * Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
  * @typedef {Object} CopyMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3076,7 +3076,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendphoto  
+ * https://core.telegram.org/bots/api#sendphoto
  * Use this method to send photos. On success, the sent Message is returned.
  * @typedef {Object} SendPhotoParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3118,7 +3118,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendaudio  
+ * https://core.telegram.org/bots/api#sendaudio
  * Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
  * For sending voice messages, use the sendVoice method instead.
  * @typedef {Object} SendAudioParams
@@ -3165,7 +3165,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#senddocument  
+ * https://core.telegram.org/bots/api#senddocument
  * Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  * @typedef {Object} SendDocumentParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3207,7 +3207,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendvideo  
+ * https://core.telegram.org/bots/api#sendvideo
  * Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  * @typedef {Object} SendVideoParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3254,7 +3254,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendanimation  
+ * https://core.telegram.org/bots/api#sendanimation
  * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  * @typedef {Object} SendAnimationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3300,7 +3300,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendvoice  
+ * https://core.telegram.org/bots/api#sendvoice
  * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
  * @typedef {Object} SendVoiceParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3341,7 +3341,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendvideonote  
+ * https://core.telegram.org/bots/api#sendvideonote
  * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
  * @typedef {Object} SendVideoNoteParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3381,7 +3381,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendpaidmedia  
+ * https://core.telegram.org/bots/api#sendpaidmedia
  * Use this method to send paid media. On success, the sent Message is returned.
  * @typedef {Object} SendPaidMediaParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3422,7 +3422,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendmediagroup  
+ * https://core.telegram.org/bots/api#sendmediagroup
  * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
  * @typedef {Object} SendMediaGroupParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3458,7 +3458,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendlocation  
+ * https://core.telegram.org/bots/api#sendlocation
  * Use this method to send point on the map. On success, the sent Message is returned.
  * @typedef {Object} SendLocationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3500,7 +3500,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendvenue  
+ * https://core.telegram.org/bots/api#sendvenue
  * Use this method to send information about a venue. On success, the sent Message is returned.
  * @typedef {Object} SendVenueParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3544,7 +3544,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendcontact  
+ * https://core.telegram.org/bots/api#sendcontact
  * Use this method to send phone contacts. On success, the sent Message is returned.
  * @typedef {Object} SendContactParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3584,7 +3584,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendpoll  
+ * https://core.telegram.org/bots/api#sendpoll
  * Use this method to send a native poll. On success, the sent Message is returned.
  * @typedef {Object} SendPollParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3634,7 +3634,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#senddice  
+ * https://core.telegram.org/bots/api#senddice
  * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
  * @typedef {Object} SendDiceParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -3671,7 +3671,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendchataction  
+ * https://core.telegram.org/bots/api#sendchataction
  * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
  * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
  * @typedef {Object} SendChatActionParams
@@ -3697,7 +3697,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmessagereaction  
+ * https://core.telegram.org/bots/api#setmessagereaction
  * Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
  * @typedef {Object} SetMessageReactionParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3720,7 +3720,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getuserprofilephotos  
+ * https://core.telegram.org/bots/api#getuserprofilephotos
  * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  * @typedef {Object} GetUserProfilePhotosParams
  * @property {number} user_id - Unique identifier of the target user
@@ -3750,7 +3750,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setuseremojistatus  
+ * https://core.telegram.org/bots/api#setuseremojistatus
  * Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method requestEmojiStatusAccess. Returns True on success.
  * @typedef {Object} SetUserEmojiStatusParams
  * @property {number} user_id - Unique identifier of the target user
@@ -3772,7 +3772,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getfile  
+ * https://core.telegram.org/bots/api#getfile
  * Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
  * Note: This function may not preserve the original file name and MIME type. You should save the file's MIME type and name (if available) when the File object is received.
  * @typedef {Object} GetFileParams
@@ -3803,7 +3803,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#banchatmember  
+ * https://core.telegram.org/bots/api#banchatmember
  * Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} BanChatMemberParams
  * @property {number | string} chat_id - Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
@@ -3826,7 +3826,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unbanchatmember  
+ * https://core.telegram.org/bots/api#unbanchatmember
  * Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
  * @typedef {Object} UnbanChatMemberParams
  * @property {number | string} chat_id - Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
@@ -3848,7 +3848,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#restrictchatmember  
+ * https://core.telegram.org/bots/api#restrictchatmember
  * Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
  * @typedef {Object} RestrictChatMemberParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -3872,7 +3872,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#promotechatmember  
+ * https://core.telegram.org/bots/api#promotechatmember
  * Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
  * @typedef {Object} PromoteChatMemberParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3908,7 +3908,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatadministratorcustomtitle  
+ * https://core.telegram.org/bots/api#setchatadministratorcustomtitle
  * Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
  * @typedef {Object} SetChatAdministratorCustomTitleParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -3930,7 +3930,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#banchatsenderchat  
+ * https://core.telegram.org/bots/api#banchatsenderchat
  * Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} BanChatSenderChatParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3951,7 +3951,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unbanchatsenderchat  
+ * https://core.telegram.org/bots/api#unbanchatsenderchat
  * Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} UnbanChatSenderChatParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3972,7 +3972,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatpermissions  
+ * https://core.telegram.org/bots/api#setchatpermissions
  * Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
  * @typedef {Object} SetChatPermissionsParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -3994,7 +3994,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#exportchatinvitelink  
+ * https://core.telegram.org/bots/api#exportchatinvitelink
  * Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
  * @typedef {Object} ExportChatInviteLinkParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4022,7 +4022,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#createchatinvitelink  
+ * https://core.telegram.org/bots/api#createchatinvitelink
  * Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
  * @typedef {Object} CreateChatInviteLinkParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4054,7 +4054,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editchatinvitelink  
+ * https://core.telegram.org/bots/api#editchatinvitelink
  * Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
  * @typedef {Object} EditChatInviteLinkParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4087,7 +4087,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#createchatsubscriptioninvitelink  
+ * https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
  * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
  * @typedef {Object} CreateChatSubscriptionInviteLinkParams
  * @property {number | string} chat_id - Unique identifier for the target channel chat or username of the target channel (in the format @channelusername)
@@ -4118,7 +4118,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editchatsubscriptioninvitelink  
+ * https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
  * Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
  * @typedef {Object} EditChatSubscriptionInviteLinkParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4148,7 +4148,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#revokechatinvitelink  
+ * https://core.telegram.org/bots/api#revokechatinvitelink
  * Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
  * @typedef {Object} RevokeChatInviteLinkParams
  * @property {number | string} chat_id - Unique identifier of the target chat or username of the target channel (in the format @channelusername)
@@ -4177,7 +4177,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#approvechatjoinrequest  
+ * https://core.telegram.org/bots/api#approvechatjoinrequest
  * Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  * @typedef {Object} ApproveChatJoinRequestParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4198,7 +4198,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#declinechatjoinrequest  
+ * https://core.telegram.org/bots/api#declinechatjoinrequest
  * Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  * @typedef {Object} DeclineChatJoinRequestParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4219,7 +4219,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatphoto  
+ * https://core.telegram.org/bots/api#setchatphoto
  * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} SetChatPhotoParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4240,7 +4240,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletechatphoto  
+ * https://core.telegram.org/bots/api#deletechatphoto
  * Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} DeleteChatPhotoParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4260,7 +4260,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchattitle  
+ * https://core.telegram.org/bots/api#setchattitle
  * Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} SetChatTitleParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4281,7 +4281,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatdescription  
+ * https://core.telegram.org/bots/api#setchatdescription
  * Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  * @typedef {Object} SetChatDescriptionParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4302,7 +4302,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#pinchatmessage  
+ * https://core.telegram.org/bots/api#pinchatmessage
  * Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  * @typedef {Object} PinChatMessageParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be pinned
@@ -4325,7 +4325,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unpinchatmessage  
+ * https://core.telegram.org/bots/api#unpinchatmessage
  * Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  * @typedef {Object} UnpinChatMessageParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be unpinned
@@ -4347,7 +4347,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unpinallchatmessages  
+ * https://core.telegram.org/bots/api#unpinallchatmessages
  * Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  * @typedef {Object} UnpinAllChatMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -4367,7 +4367,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#leavechat  
+ * https://core.telegram.org/bots/api#leavechat
  * Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
  * @typedef {Object} LeaveChatParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -4387,7 +4387,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getchat  
+ * https://core.telegram.org/bots/api#getchat
  * Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
  * @typedef {Object} GetChatParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -4415,7 +4415,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getchatadministrators  
+ * https://core.telegram.org/bots/api#getchatadministrators
  * Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.
  * @typedef {Object} GetChatAdministratorsParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -4443,7 +4443,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getchatmembercount  
+ * https://core.telegram.org/bots/api#getchatmembercount
  * Use this method to get the number of members in a chat. Returns Int on success.
  * @typedef {Object} GetChatMemberCountParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -4471,7 +4471,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getchatmember  
+ * https://core.telegram.org/bots/api#getchatmember
  * Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
  * @typedef {Object} GetChatMemberParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
@@ -4500,7 +4500,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatstickerset  
+ * https://core.telegram.org/bots/api#setchatstickerset
  * Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
  * @typedef {Object} SetChatStickerSetParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4521,7 +4521,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletechatstickerset  
+ * https://core.telegram.org/bots/api#deletechatstickerset
  * Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
  * @typedef {Object} DeleteChatStickerSetParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4562,7 +4562,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#createforumtopic  
+ * https://core.telegram.org/bots/api#createforumtopic
  * Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
  * @typedef {Object} CreateForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4593,7 +4593,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editforumtopic  
+ * https://core.telegram.org/bots/api#editforumtopic
  * Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  * @typedef {Object} EditForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4616,7 +4616,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#closeforumtopic  
+ * https://core.telegram.org/bots/api#closeforumtopic
  * Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  * @typedef {Object} CloseForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4637,7 +4637,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#reopenforumtopic  
+ * https://core.telegram.org/bots/api#reopenforumtopic
  * Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  * @typedef {Object} ReopenForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4658,7 +4658,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deleteforumtopic  
+ * https://core.telegram.org/bots/api#deleteforumtopic
  * Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
  * @typedef {Object} DeleteForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4679,7 +4679,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unpinallforumtopicmessages  
+ * https://core.telegram.org/bots/api#unpinallforumtopicmessages
  * Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
  * @typedef {Object} UnpinAllForumTopicMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4700,7 +4700,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editgeneralforumtopic  
+ * https://core.telegram.org/bots/api#editgeneralforumtopic
  * Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
  * @typedef {Object} EditGeneralForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4721,7 +4721,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#closegeneralforumtopic  
+ * https://core.telegram.org/bots/api#closegeneralforumtopic
  * Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
  * @typedef {Object} CloseGeneralForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4741,7 +4741,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#reopengeneralforumtopic  
+ * https://core.telegram.org/bots/api#reopengeneralforumtopic
  * Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
  * @typedef {Object} ReopenGeneralForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4761,7 +4761,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#hidegeneralforumtopic  
+ * https://core.telegram.org/bots/api#hidegeneralforumtopic
  * Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
  * @typedef {Object} HideGeneralForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4781,7 +4781,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unhidegeneralforumtopic  
+ * https://core.telegram.org/bots/api#unhidegeneralforumtopic
  * Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
  * @typedef {Object} UnhideGeneralForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4801,7 +4801,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages  
+ * https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
  * Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
  * @typedef {Object} UnpinAllGeneralForumTopicMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
@@ -4821,7 +4821,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#answercallbackquery  
+ * https://core.telegram.org/bots/api#answercallbackquery
  * Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
  * @typedef {Object} AnswerCallbackQueryParams
  * @property {string} callback_query_id - Unique identifier for the query to be answered
@@ -4845,7 +4845,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getuserchatboosts  
+ * https://core.telegram.org/bots/api#getuserchatboosts
  * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
  * @typedef {Object} GetUserChatBoostsParams
  * @property {number | string} chat_id - Unique identifier for the chat or username of the channel (in the format @channelusername)
@@ -4874,7 +4874,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getbusinessconnection  
+ * https://core.telegram.org/bots/api#getbusinessconnection
  * Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.
  * @typedef {Object} GetBusinessConnectionParams
  * @property {string} business_connection_id - Unique identifier of the business connection
@@ -4902,7 +4902,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmycommands  
+ * https://core.telegram.org/bots/api#setmycommands
  * Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
  * @typedef {Object} SetMyCommandsParams
  * @property {Array<BotCommand>} commands - A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.
@@ -4924,7 +4924,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletemycommands  
+ * https://core.telegram.org/bots/api#deletemycommands
  * Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
  * @typedef {Object} DeleteMyCommandsParams
  * @property {BotCommandScope} [scope] - A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
@@ -4945,7 +4945,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getmycommands  
+ * https://core.telegram.org/bots/api#getmycommands
  * Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
  * @typedef {Object} GetMyCommandsParams
  * @property {BotCommandScope} [scope] - A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault.
@@ -4974,7 +4974,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmyname  
+ * https://core.telegram.org/bots/api#setmyname
  * Use this method to change the bot's name. Returns True on success.
  * @typedef {Object} SetMyNameParams
  * @property {string} [name] - New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
@@ -4995,7 +4995,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getmyname  
+ * https://core.telegram.org/bots/api#getmyname
  * Use this method to get the current bot name for the given user language. Returns BotName on success.
  * @typedef {Object} GetMyNameParams
  * @property {string} [language_code] - A two-letter ISO 639-1 language code or an empty string
@@ -5023,7 +5023,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmydescription  
+ * https://core.telegram.org/bots/api#setmydescription
  * Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
  * @typedef {Object} SetMyDescriptionParams
  * @property {string} [description] - New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given language.
@@ -5044,7 +5044,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getmydescription  
+ * https://core.telegram.org/bots/api#getmydescription
  * Use this method to get the current bot description for the given user language. Returns BotDescription on success.
  * @typedef {Object} GetMyDescriptionParams
  * @property {string} [language_code] - A two-letter ISO 639-1 language code or an empty string
@@ -5072,7 +5072,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmyshortdescription  
+ * https://core.telegram.org/bots/api#setmyshortdescription
  * Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
  * @typedef {Object} SetMyShortDescriptionParams
  * @property {string} [short_description] - New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short description for the given language.
@@ -5093,7 +5093,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getmyshortdescription  
+ * https://core.telegram.org/bots/api#getmyshortdescription
  * Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.
  * @typedef {Object} GetMyShortDescriptionParams
  * @property {string} [language_code] - A two-letter ISO 639-1 language code or an empty string
@@ -5121,7 +5121,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setchatmenubutton  
+ * https://core.telegram.org/bots/api#setchatmenubutton
  * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  * @typedef {Object} SetChatMenuButtonParams
  * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
@@ -5142,7 +5142,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getchatmenubutton  
+ * https://core.telegram.org/bots/api#getchatmenubutton
  * Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
  * @typedef {Object} GetChatMenuButtonParams
  * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be returned
@@ -5170,7 +5170,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setmydefaultadministratorrights  
+ * https://core.telegram.org/bots/api#setmydefaultadministratorrights
  * Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
  * @typedef {Object} SetMyDefaultAdministratorRightsParams
  * @property {ChatAdministratorRights} [rights] - A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared.
@@ -5191,7 +5191,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getmydefaultadministratorrights  
+ * https://core.telegram.org/bots/api#getmydefaultadministratorrights
  * Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
  * @typedef {Object} GetMyDefaultAdministratorRightsParams
  * @property {boolean} [for_channels] - Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned.
@@ -5219,7 +5219,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editmessagetext  
+ * https://core.telegram.org/bots/api#editmessagetext
  * Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  * @typedef {Object} EditMessageTextParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5255,7 +5255,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editmessagecaption  
+ * https://core.telegram.org/bots/api#editmessagecaption
  * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  * @typedef {Object} EditMessageCaptionParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5291,7 +5291,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editmessagemedia  
+ * https://core.telegram.org/bots/api#editmessagemedia
  * Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  * @typedef {Object} EditMessageMediaParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5324,7 +5324,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editmessagelivelocation  
+ * https://core.telegram.org/bots/api#editmessagelivelocation
  * Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
  * @typedef {Object} EditMessageLiveLocationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5362,7 +5362,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#stopmessagelivelocation  
+ * https://core.telegram.org/bots/api#stopmessagelivelocation
  * Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
  * @typedef {Object} StopMessageLiveLocationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5394,7 +5394,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#editmessagereplymarkup  
+ * https://core.telegram.org/bots/api#editmessagereplymarkup
  * Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  * @typedef {Object} EditMessageReplyMarkupParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5426,7 +5426,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#stoppoll  
+ * https://core.telegram.org/bots/api#stoppoll
  * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
  * @typedef {Object} StopPollParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -5457,7 +5457,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletemessage  
+ * https://core.telegram.org/bots/api#deletemessage
  * Use this method to delete a message, including service messages, with the following limitations:
  * - A message can only be deleted if it was sent less than 48 hours ago.
  * - Service messages about a supergroup, channel, or forum topic creation can't be deleted.
@@ -5505,7 +5505,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletemessages  
+ * https://core.telegram.org/bots/api#deletemessages
  * Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
  * @typedef {Object} DeleteMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -5526,7 +5526,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendsticker  
+ * https://core.telegram.org/bots/api#sendsticker
  * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
  * @typedef {Object} SendStickerParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -5564,7 +5564,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getstickerset  
+ * https://core.telegram.org/bots/api#getstickerset
  * Use this method to get a sticker set. On success, a StickerSet object is returned.
  * @typedef {Object} GetStickerSetParams
  * @property {string} name - Name of the sticker set
@@ -5592,7 +5592,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getcustomemojistickers  
+ * https://core.telegram.org/bots/api#getcustomemojistickers
  * Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
  * @typedef {Object} GetCustomEmojiStickersParams
  * @property {Array<string>} custom_emoji_ids - A JSON-serialized list of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
@@ -5620,7 +5620,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#uploadstickerfile  
+ * https://core.telegram.org/bots/api#uploadstickerfile
  * Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.
  * @typedef {Object} UploadStickerFileParams
  * @property {number} user_id - User identifier of sticker file owner
@@ -5650,7 +5650,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#createnewstickerset  
+ * https://core.telegram.org/bots/api#createnewstickerset
  * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
  * @typedef {Object} CreateNewStickerSetParams
  * @property {number} user_id - User identifier of created sticker set owner
@@ -5675,7 +5675,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#addstickertoset  
+ * https://core.telegram.org/bots/api#addstickertoset
  * Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.
  * @typedef {Object} AddStickerToSetParams
  * @property {number} user_id - User identifier of sticker set owner
@@ -5697,7 +5697,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickerpositioninset  
+ * https://core.telegram.org/bots/api#setstickerpositioninset
  * Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
  * @typedef {Object} SetStickerPositionInSetParams
  * @property {string} sticker - File identifier of the sticker
@@ -5718,7 +5718,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletestickerfromset  
+ * https://core.telegram.org/bots/api#deletestickerfromset
  * Use this method to delete a sticker from a set created by the bot. Returns True on success.
  * @typedef {Object} DeleteStickerFromSetParams
  * @property {string} sticker - File identifier of the sticker
@@ -5738,7 +5738,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#replacestickerinset  
+ * https://core.telegram.org/bots/api#replacestickerinset
  * Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
  * @typedef {Object} ReplaceStickerInSetParams
  * @property {number} user_id - User identifier of the sticker set owner
@@ -5761,7 +5761,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickeremojilist  
+ * https://core.telegram.org/bots/api#setstickeremojilist
  * Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
  * @typedef {Object} SetStickerEmojiListParams
  * @property {string} sticker - File identifier of the sticker
@@ -5782,7 +5782,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickerkeywords  
+ * https://core.telegram.org/bots/api#setstickerkeywords
  * Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
  * @typedef {Object} SetStickerKeywordsParams
  * @property {string} sticker - File identifier of the sticker
@@ -5803,7 +5803,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickermaskposition  
+ * https://core.telegram.org/bots/api#setstickermaskposition
  * Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
  * @typedef {Object} SetStickerMaskPositionParams
  * @property {string} sticker - File identifier of the sticker
@@ -5824,7 +5824,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickersettitle  
+ * https://core.telegram.org/bots/api#setstickersettitle
  * Use this method to set the title of a created sticker set. Returns True on success.
  * @typedef {Object} SetStickerSetTitleParams
  * @property {string} name - Sticker set name
@@ -5845,7 +5845,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setstickersetthumbnail  
+ * https://core.telegram.org/bots/api#setstickersetthumbnail
  * Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.
  * @typedef {Object} SetStickerSetThumbnailParams
  * @property {string} name - Sticker set name
@@ -5868,7 +5868,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail  
+ * https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
  * Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
  * @typedef {Object} SetCustomEmojiStickerSetThumbnailParams
  * @property {string} name - Sticker set name
@@ -5889,7 +5889,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#deletestickerset  
+ * https://core.telegram.org/bots/api#deletestickerset
  * Use this method to delete a sticker set that was created by the bot. Returns True on success.
  * @typedef {Object} DeleteStickerSetParams
  * @property {string} name - Sticker set name
@@ -5930,7 +5930,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendgift  
+ * https://core.telegram.org/bots/api#sendgift
  * Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success.
  * @typedef {Object} SendGiftParams
  * @property {number} user_id - Unique identifier of the target user that will receive the gift
@@ -5955,7 +5955,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#verifyuser  
+ * https://core.telegram.org/bots/api#verifyuser
  * Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
  * @typedef {Object} VerifyUserParams
  * @property {number} user_id - Unique identifier of the target user
@@ -5976,7 +5976,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#verifychat  
+ * https://core.telegram.org/bots/api#verifychat
  * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success.
  * @typedef {Object} VerifyChatParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -5997,7 +5997,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#removeuserverification  
+ * https://core.telegram.org/bots/api#removeuserverification
  * Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True on success.
  * @typedef {Object} RemoveUserVerificationParams
  * @property {number} user_id - Unique identifier of the target user
@@ -6017,7 +6017,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#removechatverification  
+ * https://core.telegram.org/bots/api#removechatverification
  * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success.
  * @typedef {Object} RemoveChatVerificationParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -6037,7 +6037,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#answerinlinequery  
+ * https://core.telegram.org/bots/api#answerinlinequery
  * Use this method to send answers to an inline query. On success, True is returned.
  * No more than 50 results per query are allowed.
  * @typedef {Object} AnswerInlineQueryParams
@@ -6065,7 +6065,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#answerwebappquery  
+ * https://core.telegram.org/bots/api#answerwebappquery
  * Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
  * @typedef {Object} AnswerWebAppQueryParams
  * @property {string} web_app_query_id - Unique identifier for the query to be answered
@@ -6094,7 +6094,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#savepreparedinlinemessage  
+ * https://core.telegram.org/bots/api#savepreparedinlinemessage
  * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
  * @typedef {Object} SavePreparedInlineMessageParams
  * @property {number} user_id - Unique identifier of the target user that can use the prepared message
@@ -6127,7 +6127,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendinvoice  
+ * https://core.telegram.org/bots/api#sendinvoice
  * Use this method to send invoices. On success, the sent Message is returned.
  * @typedef {Object} SendInvoiceParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -6183,7 +6183,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#createinvoicelink  
+ * https://core.telegram.org/bots/api#createinvoicelink
  * Use this method to create a link for an invoice. Returns the created invoice link as String on success.
  * @typedef {Object} CreateInvoiceLinkParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the link will be created. For payments in Telegram Stars only.
@@ -6232,7 +6232,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#answershippingquery  
+ * https://core.telegram.org/bots/api#answershippingquery
  * If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
  * @typedef {Object} AnswerShippingQueryParams
  * @property {string} shipping_query_id - Unique identifier for the query to be answered
@@ -6255,7 +6255,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#answerprecheckoutquery  
+ * https://core.telegram.org/bots/api#answerprecheckoutquery
  * Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
  * @typedef {Object} AnswerPreCheckoutQueryParams
  * @property {string} pre_checkout_query_id - Unique identifier for the query to be answered
@@ -6277,7 +6277,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getstartransactions  
+ * https://core.telegram.org/bots/api#getstartransactions
  * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
  * @typedef {Object} GetStarTransactionsParams
  * @property {number} [offset] - Number of transactions to skip in the response
@@ -6306,7 +6306,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#refundstarpayment  
+ * https://core.telegram.org/bots/api#refundstarpayment
  * Refunds a successful payment in Telegram Stars. Returns True on success.
  * @typedef {Object} RefundStarPaymentParams
  * @property {number} user_id - Identifier of the user whose payment will be refunded
@@ -6327,7 +6327,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#edituserstarsubscription  
+ * https://core.telegram.org/bots/api#edituserstarsubscription
  * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success.
  * @typedef {Object} EditUserStarSubscriptionParams
  * @property {number} user_id - Identifier of the user whose subscription will be edited
@@ -6349,7 +6349,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setpassportdataerrors  
+ * https://core.telegram.org/bots/api#setpassportdataerrors
  * Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
  * Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
  * @typedef {Object} SetPassportDataErrorsParams
@@ -6373,7 +6373,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#sendgame  
+ * https://core.telegram.org/bots/api#sendgame
  * Use this method to send a game. On success, the sent Message is returned.
  * @typedef {Object} SendGameParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
@@ -6410,7 +6410,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#setgamescore  
+ * https://core.telegram.org/bots/api#setgamescore
  * Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
  * @typedef {Object} SetGameScoreParams
  * @property {number} user_id - User identifier
@@ -6444,7 +6444,7 @@
 
 
 /**
- * https://core.telegram.org/bots/api#getgamehighscores  
+ * https://core.telegram.org/bots/api#getgamehighscores
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
  * @typedef {Object} GetGameHighScoresParams
  * @property {number} user_id - Target user id

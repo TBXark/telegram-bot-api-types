@@ -17,6 +17,10 @@ var swiftTemplate string
 //go:embed either.tmpl
 var eitherTemplate string
 
+var swiftKeywords = []string{
+	"class", "struct", "enum", "protocol", "extension", "func", "var", "let", "init", "deinit", "associatedtype", "typealias", "import", "subscript", "operator", "if", "else", "switch", "case", "default", "for", "while", "repeat", "break", "continue", "return", "throw", "try", "catch", "guard", "defer", "do", "as", "is", "nil", "super", "self", "Self", "any", "some", "in", "where", "throws", "rethrows", "private", "fileprivate", "internal", "public", "open", "async", "await", "actor", "convenience", "dynamic", "final", "lazy", "mutating", "nonmutating", "optional", "override", "required", "static", "unowned", "weak",
+}
+
 func toSwiftType(t string) string {
 	switch t {
 	case "Integer":
@@ -68,6 +72,14 @@ func ToFieldTypes(field *scrape.Field) string {
 	return UnionsTypes(field.Types)
 }
 
+func ToSwiftName(name string) string {
+	isKeyword := tmpl.IsKeyword(swiftKeywords)
+	if isKeyword(name) {
+		return "`" + name + "`"
+	}
+	return name
+}
+
 type Either struct {
 	Count  int
 	Values []string
@@ -115,6 +127,9 @@ func RenderSwift(resp *scrape.APIResponse, dir string) error {
 		FuncMap: tmpl.FuncMap{
 			UnionsTypes:  UnionsTypes,
 			ToFieldTypes: ToFieldTypes,
+			ExtraFunc: map[string]any{
+				"ToSwiftName": ToSwiftName,
+			},
 		},
 	}, copyResp, file)
 	if err != nil {

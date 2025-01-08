@@ -22,7 +22,7 @@ public struct TelegramAPI {
 extension TelegramAPI {
     public enum {{.Name}}: String, Codable {
         {{- range .Values}}
-        case `{{.}}` = "{{.}}"
+        case {{ToSwiftName .}} = "{{.}}"
         {{- end}}
     }
 }
@@ -68,7 +68,8 @@ extension TelegramAPI {
         /** {{ToTypesDoc .Types}} | {{.Description}} */
         public let {{.Name}}: {{ToFieldTypes .}}{{if .Required}}{{else}}?{{end}}
         {{- end}}
-        public init({{range $i, $v := .Fields -}}{{if gt $i 0}} ,{{end}}{{$v.Name}}: {{ToFieldTypes .}}{{if $v.Required}}{{else}}? = nil{{end}}{{end}}) {
+
+        public init({{range $i, $v := .Fields -}}{{if gt $i 0}}, {{end}}{{$v.Name}}: {{ToFieldTypes .}}{{if $v.Required}}{{else}}? = nil{{end}}{{end}}) {
             {{- range .Fields}}
             self.{{.Name}} = {{.Name}}
             {{- end}}
@@ -102,7 +103,8 @@ extension TelegramAPI {
         /** {{ToTypesDoc .Types}} | {{.Description}} */
         public let {{.Name}}: {{ToFieldTypes .}}{{if .Required}}{{else}}?{{end}}
         {{- end}}
-        public init({{range $i, $v := .Fields -}}{{if gt $i 0}} ,{{end}}{{$v.Name}}: {{ToFieldTypes .}}{{if $v.Required}}{{else}}? = nil{{end}}{{end}}) {
+        
+        public init({{range $i, $v := .Fields -}}{{if gt $i 0}}, {{end}}{{$v.Name}}: {{ToFieldTypes .}}{{if $v.Required}}{{else}}? = nil{{end}}{{end}}) {
             {{- range .Fields}}
             self.{{.Name}} = {{.Name}}
             {{- end}}
