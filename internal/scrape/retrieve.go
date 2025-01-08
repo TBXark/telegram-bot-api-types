@@ -16,7 +16,6 @@ const (
 	botDocURL = "https://core.telegram.org/bots/api"
 )
 
-// RetrieveInfo is equivalent to retrieve_info in Python
 func RetrieveInfo() (*APIResponse, error) {
 	url := botDocURL
 	resp, err := http.Get(url)
@@ -99,6 +98,8 @@ func RetrieveInfo() (*APIResponse, error) {
 	return items, nil
 }
 
+// Base
+
 func getTypeAndName(t *goquery.Selection, anchor *goquery.Selection, url string) BaseData {
 	currName := strings.TrimSpace(t.Text())
 	base := Base{Name: currName}
@@ -135,6 +136,44 @@ func getSubtypes(currData BaseData, s *goquery.Selection, url string) {
 	}
 	currData.GetBase().Description = append(currData.GetBase().Description, formattedList...)
 }
+
+func getFields(currData BaseData, s *goquery.Selection, url string) {
+	body := s.Find("tbody")
+	var fields []*Field
+
+	body.Find("tr").Each(func(_ int, tr *goquery.Selection) {
+		children := tr.Find("td")
+
+		if currData.GetBase().category == CategoryType && children.Length() == 3 {
+			desc := cleanTGFieldDescription(children.Eq(2), url)
+			fields = append(fields, &Field{
+				Name:        children.Eq(0).Text(),
+				Types:       cleanTGType(children.Eq(1).Text()),
+				Required:    !strings.HasPrefix(desc, "Optional. "),
+				Description: desc,
+			})
+		} else if currData.GetBase().category == CategoryMethod && children.Length() == 4 {
+			fields = append(fields, &Field{
+				Name:        children.Eq(0).Text(),
+				Types:       cleanTGType(children.Eq(1).Text()),
+				Required:    children.Eq(2).Text() == "Yes",
+				Description: cleanTGFieldDescription(children.Eq(3), url),
+			})
+		} else {
+			fmt.Printf("An unexpected state has occurred!\n")
+			fmt.Printf("Type: %s\n", currData.GetBase().category.String())
+			fmt.Printf("Name: %s\n", currData.GetBase().Name)
+			fmt.Printf("Number of children: %d\n", children.Length())
+			os.Exit(1)
+		}
+	})
+	for _, field := range fields {
+		extractConstValue(field)
+	}
+	currData.GetBase().Fields = fields
+}
+
+// Description
 
 func cleanTGDescription(t *goquery.Selection, url string) []string {
 	// Replace emoji images
@@ -199,41 +238,16 @@ func cleanTGFieldDescription(t *goquery.Selection, url string) string {
 	return strings.Join(cleanTGDescription(t, url), " ")
 }
 
-func getFields(currData BaseData, s *goquery.Selection, url string) {
-	body := s.Find("tbody")
-	var fields []*Field
+// Constants
 
-	body.Find("tr").Each(func(_ int, tr *goquery.Selection) {
-		children := tr.Find("td")
-
-		if currData.GetBase().category == CategoryType && children.Length() == 3 {
-			desc := cleanTGFieldDescription(children.Eq(2), url)
-			fields = append(fields, &Field{
-				Name:        children.Eq(0).Text(),
-				Types:       cleanTGType(children.Eq(1).Text()),
-				Required:    !strings.HasPrefix(desc, "Optional. "),
-				Description: desc,
-			})
-		} else if currData.GetBase().category == CategoryMethod && children.Length() == 4 {
-			fields = append(fields, &Field{
-				Name:        children.Eq(0).Text(),
-				Types:       cleanTGType(children.Eq(1).Text()),
-				Required:    children.Eq(2).Text() == "Yes",
-				Description: cleanTGFieldDescription(children.Eq(3), url),
-			})
-		} else {
-			fmt.Printf("An unexpected state has occurred!\n")
-			fmt.Printf("Type: %s\n", currData.GetBase().category)
-			fmt.Printf("Name: %s\n", currData.GetBase().Name)
-			fmt.Printf("Number of children: %d\n", children.Length())
-			os.Exit(1)
-		}
-	})
-	for _, field := range fields {
-		extractConstValue(field)
+func extractConstValue(field *Field) {
+	constRe := regexp.MustCompile(`always "([\w_]+)"`)
+	if matches := constRe.FindStringSubmatch(field.Description); matches != nil {
+		field.Const = matches[1]
 	}
-	currData.GetBase().Fields = fields
 }
+
+// Return type
 
 func getMethodReturnType(method *Method) {
 	description := strings.Join(method.Description, "\n")
@@ -253,13 +267,6 @@ func getMethodReturnType(method *Method) {
 	}
 
 	fmt.Printf("WARN - failed to get return type for %s\n", method.Name)
-}
-
-func extractConstValue(field *Field) {
-	constRe := regexp.MustCompile(`always "([\w_]+)"`)
-	if matches := constRe.FindStringSubmatch(field.Description); matches != nil {
-		field.Const = matches[1]
-	}
 }
 
 func extractReturnType(method *Method, retStr string) {
@@ -290,6 +297,8 @@ func extractReturnType(method *Method, retStr string) {
 		method.Returns = rets
 	}
 }
+
+// Field types
 
 func getProperType(t string) string {
 	switch t {
@@ -335,6 +344,8 @@ func cleanTGType(t string) []string {
 	}
 	return result
 }
+
+// Enums
 
 var (
 	defaultEnums      = []string{"ChatType", "InlineQueryChatType", "ChatAction", "MessageEntityType", "ParseMode"}

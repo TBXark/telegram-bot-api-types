@@ -10,6 +10,17 @@ type Field struct {
 
 type Category int
 
+func (c Category) String() string {
+	switch c {
+	case CategoryType:
+		return "Type"
+	case CategoryMethod:
+		return "Method"
+	default:
+		return "Unknown"
+	}
+}
+
 const (
 	CategoryType Category = iota
 	CategoryMethod

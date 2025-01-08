@@ -106,14 +106,14 @@ func verifyMethodParameters(items *APIResponse) bool {
 	for method, values := range items.Methods {
 		// check all values have a URL
 		if values.Href == "" {
-			fmt.Printf("%s has no link!\n", method)
+			fmt.Printf("%s has no link!\n", values.Name)
 			issueFound = true
 			continue
 		}
 
 		// check all methods have a return
 		if len(values.Returns) == 0 {
-			fmt.Printf("%s has no return types!\n", method)
+			fmt.Printf("%s has no return types!\n", values.Name)
 			issueFound = true
 			continue
 		}
@@ -173,7 +173,6 @@ func verifyMethodParameters(items *APIResponse) bool {
 	return issueFound
 }
 
-// stringSliceEqual 检查两个字符串切片是否相等
 func stringSliceEqual(a, b []string) bool {
 	if len(a) != len(b) {
 		return false
