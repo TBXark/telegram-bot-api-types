@@ -1,12 +1,15 @@
 import type * as Telegram from "telegram-bot-api-types";
-import {HttpsProxyAgent} from 'https-proxy-agent';
-import type {Response} from 'node-fetch';
-import fetch from 'node-fetch';
-import * as fs from 'node:fs';
+import { ProxyAgent, setGlobalDispatcher } from 'undici';
 import * as process from 'node:process';
 
-const {token} = JSON.parse(fs.readFileSync('test/config.json', 'utf8'));
-const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
+const {
+    HTTPS_PROXY,
+    TELEGRAM_BOT_TOKEN,
+} = process.env;
+
+if (HTTPS_PROXY) {
+    setGlobalDispatcher(new ProxyAgent(HTTPS_PROXY));
+}
 
 class APIClientBase {
     readonly token: string;
@@ -41,7 +44,6 @@ class APIClientBase {
 
     private jsonRequest<T>(method: Telegram.BotMethod, params: T): Promise<Response> {
         return fetch(this.uri(method), {
-            agent, // Disable this line if you don't need proxy
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +95,10 @@ export function createAPIClient(token: string): APIClient {
 }
 
 async function main() {
-    const client = createAPIClient(token);
+    if (!TELEGRAM_BOT_TOKEN) {
+        throw new Error('TELEGRAM_BOT_TOKEN is not set');
+    }    
+    const client = createAPIClient(TELEGRAM_BOT_TOKEN);
     const {result: user} = await client.getMeWithReturns();
     console.log(`Hello! My name is ${user.username}`);
     await client.deleteWebhook();

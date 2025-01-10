@@ -1,12 +1,15 @@
 import 'telegram-bot-api-jsdoc'
-import {HttpsProxyAgent} from 'https-proxy-agent';
-import fetch from 'node-fetch';
-import * as fs from 'node:fs';
+import { ProxyAgent, setGlobalDispatcher } from 'undici';
 import * as process from 'node:process';
 
+const {
+    HTTPS_PROXY,
+    TELEGRAM_BOT_TOKEN,
+} = process.env;
 
-const {token} = JSON.parse(fs.readFileSync('test/config.json', 'utf8'));
-const agent = new HttpsProxyAgent(process.env.HTTPS_PROXY || process.env.https_proxy || '');
+if (HTTPS_PROXY) {
+    setGlobalDispatcher(new ProxyAgent(HTTPS_PROXY));
+}
 
 class APIClientBase {
     constructor(token, baseURL) {
@@ -36,7 +39,6 @@ class APIClientBase {
 
     jsonRequest(method, params) {
         return fetch(this.uri(method), {
-            agent,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -89,7 +91,10 @@ export function createAPIClient(token) {
 }
 
 async function main() {
-    const client = createAPIClient(token);
+    if (!TELEGRAM_BOT_TOKEN) {
+        throw new Error('TELEGRAM_BOT_TOKEN is required');
+    }
+    const client = createAPIClient(TELEGRAM_BOT_TOKEN);
     const {result: user} = await client.getMeWithReturns()
     console.log(`Hello! My name is ${user.username}`);
     await client.deleteWebhook();
