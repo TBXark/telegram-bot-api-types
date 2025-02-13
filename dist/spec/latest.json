@@ -1,7 +1,7 @@
 {
-  "version": "8.2",
-  "release_date": "January 1, 2025",
-  "changelog": "https://core.telegram.org/bots/api#january-1-2025",
+  "version": "8.3",
+  "release_date": "February 12, 2025",
+  "changelog": "https://core.telegram.org/bots/api#february-12-2025",
   "methods": [
     {
       "name": "getUpdates",
@@ -330,6 +330,14 @@
           "description": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
         },
         {
+          "name": "video_start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "New start timestamp for the forwarded video in the message"
+        },
+        {
           "name": "disable_notification",
           "types": [
             "Boolean"
@@ -460,6 +468,14 @@
           ],
           "required": true,
           "description": "Message identifier in the chat specified in from_chat_id"
+        },
+        {
+          "name": "video_start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "New start timestamp for the copied video in the message"
         },
         {
           "name": "caption",
@@ -1114,6 +1130,23 @@
           ],
           "required": false,
           "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "cover",
+          "types": [
+            "InputFile",
+            "String"
+          ],
+          "required": false,
+          "description": "Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "Start timestamp for the video in the message"
         },
         {
           "name": "caption",
@@ -2610,7 +2643,7 @@
       "name": "setMessageReaction",
       "href": "https://core.telegram.org/bots/api#setmessagereaction",
       "description": [
-        "Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success."
+        "Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success."
       ],
       "fields": [
         {
@@ -5755,7 +5788,7 @@
       "name": "getAvailableGifts",
       "href": "https://core.telegram.org/bots/api#getavailablegifts",
       "description": [
-        "Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a Gifts object."
+        "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object."
       ],
       "returns": [
         "Gifts"
@@ -5765,7 +5798,7 @@
       "name": "sendGift",
       "href": "https://core.telegram.org/bots/api#sendgift",
       "description": [
-        "Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success."
+        "Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success."
       ],
       "fields": [
         {
@@ -5773,8 +5806,17 @@
           "types": [
             "Integer"
           ],
-          "required": true,
-          "description": "Unique identifier of the target user that will receive the gift"
+          "required": false,
+          "description": "Required if chat_id is not specified. Unique identifier of the target user who will receive the gift."
+        },
+        {
+          "name": "chat_id",
+          "types": [
+            "Integer",
+            "String"
+          ],
+          "required": false,
+          "description": "Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift."
         },
         {
           "name": "gift_id",
@@ -5798,7 +5840,7 @@
             "String"
           ],
           "required": false,
-          "description": "Text that will be shown along with the gift; 0-255 characters"
+          "description": "Text that will be shown along with the gift; 0-128 characters"
         },
         {
           "name": "text_parse_mode",
@@ -7626,6 +7668,14 @@
           "description": "Optional. Default chat member permissions, for groups and supergroups"
         },
         {
+          "name": "can_send_gift",
+          "types": [
+            "Boolean"
+          ],
+          "required": false,
+          "description": "Optional. True, if gifts can be sent to the chat"
+        },
+        {
           "name": "can_send_paid_media",
           "types": [
             "Boolean"
@@ -9398,6 +9448,22 @@
           ],
           "required": false,
           "description": "Optional. Video thumbnail"
+        },
+        {
+          "name": "cover",
+          "types": [
+            "Array of PhotoSize"
+          ],
+          "required": false,
+          "description": "Optional. Available sizes of the cover of the video in the message"
+        },
+        {
+          "name": "start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "Optional. Timestamp in seconds from which the video will play in the message"
         },
         {
           "name": "file_name",
@@ -14130,11 +14196,26 @@
         {
           "name": "thumbnail",
           "types": [
-            "InputFile",
             "String"
           ],
           "required": false,
           "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "cover",
+          "types": [
+            "String"
+          ],
+          "required": false,
+          "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "Optional. Start timestamp for the video in the message"
         },
         {
           "name": "caption",
@@ -14239,7 +14320,6 @@
         {
           "name": "thumbnail",
           "types": [
-            "InputFile",
             "String"
           ],
           "required": false,
@@ -14340,7 +14420,6 @@
         {
           "name": "thumbnail",
           "types": [
-            "InputFile",
             "String"
           ],
           "required": false,
@@ -14425,7 +14504,6 @@
         {
           "name": "thumbnail",
           "types": [
-            "InputFile",
             "String"
           ],
           "required": false,
@@ -14542,11 +14620,26 @@
         {
           "name": "thumbnail",
           "types": [
-            "InputFile",
             "String"
           ],
           "required": false,
           "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \"attach://\u003cfile_attach_name\u003e\" if the thumbnail was uploaded using multipart/form-data under \u003cfile_attach_name\u003e. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "cover",
+          "types": [
+            "String"
+          ],
+          "required": false,
+          "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://\u003cfile_attach_name\u003e\" to upload a new one using multipart/form-data under \u003cfile_attach_name\u003e name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files"
+        },
+        {
+          "name": "start_timestamp",
+          "types": [
+            "Integer"
+          ],
+          "required": false,
+          "description": "Optional. Start timestamp for the video in the message"
         },
         {
           "name": "width",
@@ -18223,6 +18316,7 @@
       "description": [
         "This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of",
         "- TransactionPartnerUser",
+        "- TransactionPartnerChat",
         "- TransactionPartnerAffiliateProgram",
         "- TransactionPartnerFragment",
         "- TransactionPartnerTelegramAds",
@@ -18231,6 +18325,7 @@
       ],
       "subtypes": [
         "TransactionPartnerUser",
+        "TransactionPartnerChat",
         "TransactionPartnerAffiliateProgram",
         "TransactionPartnerFragment",
         "TransactionPartnerTelegramAds",
@@ -18309,6 +18404,43 @@
           ],
           "required": false,
           "description": "Optional. The gift sent to the user by the bot"
+        }
+      ],
+      "subtype_of": [
+        "TransactionPartner"
+      ]
+    },
+    {
+      "name": "TransactionPartnerChat",
+      "href": "https://core.telegram.org/bots/api#transactionpartnerchat",
+      "description": [
+        "Describes a transaction with a chat."
+      ],
+      "fields": [
+        {
+          "name": "type",
+          "types": [
+            "String"
+          ],
+          "required": true,
+          "description": "Type of the transaction partner, always \"chat\"",
+          "const": "chat"
+        },
+        {
+          "name": "chat",
+          "types": [
+            "Chat"
+          ],
+          "required": true,
+          "description": "Information about the chat"
+        },
+        {
+          "name": "gift",
+          "types": [
+            "Gift"
+          ],
+          "required": false,
+          "description": "Optional. The gift sent to the chat by the bot"
         }
       ],
       "subtype_of": [
