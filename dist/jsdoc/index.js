@@ -1855,7 +1855,7 @@
  * @typedef {Object} BusinessBotRights
  * @property {boolean} [can_reply] - Optional. True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours
  * @property {boolean} [can_read_messages] - Optional. True, if the bot can mark incoming private messages as read
- * @property {boolean} [can_delete_sent_messages] - Optional. True, if the bot can delete messages sent by the bot
+ * @property {boolean} [can_delete_outgoing_messages] - Optional. True, if the bot can delete messages sent by the bot
  * @property {boolean} [can_delete_all_messages] - Optional. True, if the bot can delete all private messages in managed chats
  * @property {boolean} [can_edit_name] - Optional. True, if the bot can edit the first and last name of the business account
  * @property {boolean} [can_edit_bio] - Optional. True, if the bot can edit the bio of the business account
@@ -6041,7 +6041,7 @@
 
 /**
  * https://core.telegram.org/bots/api#deletebusinessmessages
- * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
+ * Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
  * @typedef {Object} DeleteBusinessMessagesParams
  * @property {string} business_connection_id - Unique identifier of the business connection on behalf of which to delete the messages
  * @property {Array<number>} message_ids - A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted
@@ -6051,7 +6051,7 @@
  * https://core.telegram.org/bots/api#deletebusinessmessages
  * @interface DeleteBusinessMessagesRequest
  *
- * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
+ * Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
  * @function deleteBusinessMessages
  * @memberof DeleteBusinessMessagesRequest
  * @param { DeleteBusinessMessagesParams } params

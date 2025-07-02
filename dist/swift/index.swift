@@ -4876,7 +4876,7 @@ extension TelegramAPI {
         /** Boolean | Optional. True, if the bot can mark incoming private messages as read */
         public let can_read_messages: Bool?
         /** Boolean | Optional. True, if the bot can delete messages sent by the bot */
-        public let can_delete_sent_messages: Bool?
+        public let can_delete_outgoing_messages: Bool?
         /** Boolean | Optional. True, if the bot can delete all private messages in managed chats */
         public let can_delete_all_messages: Bool?
         /** Boolean | Optional. True, if the bot can edit the first and last name of the business account */
@@ -4900,10 +4900,10 @@ extension TelegramAPI {
         /** Boolean | Optional. True, if the bot can post, edit and delete stories on behalf of the business account */
         public let can_manage_stories: Bool?
 
-        public init(can_reply: Bool? = nil, can_read_messages: Bool? = nil, can_delete_sent_messages: Bool? = nil, can_delete_all_messages: Bool? = nil, can_edit_name: Bool? = nil, can_edit_bio: Bool? = nil, can_edit_profile_photo: Bool? = nil, can_edit_username: Bool? = nil, can_change_gift_settings: Bool? = nil, can_view_gifts_and_stars: Bool? = nil, can_convert_gifts_to_stars: Bool? = nil, can_transfer_and_upgrade_gifts: Bool? = nil, can_transfer_stars: Bool? = nil, can_manage_stories: Bool? = nil) {
+        public init(can_reply: Bool? = nil, can_read_messages: Bool? = nil, can_delete_outgoing_messages: Bool? = nil, can_delete_all_messages: Bool? = nil, can_edit_name: Bool? = nil, can_edit_bio: Bool? = nil, can_edit_profile_photo: Bool? = nil, can_edit_username: Bool? = nil, can_change_gift_settings: Bool? = nil, can_view_gifts_and_stars: Bool? = nil, can_convert_gifts_to_stars: Bool? = nil, can_transfer_and_upgrade_gifts: Bool? = nil, can_transfer_stars: Bool? = nil, can_manage_stories: Bool? = nil) {
             self.can_reply = can_reply
             self.can_read_messages = can_read_messages
-            self.can_delete_sent_messages = can_delete_sent_messages
+            self.can_delete_outgoing_messages = can_delete_outgoing_messages
             self.can_delete_all_messages = can_delete_all_messages
             self.can_edit_name = can_edit_name
             self.can_edit_bio = can_edit_bio
@@ -12157,7 +12157,7 @@ extension TelegramAPI {
 
     /**
      * https://core.telegram.org/bots/api#deletebusinessmessages
-     * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
+     * Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
      */
     public func deleteBusinessMessages(params: DeleteBusinessMessagesParams) throws -> DeleteBusinessMessagesResponse {
         let data = try request("deleteBusinessMessages", params)
