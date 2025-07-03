@@ -2796,7 +2796,7 @@ export interface BusinessBotRights {
     /** Boolean | Optional. True, if the bot can mark incoming private messages as read */
     can_read_messages?: boolean;
     /** Boolean | Optional. True, if the bot can delete messages sent by the bot */
-    can_delete_outgoing_messages?: boolean;
+    can_delete_sent_messages?: boolean;
     /** Boolean | Optional. True, if the bot can delete all private messages in managed chats */
     can_delete_all_messages?: boolean;
     /** Boolean | Optional. True, if the bot can edit the first and last name of the business account */
@@ -7319,7 +7319,7 @@ export interface DeleteBusinessMessagesParams {
 export interface DeleteBusinessMessagesRequest {
     /**
      * https://core.telegram.org/bots/api#deletebusinessmessages
-     * Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
+     * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
      */
     deleteBusinessMessages: (params: DeleteBusinessMessagesParams) => Promise<Response>;
 }
