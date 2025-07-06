@@ -90,7 +90,11 @@ func RenderSwift(resp *scrape.APIResponse, dir string) error {
 
 	// 防止struct循环引用
 	wrapperFields := map[string]map[string]struct{}{
-		"Message":           {"reply_to_message": {}},
+		"Message": {
+			"reply_to_message":      {},
+			"checklist_tasks_added": {},
+			"checklist_tasks_done":  {},
+		},
 		"GiveawayCompleted": {"giveaway_message": {}},
 	}
 	maxEither := 2
