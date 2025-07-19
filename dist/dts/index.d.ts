@@ -5519,11 +5519,11 @@ export type SendMediaGroupResponse = ResponseSuccess<Array<Message>>;
 export interface SendMediaGroupRequest {
     /**
      * https://core.telegram.org/bots/api#sendmediagroup
-     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
      */
     sendMediaGroup: (params: SendMediaGroupParams) => Promise<Response>;
     /** * https://core.telegram.org/bots/api#sendmediagroup
-     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
      */
     sendMediaGroupWithReturns: (params: SendMediaGroupParams) => Promise<SendMediaGroupResponse>;
 }

@@ -9419,7 +9419,7 @@ extension TelegramAPI {
 
     /**
      * https://core.telegram.org/bots/api#sendmediagroup
-     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
      */
     public func sendMediaGroup(params: SendMediaGroupParams) throws -> SendMediaGroupResponse {
         let data = try request("sendMediaGroup", params)

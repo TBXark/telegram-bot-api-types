@@ -3838,7 +3838,7 @@
 
 /**
  * https://core.telegram.org/bots/api#sendmediagroup
- * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+ * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
  * @typedef {Object} SendMediaGroupParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target channel (in the format @channelusername)
@@ -3859,7 +3859,7 @@
  * https://core.telegram.org/bots/api#sendmediagroup
  * @interface SendMediaGroupRequest
  *
- * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+ * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
  * @function sendMediaGroup
  * @memberof SendMediaGroupRequest
  * @param { SendMediaGroupParams } params
