@@ -3,12 +3,13 @@ package swift
 import (
 	_ "embed"
 	"fmt"
-	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
-	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
 	"os"
 	"path/filepath"
 	"strings"
 	"text/template"
+
+	"github.com/TBXark/telegram-bot-api-types/internal/generator/tmpl"
+	"github.com/TBXark/telegram-bot-api-types/internal/scrape"
 )
 
 //go:embed swift.tmpl
@@ -88,15 +89,7 @@ type Either struct {
 func RenderSwift(resp *scrape.APIResponse, dir string) error {
 	copyResp := &(*resp)
 
-	// 防止struct循环引用
-	wrapperFields := map[string]map[string]struct{}{
-		"Message": {
-			"reply_to_message":      {},
-			"checklist_tasks_added": {},
-			"checklist_tasks_done":  {},
-		},
-		"GiveawayCompleted": {"giveaway_message": {}},
-	}
+	wrapperFields := map[string]map[string]struct{}{}
 	maxEither := 2
 	for _, t := range copyResp.Types {
 		for _, f := range t.Fields {
