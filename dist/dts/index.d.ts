@@ -1620,7 +1620,7 @@ export interface LinkPreviewOptions {
 
 /**
  * https://core.telegram.org/bots/api#suggestedpostprice  
- * Desribes price of a suggested post.
+ * Describes the price of a suggested post.
 */
 export interface SuggestedPostPrice {
     /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins */
