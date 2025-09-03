@@ -2826,7 +2826,7 @@ extension TelegramAPI {
      * Describes a topic of a direct messages chat.
     */
     public class DirectMessagesTopic: Codable {
-        /** Integer | Unique identifier of the topic */
+        /** Integer | Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. */
         public let topic_id: Int
         /** User | Optional. Information about the user that created the topic. Currently, it is always present */
         public let user: User?
