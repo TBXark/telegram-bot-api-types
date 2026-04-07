@@ -141,7 +141,7 @@ extension TelegramAPI {
         public let chat_boost: ChatBoostUpdated?
         /** ChatBoostRemoved | Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates. */
         public let removed_chat_boost: ChatBoostRemoved?
-        /** ManagedBotUpdated | Optional. A new bot was created to be managed by the bot or token of a bot was changed */
+        /** ManagedBotUpdated | Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed */
         public let managed_bot: ManagedBotUpdated?
 
         public init(update_id: Int, message: Message? = nil, edited_message: Message? = nil, channel_post: Message? = nil, edited_channel_post: Message? = nil, business_connection: BusinessConnection? = nil, business_message: Message? = nil, edited_business_message: Message? = nil, deleted_business_messages: BusinessMessagesDeleted? = nil, message_reaction: MessageReactionUpdated? = nil, message_reaction_count: MessageReactionCountUpdated? = nil, inline_query: InlineQuery? = nil, chosen_inline_result: ChosenInlineResult? = nil, callback_query: CallbackQuery? = nil, shipping_query: ShippingQuery? = nil, pre_checkout_query: PreCheckoutQuery? = nil, purchased_paid_media: PaidMediaPurchased? = nil, poll: Poll? = nil, poll_answer: PollAnswer? = nil, my_chat_member: ChatMemberUpdated? = nil, chat_member: ChatMemberUpdated? = nil, chat_join_request: ChatJoinRequest? = nil, chat_boost: ChatBoostUpdated? = nil, removed_chat_boost: ChatBoostRemoved? = nil, managed_bot: ManagedBotUpdated? = nil) {
@@ -2100,7 +2100,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /**
      * https://core.telegram.org/bots/api#managedbotupdated  
-     * This object contains information about the creation or token update of a bot that is managed by the current bot.
+     * This object contains information about the creation, token update, or owner update of a bot that is managed by the current bot.
     */
     public class ManagedBotUpdated: Codable {
         /** User | User that created the bot */

@@ -50,7 +50,7 @@
  * @property {ChatJoinRequest} [chat_join_request] - Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
  * @property {ChatBoostUpdated} [chat_boost] - Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these updates.
  * @property {ChatBoostRemoved} [removed_chat_boost] - Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
- * @property {ManagedBotUpdated} [managed_bot] - Optional. A new bot was created to be managed by the bot or token of a bot was changed
+ * @property {ManagedBotUpdated} [managed_bot] - Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed
  */
 
 /**
@@ -773,7 +773,7 @@
 
 /**
  * https://core.telegram.org/bots/api#managedbotupdated
- * This object contains information about the creation or token update of a bot that is managed by the current bot.
+ * This object contains information about the creation, token update, or owner update of a bot that is managed by the current bot.
  * @typedef {Object} ManagedBotUpdated
  * @property {User} user - User that created the bot
  * @property {User} bot - Information about the bot. Token of the bot can be fetched using the method getManagedBotToken.
