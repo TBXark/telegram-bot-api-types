@@ -47,13 +47,13 @@ export interface Update {
     chosen_inline_result?: ChosenInlineResult;
     /** CallbackQuery | Optional. New incoming callback query */
     callback_query?: CallbackQuery;
-    /** ShippingQuery | Optional. New incoming shipping query. Only for invoices with flexible price */
+    /** ShippingQuery | Optional. New incoming shipping query. Only for invoices with flexible price. */
     shipping_query?: ShippingQuery;
-    /** PreCheckoutQuery | Optional. New incoming pre-checkout query. Contains full information about checkout */
+    /** PreCheckoutQuery | Optional. New incoming pre-checkout query. Contains full information about checkout. */
     pre_checkout_query?: PreCheckoutQuery;
     /** PaidMediaPurchased | Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat */
     purchased_paid_media?: PaidMediaPurchased;
-    /** Poll | Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot */
+    /** Poll | Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot. */
     poll?: Poll;
     /** PollAnswer | Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself. */
     poll_answer?: PollAnswer;
@@ -92,7 +92,7 @@ export interface WebhookInfo {
     last_synchronization_error_date?: number;
     /** Integer | Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery */
     max_connections?: number;
-    /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member */
+    /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member. */
     allowed_updates?: Array<string>;
 }
 
@@ -274,13 +274,13 @@ export interface ChatFullInfo {
  * This object represents a message.
 */
 export interface Message {
-    /** Integer | Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
+    /** Integer | Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent. */
     message_id: number;
     /** Integer | Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only */
     message_thread_id?: number;
     /** DirectMessagesTopic | Optional. Information about the direct messages chat topic that contains the message */
     direct_messages_topic?: DirectMessagesTopic;
-    /** User | Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats */
+    /** User | Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats. */
     from?: User;
     /** Chat | Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats. */
     sender_chat?: Chat;
@@ -346,13 +346,13 @@ export interface Message {
     suggested_post_info?: SuggestedPostInfo;
     /** String | Optional. Unique identifier of the message effect added to the message */
     effect_id?: string;
-    /** Animation | Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set */
+    /** Animation | Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set. */
     animation?: Animation;
     /** Audio | Optional. Message is an audio file, information about the file */
     audio?: Audio;
     /** Document | Optional. Message is a general file, information about the file */
     document?: Document;
-    /** LivePhoto | Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set */
+    /** LivePhoto | Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set. */
     live_photo?: LivePhoto;
     /** PaidMediaInfo | Optional. Message contains paid media; information about the paid media */
     paid_media?: PaidMediaInfo;
@@ -386,7 +386,7 @@ export interface Message {
     game?: Game;
     /** Poll | Optional. Message is a native poll, information about the poll */
     poll?: Poll;
-    /** Venue | Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set */
+    /** Venue | Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set. */
     venue?: Venue;
     /** Location | Optional. Message is a shared location, information about the location */
     location?: Location;
@@ -509,7 +509,7 @@ export interface Message {
  * This object represents a unique message identifier.
 */
 export interface MessageId {
-    /** Integer | Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
+    /** Integer | Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent. */
     message_id: number;
 }
 
@@ -539,7 +539,7 @@ export type MaybeInaccessibleMessage = Message | InaccessibleMessage;
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
 */
 export interface MessageEntity {
-    /** MessageEntityType | Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time) */
+    /** MessageEntityType | Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time). */
     type: MessageEntityType;
     /** Integer | Offset in UTF-16 code units to the start of the entity */
     offset: number;
@@ -551,7 +551,7 @@ export interface MessageEntity {
     user?: User;
     /** String | Optional. For "pre" only, the programming language of the entity text */
     language?: string;
-    /** String | Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker */
+    /** String | Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker. */
     custom_emoji_id?: string;
     /** Integer | Optional. For "date_time" only, the Unix time associated with the entity */
     unix_time?: number;
@@ -1111,9 +1111,9 @@ export interface PollOption {
 export interface InputPollOption {
     /** String | Option text, 1-100 characters */
     text: string;
-    /** String | Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed */
+    /** String | Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed. */
     text_parse_mode?: string;
-    /** Array of MessageEntity | Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode */
+    /** Array of MessageEntity | Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode. */
     text_entities?: Array<MessageEntity>;
     /** InputPollOptionMedia | Optional. Media added to the poll option */
     media?: InputPollOptionMedia;
@@ -1163,7 +1163,7 @@ export interface Poll {
     allows_revoting: boolean;
     /** Boolean | True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours */
     members_only: boolean;
-    /** Array of String | Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll. */
+    /** Array of String | Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. The country code "FT" is used for users with anonymous numbers. If omitted, then users from any country can participate in the poll. */
     country_codes?: Array<string>;
     /** Array of Integer | Optional. Array of 0-based identifiers of the correct answer options. Available only for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot. */
     correct_option_ids?: Array<number>;
@@ -1303,7 +1303,7 @@ export interface Location {
  * This object represents a venue.
 */
 export interface Venue {
-    /** Location | Venue location. Can't be a live location */
+    /** Location | Venue location. Can't be a live location. */
     location: Location;
     /** String | Name of the venue */
     title: string;
@@ -1510,7 +1510,7 @@ export interface BackgroundTypePattern {
     fill: BackgroundFill;
     /** Integer | Intensity of the pattern when it is shown above the filled background; 0-100 */
     intensity: number;
-    /** Boolean | Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only */
+    /** Boolean | Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only. */
     is_inverted?: boolean;
     /** Boolean | Optional. True, if the background moves slightly when the device is tilted */
     is_moving?: boolean;
@@ -1614,7 +1614,7 @@ export interface SharedUser {
 export interface UsersShared {
     /** Integer | Identifier of the request */
     request_id: number;
-    /** Array of SharedUser | Information about users shared with the bot. */
+    /** Array of SharedUser | Information about users shared with the bot */
     users: Array<SharedUser>;
 }
 
@@ -1627,9 +1627,9 @@ export interface ChatShared {
     request_id: number;
     /** Integer | Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means. */
     chat_id: number;
-    /** String | Optional. Title of the chat, if the title was requested by the bot. */
+    /** String | Optional. Title of the chat, if the title was requested by the bot */
     title?: string;
-    /** String | Optional. Username of the chat, if the username was requested by the bot and available. */
+    /** String | Optional. Username of the chat, if the username was requested by the bot and available */
     username?: string;
     /** Array of PhotoSize | Optional. Available sizes of the chat photo, if the photo was requested by the bot */
     photo?: Array<PhotoSize>;
@@ -1744,7 +1744,7 @@ export interface SuggestedPostDeclined {
 export interface SuggestedPostPaid {
     /** Message | Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply. */
     suggested_post_message?: Message;
-    /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins */
+    /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
     currency: string;
     /** Integer | Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only */
     amount?: number;
@@ -1850,7 +1850,7 @@ export interface GiveawayCompleted {
 export interface LinkPreviewOptions {
     /** Boolean | Optional. True, if the link preview is disabled */
     is_disabled?: boolean;
-    /** String | Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used */
+    /** String | Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used. */
     url?: string;
     /** Boolean | Optional. True, if the media in the link preview is supposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview */
     prefer_small_media?: boolean;
@@ -1865,7 +1865,7 @@ export interface LinkPreviewOptions {
  * Describes the price of a suggested post.
 */
 export interface SuggestedPostPrice {
-    /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins */
+    /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins. */
     currency: string;
     /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000. */
     amount: number;
@@ -1902,7 +1902,7 @@ export interface SuggestedPostParameters {
 export interface DirectMessagesTopic {
     /** Integer | Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. */
     topic_id: number;
-    /** User | Optional. Information about the user that created the topic. Currently, it is always present */
+    /** User | Optional. Information about the user that created the topic. Currently, it is always present. */
     user?: User;
 }
 
@@ -1976,7 +1976,7 @@ export interface ReplyKeyboardMarkup {
  * This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object to specify the button text.
 */
 export interface KeyboardButton {
-    /** String | Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed */
+    /** String | Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed. */
     text: string;
     /** String | Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription. */
     icon_custom_emoji_id?: string;
@@ -2003,7 +2003,7 @@ export interface KeyboardButton {
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users: https://core.telegram.org/bots/features#chat-and-user-selection
 */
 export interface KeyboardButtonRequestUsers {
-    /** Integer | Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message */
+    /** Integer | Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message. */
     request_id: number;
     /** Boolean | Optional. Pass True to request bots, pass False to request regular users. If not specified, no additional restrictions are applied. */
     user_is_bot?: boolean;
@@ -2024,9 +2024,9 @@ export interface KeyboardButtonRequestUsers {
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats: https://core.telegram.org/bots/features#chat-and-user-selection.
 */
 export interface KeyboardButtonRequestChat {
-    /** Integer | Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message */
+    /** Integer | Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message. */
     request_id: number;
-    /** Boolean | Pass True to request a channel chat, pass False to request a group or a supergroup chat. */
+    /** Boolean | Pass True to request a channel chat, pass False to request a group or a supergroup chat */
     chat_is_channel: boolean;
     /** Boolean | Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat. If not specified, no additional restrictions are applied. */
     chat_is_forum?: boolean;
@@ -2053,7 +2053,7 @@ export interface KeyboardButtonRequestChat {
  * This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with the bot using the update managed_bot and a Message with the field managed_bot_created.
 */
 export interface KeyboardButtonRequestManagedBot {
-    /** Integer | Signed 32-bit identifier of the request. Must be unique within the message */
+    /** Integer | Signed 32-bit identifier of the request. Must be unique within the message. */
     request_id: number;
     /** String | Optional. Suggested name for the bot */
     suggested_name?: string;
@@ -2115,7 +2115,7 @@ export interface InlineKeyboardButton {
     switch_inline_query_current_chat?: string;
     /** SwitchInlineQueryChosenChat | Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business account. */
     switch_inline_query_chosen_chat?: SwitchInlineQueryChosenChat;
-    /** CopyTextButton | Optional. Description of the button that copies the specified text to the clipboard. */
+    /** CopyTextButton | Optional. Description of the button that copies the specified text to the clipboard */
     copy_text?: CopyTextButton;
     /** CallbackGame | Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row. */
     callback_game?: CallbackGame;
@@ -2131,11 +2131,11 @@ export interface InlineKeyboardButton {
 export interface LoginUrl {
     /** String | An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data. NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization. */
     url: string;
-    /** String | Optional. New text of the button in forwarded messages. */
+    /** String | Optional. New text of the button in forwarded messages */
     forward_text?: string;
     /** String | Optional. Username of a bot, which will be used for user authorization. See Setting up a bot for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details. */
     bot_username?: string;
-    /** Boolean | Optional. Pass True to request the permission for your bot to send messages to the user. */
+    /** Boolean | Optional. Pass True to request the permission for your bot to send messages to the user */
     request_write_access?: boolean;
 }
 
@@ -2144,7 +2144,7 @@ export interface LoginUrl {
  * This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
 */
 export interface SwitchInlineQueryChosenChat {
-    /** String | Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted */
+    /** String | Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted. */
     query?: string;
     /** Boolean | Optional. True, if private chats with users can be chosen */
     allow_user_chats?: boolean;
@@ -2176,7 +2176,7 @@ export interface CallbackQuery {
     from: User;
     /** MaybeInaccessibleMessage | Optional. Message sent by the bot with the callback button that originated the query */
     message?: MaybeInaccessibleMessage;
-    /** String | Optional. Identifier of the message sent via the bot in inline mode, that originated the query. */
+    /** String | Optional. Identifier of the message sent via the bot in inline mode, that originated the query */
     inline_message_id?: string;
     /** String | Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent. Useful for high scores in games. */
     chat_instance: string;
@@ -2299,7 +2299,7 @@ export interface ChatMemberUpdated {
     old_chat_member: ChatMember;
     /** ChatMember | New information about the chat member */
     new_chat_member: ChatMember;
-    /** ChatInviteLink | Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only. */
+    /** ChatInviteLink | Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only */
     invite_link?: ChatInviteLink;
     /** Boolean | Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator */
     via_join_request?: boolean;
@@ -2443,7 +2443,7 @@ export interface ChatMemberRestricted {
     can_pin_messages: boolean;
     /** Boolean | True, if the user is allowed to create forum topics */
     can_manage_topics: boolean;
-    /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever */
+    /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever. */
     until_date: number;
 }
 
@@ -2467,7 +2467,7 @@ export interface ChatMemberBanned {
     status: 'kicked';
     /** User | Information about the user */
     user: User;
-    /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever */
+    /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever. */
     until_date: number;
 }
 
@@ -2484,7 +2484,7 @@ export interface ChatJoinRequest {
     user_chat_id: number;
     /** Integer | Date the request was sent in Unix time */
     date: number;
-    /** String | Optional. Bio of the user. */
+    /** String | Optional. Bio of the user */
     bio?: string;
     /** ChatInviteLink | Optional. Chat invite link that was used by the user to send the join request */
     invite_link?: ChatInviteLink;
@@ -2519,13 +2519,13 @@ export interface ChatPermissions {
     can_react_to_messages?: boolean;
     /** Boolean | Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages. */
     can_edit_tag?: boolean;
-    /** Boolean | Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups */
+    /** Boolean | Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups. */
     can_change_info?: boolean;
     /** Boolean | Optional. True, if the user is allowed to invite new users to the chat */
     can_invite_users?: boolean;
-    /** Boolean | Optional. True, if the user is allowed to pin messages. Ignored in public supergroups */
+    /** Boolean | Optional. True, if the user is allowed to pin messages. Ignored in public supergroups. */
     can_pin_messages?: boolean;
-    /** Boolean | Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages */
+    /** Boolean | Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages. */
     can_manage_topics?: boolean;
 }
 
@@ -2753,7 +2753,7 @@ export type ReactionType = ReactionTypeEmoji | ReactionTypeCustomEmoji | Reactio
 export interface ReactionTypeEmoji {
     /** String | Type of the reaction, always "emoji" */
     type: 'emoji';
-    /** String | Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡" */
+    /** String | Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡". */
     emoji: string;
 }
 
@@ -2980,7 +2980,7 @@ export interface UniqueGift {
     gift_id: string;
     /** String | Human-readable name of the regular gift from which this unique gift was upgraded */
     base_name: string;
-    /** String | Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas */
+    /** String | Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas. */
     name: string;
     /** Integer | Unique number of the upgraded gift among gifts upgraded from the same regular gift */
     number: number;
@@ -3025,7 +3025,7 @@ export interface GiftInfo {
     entities?: Array<MessageEntity>;
     /** Boolean | Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them */
     is_private?: boolean;
-    /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift */
+    /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift. */
     unique_gift_number?: number;
 }
 
@@ -3036,7 +3036,7 @@ export interface GiftInfo {
 export interface UniqueGiftInfo {
     /** UniqueGift | Information about the gift */
     gift: UniqueGift;
-    /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers */
+    /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers. */
     origin: string;
     /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
     last_resale_currency?: string;
@@ -3046,7 +3046,7 @@ export interface UniqueGiftInfo {
     owned_gift_id?: string;
     /** Integer | Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift */
     transfer_star_count?: number;
-    /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now */
+    /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now. */
     next_transfer_date?: number;
 }
 
@@ -3091,7 +3091,7 @@ export interface OwnedGiftRegular {
     prepaid_upgrade_star_count?: number;
     /** Boolean | Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only */
     is_upgrade_separate?: boolean;
-    /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift */
+    /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift. */
     unique_gift_number?: number;
 }
 
@@ -3116,7 +3116,7 @@ export interface OwnedGiftUnique {
     can_be_transferred?: boolean;
     /** Integer | Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift */
     transfer_star_count?: number;
-    /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now */
+    /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now. */
     next_transfer_date?: number;
 }
 
@@ -3129,7 +3129,7 @@ export interface OwnedGifts {
     total_count: number;
     /** Array of OwnedGift | The list of gifts */
     gifts: Array<OwnedGift>;
-    /** String | Optional. Offset for the next request. If empty, then there are no more results */
+    /** String | Optional. Offset for the next request. If empty, then there are no more results. */
     next_offset?: string;
 }
 
@@ -3179,7 +3179,7 @@ export interface StarAmount {
 export interface BotCommand {
     /** String | Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores. */
     command: string;
-    /** String | Description of the command; 1-256 characters. */
+    /** String | Description of the command; 1-256 characters */
     description: string;
 }
 
@@ -3543,7 +3543,7 @@ export interface SentGuestMessage {
 export interface PreparedInlineMessage {
     /** String | Unique identifier of the prepared message */
     id: string;
-    /** Integer | Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used */
+    /** Integer | Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used. */
     expiration_date: number;
 }
 
@@ -4018,7 +4018,7 @@ export interface InlineQuery {
     query: string;
     /** String | Offset of the results to be returned, can be controlled by the bot */
     offset: string;
-    /** InlineQueryChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat */
+    /** InlineQueryChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat. */
     chat_type?: InlineQueryChatType;
     /** Location | Optional. Sender location, only for bots that request user location */
     location?: Location;
@@ -4100,7 +4100,7 @@ export interface InlineQueryResultPhoto {
     type: string;
     /** String | Unique identifier for this result, 1-64 bytes */
     id: string;
-    /** String | A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB */
+    /** String | A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB. */
     photo_url: string;
     /** String | URL of the thumbnail for the photo */
     thumbnail_url: string;
@@ -4145,7 +4145,7 @@ export interface InlineQueryResultGif {
     gif_duration?: number;
     /** String | URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result */
     thumbnail_url: string;
-    /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg" */
+    /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg". */
     thumbnail_mime_type?: string;
     /** String | Optional. Title for the result */
     title?: string;
@@ -4182,7 +4182,7 @@ export interface InlineQueryResultMpeg4Gif {
     mpeg4_duration?: number;
     /** String | URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result */
     thumbnail_url: string;
-    /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg" */
+    /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg". */
     thumbnail_mime_type?: string;
     /** String | Optional. Title for the result */
     title?: string;
@@ -4347,7 +4347,7 @@ export interface InlineQueryResultLocation {
     title: string;
     /** Float | Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
     horizontal_accuracy?: number;
-    /** Integer | Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+    /** Integer | Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
     live_period?: number;
     /** Integer | Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
     heading?: number;
@@ -4687,7 +4687,7 @@ export interface InputLocationMessageContent {
     longitude: number;
     /** Float | Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
     horizontal_accuracy?: number;
-    /** Integer | Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+    /** Integer | Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
     live_period?: number;
     /** Integer | Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
     heading?: number;
@@ -4905,7 +4905,7 @@ export interface SuccessfulPayment {
  * This object contains basic information about a refunded payment.
 */
 export interface RefundedPayment {
-    /** String | Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR" */
+    /** String | Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR". */
     currency: 'XTR';
     /** Integer | Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). */
     total_amount: number;
@@ -5140,9 +5140,9 @@ export interface StarTransaction {
     nanostar_amount?: number;
     /** Integer | Date the transaction was created in Unix time */
     date: number;
-    /** TransactionPartner | Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions */
+    /** TransactionPartner | Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions. */
     source?: TransactionPartner;
-    /** TransactionPartner | Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions */
+    /** TransactionPartner | Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions. */
     receiver?: TransactionPartner;
 }
 
@@ -5382,13 +5382,13 @@ export interface Game {
     title: string;
     /** String | Description of the game */
     description: string;
-    /** Array of PhotoSize | Photo that will be displayed in the game message in chats. */
+    /** Array of PhotoSize | Photo that will be displayed in the game message in chats */
     photo: Array<PhotoSize>;
     /** String | Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters. */
     text?: string;
     /** Array of MessageEntity | Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc. */
     text_entities?: Array<MessageEntity>;
-    /** Animation | Optional. Animation that will be displayed in the game message in chats. Upload via BotFather */
+    /** Animation | Optional. Animation that will be displayed in the game message in chats. Upload via BotFather. */
     animation?: Animation;
 }
 
@@ -5460,7 +5460,7 @@ export interface GetUpdatesRequest {
 
 /** https://core.telegram.org/bots/api#setwebhook */
 export interface SetWebhookParams {
-    /** String | HTTPS URL to send updates to. Use an empty string to remove webhook integration */
+    /** String | HTTPS URL to send updates to. Use an empty string to remove webhook integration. */
     url: string;
     /** InputFile | Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details. */
     certificate?: InputFile;
@@ -5575,7 +5575,7 @@ export interface SendMessageParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5680,7 +5680,7 @@ export interface CopyMessageParams {
     message_id: number;
     /** Integer | New start timestamp for the copied video in the message */
     video_start_timestamp?: number;
-    /** String | New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept */
+    /** String | New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept. */
     caption?: string;
     /** String | Mode for parsing entities in the new caption. See formatting options for more details. */
     parse_mode?: string;
@@ -5700,7 +5700,7 @@ export interface CopyMessageParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5788,7 +5788,7 @@ export interface SendPhotoParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5900,7 +5900,7 @@ export interface SendAudioParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -5955,7 +5955,7 @@ export interface SendDocumentParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6022,7 +6022,7 @@ export interface SendVideoParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6083,7 +6083,7 @@ export interface SendAnimationParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6134,7 +6134,7 @@ export interface SendVoiceParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6163,7 +6163,7 @@ export interface SendVideoNoteParams {
     message_thread_id?: number;
     /** Integer | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat */
     direct_messages_topic_id?: number;
-    /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported */
+    /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported. */
     video_note: InputFile | string;
     /** Integer | Duration of sent video in seconds */
     duration?: number;
@@ -6183,7 +6183,7 @@ export interface SendVideoNoteParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6236,7 +6236,7 @@ export interface SendPaidMediaParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6310,7 +6310,7 @@ export interface SendLocationParams {
     longitude: number;
     /** Float | The radius of uncertainty for the location, measured in meters; 0-1500 */
     horizontal_accuracy?: number;
-    /** Integer | Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+    /** Integer | Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
     live_period?: number;
     /** Integer | For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
     heading?: number;
@@ -6328,7 +6328,7 @@ export interface SendLocationParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6385,7 +6385,7 @@ export interface SendVenueParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6434,7 +6434,7 @@ export interface SendContactParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6463,9 +6463,9 @@ export interface SendPollParams {
     message_thread_id?: number;
     /** String | Poll question, 1-300 characters */
     question: string;
-    /** String | Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed */
+    /** String | Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed. */
     question_parse_mode?: string;
-    /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode */
+    /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode. */
     question_entities?: Array<MessageEntity>;
     /** Array of InputPollOption | A JSON-serialized list of 1-12 answer options */
     options: Array<InputPollOption>;
@@ -6485,7 +6485,7 @@ export interface SendPollParams {
     hide_results_until_closes?: boolean;
     /** Boolean | Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only */
     members_only?: boolean;
-    /** Array of String | A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. If omitted or empty, then users from any country can participate in the poll. */
+    /** Array of String | A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. Use "FT" as a country code to allow users with anonymous numbers to vote. If omitted or empty, then users from any country can participate in the poll. */
     country_codes?: Array<string>;
     /** Array of Integer | A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode */
     correct_option_ids?: Array<number>;
@@ -6493,7 +6493,7 @@ export interface SendPollParams {
     explanation?: string;
     /** String | Mode for parsing entities in the explanation. See formatting options for more details. */
     explanation_parse_mode?: string;
-    /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode */
+    /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode. */
     explanation_entities?: Array<MessageEntity>;
     /** InputPollMedia | Media added to the quiz explanation */
     explanation_media?: InputPollMedia;
@@ -6521,7 +6521,7 @@ export interface SendPollParams {
     message_effect_id?: string;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6585,7 +6585,7 @@ export interface SendDiceParams {
     message_thread_id?: number;
     /** Integer | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat */
     direct_messages_topic_id?: number;
-    /** String | Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲" */
+    /** String | Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲". */
     emoji?: string;
     /** Boolean | Sends the message silently. Users will receive a notification with no sound. */
     disable_notification?: boolean;
@@ -6599,7 +6599,7 @@ export interface SendDiceParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -6822,7 +6822,7 @@ export interface RestrictChatMemberParams {
     permissions: ChatPermissions;
     /** Boolean | Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission. */
     use_independent_chat_permissions?: boolean;
-    /** Integer | Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever */
+    /** Integer | Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever. */
     until_date?: number;
 }
 
@@ -6848,7 +6848,7 @@ export interface PromoteChatMemberParams {
     can_delete_messages?: boolean;
     /** Boolean | Pass True if the administrator can manage video chats */
     can_manage_video_chats?: boolean;
-    /** Boolean | Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators */
+    /** Boolean | Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators. */
     can_restrict_members?: boolean;
     /** Boolean | Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him) */
     can_promote_members?: boolean;
@@ -7001,7 +7001,7 @@ export interface CreateChatInviteLinkParams {
     expire_date?: number;
     /** Integer | The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 */
     member_limit?: number;
-    /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified */
+    /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified. */
     creates_join_request?: boolean;
 }
 
@@ -7032,7 +7032,7 @@ export interface EditChatInviteLinkParams {
     expire_date?: number;
     /** Integer | The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 */
     member_limit?: number;
-    /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified */
+    /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified. */
     creates_join_request?: boolean;
 }
 
@@ -7448,7 +7448,7 @@ export interface CreateForumTopicParams {
     chat_id: number | string;
     /** String | Topic name, 1-128 characters */
     name: string;
-    /** Integer | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) */
+    /** Integer | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F). */
     icon_color?: number;
     /** String | Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. */
     icon_custom_emoji_id?: string;
@@ -7475,9 +7475,9 @@ export interface EditForumTopicParams {
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread of the forum topic */
     message_thread_id: number;
-    /** String | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept */
+    /** String | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept. */
     name?: string;
-    /** String | New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept */
+    /** String | New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept. */
     icon_custom_emoji_id?: string;
 }
 
@@ -7643,7 +7643,7 @@ export interface UnpinAllGeneralForumTopicMessagesRequest {
 export interface AnswerCallbackQueryParams {
     /** String | Unique identifier for the query to be answered */
     callback_query_id: string;
-    /** String | Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters */
+    /** String | Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters. */
     text?: string;
     /** Boolean | If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false. */
     show_alert?: boolean;
@@ -7815,7 +7815,7 @@ export interface SetMyCommandsParams {
     commands: Array<BotCommand>;
     /** BotCommandScope | A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
     scope?: BotCommandScope;
-    /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands */
+    /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands. */
     language_code?: string;
 }
 
@@ -7831,7 +7831,7 @@ export interface SetMyCommandsRequest {
 export interface DeleteMyCommandsParams {
     /** BotCommandScope | A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
     scope?: BotCommandScope;
-    /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands */
+    /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands. */
     language_code?: string;
 }
 
@@ -8001,9 +8001,9 @@ export interface RemoveMyProfilePhotoRequest {
 
 /** https://core.telegram.org/bots/api#setchatmenubutton */
 export interface SetChatMenuButtonParams {
-    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed */
+    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed. */
     chat_id?: number;
-    /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault */
+    /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault. */
     menu_button?: MenuButton;
 }
 
@@ -8017,7 +8017,7 @@ export interface SetChatMenuButtonRequest {
 
 /** https://core.telegram.org/bots/api#getchatmenubutton */
 export interface GetChatMenuButtonParams {
-    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned */
+    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned. */
     chat_id?: number;
 }
 
@@ -8220,7 +8220,7 @@ export interface ReadBusinessMessageRequest {
 export interface DeleteBusinessMessagesParams {
     /** String | Unique identifier of the business connection on behalf of which to delete the messages */
     business_connection_id: string;
-    /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted */
+    /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted. */
     message_ids: Array<number>;
 }
 
@@ -8393,7 +8393,7 @@ export interface GetBusinessAccountGiftsParams {
     sort_by_price?: boolean;
     /** String | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
     offset?: string;
-    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
     limit?: number;
 }
 
@@ -8430,7 +8430,7 @@ export interface GetUserGiftsParams {
     sort_by_price?: boolean;
     /** String | Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results */
     offset?: string;
-    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
     limit?: number;
 }
 
@@ -8471,7 +8471,7 @@ export interface GetChatGiftsParams {
     sort_by_price?: boolean;
     /** String | Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results */
     offset?: string;
-    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+    /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
     limit?: number;
 }
 
@@ -8721,7 +8721,7 @@ export interface SavePreparedInlineMessageRequest {
 export interface SavePreparedKeyboardButtonParams {
     /** Integer | Unique identifier of the target user that can use the button */
     user_id: number;
-    /** KeyboardButton | A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot */
+    /** KeyboardButton | A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot. */
     button: KeyboardButton;
 }
 
@@ -8746,9 +8746,9 @@ export interface EditMessageTextParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
     /** String | New text of the message, 1-4096 characters after entities parsing */
     text: string;
@@ -8758,7 +8758,7 @@ export interface EditMessageTextParams {
     entities?: Array<MessageEntity>;
     /** LinkPreviewOptions | Link preview generation options for the message */
     link_preview_options?: LinkPreviewOptions;
-    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8783,9 +8783,9 @@ export interface EditMessageCaptionParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
     /** String | New caption of the message, 0-1024 characters after entities parsing */
     caption?: string;
@@ -8795,7 +8795,7 @@ export interface EditMessageCaptionParams {
     caption_entities?: Array<MessageEntity>;
     /** Boolean | Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages. */
     show_caption_above_media?: boolean;
-    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8820,13 +8820,13 @@ export interface EditMessageMediaParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
     /** InputMedia | A JSON-serialized object for a new media content of the message */
     media: InputMedia;
-    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8851,15 +8851,15 @@ export interface EditMessageLiveLocationParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
     /** Float | Latitude of new location */
     latitude: number;
     /** Float | Longitude of new location */
     longitude: number;
-    /** Integer | New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged */
+    /** Integer | New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged. */
     live_period?: number;
     /** Float | The radius of uncertainty for the location, measured in meters; 0-1500 */
     horizontal_accuracy?: number;
@@ -8867,7 +8867,7 @@ export interface EditMessageLiveLocationParams {
     heading?: number;
     /** Integer | The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified. */
     proximity_alert_radius?: number;
-    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8892,11 +8892,11 @@ export interface StopMessageLiveLocationParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message with live location to stop */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message with live location to stop. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
-    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8950,11 +8950,11 @@ export interface EditMessageReplyMarkupParams {
     business_connection_id?: string;
     /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
     chat_id?: number | string;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
-    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -8981,7 +8981,7 @@ export interface StopPollParams {
     chat_id: number | string;
     /** Integer | Identifier of the original message with the poll */
     message_id: number;
-    /** InlineKeyboardMarkup | A JSON-serialized object for a new message inline keyboard. */
+    /** InlineKeyboardMarkup | A JSON-serialized object for a new message inline keyboard */
     reply_markup?: InlineKeyboardMarkup;
 }
 
@@ -9006,7 +9006,7 @@ export interface ApproveSuggestedPostParams {
     chat_id: number;
     /** Integer | Identifier of a suggested post message to approve */
     message_id: number;
-    /** Integer | Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future */
+    /** Integer | Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future. */
     send_date?: number;
 }
 
@@ -9066,7 +9066,7 @@ export interface DeleteMessageRequest {
 export interface DeleteMessagesParams {
     /** Integer or String | Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username */
     chat_id: number | string;
-    /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted */
+    /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted. */
     message_ids: Array<number>;
 }
 
@@ -9142,7 +9142,7 @@ export interface SendStickerParams {
     suggested_post_parameters?: SuggestedPostParameters;
     /** ReplyParameters | Description of the message to reply to */
     reply_parameters?: ReplyParameters;
-    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+    /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
     reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
 }
 
@@ -9408,7 +9408,7 @@ export interface SetStickerSetThumbnailRequest {
 export interface SetCustomEmojiStickerSetThumbnailParams {
     /** String | Sticker set name */
     name: string;
-    /** String | Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail. */
+    /** String | Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail */
     custom_emoji_id?: string;
 }
 
@@ -9483,7 +9483,7 @@ export interface SendInvoiceParams {
     max_tip_amount?: number;
     /** Array of Integer | A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount. */
     suggested_tip_amounts?: Array<number>;
-    /** String | Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter */
+    /** String | Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter. */
     start_parameter?: string;
     /** String | JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider. */
     provider_data?: string;
@@ -9775,15 +9775,15 @@ export interface SetGameScoreParams {
     user_id: number;
     /** Integer | New score, must be non-negative */
     score: number;
-    /** Boolean | Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters */
+    /** Boolean | Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters. */
     force?: boolean;
     /** Boolean | Pass True if the game message should not be automatically edited to include the current scoreboard */
     disable_edit_message?: boolean;
-    /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat */
+    /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat. */
     chat_id?: number;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the sent message */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the sent message. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
 }
 
@@ -9806,11 +9806,11 @@ export interface SetGameScoreRequest {
 export interface GetGameHighScoresParams {
     /** Integer | Target user id */
     user_id: number;
-    /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat */
+    /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat. */
     chat_id?: number;
-    /** Integer | Required if inline_message_id is not specified. Identifier of the sent message */
+    /** Integer | Required if inline_message_id is not specified. Identifier of the sent message. */
     message_id?: number;
-    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+    /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
     inline_message_id?: string;
 }
 

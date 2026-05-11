@@ -41,10 +41,10 @@
  * @property {InlineQuery} [inline_query] - Optional. New incoming inline query
  * @property {ChosenInlineResult} [chosen_inline_result] - Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
  * @property {CallbackQuery} [callback_query] - Optional. New incoming callback query
- * @property {ShippingQuery} [shipping_query] - Optional. New incoming shipping query. Only for invoices with flexible price
- * @property {PreCheckoutQuery} [pre_checkout_query] - Optional. New incoming pre-checkout query. Contains full information about checkout
+ * @property {ShippingQuery} [shipping_query] - Optional. New incoming shipping query. Only for invoices with flexible price.
+ * @property {PreCheckoutQuery} [pre_checkout_query] - Optional. New incoming pre-checkout query. Contains full information about checkout.
  * @property {PaidMediaPurchased} [purchased_paid_media] - Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
- * @property {Poll} [poll] - Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot
+ * @property {Poll} [poll] - Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot.
  * @property {PollAnswer} [poll_answer] - Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself.
  * @property {ChatMemberUpdated} [my_chat_member] - Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
  * @property {ChatMemberUpdated} [chat_member] - Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify "chat_member" in the list of allowed_updates to receive these updates.
@@ -66,7 +66,7 @@
  * @property {string} [last_error_message] - Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook
  * @property {number} [last_synchronization_error_date] - Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
  * @property {number} [max_connections] - Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
- * @property {Array<string>} [allowed_updates] - Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
+ * @property {Array<string>} [allowed_updates] - Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
  */
 
 /**
@@ -167,10 +167,10 @@
  * https://core.telegram.org/bots/api#message
  * This object represents a message.
  * @typedef {Object} Message
- * @property {number} message_id - Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
+ * @property {number} message_id - Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
  * @property {number} [message_thread_id] - Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
  * @property {DirectMessagesTopic} [direct_messages_topic] - Optional. Information about the direct messages chat topic that contains the message
- * @property {User} [from] - Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
+ * @property {User} [from] - Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats.
  * @property {Chat} [sender_chat] - Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
  * @property {number} [sender_boost_count] - Optional. If the sender of the message boosted the chat, the number of boosts added by the user
  * @property {User} [sender_business_bot] - Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
@@ -203,10 +203,10 @@
  * @property {LinkPreviewOptions} [link_preview_options] - Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
  * @property {SuggestedPostInfo} [suggested_post_info] - Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited.
  * @property {string} [effect_id] - Optional. Unique identifier of the message effect added to the message
- * @property {Animation} [animation] - Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
+ * @property {Animation} [animation] - Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.
  * @property {Audio} [audio] - Optional. Message is an audio file, information about the file
  * @property {Document} [document] - Optional. Message is a general file, information about the file
- * @property {LivePhoto} [live_photo] - Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set
+ * @property {LivePhoto} [live_photo] - Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set.
  * @property {PaidMediaInfo} [paid_media] - Optional. Message contains paid media; information about the paid media
  * @property {Array<PhotoSize>} [photo] - Optional. Message is a photo, available sizes of the photo
  * @property {Sticker} [sticker] - Optional. Message is a sticker, information about the sticker
@@ -223,7 +223,7 @@
  * @property {Dice} [dice] - Optional. Message is a dice with random value
  * @property {Game} [game] - Optional. Message is a game, information about the game. More about games: https://core.telegram.org/bots/api#games
  * @property {Poll} [poll] - Optional. Message is a native poll, information about the poll
- * @property {Venue} [venue] - Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set
+ * @property {Venue} [venue] - Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set.
  * @property {Location} [location] - Optional. Message is a shared location, information about the location
  * @property {Array<User>} [new_chat_members] - Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
  * @property {User} [left_chat_member] - Optional. A member was removed from the group, information about them (this member may be the bot itself)
@@ -287,7 +287,7 @@
  * https://core.telegram.org/bots/api#messageid
  * This object represents a unique message identifier.
  * @typedef {Object} MessageId
- * @property {number} message_id - Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
+ * @property {number} message_id - Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
  */
 
 /**
@@ -311,13 +311,13 @@
  * https://core.telegram.org/bots/api#messageentity
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  * @typedef {Object} MessageEntity
- * @property {MessageEntityType} type - Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time)
+ * @property {MessageEntityType} type - Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time).
  * @property {number} offset - Offset in UTF-16 code units to the start of the entity
  * @property {number} length - Length of the entity in UTF-16 code units
  * @property {string} [url] - Optional. For "text_link" only, URL that will be opened after user taps on the text
  * @property {User} [user] - Optional. For "text_mention" only, the mentioned user
  * @property {string} [language] - Optional. For "pre" only, the programming language of the entity text
- * @property {string} [custom_emoji_id] - Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker
+ * @property {string} [custom_emoji_id] - Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker.
  * @property {number} [unix_time] - Optional. For "date_time" only, the Unix time associated with the entity
  * @property {string} [date_time_format] - Optional. For "date_time" only, the string that defines the formatting of the date and time. See date-time entity formatting for more details.
  */
@@ -688,8 +688,8 @@
  * This object contains information about one answer option in a poll to be sent.
  * @typedef {Object} InputPollOption
  * @property {string} text - Option text, 1-100 characters
- * @property {string} [text_parse_mode] - Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed
- * @property {Array<MessageEntity>} [text_entities] - Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode
+ * @property {string} [text_parse_mode] - Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed.
+ * @property {Array<MessageEntity>} [text_entities] - Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode.
  * @property {InputPollOptionMedia} [media] - Optional. Media added to the poll option
  */
 
@@ -719,7 +719,7 @@
  * @property {boolean} allows_multiple_answers - True, if the poll allows multiple answers
  * @property {boolean} allows_revoting - True, if the poll allows to change the chosen answer options
  * @property {boolean} members_only - True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours
- * @property {Array<string>} [country_codes] - Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll.
+ * @property {Array<string>} [country_codes] - Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. The country code "FT" is used for users with anonymous numbers. If omitted, then users from any country can participate in the poll.
  * @property {Array<number>} [correct_option_ids] - Optional. Array of 0-based identifiers of the correct answer options. Available only for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
  * @property {string} [explanation] - Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
  * @property {Array<MessageEntity>} [explanation_entities] - Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
@@ -809,7 +809,7 @@
  * https://core.telegram.org/bots/api#venue
  * This object represents a venue.
  * @typedef {Object} Venue
- * @property {Location} location - Venue location. Can't be a live location
+ * @property {Location} location - Venue location. Can't be a live location.
  * @property {string} title - Name of the venue
  * @property {string} address - Address of the venue
  * @property {string} [foursquare_id] - Optional. Foursquare identifier of the venue
@@ -957,7 +957,7 @@
  * @property {Document} document - Document with the pattern
  * @property {BackgroundFill} fill - The background fill that is combined with the pattern
  * @property {number} intensity - Intensity of the pattern when it is shown above the filled background; 0-100
- * @property {boolean} [is_inverted] - Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
+ * @property {boolean} [is_inverted] - Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only.
  * @property {boolean} [is_moving] - Optional. True, if the background moves slightly when the device is tilted
  */
 
@@ -1034,7 +1034,7 @@
  * This object contains information about the users whose identifiers were shared with the bot using a KeyboardButtonRequestUsers button.
  * @typedef {Object} UsersShared
  * @property {number} request_id - Identifier of the request
- * @property {Array<SharedUser>} users - Information about users shared with the bot.
+ * @property {Array<SharedUser>} users - Information about users shared with the bot
  */
 
 /**
@@ -1043,8 +1043,8 @@
  * @typedef {Object} ChatShared
  * @property {number} request_id - Identifier of the request
  * @property {number} chat_id - Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means.
- * @property {string} [title] - Optional. Title of the chat, if the title was requested by the bot.
- * @property {string} [username] - Optional. Username of the chat, if the username was requested by the bot and available.
+ * @property {string} [title] - Optional. Title of the chat, if the title was requested by the bot
+ * @property {string} [username] - Optional. Username of the chat, if the username was requested by the bot and available
  * @property {Array<PhotoSize>} [photo] - Optional. Available sizes of the chat photo, if the photo was requested by the bot
  */
 
@@ -1129,7 +1129,7 @@
  * Describes a service message about a successful payment for a suggested post.
  * @typedef {Object} SuggestedPostPaid
  * @property {Message} [suggested_post_message] - Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
- * @property {string} currency - Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins
+ * @property {string} currency - Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
  * @property {number} [amount] - Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only
  * @property {StarAmount} [star_amount] - Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only
  */
@@ -1197,7 +1197,7 @@
  * Describes the options used for link preview generation.
  * @typedef {Object} LinkPreviewOptions
  * @property {boolean} [is_disabled] - Optional. True, if the link preview is disabled
- * @property {string} [url] - Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used
+ * @property {string} [url] - Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used.
  * @property {boolean} [prefer_small_media] - Optional. True, if the media in the link preview is supposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
  * @property {boolean} [prefer_large_media] - Optional. True, if the media in the link preview is supposed to be enlarged; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
  * @property {boolean} [show_above_text] - Optional. True, if the link preview must be shown above the message text; otherwise, the link preview will be shown below the message text
@@ -1207,7 +1207,7 @@
  * https://core.telegram.org/bots/api#suggestedpostprice
  * Describes the price of a suggested post.
  * @typedef {Object} SuggestedPostPrice
- * @property {string} currency - Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins
+ * @property {string} currency - Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins.
  * @property {number} amount - The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000.
  */
 
@@ -1233,7 +1233,7 @@
  * Describes a topic of a direct messages chat.
  * @typedef {Object} DirectMessagesTopic
  * @property {number} topic_id - Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
- * @property {User} [user] - Optional. Information about the user that created the topic. Currently, it is always present
+ * @property {User} [user] - Optional. Information about the user that created the topic. Currently, it is always present.
  */
 
 /**
@@ -1285,7 +1285,7 @@
  * https://core.telegram.org/bots/api#keyboardbutton
  * This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object to specify the button text.
  * @typedef {Object} KeyboardButton
- * @property {string} text - Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed
+ * @property {string} text - Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed.
  * @property {string} [icon_custom_emoji_id] - Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
  * @property {string} [style] - Optional. Style of the button. Must be one of "danger" (red), "success" (green) or "primary" (blue). If omitted, then an app-specific style is used.
  * @property {KeyboardButtonRequestUsers} [request_users] - Optional. If specified, pressing the button will open a list of suitable users. Identifiers of selected users will be sent to the bot in a "users_shared" service message. Available in private chats only.
@@ -1301,7 +1301,7 @@
  * https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users: https://core.telegram.org/bots/features#chat-and-user-selection
  * @typedef {Object} KeyboardButtonRequestUsers
- * @property {number} request_id - Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message
+ * @property {number} request_id - Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message.
  * @property {boolean} [user_is_bot] - Optional. Pass True to request bots, pass False to request regular users. If not specified, no additional restrictions are applied.
  * @property {boolean} [user_is_premium] - Optional. Pass True to request premium users, pass False to request non-premium users. If not specified, no additional restrictions are applied.
  * @property {number} [max_quantity] - Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
@@ -1314,8 +1314,8 @@
  * https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats: https://core.telegram.org/bots/features#chat-and-user-selection.
  * @typedef {Object} KeyboardButtonRequestChat
- * @property {number} request_id - Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message
- * @property {boolean} chat_is_channel - Pass True to request a channel chat, pass False to request a group or a supergroup chat.
+ * @property {number} request_id - Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message.
+ * @property {boolean} chat_is_channel - Pass True to request a channel chat, pass False to request a group or a supergroup chat
  * @property {boolean} [chat_is_forum] - Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat. If not specified, no additional restrictions are applied.
  * @property {boolean} [chat_has_username] - Optional. Pass True to request a supergroup or a channel with a username, pass False to request a chat without a username. If not specified, no additional restrictions are applied.
  * @property {boolean} [chat_is_created] - Optional. Pass True to request a chat owned by the user. Otherwise, no additional restrictions are applied.
@@ -1331,7 +1331,7 @@
  * https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
  * This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with the bot using the update managed_bot and a Message with the field managed_bot_created.
  * @typedef {Object} KeyboardButtonRequestManagedBot
- * @property {number} request_id - Signed 32-bit identifier of the request. Must be unique within the message
+ * @property {number} request_id - Signed 32-bit identifier of the request. Must be unique within the message.
  * @property {string} [suggested_name] - Optional. Suggested name for the bot
  * @property {string} [suggested_username] - Optional. Suggested username for the bot
  */
@@ -1372,7 +1372,7 @@
  * @property {string} [switch_inline_query] - Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a business account.
  * @property {string} [switch_inline_query_current_chat] - Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a business account.
  * @property {SwitchInlineQueryChosenChat} [switch_inline_query_chosen_chat] - Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business account.
- * @property {CopyTextButton} [copy_text] - Optional. Description of the button that copies the specified text to the clipboard.
+ * @property {CopyTextButton} [copy_text] - Optional. Description of the button that copies the specified text to the clipboard
  * @property {CallbackGame} [callback_game] - Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row.
  * @property {boolean} [pay] - Optional. Specify True, to send a Pay button. Substrings "⭐" and "XTR" in the buttons's text will be replaced with a Telegram Star icon. NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
  */
@@ -1383,16 +1383,16 @@
  * Telegram apps support these buttons as of version 5.7.
  * @typedef {Object} LoginUrl
  * @property {string} url - An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data. NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.
- * @property {string} [forward_text] - Optional. New text of the button in forwarded messages.
+ * @property {string} [forward_text] - Optional. New text of the button in forwarded messages
  * @property {string} [bot_username] - Optional. Username of a bot, which will be used for user authorization. See Setting up a bot for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details.
- * @property {boolean} [request_write_access] - Optional. Pass True to request the permission for your bot to send messages to the user.
+ * @property {boolean} [request_write_access] - Optional. Pass True to request the permission for your bot to send messages to the user
  */
 
 /**
  * https://core.telegram.org/bots/api#switchinlinequerychosenchat
  * This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
  * @typedef {Object} SwitchInlineQueryChosenChat
- * @property {string} [query] - Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
+ * @property {string} [query] - Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted.
  * @property {boolean} [allow_user_chats] - Optional. True, if private chats with users can be chosen
  * @property {boolean} [allow_bot_chats] - Optional. True, if private chats with bots can be chosen
  * @property {boolean} [allow_group_chats] - Optional. True, if group and supergroup chats can be chosen
@@ -1413,7 +1413,7 @@
  * @property {string} id - Unique identifier for this query
  * @property {User} from - Sender
  * @property {MaybeInaccessibleMessage} [message] - Optional. Message sent by the bot with the callback button that originated the query
- * @property {string} [inline_message_id] - Optional. Identifier of the message sent via the bot in inline mode, that originated the query.
+ * @property {string} [inline_message_id] - Optional. Identifier of the message sent via the bot in inline mode, that originated the query
  * @property {string} chat_instance - Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent. Useful for high scores in games.
  * @property {string} [data] - Optional. Data associated with the callback button. Be aware that the message originated the query can contain no callback buttons with this data.
  * @property {string} [game_short_name] - Optional. Short name of a Game to be returned, serves as the unique identifier for the game
@@ -1487,7 +1487,7 @@
  * @property {number} date - Date the change was done in Unix time
  * @property {ChatMember} old_chat_member - Previous information about the chat member
  * @property {ChatMember} new_chat_member - New information about the chat member
- * @property {ChatInviteLink} [invite_link] - Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
+ * @property {ChatInviteLink} [invite_link] - Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only
  * @property {boolean} [via_join_request] - Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator
  * @property {boolean} [via_chat_folder_invite_link] - Optional. True, if the user joined the chat via a chat folder invite link
  */
@@ -1575,7 +1575,7 @@
  * @property {boolean} can_invite_users - True, if the user is allowed to invite new users to the chat
  * @property {boolean} can_pin_messages - True, if the user is allowed to pin messages
  * @property {boolean} can_manage_topics - True, if the user is allowed to create forum topics
- * @property {number} until_date - Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
+ * @property {number} until_date - Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever.
  */
 
 /**
@@ -1592,7 +1592,7 @@
  * @typedef {Object} ChatMemberBanned
  * @property {'kicked'} status - The member's status in the chat, always "kicked"
  * @property {User} user - Information about the user
- * @property {number} until_date - Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever
+ * @property {number} until_date - Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever.
  */
 
 /**
@@ -1603,7 +1603,7 @@
  * @property {User} from - User that sent the join request
  * @property {number} user_chat_id - Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted the user.
  * @property {number} date - Date the request was sent in Unix time
- * @property {string} [bio] - Optional. Bio of the user.
+ * @property {string} [bio] - Optional. Bio of the user
  * @property {ChatInviteLink} [invite_link] - Optional. Chat invite link that was used by the user to send the join request
  */
 
@@ -1623,10 +1623,10 @@
  * @property {boolean} [can_add_web_page_previews] - Optional. True, if the user is allowed to add web page previews to their messages
  * @property {boolean} [can_react_to_messages] - Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of can_send_messages.
  * @property {boolean} [can_edit_tag] - Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages.
- * @property {boolean} [can_change_info] - Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
+ * @property {boolean} [can_change_info] - Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups.
  * @property {boolean} [can_invite_users] - Optional. True, if the user is allowed to invite new users to the chat
- * @property {boolean} [can_pin_messages] - Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
- * @property {boolean} [can_manage_topics] - Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages
+ * @property {boolean} [can_pin_messages] - Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.
+ * @property {boolean} [can_manage_topics] - Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages.
  */
 
 /**
@@ -1790,7 +1790,7 @@
  * The reaction is based on an emoji.
  * @typedef {Object} ReactionTypeEmoji
  * @property {'emoji'} type - Type of the reaction, always "emoji"
- * @property {string} emoji - Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡"
+ * @property {string} emoji - Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡".
  */
 
 /**
@@ -1941,7 +1941,7 @@
  * @typedef {Object} UniqueGift
  * @property {string} gift_id - Identifier of the regular gift from which the gift was upgraded
  * @property {string} base_name - Human-readable name of the regular gift from which this unique gift was upgraded
- * @property {string} name - Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas
+ * @property {string} name - Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas.
  * @property {number} number - Unique number of the upgraded gift among gifts upgraded from the same regular gift
  * @property {UniqueGiftModel} model - Model of the gift
  * @property {UniqueGiftSymbol} symbol - Symbol of the gift
@@ -1966,7 +1966,7 @@
  * @property {string} [text] - Optional. Text of the message that was added to the gift
  * @property {Array<MessageEntity>} [entities] - Optional. Special entities that appear in the text
  * @property {boolean} [is_private] - Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
- * @property {number} [unique_gift_number] - Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+ * @property {number} [unique_gift_number] - Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift.
  */
 
 /**
@@ -1974,12 +1974,12 @@
  * Describes a service message about a unique gift that was sent or received.
  * @typedef {Object} UniqueGiftInfo
  * @property {UniqueGift} gift - Information about the gift
- * @property {string} origin - Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers
+ * @property {string} origin - Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers.
  * @property {string} [last_resale_currency] - Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
  * @property {number} [last_resale_amount] - Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins
  * @property {string} [owned_gift_id] - Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
  * @property {number} [transfer_star_count] - Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
- * @property {number} [next_transfer_date] - Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+ * @property {number} [next_transfer_date] - Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now.
  */
 
 /**
@@ -2008,7 +2008,7 @@
  * @property {number} [convert_star_count] - Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
  * @property {number} [prepaid_upgrade_star_count] - Optional. Number of Telegram Stars that were paid for the ability to upgrade the gift
  * @property {boolean} [is_upgrade_separate] - Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only
- * @property {number} [unique_gift_number] - Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+ * @property {number} [unique_gift_number] - Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift.
  */
 
 /**
@@ -2023,7 +2023,7 @@
  * @property {boolean} [is_saved] - Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only
  * @property {boolean} [can_be_transferred] - Optional. True, if the gift can be transferred to another owner; for gifts received on behalf of business accounts only
  * @property {number} [transfer_star_count] - Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
- * @property {number} [next_transfer_date] - Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
+ * @property {number} [next_transfer_date] - Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now.
  */
 
 /**
@@ -2032,7 +2032,7 @@
  * @typedef {Object} OwnedGifts
  * @property {number} total_count - The total number of gifts owned by the user or the chat
  * @property {Array<OwnedGift>} gifts - The list of gifts
- * @property {string} [next_offset] - Optional. Offset for the next request. If empty, then there are no more results
+ * @property {string} [next_offset] - Optional. Offset for the next request. If empty, then there are no more results.
  */
 
 /**
@@ -2067,7 +2067,7 @@
  * This object represents a bot command.
  * @typedef {Object} BotCommand
  * @property {string} command - Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
- * @property {string} description - Description of the command; 1-256 characters.
+ * @property {string} description - Description of the command; 1-256 characters
  */
 
 /**
@@ -2335,7 +2335,7 @@
  * Describes an inline message to be sent by a user of a Mini App.
  * @typedef {Object} PreparedInlineMessage
  * @property {string} id - Unique identifier of the prepared message
- * @property {number} expiration_date - Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used
+ * @property {number} expiration_date - Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used.
  */
 
 /**
@@ -2651,7 +2651,7 @@
  * @property {User} from - Sender
  * @property {string} query - Text of the query (up to 256 characters)
  * @property {string} offset - Offset of the results to be returned, can be controlled by the bot
- * @property {InlineQueryChatType} [chat_type] - Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat
+ * @property {InlineQueryChatType} [chat_type] - Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat.
  * @property {Location} [location] - Optional. Sender location, only for bots that request user location
  */
 
@@ -2713,7 +2713,7 @@
  * @typedef {Object} InlineQueryResultPhoto
  * @property {string} type - Type of the result, must be photo
  * @property {string} id - Unique identifier for this result, 1-64 bytes
- * @property {string} photo_url - A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
+ * @property {string} photo_url - A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.
  * @property {string} thumbnail_url - URL of the thumbnail for the photo
  * @property {number} [photo_width] - Optional. Width of the photo
  * @property {number} [photo_height] - Optional. Height of the photo
@@ -2738,7 +2738,7 @@
  * @property {number} [gif_height] - Optional. Height of the GIF
  * @property {number} [gif_duration] - Optional. Duration of the GIF in seconds
  * @property {string} thumbnail_url - URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property {string} [thumbnail_mime_type] - Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
+ * @property {string} [thumbnail_mime_type] - Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg".
  * @property {string} [title] - Optional. Title for the result
  * @property {string} [caption] - Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Optional. Mode for parsing entities in the caption. See formatting options for more details.
@@ -2759,7 +2759,7 @@
  * @property {number} [mpeg4_height] - Optional. Video height
  * @property {number} [mpeg4_duration] - Optional. Video duration in seconds
  * @property {string} thumbnail_url - URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property {string} [thumbnail_mime_type] - Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
+ * @property {string} [thumbnail_mime_type] - Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg".
  * @property {string} [title] - Optional. Title for the result
  * @property {string} [caption] - Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Optional. Mode for parsing entities in the caption. See formatting options for more details.
@@ -2854,7 +2854,7 @@
  * @property {number} longitude - Location longitude in degrees
  * @property {string} title - Location title
  * @property {number} [horizontal_accuracy] - Optional. The radius of uncertainty for the location, measured in meters; 0-1500
- * @property {number} [live_period] - Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+ * @property {number} [live_period] - Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
  * @property {number} [heading] - Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * @property {number} [proximity_alert_radius] - Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * @property {InlineKeyboardMarkup} [reply_markup] - Optional. Inline keyboard attached to the message
@@ -3062,7 +3062,7 @@
  * @property {number} latitude - Latitude of the location in degrees
  * @property {number} longitude - Longitude of the location in degrees
  * @property {number} [horizontal_accuracy] - Optional. The radius of uncertainty for the location, measured in meters; 0-1500
- * @property {number} [live_period] - Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+ * @property {number} [live_period] - Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
  * @property {number} [heading] - Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * @property {number} [proximity_alert_radius] - Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  */
@@ -3199,7 +3199,7 @@
  * https://core.telegram.org/bots/api#refundedpayment
  * This object contains basic information about a refunded payment.
  * @typedef {Object} RefundedPayment
- * @property {'XTR'} currency - Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR"
+ * @property {'XTR'} currency - Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR".
  * @property {number} total_amount - Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
  * @property {string} invoice_payload - Bot-specified invoice payload
  * @property {string} telegram_payment_charge_id - Telegram payment identifier
@@ -3365,8 +3365,8 @@
  * @property {number} amount - Integer amount of Telegram Stars transferred by the transaction
  * @property {number} [nanostar_amount] - Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction; from 0 to 999999999
  * @property {number} date - Date the transaction was created in Unix time
- * @property {TransactionPartner} [source] - Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions
- * @property {TransactionPartner} [receiver] - Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions
+ * @property {TransactionPartner} [source] - Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions.
+ * @property {TransactionPartner} [receiver] - Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions.
  */
 
 /**
@@ -3531,10 +3531,10 @@
  * @typedef {Object} Game
  * @property {string} title - Title of the game
  * @property {string} description - Description of the game
- * @property {Array<PhotoSize>} photo - Photo that will be displayed in the game message in chats.
+ * @property {Array<PhotoSize>} photo - Photo that will be displayed in the game message in chats
  * @property {string} [text] - Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters.
  * @property {Array<MessageEntity>} [text_entities] - Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
- * @property {Animation} [animation] - Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
+ * @property {Animation} [animation] - Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.
  */
 
 /**
@@ -3616,7 +3616,7 @@
  * Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable amount of attempts. Returns True on success.
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header "X-Telegram-Bot-Api-Secret-Token" with the secret token as content.
  * @typedef {Object} SetWebhookParams
- * @property {string} url - HTTPS URL to send updates to. Use an empty string to remove webhook integration
+ * @property {string} url - HTTPS URL to send updates to. Use an empty string to remove webhook integration.
  * @property {InputFile} [certificate] - Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details.
  * @property {string} [ip_address] - The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS
  * @property {number} [max_connections] - The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
@@ -3746,7 +3746,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -3851,7 +3851,7 @@
  * @property {number | string} from_chat_id - Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)
  * @property {number} message_id - Message identifier in the chat specified in from_chat_id
  * @property {number} [video_start_timestamp] - New start timestamp for the copied video in the message
- * @property {string} [caption] - New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
+ * @property {string} [caption] - New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept.
  * @property {string} [parse_mode] - Mode for parsing entities in the new caption. See formatting options for more details.
  * @property {Array<MessageEntity>} [caption_entities] - A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode
  * @property {boolean} [show_caption_above_media] - Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
@@ -3861,7 +3861,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; only available when copying to private chats
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -3940,7 +3940,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4032,7 +4032,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4078,7 +4078,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4129,7 +4129,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4177,7 +4177,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4220,7 +4220,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4252,7 +4252,7 @@
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property {InputFile | string} video_note - Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported
+ * @property {InputFile | string} video_note - Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported.
  * @property {number} [duration] - Duration of sent video in seconds
  * @property {number} [length] - Video width and height, i.e. diameter of the video message
  * @property {InputFile | string} [thumbnail] - Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
@@ -4262,7 +4262,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4306,7 +4306,7 @@
  * @property {boolean} [allow_paid_broadcast] - Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4378,7 +4378,7 @@
  * @property {number} latitude - Latitude of the location
  * @property {number} longitude - Longitude of the location
  * @property {number} [horizontal_accuracy] - The radius of uncertainty for the location, measured in meters; 0-1500
- * @property {number} [live_period] - Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+ * @property {number} [live_period] - Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
  * @property {number} [heading] - For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * @property {number} [proximity_alert_radius] - For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * @property {boolean} [disable_notification] - Sends the message silently. Users will receive a notification with no sound.
@@ -4387,7 +4387,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4433,7 +4433,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4475,7 +4475,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4507,8 +4507,8 @@
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Polls can't be sent to channel direct messages chats.
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {string} question - Poll question, 1-300 characters
- * @property {string} [question_parse_mode] - Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
- * @property {Array<MessageEntity>} [question_entities] - A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
+ * @property {string} [question_parse_mode] - Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed.
+ * @property {Array<MessageEntity>} [question_entities] - A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode.
  * @property {Array<InputPollOption>} options - A JSON-serialized list of 1-12 answer options
  * @property {boolean} [is_anonymous] - True, if the poll needs to be anonymous, defaults to True
  * @property {string} [type] - Poll type, "quiz" or "regular", defaults to "regular"
@@ -4518,11 +4518,11 @@
  * @property {boolean} [allow_adding_options] - Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
  * @property {boolean} [hide_results_until_closes] - Pass True, if poll results must be shown only after the poll closes
  * @property {boolean} [members_only] - Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only
- * @property {Array<string>} [country_codes] - A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. If omitted or empty, then users from any country can participate in the poll.
+ * @property {Array<string>} [country_codes] - A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. Use "FT" as a country code to allow users with anonymous numbers to vote. If omitted or empty, then users from any country can participate in the poll.
  * @property {Array<number>} [correct_option_ids] - A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode
  * @property {string} [explanation] - Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing
  * @property {string} [explanation_parse_mode] - Mode for parsing entities in the explanation. See formatting options for more details.
- * @property {Array<MessageEntity>} [explanation_entities] - A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode
+ * @property {Array<MessageEntity>} [explanation_entities] - A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode.
  * @property {InputPollMedia} [explanation_media] - Media added to the quiz explanation
  * @property {number} [open_period] - Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.
  * @property {number} [close_date] - Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period.
@@ -4536,7 +4536,7 @@
  * @property {boolean} [allow_paid_broadcast] - Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4603,14 +4603,14 @@
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property {string} [emoji] - Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲"
+ * @property {string} [emoji] - Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲".
  * @property {boolean} [disable_notification] - Sends the message silently. Users will receive a notification with no sound.
  * @property {boolean} [protect_content] - Protects the contents of the sent message from forwarding
  * @property {boolean} [allow_paid_broadcast] - Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -4874,7 +4874,7 @@
  * @property {number} user_id - Unique identifier of the target user
  * @property {ChatPermissions} permissions - A JSON-serialized object for new user permissions
  * @property {boolean} [use_independent_chat_permissions] - Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission.
- * @property {number} [until_date] - Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+ * @property {number} [until_date] - Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever.
  */
 
 /**
@@ -4900,7 +4900,7 @@
  * @property {boolean} [can_manage_chat] - Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
  * @property {boolean} [can_delete_messages] - Pass True if the administrator can delete messages of other users
  * @property {boolean} [can_manage_video_chats] - Pass True if the administrator can manage video chats
- * @property {boolean} [can_restrict_members] - Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators
+ * @property {boolean} [can_restrict_members] - Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators.
  * @property {boolean} [can_promote_members] - Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him)
  * @property {boolean} [can_change_info] - Pass True if the administrator can change chat title, photo and other settings
  * @property {boolean} [can_invite_users] - Pass True if the administrator can invite new users to the chat
@@ -5072,7 +5072,7 @@
  * @property {string} [name] - Invite link name; 0-32 characters
  * @property {number} [expire_date] - Point in time (Unix timestamp) when the link will expire
  * @property {number} [member_limit] - The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
- * @property {boolean} [creates_join_request] - True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
+ * @property {boolean} [creates_join_request] - True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified.
  */
 
 /**
@@ -5105,7 +5105,7 @@
  * @property {string} [name] - Invite link name; 0-32 characters
  * @property {number} [expire_date] - Point in time (Unix timestamp) when the link will expire
  * @property {number} [member_limit] - The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
- * @property {boolean} [creates_join_request] - True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
+ * @property {boolean} [creates_join_request] - True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified.
  */
 
 /**
@@ -5640,7 +5640,7 @@
  * @typedef {Object} CreateForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property {string} name - Topic name, 1-128 characters
- * @property {number} [icon_color] - Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
+ * @property {number} [icon_color] - Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F).
  * @property {string} [icon_custom_emoji_id] - Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
  */
 
@@ -5671,8 +5671,8 @@
  * @typedef {Object} EditForumTopicParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property {number} message_thread_id - Unique identifier for the target message thread of the forum topic
- * @property {string} [name] - New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
- * @property {string} [icon_custom_emoji_id] - New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept
+ * @property {string} [name] - New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept.
+ * @property {string} [icon_custom_emoji_id] - New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept.
  */
 
 /**
@@ -5898,7 +5898,7 @@
  * Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
  * @typedef {Object} AnswerCallbackQueryParams
  * @property {string} callback_query_id - Unique identifier for the query to be answered
- * @property {string} [text] - Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+ * @property {string} [text] - Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.
  * @property {boolean} [show_alert] - If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
  * @property {string} [url] - URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @BotFather, specify the URL that opens your game - note that this will only work if the query comes from a callback_game button. Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
  * @property {number} [cache_time] - The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
@@ -6115,7 +6115,7 @@
  * @typedef {Object} SetMyCommandsParams
  * @property {Array<BotCommand>} commands - A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.
  * @property {BotCommandScope} [scope] - A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
- * @property {string} [language_code] - A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands
+ * @property {string} [language_code] - A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands.
  */
 
 /**
@@ -6136,7 +6136,7 @@
  * Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
  * @typedef {Object} DeleteMyCommandsParams
  * @property {BotCommandScope} [scope] - A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
- * @property {string} [language_code] - A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands
+ * @property {string} [language_code] - A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands.
  */
 
 /**
@@ -6365,8 +6365,8 @@
  * https://core.telegram.org/bots/api#setchatmenubutton
  * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  * @typedef {Object} SetChatMenuButtonParams
- * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
- * @property {MenuButton} [menu_button] - A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
+ * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be changed.
+ * @property {MenuButton} [menu_button] - A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
  */
 
 /**
@@ -6386,7 +6386,7 @@
  * https://core.telegram.org/bots/api#getchatmenubutton
  * Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
  * @typedef {Object} GetChatMenuButtonParams
- * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be returned
+ * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be returned.
  */
 
 /**
@@ -6640,7 +6640,7 @@
  * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
  * @typedef {Object} DeleteBusinessMessagesParams
  * @property {string} business_connection_id - Unique identifier of the business connection on behalf of which to delete the messages
- * @property {Array<number>} message_ids - A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted
+ * @property {Array<number>} message_ids - A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted.
  */
 
 /**
@@ -6848,7 +6848,7 @@
  * @property {boolean} [exclude_from_blockchain] - Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram
  * @property {boolean} [sort_by_price] - Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * @property {string} [offset] - Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
- * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100
+ * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100.
  */
 
 /**
@@ -6884,7 +6884,7 @@
  * @property {boolean} [exclude_unique] - Pass True to exclude unique gifts
  * @property {boolean} [sort_by_price] - Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * @property {string} [offset] - Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
- * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100
+ * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100.
  */
 
 /**
@@ -6922,7 +6922,7 @@
  * @property {boolean} [exclude_unique] - Pass True to exclude unique gifts
  * @property {boolean} [sort_by_price] - Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * @property {string} [offset] - Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
- * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100
+ * @property {number} [limit] - The maximum number of gifts to be returned; 1-100. Defaults to 100.
  */
 
 /**
@@ -7204,7 +7204,7 @@
  * Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.
  * @typedef {Object} SavePreparedKeyboardButtonParams
  * @property {number} user_id - Unique identifier of the target user that can use the button
- * @property {KeyboardButton} button - A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot
+ * @property {KeyboardButton} button - A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot.
  */
 
 /**
@@ -7234,13 +7234,13 @@
  * @typedef {Object} EditMessageTextParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  * @property {string} text - New text of the message, 1-4096 characters after entities parsing
  * @property {string} [parse_mode] - Mode for parsing entities in the message text. See formatting options for more details.
  * @property {Array<MessageEntity>} [entities] - A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
  * @property {LinkPreviewOptions} [link_preview_options] - Link preview generation options for the message
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard
  */
 
 /**
@@ -7270,13 +7270,13 @@
  * @typedef {Object} EditMessageCaptionParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  * @property {string} [caption] - New caption of the message, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Mode for parsing entities in the message caption. See formatting options for more details.
  * @property {Array<MessageEntity>} [caption_entities] - A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
  * @property {boolean} [show_caption_above_media] - Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard
  */
 
 /**
@@ -7306,10 +7306,10 @@
  * @typedef {Object} EditMessageMediaParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  * @property {InputMedia} media - A JSON-serialized object for a new media content of the message
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard
  */
 
 /**
@@ -7339,15 +7339,15 @@
  * @typedef {Object} EditMessageLiveLocationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  * @property {number} latitude - Latitude of new location
  * @property {number} longitude - Longitude of new location
- * @property {number} [live_period] - New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged
+ * @property {number} [live_period] - New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged.
  * @property {number} [horizontal_accuracy] - The radius of uncertainty for the location, measured in meters; 0-1500
  * @property {number} [heading] - Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * @property {number} [proximity_alert_radius] - The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard
  */
 
 /**
@@ -7377,9 +7377,9 @@
  * @typedef {Object} StopMessageLiveLocationParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message with live location to stop
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard.
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message with live location to stop.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard
  */
 
 /**
@@ -7441,9 +7441,9 @@
  * @typedef {Object} EditMessageReplyMarkupParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard.
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for an inline keyboard
  */
 
 /**
@@ -7474,7 +7474,7 @@
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property {number} message_id - Identifier of the original message with the poll
- * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new message inline keyboard.
+ * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new message inline keyboard
  */
 
 /**
@@ -7504,7 +7504,7 @@
  * @typedef {Object} ApproveSuggestedPostParams
  * @property {number} chat_id - Unique identifier for the target direct messages chat
  * @property {number} message_id - Identifier of a suggested post message to approve
- * @property {number} [send_date] - Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+ * @property {number} [send_date] - Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future.
  */
 
 /**
@@ -7598,7 +7598,7 @@
  * Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
  * @typedef {Object} DeleteMessagesParams
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
- * @property {Array<number>} message_ids - A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted
+ * @property {Array<number>} message_ids - A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted.
  */
 
 /**
@@ -7675,7 +7675,7 @@
  * @property {string} [message_effect_id] - Unique identifier of the message effect to be added to the message; for private chats only
  * @property {SuggestedPostParameters} [suggested_post_parameters] - A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property {ReplyParameters} [reply_parameters] - Description of the message to reply to
- * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property {InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply} [reply_markup] - Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  */
 
 /**
@@ -8008,7 +8008,7 @@
  * Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
  * @typedef {Object} SetCustomEmojiStickerSetThumbnailParams
  * @property {string} name - Sticker set name
- * @property {string} [custom_emoji_id] - Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail.
+ * @property {string} [custom_emoji_id] - Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail
  */
 
 /**
@@ -8087,7 +8087,7 @@
  * @property {Array<LabeledPrice>} prices - Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
  * @property {number} [max_tip_amount] - The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars.
  * @property {Array<number>} [suggested_tip_amounts] - A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.
- * @property {string} [start_parameter] - Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter
+ * @property {string} [start_parameter] - Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter.
  * @property {string} [provider_data] - JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider.
  * @property {string} [photo_url] - URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service. People like it better when they see what they are paying for.
  * @property {number} [photo_size] - Photo size in bytes
@@ -8384,11 +8384,11 @@
  * @typedef {Object} SetGameScoreParams
  * @property {number} user_id - User identifier
  * @property {number} score - New score, must be non-negative
- * @property {boolean} [force] - Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
+ * @property {boolean} [force] - Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters.
  * @property {boolean} [disable_edit_message] - Pass True if the game message should not be automatically edited to include the current scoreboard
- * @property {number} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the sent message
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat.
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the sent message.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  */
 
 /**
@@ -8417,9 +8417,9 @@
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
  * @typedef {Object} GetGameHighScoresParams
  * @property {number} user_id - Target user id
- * @property {number} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat
- * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the sent message
- * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property {number} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat.
+ * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the sent message.
+ * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
  */
 
 /**
