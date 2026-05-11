@@ -123,13 +123,13 @@ extension TelegramAPI {
         public let chosen_inline_result: ChosenInlineResult?
         /** CallbackQuery | Optional. New incoming callback query */
         public let callback_query: CallbackQuery?
-        /** ShippingQuery | Optional. New incoming shipping query. Only for invoices with flexible price */
+        /** ShippingQuery | Optional. New incoming shipping query. Only for invoices with flexible price. */
         public let shipping_query: ShippingQuery?
-        /** PreCheckoutQuery | Optional. New incoming pre-checkout query. Contains full information about checkout */
+        /** PreCheckoutQuery | Optional. New incoming pre-checkout query. Contains full information about checkout. */
         public let pre_checkout_query: PreCheckoutQuery?
         /** PaidMediaPurchased | Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat */
         public let purchased_paid_media: PaidMediaPurchased?
-        /** Poll | Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot */
+        /** Poll | Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot. */
         public let poll: Poll?
         /** PollAnswer | Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes only in polls that were sent by the bot itself. */
         public let poll_answer: PollAnswer?
@@ -199,7 +199,7 @@ extension TelegramAPI {
         public let last_synchronization_error_date: Int?
         /** Integer | Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery */
         public let max_connections: Int?
-        /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member */
+        /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member. */
         public let allowed_updates: Array<String>?
 
         public init(url: String, has_custom_certificate: Bool, pending_update_count: Int, ip_address: String? = nil, last_error_date: Int? = nil, last_error_message: String? = nil, last_synchronization_error_date: Int? = nil, max_connections: Int? = nil, allowed_updates: Array<String>? = nil) {
@@ -486,13 +486,13 @@ extension TelegramAPI {
      * This object represents a message.
     */
     public class Message: Codable {
-        /** Integer | Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
+        /** Integer | Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent. */
         public let message_id: Int
         /** Integer | Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only */
         public let message_thread_id: Int?
         /** DirectMessagesTopic | Optional. Information about the direct messages chat topic that contains the message */
         public let direct_messages_topic: DirectMessagesTopic?
-        /** User | Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats */
+        /** User | Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats. */
         public let from: User?
         /** Chat | Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats. */
         public let sender_chat: Chat?
@@ -558,13 +558,13 @@ extension TelegramAPI {
         public let suggested_post_info: SuggestedPostInfo?
         /** String | Optional. Unique identifier of the message effect added to the message */
         public let effect_id: String?
-        /** Animation | Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set */
+        /** Animation | Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set. */
         public let animation: Animation?
         /** Audio | Optional. Message is an audio file, information about the file */
         public let audio: Audio?
         /** Document | Optional. Message is a general file, information about the file */
         public let document: Document?
-        /** LivePhoto | Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set */
+        /** LivePhoto | Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set. */
         public let live_photo: LivePhoto?
         /** PaidMediaInfo | Optional. Message contains paid media; information about the paid media */
         public let paid_media: PaidMediaInfo?
@@ -598,7 +598,7 @@ extension TelegramAPI {
         public let game: Game?
         /** Poll | Optional. Message is a native poll, information about the poll */
         public let poll: Poll?
-        /** Venue | Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set */
+        /** Venue | Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set. */
         public let venue: Venue?
         /** Location | Optional. Message is a shared location, information about the location */
         public let location: Location?
@@ -840,7 +840,7 @@ extension TelegramAPI {
      * This object represents a unique message identifier.
     */
     public class MessageId: Codable {
-        /** Integer | Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent */
+        /** Integer | Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent. */
         public let message_id: Int
 
         public init(message_id: Int) {
@@ -911,7 +911,7 @@ extension TelegramAPI {
      * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
     */
     public class MessageEntity: Codable {
-        /** MessageEntityType | Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time) */
+        /** MessageEntityType | Type of the entity. Currently, can be "mention" (@username), "hashtag" (#hashtag or #hashtag@chatusername), "cashtag" ($USD or $USD@chatusername), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "spoiler" (spoiler message), "blockquote" (block quotation), "expandable_blockquote" (collapsed-by-default block quotation), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames), "custom_emoji" (for inline custom emoji stickers), or "date_time" (for formatted date and time). */
         public let type: MessageEntityType
         /** Integer | Offset in UTF-16 code units to the start of the entity */
         public let offset: Int
@@ -923,7 +923,7 @@ extension TelegramAPI {
         public let user: User?
         /** String | Optional. For "pre" only, the programming language of the entity text */
         public let language: String?
-        /** String | Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker */
+        /** String | Optional. For "custom_emoji" only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker. */
         public let custom_emoji_id: String?
         /** Integer | Optional. For "date_time" only, the Unix time associated with the entity */
         public let unix_time: Int?
@@ -1983,9 +1983,9 @@ extension TelegramAPI {
     public class InputPollOption: Codable {
         /** String | Option text, 1-100 characters */
         public let text: String
-        /** String | Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed */
+        /** String | Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed. */
         public let text_parse_mode: String?
-        /** Array of MessageEntity | Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode */
+        /** Array of MessageEntity | Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode. */
         public let text_entities: Array<MessageEntity>?
         /** InputPollOptionMedia | Optional. Media added to the poll option */
         public let media: InputPollOptionMedia?
@@ -2054,7 +2054,7 @@ extension TelegramAPI {
         public let allows_revoting: Bool
         /** Boolean | True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours */
         public let members_only: Bool
-        /** Array of String | Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll. */
+        /** Array of String | Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. The country code "FT" is used for users with anonymous numbers. If omitted, then users from any country can participate in the poll. */
         public let country_codes: Array<String>?
         /** Array of Integer | Optional. Array of 0-based identifiers of the correct answer options. Available only for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot. */
         public let correct_option_ids: Array<Int>?
@@ -2287,7 +2287,7 @@ extension TelegramAPI {
      * This object represents a venue.
     */
     public class Venue: Codable {
-        /** Location | Venue location. Can't be a live location */
+        /** Location | Venue location. Can't be a live location. */
         public let location: Location
         /** String | Name of the venue */
         public let title: String
@@ -2677,7 +2677,7 @@ extension TelegramAPI {
         public let fill: BackgroundFill
         /** Integer | Intensity of the pattern when it is shown above the filled background; 0-100 */
         public let intensity: Int
-        /** Boolean | Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only */
+        /** Boolean | Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only. */
         public let is_inverted: Bool?
         /** Boolean | Optional. True, if the background moves slightly when the device is tilted */
         public let is_moving: Bool?
@@ -2851,7 +2851,7 @@ extension TelegramAPI {
     public class UsersShared: Codable {
         /** Integer | Identifier of the request */
         public let request_id: Int
-        /** Array of SharedUser | Information about users shared with the bot. */
+        /** Array of SharedUser | Information about users shared with the bot */
         public let users: Array<SharedUser>
 
         public init(request_id: Int, users: Array<SharedUser>) {
@@ -2871,9 +2871,9 @@ extension TelegramAPI {
         public let request_id: Int
         /** Integer | Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means. */
         public let chat_id: Int
-        /** String | Optional. Title of the chat, if the title was requested by the bot. */
+        /** String | Optional. Title of the chat, if the title was requested by the bot */
         public let title: String?
-        /** String | Optional. Username of the chat, if the username was requested by the bot and available. */
+        /** String | Optional. Username of the chat, if the username was requested by the bot and available */
         public let username: String?
         /** Array of PhotoSize | Optional. Available sizes of the chat photo, if the photo was requested by the bot */
         public let photo: Array<PhotoSize>?
@@ -3064,7 +3064,7 @@ extension TelegramAPI {
     public class SuggestedPostPaid: Codable {
         /** Message | Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply. */
         public let suggested_post_message: Message?
-        /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins */
+        /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
         public let currency: String
         /** Integer | Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only */
         public let amount: Int?
@@ -3232,7 +3232,7 @@ extension TelegramAPI {
     public class LinkPreviewOptions: Codable {
         /** Boolean | Optional. True, if the link preview is disabled */
         public let is_disabled: Bool?
-        /** String | Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used */
+        /** String | Optional. URL to use for the link preview. If empty, then the first URL found in the message text will be used. */
         public let url: String?
         /** Boolean | Optional. True, if the media in the link preview is supposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview */
         public let prefer_small_media: Bool?
@@ -3257,7 +3257,7 @@ extension TelegramAPI {
      * Describes the price of a suggested post.
     */
     public class SuggestedPostPrice: Codable {
-        /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins */
+        /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins. */
         public let currency: String
         /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000. */
         public let amount: Int
@@ -3316,7 +3316,7 @@ extension TelegramAPI {
     public class DirectMessagesTopic: Codable {
         /** Integer | Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. */
         public let topic_id: Int
-        /** User | Optional. Information about the user that created the topic. Currently, it is always present */
+        /** User | Optional. Information about the user that created the topic. Currently, it is always present. */
         public let user: User?
 
         public init(topic_id: Int, user: User? = nil) {
@@ -3437,7 +3437,7 @@ extension TelegramAPI {
      * This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object to specify the button text.
     */
     public class KeyboardButton: Codable {
-        /** String | Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed */
+        /** String | Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed. */
         public let text: String
         /** String | Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription. */
         public let icon_custom_emoji_id: String?
@@ -3479,7 +3479,7 @@ extension TelegramAPI {
      * This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users: https://core.telegram.org/bots/features#chat-and-user-selection
     */
     public class KeyboardButtonRequestUsers: Codable {
-        /** Integer | Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message */
+        /** Integer | Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message. */
         public let request_id: Int
         /** Boolean | Optional. Pass True to request bots, pass False to request regular users. If not specified, no additional restrictions are applied. */
         public let user_is_bot: Bool?
@@ -3512,9 +3512,9 @@ extension TelegramAPI {
      * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats: https://core.telegram.org/bots/features#chat-and-user-selection.
     */
     public class KeyboardButtonRequestChat: Codable {
-        /** Integer | Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message */
+        /** Integer | Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message. */
         public let request_id: Int
-        /** Boolean | Pass True to request a channel chat, pass False to request a group or a supergroup chat. */
+        /** Boolean | Pass True to request a channel chat, pass False to request a group or a supergroup chat */
         public let chat_is_channel: Bool
         /** Boolean | Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat. If not specified, no additional restrictions are applied. */
         public let chat_is_forum: Bool?
@@ -3557,7 +3557,7 @@ extension TelegramAPI {
      * This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with the bot using the update managed_bot and a Message with the field managed_bot_created.
     */
     public class KeyboardButtonRequestManagedBot: Codable {
-        /** Integer | Signed 32-bit identifier of the request. Must be unique within the message */
+        /** Integer | Signed 32-bit identifier of the request. Must be unique within the message. */
         public let request_id: Int
         /** String | Optional. Suggested name for the bot */
         public let suggested_name: String?
@@ -3646,7 +3646,7 @@ extension TelegramAPI {
         public let switch_inline_query_current_chat: String?
         /** SwitchInlineQueryChosenChat | Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business account. */
         public let switch_inline_query_chosen_chat: SwitchInlineQueryChosenChat?
-        /** CopyTextButton | Optional. Description of the button that copies the specified text to the clipboard. */
+        /** CopyTextButton | Optional. Description of the button that copies the specified text to the clipboard */
         public let copy_text: CopyTextButton?
         /** CallbackGame | Optional. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row. */
         public let callback_game: CallbackGame?
@@ -3680,11 +3680,11 @@ extension TelegramAPI {
     public class LoginUrl: Codable {
         /** String | An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed. If the user refuses to provide authorization data, the original URL without information about the user will be opened. The data added is the same as described in Receiving authorization data. NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization. */
         public let url: String
-        /** String | Optional. New text of the button in forwarded messages. */
+        /** String | Optional. New text of the button in forwarded messages */
         public let forward_text: String?
         /** String | Optional. Username of a bot, which will be used for user authorization. See Setting up a bot for more details. If not specified, the current bot's username will be assumed. The url's domain must be the same as the domain linked with the bot. See Linking your domain to the bot for more details. */
         public let bot_username: String?
-        /** Boolean | Optional. Pass True to request the permission for your bot to send messages to the user. */
+        /** Boolean | Optional. Pass True to request the permission for your bot to send messages to the user */
         public let request_write_access: Bool?
 
         public init(url: String, forward_text: String? = nil, bot_username: String? = nil, request_write_access: Bool? = nil) {
@@ -3702,7 +3702,7 @@ extension TelegramAPI {
      * This object represents an inline button that switches the current user to inline mode in a chosen chat, with an optional default inline query.
     */
     public class SwitchInlineQueryChosenChat: Codable {
-        /** String | Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted */
+        /** String | Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted. */
         public let query: String?
         /** Boolean | Optional. True, if private chats with users can be chosen */
         public let allow_user_chats: Bool?
@@ -3750,7 +3750,7 @@ extension TelegramAPI {
         public let from: User
         /** MaybeInaccessibleMessage | Optional. Message sent by the bot with the callback button that originated the query */
         public let message: MaybeInaccessibleMessage?
-        /** String | Optional. Identifier of the message sent via the bot in inline mode, that originated the query. */
+        /** String | Optional. Identifier of the message sent via the bot in inline mode, that originated the query */
         public let inline_message_id: String?
         /** String | Global identifier, uniquely corresponding to the chat to which the message with the callback button was sent. Useful for high scores in games. */
         public let chat_instance: String
@@ -3940,7 +3940,7 @@ extension TelegramAPI {
         public let old_chat_member: ChatMember
         /** ChatMember | New information about the chat member */
         public let new_chat_member: ChatMember
-        /** ChatInviteLink | Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only. */
+        /** ChatInviteLink | Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only */
         public let invite_link: ChatInviteLink?
         /** Boolean | Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator */
         public let via_join_request: Bool?
@@ -4192,7 +4192,7 @@ extension TelegramAPI {
         public let can_pin_messages: Bool
         /** Boolean | True, if the user is allowed to create forum topics */
         public let can_manage_topics: Bool
-        /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever */
+        /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever. */
         public let until_date: Int
 
         public init(status: String, tag: String? = nil, user: User, is_member: Bool, can_send_messages: Bool, can_send_audios: Bool, can_send_documents: Bool, can_send_photos: Bool, can_send_videos: Bool, can_send_video_notes: Bool, can_send_voice_notes: Bool, can_send_polls: Bool, can_send_other_messages: Bool, can_add_web_page_previews: Bool, can_react_to_messages: Bool, can_edit_tag: Bool, can_change_info: Bool, can_invite_users: Bool, can_pin_messages: Bool, can_manage_topics: Bool, until_date: Int) {
@@ -4249,7 +4249,7 @@ extension TelegramAPI {
         public let status: String
         /** User | Information about the user */
         public let user: User
-        /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever */
+        /** Integer | Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever. */
         public let until_date: Int
 
         public init(status: String, user: User, until_date: Int) {
@@ -4274,7 +4274,7 @@ extension TelegramAPI {
         public let user_chat_id: Int
         /** Integer | Date the request was sent in Unix time */
         public let date: Int
-        /** String | Optional. Bio of the user. */
+        /** String | Optional. Bio of the user */
         public let bio: String?
         /** ChatInviteLink | Optional. Chat invite link that was used by the user to send the join request */
         public let invite_link: ChatInviteLink?
@@ -4320,13 +4320,13 @@ extension TelegramAPI {
         public let can_react_to_messages: Bool?
         /** Boolean | Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages. */
         public let can_edit_tag: Bool?
-        /** Boolean | Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups */
+        /** Boolean | Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups. */
         public let can_change_info: Bool?
         /** Boolean | Optional. True, if the user is allowed to invite new users to the chat */
         public let can_invite_users: Bool?
-        /** Boolean | Optional. True, if the user is allowed to pin messages. Ignored in public supergroups */
+        /** Boolean | Optional. True, if the user is allowed to pin messages. Ignored in public supergroups. */
         public let can_pin_messages: Bool?
-        /** Boolean | Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages */
+        /** Boolean | Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages. */
         public let can_manage_topics: Bool?
 
         public init(can_send_messages: Bool? = nil, can_send_audios: Bool? = nil, can_send_documents: Bool? = nil, can_send_photos: Bool? = nil, can_send_videos: Bool? = nil, can_send_video_notes: Bool? = nil, can_send_voice_notes: Bool? = nil, can_send_polls: Bool? = nil, can_send_other_messages: Bool? = nil, can_add_web_page_previews: Bool? = nil, can_react_to_messages: Bool? = nil, can_edit_tag: Bool? = nil, can_change_info: Bool? = nil, can_invite_users: Bool? = nil, can_pin_messages: Bool? = nil, can_manage_topics: Bool? = nil) {
@@ -4774,7 +4774,7 @@ extension TelegramAPI {
     public class ReactionTypeEmoji: Codable {
         /** String | Type of the reaction, always "emoji" */
         public let type: String
-        /** String | Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡" */
+        /** String | Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍", "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋", "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗", "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾", "🤷‍♂", "🤷", "🤷‍♀", "😡". */
         public let emoji: String
 
         public init(type: String, emoji: String) {
@@ -5136,7 +5136,7 @@ extension TelegramAPI {
         public let gift_id: String
         /** String | Human-readable name of the regular gift from which this unique gift was upgraded */
         public let base_name: String
-        /** String | Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas */
+        /** String | Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas. */
         public let name: String
         /** Integer | Unique number of the upgraded gift among gifts upgraded from the same regular gift */
         public let number: Int
@@ -5198,7 +5198,7 @@ extension TelegramAPI {
         public let entities: Array<MessageEntity>?
         /** Boolean | Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them */
         public let is_private: Bool?
-        /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift */
+        /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift. */
         public let unique_gift_number: Int?
 
         public init(gift: Gift, owned_gift_id: String? = nil, convert_star_count: Int? = nil, prepaid_upgrade_star_count: Int? = nil, is_upgrade_separate: Bool? = nil, can_be_upgraded: Bool? = nil, text: String? = nil, entities: Array<MessageEntity>? = nil, is_private: Bool? = nil, unique_gift_number: Int? = nil) {
@@ -5224,7 +5224,7 @@ extension TelegramAPI {
     public class UniqueGiftInfo: Codable {
         /** UniqueGift | Information about the gift */
         public let gift: UniqueGift
-        /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers */
+        /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers. */
         public let origin: String
         /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
         public let last_resale_currency: String?
@@ -5234,7 +5234,7 @@ extension TelegramAPI {
         public let owned_gift_id: String?
         /** Integer | Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift */
         public let transfer_star_count: Int?
-        /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now */
+        /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now. */
         public let next_transfer_date: Int?
 
         public init(gift: UniqueGift, origin: String, last_resale_currency: String? = nil, last_resale_amount: Int? = nil, owned_gift_id: String? = nil, transfer_star_count: Int? = nil, next_transfer_date: Int? = nil) {
@@ -5318,7 +5318,7 @@ extension TelegramAPI {
         public let prepaid_upgrade_star_count: Int?
         /** Boolean | Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only */
         public let is_upgrade_separate: Bool?
-        /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift */
+        /** Integer | Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift. */
         public let unique_gift_number: Int?
 
         public init(type: String, gift: Gift, owned_gift_id: String? = nil, sender_user: User? = nil, send_date: Int, text: String? = nil, entities: Array<MessageEntity>? = nil, is_private: Bool? = nil, is_saved: Bool? = nil, can_be_upgraded: Bool? = nil, was_refunded: Bool? = nil, convert_star_count: Int? = nil, prepaid_upgrade_star_count: Int? = nil, is_upgrade_separate: Bool? = nil, unique_gift_number: Int? = nil) {
@@ -5363,7 +5363,7 @@ extension TelegramAPI {
         public let can_be_transferred: Bool?
         /** Integer | Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift */
         public let transfer_star_count: Int?
-        /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now */
+        /** Integer | Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now. */
         public let next_transfer_date: Int?
 
         public init(type: String, gift: UniqueGift, owned_gift_id: String? = nil, sender_user: User? = nil, send_date: Int, is_saved: Bool? = nil, can_be_transferred: Bool? = nil, transfer_star_count: Int? = nil, next_transfer_date: Int? = nil) {
@@ -5390,7 +5390,7 @@ extension TelegramAPI {
         public let total_count: Int
         /** Array of OwnedGift | The list of gifts */
         public let gifts: Array<OwnedGift>
-        /** String | Optional. Offset for the next request. If empty, then there are no more results */
+        /** String | Optional. Offset for the next request. If empty, then there are no more results. */
         public let next_offset: String?
 
         public init(total_count: Int, gifts: Array<OwnedGift>, next_offset: String? = nil) {
@@ -5472,7 +5472,7 @@ extension TelegramAPI {
     public class BotCommand: Codable {
         /** String | Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores. */
         public let command: String
-        /** String | Description of the command; 1-256 characters. */
+        /** String | Description of the command; 1-256 characters */
         public let description: String
 
         public init(command: String, description: String) {
@@ -6167,7 +6167,7 @@ extension TelegramAPI {
     public class PreparedInlineMessage: Codable {
         /** String | Unique identifier of the prepared message */
         public let id: String
-        /** Integer | Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used */
+        /** Integer | Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used. */
         public let expiration_date: Int
 
         public init(id: String, expiration_date: Int) {
@@ -7028,7 +7028,7 @@ extension TelegramAPI {
         public let query: String
         /** String | Offset of the results to be returned, can be controlled by the bot */
         public let offset: String
-        /** InlineQueryChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat */
+        /** InlineQueryChatType | Optional. Type of the chat from which the inline query was sent. Can be either "sender" for a private chat with the inline query sender, "private", "group", "supergroup", or "channel". The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat. */
         public let chat_type: InlineQueryChatType?
         /** Location | Optional. Sender location, only for bots that request user location */
         public let location: Location?
@@ -7279,7 +7279,7 @@ extension TelegramAPI {
         public let type: String
         /** String | Unique identifier for this result, 1-64 bytes */
         public let id: String
-        /** String | A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB */
+        /** String | A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB. */
         public let photo_url: String
         /** String | URL of the thumbnail for the photo */
         public let thumbnail_url: String
@@ -7343,7 +7343,7 @@ extension TelegramAPI {
         public let gif_duration: Int?
         /** String | URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result */
         public let thumbnail_url: String
-        /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg" */
+        /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg". */
         public let thumbnail_mime_type: String?
         /** String | Optional. Title for the result */
         public let title: String?
@@ -7400,7 +7400,7 @@ extension TelegramAPI {
         public let mpeg4_duration: Int?
         /** String | URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result */
         public let thumbnail_url: String
-        /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg" */
+        /** String | Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg". */
         public let thumbnail_mime_type: String?
         /** String | Optional. Title for the result */
         public let title: String?
@@ -7656,7 +7656,7 @@ extension TelegramAPI {
         public let title: String
         /** Float | Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
         public let horizontal_accuracy: Float?
-        /** Integer | Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+        /** Integer | Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
         public let live_period: Int?
         /** Integer | Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
         public let heading: Int?
@@ -8228,7 +8228,7 @@ extension TelegramAPI {
         public let longitude: Float
         /** Float | Optional. The radius of uncertainty for the location, measured in meters; 0-1500 */
         public let horizontal_accuracy: Float?
-        /** Integer | Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+        /** Integer | Optional. Period in seconds during which the location can be updated, must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
         public let live_period: Int?
         /** Integer | Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
         public let heading: Int?
@@ -8574,7 +8574,7 @@ extension TelegramAPI {
      * This object contains basic information about a refunded payment.
     */
     public class RefundedPayment: Codable {
-        /** String | Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR" */
+        /** String | Three-letter ISO 4217 currency code, or "XTR" for payments in Telegram Stars. Currently, always "XTR". */
         public let currency: String
         /** Integer | Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). */
         public let total_amount: Int
@@ -9024,9 +9024,9 @@ extension TelegramAPI {
         public let nanostar_amount: Int?
         /** Integer | Date the transaction was created in Unix time */
         public let date: Int
-        /** TransactionPartner | Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions */
+        /** TransactionPartner | Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions. */
         public let source: TransactionPartner?
-        /** TransactionPartner | Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions */
+        /** TransactionPartner | Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions. */
         public let receiver: TransactionPartner?
 
         public init(id: String, amount: Int, nanostar_amount: Int? = nil, date: Int, source: TransactionPartner? = nil, receiver: TransactionPartner? = nil) {
@@ -9473,13 +9473,13 @@ extension TelegramAPI {
         public let title: String
         /** String | Description of the game */
         public let description: String
-        /** Array of PhotoSize | Photo that will be displayed in the game message in chats. */
+        /** Array of PhotoSize | Photo that will be displayed in the game message in chats */
         public let photo: Array<PhotoSize>
         /** String | Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters. */
         public let text: String?
         /** Array of MessageEntity | Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc. */
         public let text_entities: Array<MessageEntity>?
-        /** Animation | Optional. Animation that will be displayed in the game message in chats. Upload via BotFather */
+        /** Animation | Optional. Animation that will be displayed in the game message in chats. Upload via BotFather. */
         public let animation: Animation?
 
         public init(title: String, description: String, photo: Array<PhotoSize>, text: String? = nil, text_entities: Array<MessageEntity>? = nil, animation: Animation? = nil) {
@@ -9580,7 +9580,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#setwebhook */
     public struct SetWebhookParams: Codable {
-        /** String | HTTPS URL to send updates to. Use an empty string to remove webhook integration */
+        /** String | HTTPS URL to send updates to. Use an empty string to remove webhook integration. */
         public let url: String
         /** InputFile | Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details. */
         public let certificate: InputFile?
@@ -9735,7 +9735,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, text: String, parse_mode: ParseMode? = nil, entities: Array<MessageEntity>? = nil, link_preview_options: LinkPreviewOptions? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -9884,7 +9884,7 @@ extension TelegramAPI {
         public let message_id: Int
         /** Integer | New start timestamp for the copied video in the message */
         public let video_start_timestamp: Int?
-        /** String | New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept */
+        /** String | New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept. */
         public let caption: String?
         /** String | Mode for parsing entities in the new caption. See formatting options for more details. */
         public let parse_mode: String?
@@ -9904,7 +9904,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, from_chat_id: Either2<Int, String>, message_id: Int, video_start_timestamp: Int? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10025,7 +10025,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, photo: Either2<InputFile, String>, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, has_spoiler: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10180,7 +10180,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, audio: Either2<InputFile, String>, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, duration: Int? = nil, performer: String? = nil, title: String? = nil, thumbnail: Either2<InputFile, String>? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10257,7 +10257,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, document: Either2<InputFile, String>, thumbnail: Either2<InputFile, String>? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, disable_content_type_detection: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10345,7 +10345,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, video: Either2<InputFile, String>, duration: Int? = nil, width: Int? = nil, height: Int? = nil, thumbnail: Either2<InputFile, String>? = nil, cover: Either2<InputFile, String>? = nil, start_timestamp: Int? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, has_spoiler: Bool? = nil, supports_streaming: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10434,7 +10434,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, animation: Either2<InputFile, String>, duration: Int? = nil, width: Int? = nil, height: Int? = nil, thumbnail: Either2<InputFile, String>? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, has_spoiler: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10510,7 +10510,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, voice: Either2<InputFile, String>, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, duration: Int? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10559,7 +10559,7 @@ extension TelegramAPI {
         public let message_thread_id: Int?
         /** Integer | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat */
         public let direct_messages_topic_id: Int?
-        /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported */
+        /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported. */
         public let video_note: Either2<InputFile, String>
         /** Integer | Duration of sent video in seconds */
         public let duration: Int?
@@ -10579,7 +10579,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, video_note: Either2<InputFile, String>, duration: Int? = nil, length: Int? = nil, thumbnail: Either2<InputFile, String>? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10651,7 +10651,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, star_count: Int, media: Array<InputPaidMedia>, payload: String? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10760,7 +10760,7 @@ extension TelegramAPI {
         public let longitude: Float
         /** Float | The radius of uncertainty for the location, measured in meters; 0-1500 */
         public let horizontal_accuracy: Float?
-        /** Integer | Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. */
+        /** Integer | Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely */
         public let live_period: Int?
         /** Integer | For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified. */
         public let heading: Int?
@@ -10778,7 +10778,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, latitude: Float, longitude: Float, horizontal_accuracy: Float? = nil, live_period: Int? = nil, heading: Int? = nil, proximity_alert_radius: Int? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10856,7 +10856,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, latitude: Float, longitude: Float, title: String, address: String, foursquare_id: String? = nil, foursquare_type: String? = nil, google_place_id: String? = nil, google_place_type: String? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10928,7 +10928,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, phone_number: String, first_name: String, last_name: String? = nil, vcard: String? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -10976,9 +10976,9 @@ extension TelegramAPI {
         public let message_thread_id: Int?
         /** String | Poll question, 1-300 characters */
         public let question: String
-        /** String | Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed */
+        /** String | Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed. */
         public let question_parse_mode: String?
-        /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode */
+        /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode. */
         public let question_entities: Array<MessageEntity>?
         /** Array of InputPollOption | A JSON-serialized list of 1-12 answer options */
         public let options: Array<InputPollOption>
@@ -10998,7 +10998,7 @@ extension TelegramAPI {
         public let hide_results_until_closes: Bool?
         /** Boolean | Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only */
         public let members_only: Bool?
-        /** Array of String | A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. If omitted or empty, then users from any country can participate in the poll. */
+        /** Array of String | A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. Use "FT" as a country code to allow users with anonymous numbers to vote. If omitted or empty, then users from any country can participate in the poll. */
         public let country_codes: Array<String>?
         /** Array of Integer | A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode */
         public let correct_option_ids: Array<Int>?
@@ -11006,7 +11006,7 @@ extension TelegramAPI {
         public let explanation: String?
         /** String | Mode for parsing entities in the explanation. See formatting options for more details. */
         public let explanation_parse_mode: String?
-        /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode */
+        /** Array of MessageEntity | A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode. */
         public let explanation_entities: Array<MessageEntity>?
         /** InputPollMedia | Media added to the quiz explanation */
         public let explanation_media: InputPollMedia?
@@ -11034,7 +11034,7 @@ extension TelegramAPI {
         public let message_effect_id: String?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, question: String, question_parse_mode: String? = nil, question_entities: Array<MessageEntity>? = nil, options: Array<InputPollOption>, is_anonymous: Bool? = nil, type: String? = nil, allows_multiple_answers: Bool? = nil, allows_revoting: Bool? = nil, shuffle_options: Bool? = nil, allow_adding_options: Bool? = nil, hide_results_until_closes: Bool? = nil, members_only: Bool? = nil, country_codes: Array<String>? = nil, correct_option_ids: Array<Int>? = nil, explanation: String? = nil, explanation_parse_mode: String? = nil, explanation_entities: Array<MessageEntity>? = nil, explanation_media: InputPollMedia? = nil, open_period: Int? = nil, close_date: Int? = nil, is_closed: Bool? = nil, description: String? = nil, description_parse_mode: String? = nil, description_entities: Array<MessageEntity>? = nil, media: InputPollMedia? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -11148,7 +11148,7 @@ extension TelegramAPI {
         public let message_thread_id: Int?
         /** Integer | Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat */
         public let direct_messages_topic_id: Int?
-        /** String | Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲" */
+        /** String | Emoji on which the dice throw animation is based. Currently, must be one of "🎲", "🎯", "🏀", "⚽", "🎳", or "🎰". Dice can have values 1-6 for "🎲", "🎯" and "🎳", values 1-5 for "🏀" and "⚽", and values 1-64 for "🎰". Defaults to "🎲". */
         public let emoji: String?
         /** Boolean | Sends the message silently. Users will receive a notification with no sound. */
         public let disable_notification: Bool?
@@ -11162,7 +11162,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, emoji: String? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -11509,7 +11509,7 @@ extension TelegramAPI {
         public let permissions: ChatPermissions
         /** Boolean | Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission. */
         public let use_independent_chat_permissions: Bool?
-        /** Integer | Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever */
+        /** Integer | Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever. */
         public let until_date: Int?
         
         public init(chat_id: Either2<Int, String>, user_id: Int, permissions: ChatPermissions, use_independent_chat_permissions: Bool? = nil, until_date: Int? = nil) {
@@ -11551,7 +11551,7 @@ extension TelegramAPI {
         public let can_delete_messages: Bool?
         /** Boolean | Pass True if the administrator can manage video chats */
         public let can_manage_video_chats: Bool?
-        /** Boolean | Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators */
+        /** Boolean | Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators. */
         public let can_restrict_members: Bool?
         /** Boolean | Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him) */
         public let can_promote_members: Bool?
@@ -11807,7 +11807,7 @@ extension TelegramAPI {
         public let expire_date: Int?
         /** Integer | The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 */
         public let member_limit: Int?
-        /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified */
+        /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified. */
         public let creates_join_request: Bool?
         
         public init(chat_id: Either2<Int, String>, name: String? = nil, expire_date: Int? = nil, member_limit: Int? = nil, creates_join_request: Bool? = nil) {
@@ -11847,7 +11847,7 @@ extension TelegramAPI {
         public let expire_date: Int?
         /** Integer | The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999 */
         public let member_limit: Int?
-        /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified */
+        /** Boolean | True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified. */
         public let creates_join_request: Bool?
         
         public init(chat_id: Either2<Int, String>, invite_link: String, name: String? = nil, expire_date: Int? = nil, member_limit: Int? = nil, creates_join_request: Bool? = nil) {
@@ -12476,7 +12476,7 @@ extension TelegramAPI {
         public let chat_id: Either2<Int, String>
         /** String | Topic name, 1-128 characters */
         public let name: String
-        /** Integer | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F) */
+        /** Integer | Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F). */
         public let icon_color: Int?
         /** String | Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. */
         public let icon_custom_emoji_id: String?
@@ -12511,9 +12511,9 @@ extension TelegramAPI {
         public let chat_id: Either2<Int, String>
         /** Integer | Unique identifier for the target message thread of the forum topic */
         public let message_thread_id: Int
-        /** String | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept */
+        /** String | New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept. */
         public let name: String?
-        /** String | New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept */
+        /** String | New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept. */
         public let icon_custom_emoji_id: String?
         
         public init(chat_id: Either2<Int, String>, message_thread_id: Int, name: String? = nil, icon_custom_emoji_id: String? = nil) {
@@ -12819,7 +12819,7 @@ extension TelegramAPI {
     public struct AnswerCallbackQueryParams: Codable {
         /** String | Unique identifier for the query to be answered */
         public let callback_query_id: String
-        /** String | Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters */
+        /** String | Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters. */
         public let text: String?
         /** Boolean | If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false. */
         public let show_alert: Bool?
@@ -13053,7 +13053,7 @@ extension TelegramAPI {
         public let commands: Array<BotCommand>
         /** BotCommandScope | A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
         public let scope: BotCommandScope?
-        /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands */
+        /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands. */
         public let language_code: String?
         
         public init(commands: Array<BotCommand>, scope: BotCommandScope? = nil, language_code: String? = nil) {
@@ -13083,7 +13083,7 @@ extension TelegramAPI {
     public struct DeleteMyCommandsParams: Codable {
         /** BotCommandScope | A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault. */
         public let scope: BotCommandScope?
-        /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands */
+        /** String | A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands. */
         public let language_code: String?
         
         public init(scope: BotCommandScope? = nil, language_code: String? = nil) {
@@ -13344,9 +13344,9 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#setchatmenubutton */
     public struct SetChatMenuButtonParams: Codable {
-        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed */
+        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed. */
         public let chat_id: Int?
-        /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault */
+        /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault. */
         public let menu_button: MenuButton?
         
         public init(chat_id: Int? = nil, menu_button: MenuButton? = nil) {
@@ -13373,7 +13373,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#getchatmenubutton */
     public struct GetChatMenuButtonParams: Codable {
-        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned */
+        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned. */
         public let chat_id: Int?
         
         public init(chat_id: Int? = nil) {
@@ -13697,7 +13697,7 @@ extension TelegramAPI {
     public struct DeleteBusinessMessagesParams: Codable {
         /** String | Unique identifier of the business connection on behalf of which to delete the messages */
         public let business_connection_id: String
-        /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted */
+        /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted. */
         public let message_ids: Array<Int>
         
         public init(business_connection_id: String, message_ids: Array<Int>) {
@@ -13982,7 +13982,7 @@ extension TelegramAPI {
         public let sort_by_price: Bool?
         /** String | Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
         public let offset: String?
-        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
         public let limit: Int?
         
         public init(business_connection_id: String, exclude_unsaved: Bool? = nil, exclude_saved: Bool? = nil, exclude_unlimited: Bool? = nil, exclude_limited_upgradable: Bool? = nil, exclude_limited_non_upgradable: Bool? = nil, exclude_unique: Bool? = nil, exclude_from_blockchain: Bool? = nil, sort_by_price: Bool? = nil, offset: String? = nil, limit: Int? = nil) {
@@ -14034,7 +14034,7 @@ extension TelegramAPI {
         public let sort_by_price: Bool?
         /** String | Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results */
         public let offset: String?
-        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
         public let limit: Int?
         
         public init(user_id: Int, exclude_unlimited: Bool? = nil, exclude_limited_upgradable: Bool? = nil, exclude_limited_non_upgradable: Bool? = nil, exclude_from_blockchain: Bool? = nil, exclude_unique: Bool? = nil, sort_by_price: Bool? = nil, offset: String? = nil, limit: Int? = nil) {
@@ -14088,7 +14088,7 @@ extension TelegramAPI {
         public let sort_by_price: Bool?
         /** String | Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results */
         public let offset: String?
-        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100 */
+        /** Integer | The maximum number of gifts to be returned; 1-100. Defaults to 100. */
         public let limit: Int?
         
         public init(chat_id: Either2<Int, String>, exclude_unsaved: Bool? = nil, exclude_saved: Bool? = nil, exclude_unlimited: Bool? = nil, exclude_limited_upgradable: Bool? = nil, exclude_limited_non_upgradable: Bool? = nil, exclude_from_blockchain: Bool? = nil, exclude_unique: Bool? = nil, sort_by_price: Bool? = nil, offset: String? = nil, limit: Int? = nil) {
@@ -14459,7 +14459,7 @@ extension TelegramAPI {
     public struct SavePreparedKeyboardButtonParams: Codable {
         /** Integer | Unique identifier of the target user that can use the button */
         public let user_id: Int
-        /** KeyboardButton | A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot */
+        /** KeyboardButton | A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot. */
         public let button: KeyboardButton
         
         public init(user_id: Int, button: KeyboardButton) {
@@ -14490,9 +14490,9 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         /** String | New text of the message, 1-4096 characters after entities parsing */
         public let text: String
@@ -14502,7 +14502,7 @@ extension TelegramAPI {
         public let entities: Array<MessageEntity>?
         /** LinkPreviewOptions | Link preview generation options for the message */
         public let link_preview_options: LinkPreviewOptions?
-        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, text: String, parse_mode: String? = nil, entities: Array<MessageEntity>? = nil, link_preview_options: LinkPreviewOptions? = nil, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14540,9 +14540,9 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         /** String | New caption of the message, 0-1024 characters after entities parsing */
         public let caption: String?
@@ -14552,7 +14552,7 @@ extension TelegramAPI {
         public let caption_entities: Array<MessageEntity>?
         /** Boolean | Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages. */
         public let show_caption_above_media: Bool?
-        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, caption: String? = nil, parse_mode: String? = nil, caption_entities: Array<MessageEntity>? = nil, show_caption_above_media: Bool? = nil, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14590,13 +14590,13 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         /** InputMedia | A JSON-serialized object for a new media content of the message */
         public let media: InputMedia
-        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, media: InputMedia, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14631,15 +14631,15 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         /** Float | Latitude of new location */
         public let latitude: Float
         /** Float | Longitude of new location */
         public let longitude: Float
-        /** Integer | New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged */
+        /** Integer | New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged. */
         public let live_period: Int?
         /** Float | The radius of uncertainty for the location, measured in meters; 0-1500 */
         public let horizontal_accuracy: Float?
@@ -14647,7 +14647,7 @@ extension TelegramAPI {
         public let heading: Int?
         /** Integer | The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified. */
         public let proximity_alert_radius: Int?
-        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, latitude: Float, longitude: Float, live_period: Int? = nil, horizontal_accuracy: Float? = nil, heading: Int? = nil, proximity_alert_radius: Int? = nil, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14687,11 +14687,11 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message with live location to stop */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message with live location to stop. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
-        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14763,11 +14763,11 @@ extension TelegramAPI {
         public let business_connection_id: String?
         /** Integer or String | Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. */
         public let chat_id: Either2<Int, String>?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the message to edit. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
-        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for an inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>? = nil, message_id: Int? = nil, inline_message_id: String? = nil, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14803,7 +14803,7 @@ extension TelegramAPI {
         public let chat_id: Either2<Int, String>
         /** Integer | Identifier of the original message with the poll */
         public let message_id: Int
-        /** InlineKeyboardMarkup | A JSON-serialized object for a new message inline keyboard. */
+        /** InlineKeyboardMarkup | A JSON-serialized object for a new message inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_id: Int, reply_markup: InlineKeyboardMarkup? = nil) {
@@ -14836,7 +14836,7 @@ extension TelegramAPI {
         public let chat_id: Int
         /** Integer | Identifier of a suggested post message to approve */
         public let message_id: Int
-        /** Integer | Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future */
+        /** Integer | Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future. */
         public let send_date: Int?
         
         public init(chat_id: Int, message_id: Int, send_date: Int? = nil) {
@@ -14937,7 +14937,7 @@ extension TelegramAPI {
     public struct DeleteMessagesParams: Codable {
         /** Integer or String | Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username */
         public let chat_id: Either2<Int, String>
-        /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted */
+        /** Array of Integer | A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted. */
         public let message_ids: Array<Int>
         
         public init(chat_id: Either2<Int, String>, message_ids: Array<Int>) {
@@ -15055,7 +15055,7 @@ extension TelegramAPI {
         public let suggested_post_parameters: SuggestedPostParameters?
         /** ReplyParameters | Description of the message to reply to */
         public let reply_parameters: ReplyParameters?
-        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user */
+        /** InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply | Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. */
         public let reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>?
         
         public init(business_connection_id: String? = nil, chat_id: Either2<Int, String>, message_thread_id: Int? = nil, direct_messages_topic_id: Int? = nil, sticker: Either2<InputFile, String>, emoji: String? = nil, disable_notification: Bool? = nil, protect_content: Bool? = nil, allow_paid_broadcast: Bool? = nil, message_effect_id: String? = nil, suggested_post_parameters: SuggestedPostParameters? = nil, reply_parameters: ReplyParameters? = nil, reply_markup: Either4<InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply>? = nil) {
@@ -15493,7 +15493,7 @@ extension TelegramAPI {
     public struct SetCustomEmojiStickerSetThumbnailParams: Codable {
         /** String | Sticker set name */
         public let name: String
-        /** String | Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail. */
+        /** String | Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail */
         public let custom_emoji_id: String?
         
         public init(name: String, custom_emoji_id: String? = nil) {
@@ -15610,7 +15610,7 @@ extension TelegramAPI {
         public let max_tip_amount: Int?
         /** Array of Integer | A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount. */
         public let suggested_tip_amounts: Array<Int>?
-        /** String | Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter */
+        /** String | Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter. */
         public let start_parameter: String?
         /** String | JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider. */
         public let provider_data: String?
@@ -16051,15 +16051,15 @@ extension TelegramAPI {
         public let user_id: Int
         /** Integer | New score, must be non-negative */
         public let score: Int
-        /** Boolean | Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters */
+        /** Boolean | Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters. */
         public let force: Bool?
         /** Boolean | Pass True if the game message should not be automatically edited to include the current scoreboard */
         public let disable_edit_message: Bool?
-        /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat */
+        /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat. */
         public let chat_id: Int?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the sent message */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the sent message. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         
         public init(user_id: Int, score: Int, force: Bool? = nil, disable_edit_message: Bool? = nil, chat_id: Int? = nil, message_id: Int? = nil, inline_message_id: String? = nil) {
@@ -16093,11 +16093,11 @@ extension TelegramAPI {
     public struct GetGameHighScoresParams: Codable {
         /** Integer | Target user id */
         public let user_id: Int
-        /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat */
+        /** Integer | Required if inline_message_id is not specified. Unique identifier for the target chat. */
         public let chat_id: Int?
-        /** Integer | Required if inline_message_id is not specified. Identifier of the sent message */
+        /** Integer | Required if inline_message_id is not specified. Identifier of the sent message. */
         public let message_id: Int?
-        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message */
+        /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
         
         public init(user_id: Int, chat_id: Int? = nil, message_id: Int? = nil, inline_message_id: String? = nil) {
