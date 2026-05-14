@@ -66,7 +66,7 @@
  * @property {string} [last_error_message] - Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook
  * @property {number} [last_synchronization_error_date] - Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
  * @property {number} [max_connections] - Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
- * @property {Array<string>} [allowed_updates] - Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member.
+ * @property {Array<string>} [allowed_updates] - Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member, message_reaction, and message_reaction_count.
  */
 
 /**
@@ -4665,7 +4665,7 @@
  * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
  * @typedef {Object} SendChatActionParams
  * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the action will be sent
- * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel chats and channel direct messages chats aren't supported.
+ * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot or supergroup in the format @username. Channel chats and channel direct messages chats aren't supported.
  * @property {number} [message_thread_id] - Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only
  * @property {ChatAction} action - Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
  */
@@ -7618,7 +7618,7 @@
  * https://core.telegram.org/bots/api#deletemessagereaction
  * Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.
  * @typedef {Object} DeleteMessageReactionParams
- * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @username)
+ * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property {number} message_id - Identifier of the target message
  * @property {number} [user_id] - Identifier of the user whose reaction will be removed, if the reaction was added by a user
  * @property {number} [actor_chat_id] - Identifier of the chat whose reaction will be removed, if the reaction was added by a chat
@@ -7641,7 +7641,7 @@
  * https://core.telegram.org/bots/api#deleteallmessagereactions
  * Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a given user or chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.
  * @typedef {Object} DeleteAllMessageReactionsParams
- * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup (in the format @username)
+ * @property {number | string} chat_id - Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property {number} [user_id] - Identifier of the user whose reactions will be removed, if the reactions were added by a user
  * @property {number} [actor_chat_id] - Identifier of the chat whose reactions will be removed, if the reactions were added by a chat
  */

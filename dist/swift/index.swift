@@ -199,7 +199,7 @@ extension TelegramAPI {
         public let last_synchronization_error_date: Int?
         /** Integer | Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery */
         public let max_connections: Int?
-        /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member. */
+        /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member, message_reaction, and message_reaction_count. */
         public let allowed_updates: Array<String>?
 
         public init(url: String, has_custom_certificate: Bool, pending_update_count: Int, ip_address: String? = nil, last_error_date: Int? = nil, last_error_message: String? = nil, last_synchronization_error_date: Int? = nil, max_connections: Int? = nil, allowed_updates: Array<String>? = nil) {
@@ -11242,7 +11242,7 @@ extension TelegramAPI {
     public struct SendChatActionParams: Codable {
         /** String | Unique identifier of the business connection on behalf of which the action will be sent */
         public let business_connection_id: String?
-        /** Integer or String | Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel chats and channel direct messages chats aren't supported. */
+        /** Integer or String | Unique identifier for the target chat or username of the target bot or supergroup in the format @username. Channel chats and channel direct messages chats aren't supported. */
         public let chat_id: Either2<Int, String>
         /** Integer | Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only */
         public let message_thread_id: Int?
@@ -14964,7 +14964,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#deletemessagereaction */
     public struct DeleteMessageReactionParams: Codable {
-        /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @username) */
+        /** Integer or String | Unique identifier for the target chat or username of the target supergroup in the format @username */
         public let chat_id: Either2<Int, String>
         /** Integer | Identifier of the target message */
         public let message_id: Int
@@ -14999,7 +14999,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#deleteallmessagereactions */
     public struct DeleteAllMessageReactionsParams: Codable {
-        /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @username) */
+        /** Integer or String | Unique identifier for the target chat or username of the target supergroup in the format @username */
         public let chat_id: Either2<Int, String>
         /** Integer | Identifier of the user whose reactions will be removed, if the reactions were added by a user */
         public let user_id: Int?
