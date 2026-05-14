@@ -92,7 +92,7 @@ export interface WebhookInfo {
     last_synchronization_error_date?: number;
     /** Integer | Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery */
     max_connections?: number;
-    /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member. */
+    /** Array of String | Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member, message_reaction, and message_reaction_count. */
     allowed_updates?: Array<string>;
 }
 
@@ -6646,7 +6646,7 @@ export interface SendMessageDraftRequest {
 export interface SendChatActionParams {
     /** String | Unique identifier of the business connection on behalf of which the action will be sent */
     business_connection_id?: string;
-    /** Integer or String | Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel chats and channel direct messages chats aren't supported. */
+    /** Integer or String | Unique identifier for the target chat or username of the target bot or supergroup in the format @username. Channel chats and channel direct messages chats aren't supported. */
     chat_id: number | string;
     /** Integer | Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only */
     message_thread_id?: number;
@@ -9080,7 +9080,7 @@ export interface DeleteMessagesRequest {
 
 /** https://core.telegram.org/bots/api#deletemessagereaction */
 export interface DeleteMessageReactionParams {
-    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @username) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup in the format @username */
     chat_id: number | string;
     /** Integer | Identifier of the target message */
     message_id: number;
@@ -9100,7 +9100,7 @@ export interface DeleteMessageReactionRequest {
 
 /** https://core.telegram.org/bots/api#deleteallmessagereactions */
 export interface DeleteAllMessageReactionsParams {
-    /** Integer or String | Unique identifier for the target chat or username of the target supergroup (in the format @username) */
+    /** Integer or String | Unique identifier for the target chat or username of the target supergroup in the format @username */
     chat_id: number | string;
     /** Integer | Identifier of the user whose reactions will be removed, if the reactions were added by a user */
     user_id?: number;

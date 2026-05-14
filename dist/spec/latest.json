@@ -3292,7 +3292,7 @@
             "String"
           ],
           "required": true,
-          "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel chats and channel direct messages chats aren't supported."
+          "description": "Unique identifier for the target chat or username of the target bot or supergroup in the format @username. Channel chats and channel direct messages chats aren't supported."
         },
         {
           "name": "message_thread_id",
@@ -7603,7 +7603,7 @@
             "String"
           ],
           "required": true,
-          "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+          "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
         },
         {
           "name": "message_id",
@@ -7648,7 +7648,7 @@
             "String"
           ],
           "required": true,
-          "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+          "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
         },
         {
           "name": "user_id",
@@ -9485,7 +9485,7 @@
             "Array of String"
           ],
           "required": false,
-          "description": "Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member."
+          "description": "Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member, message_reaction, and message_reaction_count."
         }
       ]
     },
