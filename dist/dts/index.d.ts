@@ -8001,7 +8001,7 @@ export interface RemoveMyProfilePhotoRequest {
 
 /** https://core.telegram.org/bots/api#setchatmenubutton */
 export interface SetChatMenuButtonParams {
-    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed. */
+    /** Integer | Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed. */
     chat_id?: number;
     /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault. */
     menu_button?: MenuButton;
@@ -8017,7 +8017,7 @@ export interface SetChatMenuButtonRequest {
 
 /** https://core.telegram.org/bots/api#getchatmenubutton */
 export interface GetChatMenuButtonParams {
-    /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned. */
+    /** Integer | Unique identifier for the target private chat. If not specified, the bot's default menu button will be returned. */
     chat_id?: number;
 }
 

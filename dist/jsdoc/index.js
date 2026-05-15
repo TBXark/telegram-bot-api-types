@@ -6365,7 +6365,7 @@
  * https://core.telegram.org/bots/api#setchatmenubutton
  * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  * @typedef {Object} SetChatMenuButtonParams
- * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be changed.
+ * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed.
  * @property {MenuButton} [menu_button] - A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
  */
 
@@ -6386,7 +6386,7 @@
  * https://core.telegram.org/bots/api#getchatmenubutton
  * Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
  * @typedef {Object} GetChatMenuButtonParams
- * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, default bot's menu button will be returned.
+ * @property {number} [chat_id] - Unique identifier for the target private chat. If not specified, the bot's default menu button will be returned.
  */
 
 /**

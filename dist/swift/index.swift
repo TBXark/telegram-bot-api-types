@@ -13344,7 +13344,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#setchatmenubutton */
     public struct SetChatMenuButtonParams: Codable {
-        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be changed. */
+        /** Integer | Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed. */
         public let chat_id: Int?
         /** MenuButton | A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault. */
         public let menu_button: MenuButton?
@@ -13373,7 +13373,7 @@ extension TelegramAPI {
 extension TelegramAPI {
     /** https://core.telegram.org/bots/api#getchatmenubutton */
     public struct GetChatMenuButtonParams: Codable {
-        /** Integer | Unique identifier for the target private chat. If not specified, default bot's menu button will be returned. */
+        /** Integer | Unique identifier for the target private chat. If not specified, the bot's default menu button will be returned. */
         public let chat_id: Int?
         
         public init(chat_id: Int? = nil) {
