@@ -160,7 +160,7 @@
  * @property {UserRating} [rating] - Optional. For private chats, the rating of the user if any
  * @property {Audio} [first_profile_audio] - Optional. For private chats, the first audio added to the profile of the user
  * @property {UniqueGiftColors} [unique_gift_colors] - Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
- * @property {number} [paid_message_star_count] - Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
+ * @property {number} [paid_message_star_count] - Optional. The number of Telegram Stars a general user has to pay to send a message to the chat
  */
 
 /**

@@ -265,7 +265,7 @@ export interface ChatFullInfo {
     first_profile_audio?: Audio;
     /** UniqueGiftColors | Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews */
     unique_gift_colors?: UniqueGiftColors;
-    /** Integer | Optional. The number of Telegram Stars a general user have to pay to send a message to the chat */
+    /** Integer | Optional. The number of Telegram Stars a general user has to pay to send a message to the chat */
     paid_message_star_count?: number;
 }
 
