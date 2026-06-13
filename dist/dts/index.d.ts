@@ -3604,7 +3604,7 @@ export type InputMedia = InputMediaAnimation | InputMediaAudio | InputMediaDocum
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 */
 export interface InputMediaAnimation {
-    /** String | Type of the result, must be animation */
+    /** String | Type of the media, must be animation */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -3633,7 +3633,7 @@ export interface InputMediaAnimation {
  * Represents an audio file to be treated as music to be sent.
 */
 export interface InputMediaAudio {
-    /** String | Type of the result, must be audio */
+    /** String | Type of the media, must be audio */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -3658,7 +3658,7 @@ export interface InputMediaAudio {
  * Represents a general file to be sent.
 */
 export interface InputMediaDocument {
-    /** String | Type of the result, must be document */
+    /** String | Type of the media, must be document */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -3679,7 +3679,7 @@ export interface InputMediaDocument {
  * Represents an HTTP link to be sent.
 */
 export interface InputMediaLink {
-    /** String | Type of the result, must be link */
+    /** String | Type of the media, must be link */
     type: string;
     /** String | HTTP URL of the link */
     url: string;
@@ -3690,7 +3690,7 @@ export interface InputMediaLink {
  * Represents a live photo to be sent.
 */
 export interface InputMediaLivePhoto {
-    /** String | Type of the result, must be live_photo */
+    /** String | Type of the media, must be live_photo */
     type: string;
     /** String | Video of the live photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported. */
     media: string;
@@ -3713,7 +3713,7 @@ export interface InputMediaLivePhoto {
  * Represents a location to be sent.
 */
 export interface InputMediaLocation {
-    /** String | Type of the result, must be location */
+    /** String | Type of the media, must be location */
     type: string;
     /** Float | Latitude of the location */
     latitude: number;
@@ -3728,7 +3728,7 @@ export interface InputMediaLocation {
  * Represents a photo to be sent.
 */
 export interface InputMediaPhoto {
-    /** String | Type of the result, must be photo */
+    /** String | Type of the media, must be photo */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -3749,7 +3749,7 @@ export interface InputMediaPhoto {
  * Represents a sticker file to be sent.
 */
 export interface InputMediaSticker {
-    /** String | Type of the result, must be sticker */
+    /** String | Type of the media, must be sticker */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass "attach://<file_attach_name>" to upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -3762,7 +3762,7 @@ export interface InputMediaSticker {
  * Represents a venue to be sent.
 */
 export interface InputMediaVenue {
-    /** String | Type of the result, must be venue */
+    /** String | Type of the media, must be venue */
     type: string;
     /** Float | Latitude of the location */
     latitude: number;
@@ -3787,7 +3787,7 @@ export interface InputMediaVenue {
  * Represents a video to be sent.
 */
 export interface InputMediaVideo {
-    /** String | Type of the result, must be video */
+    /** String | Type of the media, must be video */
     type: string;
     /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     media: string;
@@ -7378,7 +7378,7 @@ export interface SendMessageDraftParams {
     chat_id: number;
     /** Integer | Unique identifier for the target message thread */
     message_thread_id?: number;
-    /** Integer | Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated. */
+    /** Integer | Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated. */
     draft_id: number;
     /** String | Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a "Thinking..." placeholder. */
     text?: string;

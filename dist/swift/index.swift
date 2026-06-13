@@ -6316,7 +6316,7 @@ extension TelegramAPI {
      * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
     */
     public class InputMediaAnimation: Codable {
-        /** String | Type of the result, must be animation */
+        /** String | Type of the media, must be animation */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -6361,7 +6361,7 @@ extension TelegramAPI {
      * Represents an audio file to be treated as music to be sent.
     */
     public class InputMediaAudio: Codable {
-        /** String | Type of the result, must be audio */
+        /** String | Type of the media, must be audio */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -6400,7 +6400,7 @@ extension TelegramAPI {
      * Represents a general file to be sent.
     */
     public class InputMediaDocument: Codable {
-        /** String | Type of the result, must be document */
+        /** String | Type of the media, must be document */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -6433,7 +6433,7 @@ extension TelegramAPI {
      * Represents an HTTP link to be sent.
     */
     public class InputMediaLink: Codable {
-        /** String | Type of the result, must be link */
+        /** String | Type of the media, must be link */
         public let type: String
         /** String | HTTP URL of the link */
         public let url: String
@@ -6451,7 +6451,7 @@ extension TelegramAPI {
      * Represents a live photo to be sent.
     */
     public class InputMediaLivePhoto: Codable {
-        /** String | Type of the result, must be live_photo */
+        /** String | Type of the media, must be live_photo */
         public let type: String
         /** String | Video of the live photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported. */
         public let media: String
@@ -6487,7 +6487,7 @@ extension TelegramAPI {
      * Represents a location to be sent.
     */
     public class InputMediaLocation: Codable {
-        /** String | Type of the result, must be location */
+        /** String | Type of the media, must be location */
         public let type: String
         /** Float | Latitude of the location */
         public let latitude: Float
@@ -6511,7 +6511,7 @@ extension TelegramAPI {
      * Represents a photo to be sent.
     */
     public class InputMediaPhoto: Codable {
-        /** String | Type of the result, must be photo */
+        /** String | Type of the media, must be photo */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -6544,7 +6544,7 @@ extension TelegramAPI {
      * Represents a sticker file to be sent.
     */
     public class InputMediaSticker: Codable {
-        /** String | Type of the result, must be sticker */
+        /** String | Type of the media, must be sticker */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass "attach://<file_attach_name>" to upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -6565,7 +6565,7 @@ extension TelegramAPI {
      * Represents a venue to be sent.
     */
     public class InputMediaVenue: Codable {
-        /** String | Type of the result, must be venue */
+        /** String | Type of the media, must be venue */
         public let type: String
         /** Float | Latitude of the location */
         public let latitude: Float
@@ -6604,7 +6604,7 @@ extension TelegramAPI {
      * Represents a video to be sent.
     */
     public class InputMediaVideo: Codable {
-        /** String | Type of the result, must be video */
+        /** String | Type of the media, must be video */
         public let type: String
         /** String | File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let media: String
@@ -12703,7 +12703,7 @@ extension TelegramAPI {
         public let chat_id: Int
         /** Integer | Unique identifier for the target message thread */
         public let message_thread_id: Int?
-        /** Integer | Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated. */
+        /** Integer | Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated. */
         public let draft_id: Int
         /** String | Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a "Thinking..." placeholder. */
         public let text: String?

@@ -2382,7 +2382,7 @@
  * https://core.telegram.org/bots/api#inputmediaanimation
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  * @typedef {Object} InputMediaAnimation
- * @property {string} type - Type of the result, must be animation
+ * @property {string} type - Type of the media, must be animation
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [thumbnail] - Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Optional. Caption of the animation to be sent, 0-1024 characters after entities parsing
@@ -2399,7 +2399,7 @@
  * https://core.telegram.org/bots/api#inputmediaaudio
  * Represents an audio file to be treated as music to be sent.
  * @typedef {Object} InputMediaAudio
- * @property {string} type - Type of the result, must be audio
+ * @property {string} type - Type of the media, must be audio
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [thumbnail] - Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Optional. Caption of the audio to be sent, 0-1024 characters after entities parsing
@@ -2414,7 +2414,7 @@
  * https://core.telegram.org/bots/api#inputmediadocument
  * Represents a general file to be sent.
  * @typedef {Object} InputMediaDocument
- * @property {string} type - Type of the result, must be document
+ * @property {string} type - Type of the media, must be document
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [thumbnail] - Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
@@ -2427,7 +2427,7 @@
  * https://core.telegram.org/bots/api#inputmedialink
  * Represents an HTTP link to be sent.
  * @typedef {Object} InputMediaLink
- * @property {string} type - Type of the result, must be link
+ * @property {string} type - Type of the media, must be link
  * @property {string} url - HTTP URL of the link
  */
 
@@ -2435,7 +2435,7 @@
  * https://core.telegram.org/bots/api#inputmedialivephoto
  * Represents a live photo to be sent.
  * @typedef {Object} InputMediaLivePhoto
- * @property {string} type - Type of the result, must be live_photo
+ * @property {string} type - Type of the media, must be live_photo
  * @property {string} media - Video of the live photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported.
  * @property {string} photo - The static photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported.
  * @property {string} [caption] - Optional. Caption of the live photo to be sent, 0-1024 characters after entities parsing
@@ -2449,7 +2449,7 @@
  * https://core.telegram.org/bots/api#inputmedialocation
  * Represents a location to be sent.
  * @typedef {Object} InputMediaLocation
- * @property {string} type - Type of the result, must be location
+ * @property {string} type - Type of the media, must be location
  * @property {number} latitude - Latitude of the location
  * @property {number} longitude - Longitude of the location
  * @property {number} [horizontal_accuracy] - Optional. The radius of uncertainty for the location, measured in meters; 0-1500
@@ -2459,7 +2459,7 @@
  * https://core.telegram.org/bots/api#inputmediaphoto
  * Represents a photo to be sent.
  * @typedef {Object} InputMediaPhoto
- * @property {string} type - Type of the result, must be photo
+ * @property {string} type - Type of the media, must be photo
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -2472,7 +2472,7 @@
  * https://core.telegram.org/bots/api#inputmediasticker
  * Represents a sticker file to be sent.
  * @typedef {Object} InputMediaSticker
- * @property {string} type - Type of the result, must be sticker
+ * @property {string} type - Type of the media, must be sticker
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass "attach://<file_attach_name>" to upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [emoji] - Optional. Emoji associated with the sticker; only for just uploaded stickers
  */
@@ -2481,7 +2481,7 @@
  * https://core.telegram.org/bots/api#inputmediavenue
  * Represents a venue to be sent.
  * @typedef {Object} InputMediaVenue
- * @property {string} type - Type of the result, must be venue
+ * @property {string} type - Type of the media, must be venue
  * @property {number} latitude - Latitude of the location
  * @property {number} longitude - Longitude of the location
  * @property {string} title - Name of the venue
@@ -2496,7 +2496,7 @@
  * https://core.telegram.org/bots/api#inputmediavideo
  * Represents a video to be sent.
  * @typedef {Object} InputMediaVideo
- * @property {string} type - Type of the result, must be video
+ * @property {string} type - Type of the media, must be video
  * @property {string} media - File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [thumbnail] - Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [cover] - Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
@@ -5182,7 +5182,7 @@
  * @typedef {Object} SendMessageDraftParams
  * @property {number} chat_id - Unique identifier for the target private chat
  * @property {number} [message_thread_id] - Unique identifier for the target message thread
- * @property {number} draft_id - Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated.
+ * @property {number} draft_id - Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
  * @property {string} [text] - Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a "Thinking..." placeholder.
  * @property {string} [parse_mode] - Mode for parsing entities in the message text. See formatting options for more details.
  * @property {Array<MessageEntity>} [entities] - A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
