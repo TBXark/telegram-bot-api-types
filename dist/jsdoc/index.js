@@ -1617,7 +1617,7 @@
  * @property {number} date - Date the request was sent in Unix time
  * @property {string} [bio] - Optional. Bio of the user
  * @property {ChatInviteLink} [invite_link] - Optional. Chat invite link that was used by the user to send the join request
- * @property {string} [query_id] - Optional. Identifier of the join request query. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
+ * @property {string} [query_id] - Optional. Identifier of the join request query; for bots assigned to process join request only. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
  */
 
 /**
@@ -3142,7 +3142,7 @@
 
 /**
  * https://core.telegram.org/bots/api#richblockphoto
- * A block with a photo, corresponding to the HTML tag <photo>.
+ * A block with a photo, corresponding to the HTML tag <img>.
  * @typedef {Object} RichBlockPhoto
  * @property {'photo'} type - Type of the block, always "photo"
  * @property {Array<PhotoSize>} photo - Available sizes of the photo
@@ -5826,7 +5826,7 @@
 
 /**
  * https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
- * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+ * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
  * @typedef {Object} SendChatJoinRequestWebAppParams
  * @property {string} chat_join_request_query_id - Unique identifier of the join request query
  * @property {string} web_app_url - The URL of the Mini App to be opened
@@ -5836,7 +5836,7 @@
  * https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
  * @interface SendChatJoinRequestWebAppRequest
  *
- * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+ * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
  * @function sendChatJoinRequestWebApp
  * @memberof SendChatJoinRequestWebAppRequest
  * @param { SendChatJoinRequestWebAppParams } params
@@ -8633,7 +8633,7 @@
  * https://core.telegram.org/bots/api#sendrichmessage
  * Use this method to send rich messages. If the message contains a block with a media element, then the bot must have the right to send the media to the chat. On success, the sent Message is returned.
  * @typedef {Object} SendRichMessageParams
- * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent
+ * @property {string} [business_connection_id] - Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages.
  * @property {number | string} chat_id - Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat

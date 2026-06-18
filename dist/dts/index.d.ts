@@ -2506,7 +2506,7 @@ export interface ChatJoinRequest {
     bio?: string;
     /** ChatInviteLink | Optional. Chat invite link that was used by the user to send the join request */
     invite_link?: ChatInviteLink;
-    /** String | Optional. Identifier of the join request query. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds. */
+    /** String | Optional. Identifier of the join request query; for bots assigned to process join request only. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds. */
     query_id?: string;
 }
 
@@ -4697,7 +4697,7 @@ export interface RichBlockAudio {
 
 /**
  * https://core.telegram.org/bots/api#richblockphoto  
- * A block with a photo, corresponding to the HTML tag <photo>.
+ * A block with a photo, corresponding to the HTML tag <img>.
 */
 export interface RichBlockPhoto {
     /** String | Type of the block, always "photo" */
@@ -7939,7 +7939,7 @@ export interface SendChatJoinRequestWebAppParams {
 export interface SendChatJoinRequestWebAppRequest {
     /**
      * https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
-     * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+     * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
      */
     sendChatJoinRequestWebApp: (params: SendChatJoinRequestWebAppParams) => Promise<Response>;
 }
@@ -10224,7 +10224,7 @@ export interface DeleteStickerSetRequest {
 
 /** https://core.telegram.org/bots/api#sendrichmessage */
 export interface SendRichMessageParams {
-    /** String | Unique identifier of the business connection on behalf of which the message will be sent */
+    /** String | Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages. */
     business_connection_id?: string;
     /** Integer or String | Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username */
     chat_id: number | string;
