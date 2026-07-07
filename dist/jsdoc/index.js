@@ -1141,8 +1141,8 @@
  * Describes a service message about a successful payment for a suggested post.
  * @typedef {Object} SuggestedPostPaid
  * @property {Message} [suggested_post_message] - Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
- * @property {string} currency - Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
- * @property {number} [amount] - Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only
+ * @property {string} currency - Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams.
+ * @property {number} [amount] - Optional. The amount of the currency that was received by the channel in nanograms; for payments in TON grams only
  * @property {StarAmount} [star_amount] - Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only
  */
 
@@ -1219,8 +1219,8 @@
  * https://core.telegram.org/bots/api#suggestedpostprice
  * Describes the price of a suggested post.
  * @typedef {Object} SuggestedPostPrice
- * @property {string} currency - Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins.
- * @property {number} amount - The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000.
+ * @property {string} currency - Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for TON grams.
+ * @property {number} amount - The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanograms. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanograms must be between 10000000 and 10000000000000.
  */
 
 /**
@@ -1988,8 +1988,8 @@
  * @typedef {Object} UniqueGiftInfo
  * @property {UniqueGift} gift - Information about the gift
  * @property {string} origin - Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers.
- * @property {string} [last_resale_currency] - Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins.
- * @property {number} [last_resale_amount] - Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins
+ * @property {string} [last_resale_currency] - Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams.
+ * @property {number} [last_resale_amount] - Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanograms
  * @property {string} [owned_gift_id] - Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
  * @property {number} [transfer_star_count] - Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
  * @property {number} [next_transfer_date] - Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now.
