@@ -1762,9 +1762,9 @@ export interface SuggestedPostDeclined {
 export interface SuggestedPostPaid {
     /** Message | Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply. */
     suggested_post_message?: Message;
-    /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
+    /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams. */
     currency: string;
-    /** Integer | Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only */
+    /** Integer | Optional. The amount of the currency that was received by the channel in nanograms; for payments in TON grams only */
     amount?: number;
     /** StarAmount | Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only */
     star_amount?: StarAmount;
@@ -1883,9 +1883,9 @@ export interface LinkPreviewOptions {
  * Describes the price of a suggested post.
 */
 export interface SuggestedPostPrice {
-    /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins. */
+    /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for TON grams. */
     currency: string;
-    /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000. */
+    /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanograms. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanograms must be between 10000000 and 10000000000000. */
     amount: number;
 }
 
@@ -3058,9 +3058,9 @@ export interface UniqueGiftInfo {
     gift: UniqueGift;
     /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers. */
     origin: string;
-    /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
+    /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams. */
     last_resale_currency?: string;
-    /** Integer | Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins */
+    /** Integer | Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanograms */
     last_resale_amount?: number;
     /** String | Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts */
     owned_gift_id?: string;

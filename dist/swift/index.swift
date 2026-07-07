@@ -3098,9 +3098,9 @@ extension TelegramAPI {
     public class SuggestedPostPaid: Codable {
         /** Message | Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply. */
         public let suggested_post_message: Message?
-        /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
+        /** String | Currency in which the payment was made. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams. */
         public let currency: String
-        /** Integer | Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only */
+        /** Integer | Optional. The amount of the currency that was received by the channel in nanograms; for payments in TON grams only */
         public let amount: Int?
         /** StarAmount | Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only */
         public let star_amount: StarAmount?
@@ -3291,9 +3291,9 @@ extension TelegramAPI {
      * Describes the price of a suggested post.
     */
     public class SuggestedPostPrice: Codable {
-        /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for toncoins. */
+        /** String | Currency in which the post will be paid. Currently, must be one of "XTR" for Telegram Stars or "TON" for TON grams. */
         public let currency: String
-        /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000. */
+        /** Integer | The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanograms. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanograms must be between 10000000 and 10000000000000. */
         public let amount: Int
 
         public init(currency: String, amount: Int) {
@@ -5263,9 +5263,9 @@ extension TelegramAPI {
         public let gift: UniqueGift
         /** String | Origin of the gift. Currently, either "upgrade" for gifts upgraded from regular gifts, "transfer" for gifts transferred from other users or channels, "resale" for gifts bought from other users, "gifted_upgrade" for upgrades purchased after the gift was sent, or "offer" for gifts bought or sold through gift purchase offers. */
         public let origin: String
-        /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for toncoins. */
+        /** String | Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of "XTR" for Telegram Stars or "TON" for TON grams. */
         public let last_resale_currency: String?
-        /** Integer | Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins */
+        /** Integer | Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanograms */
         public let last_resale_amount: Int?
         /** String | Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts */
         public let owned_gift_id: String?
