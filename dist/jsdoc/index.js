@@ -7893,7 +7893,7 @@
  * @property {number | string} [chat_id] - Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
  * @property {number} [message_id] - Required if inline_message_id is not specified. Identifier of the message to edit.
  * @property {string} [inline_message_id] - Required if chat_id and message_id are not specified. Identifier of the inline message.
- * @property {InputMedia} media - A JSON-serialized object for a new media content of the message
+ * @property {InputMedia} media - A JSON-serialized object for the new media content of the message
  * @property {InlineKeyboardMarkup} [reply_markup] - A JSON-serialized object for a new inline keyboard
  */
 

@@ -16155,7 +16155,7 @@ extension TelegramAPI {
         public let message_id: Int?
         /** String | Required if chat_id and message_id are not specified. Identifier of the inline message. */
         public let inline_message_id: String?
-        /** InputMedia | A JSON-serialized object for a new media content of the message */
+        /** InputMedia | A JSON-serialized object for the new media content of the message */
         public let media: InputMedia
         /** InlineKeyboardMarkup | A JSON-serialized object for a new inline keyboard */
         public let reply_markup: InlineKeyboardMarkup?
