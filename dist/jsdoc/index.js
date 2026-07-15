@@ -257,7 +257,7 @@
  * @property {string} [connected_website] - Optional. The domain name of the website on which the user has logged in. More about Telegram Login: https://core.telegram.org/widgets/login
  * @property {WriteAccessAllowed} [write_access_allowed] - Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
  * @property {PassportData} [passport_data] - Optional. Telegram Passport data
- * @property {ProximityAlertTriggered} [proximity_alert_triggered] - Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+ * @property {ProximityAlertTriggered} [proximity_alert_triggered] - Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location
  * @property {ChatBoostAdded} [boost_added] - Optional. Service message: user boosted the chat
  * @property {ChatBackground} [chat_background_set] - Optional. Service message: chat background set
  * @property {ChecklistTasksDone} [checklist_tasks_done] - Optional. Service message: some tasks in a checklist were marked as done or not done
@@ -4564,7 +4564,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {string} text - Text of the message to be sent, 1-4096 characters after entities parsing
  * @property {ParseMode} [parse_mode] - Mode for parsing entities in the message text. See formatting options for more details.
  * @property {Array<MessageEntity>} [entities] - A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
@@ -4758,7 +4758,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} photo - Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -4804,7 +4804,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} live_photo - Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported.
  * @property {InputFile | string} photo - The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported.
  * @property {string} [caption] - Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
@@ -4852,7 +4852,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} audio - Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Audio caption, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Mode for parsing entities in the audio caption. See formatting options for more details.
@@ -4902,7 +4902,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} document - File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {InputFile | string} [thumbnail] - Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -4948,7 +4948,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} video - Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {number} [duration] - Duration of sent video in seconds
  * @property {number} [width] - Video width
@@ -5001,7 +5001,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} animation - Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {number} [duration] - Duration of sent animation in seconds
  * @property {number} [width] - Animation width
@@ -5051,7 +5051,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} voice - Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files
  * @property {string} [caption] - Voice message caption, 0-1024 characters after entities parsing
  * @property {string} [parse_mode] - Mode for parsing entities in the voice message caption. See formatting options for more details.
@@ -5096,7 +5096,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} video_note - Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported.
  * @property {number} [duration] - Duration of sent video in seconds
  * @property {number} [length] - Video width and height, i.e. diameter of the video message
@@ -5221,7 +5221,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {number} latitude - Latitude of the location
  * @property {number} longitude - Longitude of the location
  * @property {number} [horizontal_accuracy] - The radius of uncertainty for the location, measured in meters; 0-1500
@@ -5267,7 +5267,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {number} latitude - Latitude of the venue
  * @property {number} longitude - Longitude of the venue
  * @property {string} title - Name of the venue
@@ -5315,7 +5315,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {string} phone_number - Contact's phone number
  * @property {string} first_name - Contact's first name
  * @property {string} [last_name] - Contact's last name
@@ -8684,7 +8684,7 @@
  * @property {number} [message_thread_id] - Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property {number} [direct_messages_topic_id] - Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property {number} [receiver_user_id] - For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property {string} [callback_query_id] - For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property {InputFile | string} sticker - Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Video and animated stickers can't be sent via an HTTP URL.
  * @property {string} [emoji] - Emoji associated with the sticker; only for just uploaded stickers
  * @property {boolean} [disable_notification] - Sends the message silently. Users will receive a notification with no sound.

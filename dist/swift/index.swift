@@ -670,7 +670,7 @@ extension TelegramAPI {
         public let write_access_allowed: WriteAccessAllowed?
         /** PassportData | Optional. Telegram Passport data */
         public let passport_data: PassportData?
-        /** ProximityAlertTriggered | Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location. */
+        /** ProximityAlertTriggered | Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location */
         public let proximity_alert_triggered: ProximityAlertTriggered?
         /** ChatBoostAdded | Optional. Service message: user boosted the chat */
         public let boost_added: ChatBoostAdded?
@@ -11991,7 +11991,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** String | Text of the message to be sent, 1-4096 characters after entities parsing */
         public let text: String
@@ -12283,7 +12283,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let photo: Either2<InputFile, String>
@@ -12363,7 +12363,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported. */
         public let live_photo: Either2<InputFile, String>
@@ -12446,7 +12446,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let audio: Either2<InputFile, String>
@@ -12533,7 +12533,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let document: Either2<InputFile, String>
@@ -12613,7 +12613,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let video: Either2<InputFile, String>
@@ -12714,7 +12714,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let animation: Either2<InputFile, String>
@@ -12806,7 +12806,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
         public let voice: Either2<InputFile, String>
@@ -12883,7 +12883,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported. */
         public let video_note: Either2<InputFile, String>
@@ -13084,7 +13084,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** Float | Latitude of the location */
         public let latitude: Float
@@ -13164,7 +13164,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** Float | Latitude of the venue */
         public let latitude: Float
@@ -13250,7 +13250,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** String | Contact's phone number */
         public let phone_number: String
@@ -17644,7 +17644,7 @@ extension TelegramAPI {
         public let direct_messages_topic_id: Int?
         /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
         public let receiver_user_id: Int?
-        /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+        /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
         public let callback_query_id: String?
         /** InputFile or String | Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Video and animated stickers can't be sent via an HTTP URL. */
         public let sticker: Either2<InputFile, String>
