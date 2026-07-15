@@ -454,7 +454,7 @@ export interface Message {
     write_access_allowed?: WriteAccessAllowed;
     /** PassportData | Optional. Telegram Passport data */
     passport_data?: PassportData;
-    /** ProximityAlertTriggered | Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location. */
+    /** ProximityAlertTriggered | Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location */
     proximity_alert_triggered?: ProximityAlertTriggered;
     /** ChatBoostAdded | Optional. Service message: user boosted the chat */
     boost_added?: ChatBoostAdded;
@@ -6714,7 +6714,7 @@ export interface SendMessageParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** String | Text of the message to be sent, 1-4096 characters after entities parsing */
     text: string;
@@ -6927,7 +6927,7 @@ export interface SendPhotoParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     photo: InputFile | string;
@@ -6984,7 +6984,7 @@ export interface SendLivePhotoParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending live photos by a URL is currently unsupported. */
     live_photo: InputFile | string;
@@ -7043,7 +7043,7 @@ export interface SendAudioParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     audio: InputFile | string;
@@ -7106,7 +7106,7 @@ export interface SendDocumentParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     document: InputFile | string;
@@ -7163,7 +7163,7 @@ export interface SendVideoParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     video: InputFile | string;
@@ -7234,7 +7234,7 @@ export interface SendAnimationParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     animation: InputFile | string;
@@ -7299,7 +7299,7 @@ export interface SendVoiceParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files */
     voice: InputFile | string;
@@ -7354,7 +7354,7 @@ export interface SendVideoNoteParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Sending video notes by a URL is currently unsupported. */
     video_note: InputFile | string;
@@ -7499,7 +7499,7 @@ export interface SendLocationParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** Float | Latitude of the location */
     latitude: number;
@@ -7556,7 +7556,7 @@ export interface SendVenueParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** Float | Latitude of the venue */
     latitude: number;
@@ -7617,7 +7617,7 @@ export interface SendContactParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** String | Contact's phone number */
     phone_number: string;
@@ -10481,7 +10481,7 @@ export interface SendStickerParams {
     direct_messages_topic_id?: number;
     /** Integer | For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details. */
     receiver_user_id?: number;
-    /** String | For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any */
+    /** String | For outgoing ephemeral messages, identifier of the callback query which triggered the message if any */
     callback_query_id?: string;
     /** InputFile or String | Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files: https://core.telegram.org/bots/api#sending-files. Video and animated stickers can't be sent via an HTTP URL. */
     sticker: InputFile | string;
