@@ -4,9 +4,9 @@
 import Foundation
 
 public struct TelegramAPI {
-    let request: (String, Codable) throws -> Data
+    let request: (String, Codable) async throws -> Data
 
-    public init(request: @escaping (String, Codable) throws -> Data) {
+    public init(request: @escaping (String, Codable) async throws -> Data) {
         self.request = request
     }
 
@@ -121,8 +121,8 @@ extension TelegramAPI {
      * {{.Href}}{{range .Description}}
      * {{.}}{{end}}
      */
-    public func {{.Name}}({{if HasParams .}}params: {{ToPascalCase .Name}}Params{{end}}) throws -> {{ToPascalCase .Name}}Response {
-        let data = try request("{{.Name}}", {{if HasParams .}}params{{else}}[String: String](){{end}})
+    public func {{.Name}}({{if HasParams .}}params: {{ToPascalCase .Name}}Params{{end}}) async throws -> {{ToPascalCase .Name}}Response {
+        let data = try await request("{{.Name}}", {{if HasParams .}}params{{else}}[String: String](){{end}})
         return try JSONDecoder().decode({{ToPascalCase .Name}}Response.self, from: data)
     }
 }
