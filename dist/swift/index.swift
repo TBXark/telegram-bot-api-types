@@ -3,9 +3,9 @@
 import Foundation
 
 public struct TelegramAPI {
-    let request: (String, Codable) throws -> Data
+    let request: (String, Codable) async throws -> Data
 
-    public init(request: @escaping (String, Codable) throws -> Data) {
+    public init(request: @escaping (String, Codable) async throws -> Data) {
         self.request = request
     }
 
@@ -12186,8 +12186,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getupdates
      * Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.
      */
-    public func getUpdates(params: GetUpdatesParams) throws -> GetUpdatesResponse {
-        let data = try request("getUpdates", params)
+    public func getUpdates(params: GetUpdatesParams) async throws -> GetUpdatesResponse {
+        let data = try await request("getUpdates", params)
         return try JSONDecoder().decode(GetUpdatesResponse.self, from: data)
     }
 }
@@ -12231,8 +12231,8 @@ extension TelegramAPI {
      * Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable amount of attempts. Returns True on success.
      * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header "X-Telegram-Bot-Api-Secret-Token" with the secret token as content.
      */
-    public func setWebhook(params: SetWebhookParams) throws -> SetWebhookResponse {
-        let data = try request("setWebhook", params)
+    public func setWebhook(params: SetWebhookParams) async throws -> SetWebhookResponse {
+        let data = try await request("setWebhook", params)
         return try JSONDecoder().decode(SetWebhookResponse.self, from: data)
     }
 }
@@ -12257,8 +12257,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletewebhook
      * Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
      */
-    public func deleteWebhook(params: DeleteWebhookParams) throws -> DeleteWebhookResponse {
-        let data = try request("deleteWebhook", params)
+    public func deleteWebhook(params: DeleteWebhookParams) async throws -> DeleteWebhookResponse {
+        let data = try await request("deleteWebhook", params)
         return try JSONDecoder().decode(DeleteWebhookResponse.self, from: data)
     }
 }
@@ -12271,8 +12271,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getwebhookinfo
      * Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
      */
-    public func getWebhookInfo() throws -> GetWebhookInfoResponse {
-        let data = try request("getWebhookInfo", [String: String]())
+    public func getWebhookInfo() async throws -> GetWebhookInfoResponse {
+        let data = try await request("getWebhookInfo", [String: String]())
         return try JSONDecoder().decode(GetWebhookInfoResponse.self, from: data)
     }
 }
@@ -12285,8 +12285,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getme
      * A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.
      */
-    public func getMe() throws -> GetMeResponse {
-        let data = try request("getMe", [String: String]())
+    public func getMe() async throws -> GetMeResponse {
+        let data = try await request("getMe", [String: String]())
         return try JSONDecoder().decode(GetMeResponse.self, from: data)
     }
 }
@@ -12299,8 +12299,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#logout
      * Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
      */
-    public func logOut() throws -> LogOutResponse {
-        let data = try request("logOut", [String: String]())
+    public func logOut() async throws -> LogOutResponse {
+        let data = try await request("logOut", [String: String]())
         return try JSONDecoder().decode(LogOutResponse.self, from: data)
     }
 }
@@ -12313,8 +12313,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#close
      * Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
      */
-    public func close() throws -> CloseResponse {
-        let data = try request("close", [String: String]())
+    public func close() async throws -> CloseResponse {
+        let data = try await request("close", [String: String]())
         return try JSONDecoder().decode(CloseResponse.self, from: data)
     }
 }
@@ -12384,8 +12384,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendmessage
      * Use this method to send text messages. On success, the sent Message is returned.
      */
-    public func sendMessage(params: SendMessageParams) throws -> SendMessageResponse {
-        let data = try request("sendMessage", params)
+    public func sendMessage(params: SendMessageParams) async throws -> SendMessageResponse {
+        let data = try await request("sendMessage", params)
         return try JSONDecoder().decode(SendMessageResponse.self, from: data)
     }
 }
@@ -12437,8 +12437,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#forwardmessage
      * Use this method to forward messages of any kind. Service messages and messages with protected content can't be forwarded. On success, the sent Message is returned.
      */
-    public func forwardMessage(params: ForwardMessageParams) throws -> ForwardMessageResponse {
-        let data = try request("forwardMessage", params)
+    public func forwardMessage(params: ForwardMessageParams) async throws -> ForwardMessageResponse {
+        let data = try await request("forwardMessage", params)
         return try JSONDecoder().decode(ForwardMessageResponse.self, from: data)
     }
 }
@@ -12481,8 +12481,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#forwardmessages
      * Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an Array of MessageId of the sent messages is returned.
      */
-    public func forwardMessages(params: ForwardMessagesParams) throws -> ForwardMessagesResponse {
-        let data = try request("forwardMessages", params)
+    public func forwardMessages(params: ForwardMessagesParams) async throws -> ForwardMessagesResponse {
+        let data = try await request("forwardMessages", params)
         return try JSONDecoder().decode(ForwardMessagesResponse.self, from: data)
     }
 }
@@ -12555,8 +12555,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#copymessage
      * Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
      */
-    public func copyMessage(params: CopyMessageParams) throws -> CopyMessageResponse {
-        let data = try request("copyMessage", params)
+    public func copyMessage(params: CopyMessageParams) async throws -> CopyMessageResponse {
+        let data = try await request("copyMessage", params)
         return try JSONDecoder().decode(CopyMessageResponse.self, from: data)
     }
 }
@@ -12602,8 +12602,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#copymessages
      * Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned.
      */
-    public func copyMessages(params: CopyMessagesParams) throws -> CopyMessagesResponse {
-        let data = try request("copyMessages", params)
+    public func copyMessages(params: CopyMessagesParams) async throws -> CopyMessagesResponse {
+        let data = try await request("copyMessages", params)
         return try JSONDecoder().decode(CopyMessagesResponse.self, from: data)
     }
 }
@@ -12679,8 +12679,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendphoto
      * Use this method to send photos. On success, the sent Message is returned.
      */
-    public func sendPhoto(params: SendPhotoParams) throws -> SendPhotoResponse {
-        let data = try request("sendPhoto", params)
+    public func sendPhoto(params: SendPhotoParams) async throws -> SendPhotoResponse {
+        let data = try await request("sendPhoto", params)
         return try JSONDecoder().decode(SendPhotoResponse.self, from: data)
     }
 }
@@ -12759,8 +12759,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendlivephoto
      * Use this method to send live photos. On success, the sent Message is returned.
      */
-    public func sendLivePhoto(params: SendLivePhotoParams) throws -> SendLivePhotoResponse {
-        let data = try request("sendLivePhoto", params)
+    public func sendLivePhoto(params: SendLivePhotoParams) async throws -> SendLivePhotoResponse {
+        let data = try await request("sendLivePhoto", params)
         return try JSONDecoder().decode(SendLivePhotoResponse.self, from: data)
     }
 }
@@ -12843,8 +12843,8 @@ extension TelegramAPI {
      * Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
      * For sending voice messages, use the sendVoice method instead.
      */
-    public func sendAudio(params: SendAudioParams) throws -> SendAudioResponse {
-        let data = try request("sendAudio", params)
+    public func sendAudio(params: SendAudioParams) async throws -> SendAudioResponse {
+        let data = try await request("sendAudio", params)
         return try JSONDecoder().decode(SendAudioResponse.self, from: data)
     }
 }
@@ -12920,8 +12920,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#senddocument
      * Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
      */
-    public func sendDocument(params: SendDocumentParams) throws -> SendDocumentResponse {
-        let data = try request("sendDocument", params)
+    public func sendDocument(params: SendDocumentParams) async throws -> SendDocumentResponse {
+        let data = try await request("sendDocument", params)
         return try JSONDecoder().decode(SendDocumentResponse.self, from: data)
     }
 }
@@ -13018,8 +13018,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendvideo
      * Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
      */
-    public func sendVideo(params: SendVideoParams) throws -> SendVideoResponse {
-        let data = try request("sendVideo", params)
+    public func sendVideo(params: SendVideoParams) async throws -> SendVideoResponse {
+        let data = try await request("sendVideo", params)
         return try JSONDecoder().decode(SendVideoResponse.self, from: data)
     }
 }
@@ -13107,8 +13107,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendanimation
      * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
      */
-    public func sendAnimation(params: SendAnimationParams) throws -> SendAnimationResponse {
-        let data = try request("sendAnimation", params)
+    public func sendAnimation(params: SendAnimationParams) async throws -> SendAnimationResponse {
+        let data = try await request("sendAnimation", params)
         return try JSONDecoder().decode(SendAnimationResponse.self, from: data)
     }
 }
@@ -13181,8 +13181,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendvoice
      * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
      */
-    public func sendVoice(params: SendVoiceParams) throws -> SendVoiceResponse {
-        let data = try request("sendVoice", params)
+    public func sendVoice(params: SendVoiceParams) async throws -> SendVoiceResponse {
+        let data = try await request("sendVoice", params)
         return try JSONDecoder().decode(SendVoiceResponse.self, from: data)
     }
 }
@@ -13252,8 +13252,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendvideonote
      * Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent Message is returned.
      */
-    public func sendVideoNote(params: SendVideoNoteParams) throws -> SendVideoNoteResponse {
-        let data = try request("sendVideoNote", params)
+    public func sendVideoNote(params: SendVideoNoteParams) async throws -> SendVideoNoteResponse {
+        let data = try await request("sendVideoNote", params)
         return try JSONDecoder().decode(SendVideoNoteResponse.self, from: data)
     }
 }
@@ -13326,8 +13326,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendpaidmedia
      * Use this method to send paid media. On success, the sent Message is returned.
      */
-    public func sendPaidMedia(params: SendPaidMediaParams) throws -> SendPaidMediaResponse {
-        let data = try request("sendPaidMedia", params)
+    public func sendPaidMedia(params: SendPaidMediaParams) async throws -> SendPaidMediaResponse {
+        let data = try await request("sendPaidMedia", params)
         return try JSONDecoder().decode(SendPaidMediaResponse.self, from: data)
     }
 }
@@ -13379,8 +13379,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendmediagroup
      * Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned.
      */
-    public func sendMediaGroup(params: SendMediaGroupParams) throws -> SendMediaGroupResponse {
-        let data = try request("sendMediaGroup", params)
+    public func sendMediaGroup(params: SendMediaGroupParams) async throws -> SendMediaGroupResponse {
+        let data = try await request("sendMediaGroup", params)
         return try JSONDecoder().decode(SendMediaGroupResponse.self, from: data)
     }
 }
@@ -13456,8 +13456,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendlocation
      * Use this method to send point on the map. On success, the sent Message is returned.
      */
-    public func sendLocation(params: SendLocationParams) throws -> SendLocationResponse {
-        let data = try request("sendLocation", params)
+    public func sendLocation(params: SendLocationParams) async throws -> SendLocationResponse {
+        let data = try await request("sendLocation", params)
         return try JSONDecoder().decode(SendLocationResponse.self, from: data)
     }
 }
@@ -13539,8 +13539,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendvenue
      * Use this method to send information about a venue. On success, the sent Message is returned.
      */
-    public func sendVenue(params: SendVenueParams) throws -> SendVenueResponse {
-        let data = try request("sendVenue", params)
+    public func sendVenue(params: SendVenueParams) async throws -> SendVenueResponse {
+        let data = try await request("sendVenue", params)
         return try JSONDecoder().decode(SendVenueResponse.self, from: data)
     }
 }
@@ -13610,8 +13610,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendcontact
      * Use this method to send phone contacts. On success, the sent Message is returned.
      */
-    public func sendContact(params: SendContactParams) throws -> SendContactResponse {
-        let data = try request("sendContact", params)
+    public func sendContact(params: SendContactParams) async throws -> SendContactResponse {
+        let data = try await request("sendContact", params)
         return try JSONDecoder().decode(SendContactResponse.self, from: data)
     }
 }
@@ -13735,8 +13735,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendpoll
      * Use this method to send a native poll. On success, the sent Message is returned.
      */
-    public func sendPoll(params: SendPollParams) throws -> SendPollResponse {
-        let data = try request("sendPoll", params)
+    public func sendPoll(params: SendPollParams) async throws -> SendPollResponse {
+        let data = try await request("sendPoll", params)
         return try JSONDecoder().decode(SendPollResponse.self, from: data)
     }
 }
@@ -13782,8 +13782,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendchecklist
      * Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.
      */
-    public func sendChecklist(params: SendChecklistParams) throws -> SendChecklistResponse {
-        let data = try request("sendChecklist", params)
+    public func sendChecklist(params: SendChecklistParams) async throws -> SendChecklistResponse {
+        let data = try await request("sendChecklist", params)
         return try JSONDecoder().decode(SendChecklistResponse.self, from: data)
     }
 }
@@ -13841,8 +13841,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#senddice
      * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
      */
-    public func sendDice(params: SendDiceParams) throws -> SendDiceResponse {
-        let data = try request("sendDice", params)
+    public func sendDice(params: SendDiceParams) async throws -> SendDiceResponse {
+        let data = try await request("sendDice", params)
         return try JSONDecoder().decode(SendDiceResponse.self, from: data)
     }
 }
@@ -13888,8 +13888,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendmessagedraft
      * Use this method to stream a partial message to a user while the message is being generated. Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendMessage with the complete message to persist it in the user's chat. Returns True on success.
      */
-    public func sendMessageDraft(params: SendMessageDraftParams) throws -> SendMessageDraftResponse {
-        let data = try request("sendMessageDraft", params)
+    public func sendMessageDraft(params: SendMessageDraftParams) async throws -> SendMessageDraftResponse {
+        let data = try await request("sendMessageDraft", params)
         return try JSONDecoder().decode(SendMessageDraftResponse.self, from: data)
     }
 }
@@ -13924,8 +13924,8 @@ extension TelegramAPI {
      * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
      * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
      */
-    public func sendChatAction(params: SendChatActionParams) throws -> SendChatActionResponse {
-        let data = try request("sendChatAction", params)
+    public func sendChatAction(params: SendChatActionParams) async throws -> SendChatActionResponse {
+        let data = try await request("sendChatAction", params)
         return try JSONDecoder().decode(SendChatActionResponse.self, from: data)
     }
 }
@@ -13959,8 +13959,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmessagereaction
      * Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
      */
-    public func setMessageReaction(params: SetMessageReactionParams) throws -> SetMessageReactionResponse {
-        let data = try request("setMessageReaction", params)
+    public func setMessageReaction(params: SetMessageReactionParams) async throws -> SetMessageReactionResponse {
+        let data = try await request("setMessageReaction", params)
         return try JSONDecoder().decode(SetMessageReactionResponse.self, from: data)
     }
 }
@@ -13991,8 +13991,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getuserprofilephotos
      * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
      */
-    public func getUserProfilePhotos(params: GetUserProfilePhotosParams) throws -> GetUserProfilePhotosResponse {
-        let data = try request("getUserProfilePhotos", params)
+    public func getUserProfilePhotos(params: GetUserProfilePhotosParams) async throws -> GetUserProfilePhotosResponse {
+        let data = try await request("getUserProfilePhotos", params)
         return try JSONDecoder().decode(GetUserProfilePhotosResponse.self, from: data)
     }
 }
@@ -14023,8 +14023,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getuserprofileaudios
      * Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object.
      */
-    public func getUserProfileAudios(params: GetUserProfileAudiosParams) throws -> GetUserProfileAudiosResponse {
-        let data = try request("getUserProfileAudios", params)
+    public func getUserProfileAudios(params: GetUserProfileAudiosParams) async throws -> GetUserProfileAudiosResponse {
+        let data = try await request("getUserProfileAudios", params)
         return try JSONDecoder().decode(GetUserProfileAudiosResponse.self, from: data)
     }
 }
@@ -14055,8 +14055,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setuseremojistatus
      * Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method requestEmojiStatusAccess. Returns True on success.
      */
-    public func setUserEmojiStatus(params: SetUserEmojiStatusParams) throws -> SetUserEmojiStatusResponse {
-        let data = try request("setUserEmojiStatus", params)
+    public func setUserEmojiStatus(params: SetUserEmojiStatusParams) async throws -> SetUserEmojiStatusResponse {
+        let data = try await request("setUserEmojiStatus", params)
         return try JSONDecoder().decode(SetUserEmojiStatusResponse.self, from: data)
     }
 }
@@ -14082,8 +14082,8 @@ extension TelegramAPI {
      * Use this method to get basic information about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
      * Note: This function may not preserve the original file name and MIME type. You should save the file's MIME type and name (if available) when the File object is received.
      */
-    public func getFile(params: GetFileParams) throws -> GetFileResponse {
-        let data = try request("getFile", params)
+    public func getFile(params: GetFileParams) async throws -> GetFileResponse {
+        let data = try await request("getFile", params)
         return try JSONDecoder().decode(GetFileResponse.self, from: data)
     }
 }
@@ -14117,8 +14117,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#banchatmember
      * Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func banChatMember(params: BanChatMemberParams) throws -> BanChatMemberResponse {
-        let data = try request("banChatMember", params)
+    public func banChatMember(params: BanChatMemberParams) async throws -> BanChatMemberResponse {
+        let data = try await request("banChatMember", params)
         return try JSONDecoder().decode(BanChatMemberResponse.self, from: data)
     }
 }
@@ -14149,8 +14149,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unbanchatmember
      * Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
      */
-    public func unbanChatMember(params: UnbanChatMemberParams) throws -> UnbanChatMemberResponse {
-        let data = try request("unbanChatMember", params)
+    public func unbanChatMember(params: UnbanChatMemberParams) async throws -> UnbanChatMemberResponse {
+        let data = try await request("unbanChatMember", params)
         return try JSONDecoder().decode(UnbanChatMemberResponse.self, from: data)
     }
 }
@@ -14187,8 +14187,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#restrictchatmember
      * Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
      */
-    public func restrictChatMember(params: RestrictChatMemberParams) throws -> RestrictChatMemberResponse {
-        let data = try request("restrictChatMember", params)
+    public func restrictChatMember(params: RestrictChatMemberParams) async throws -> RestrictChatMemberResponse {
+        let data = try await request("restrictChatMember", params)
         return try JSONDecoder().decode(RestrictChatMemberResponse.self, from: data)
     }
 }
@@ -14270,8 +14270,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#promotechatmember
      * Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
      */
-    public func promoteChatMember(params: PromoteChatMemberParams) throws -> PromoteChatMemberResponse {
-        let data = try request("promoteChatMember", params)
+    public func promoteChatMember(params: PromoteChatMemberParams) async throws -> PromoteChatMemberResponse {
+        let data = try await request("promoteChatMember", params)
         return try JSONDecoder().decode(PromoteChatMemberResponse.self, from: data)
     }
 }
@@ -14302,8 +14302,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatadministratorcustomtitle
      * Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
      */
-    public func setChatAdministratorCustomTitle(params: SetChatAdministratorCustomTitleParams) throws -> SetChatAdministratorCustomTitleResponse {
-        let data = try request("setChatAdministratorCustomTitle", params)
+    public func setChatAdministratorCustomTitle(params: SetChatAdministratorCustomTitleParams) async throws -> SetChatAdministratorCustomTitleResponse {
+        let data = try await request("setChatAdministratorCustomTitle", params)
         return try JSONDecoder().decode(SetChatAdministratorCustomTitleResponse.self, from: data)
     }
 }
@@ -14334,8 +14334,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatmembertag
      * Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right. Returns True on success.
      */
-    public func setChatMemberTag(params: SetChatMemberTagParams) throws -> SetChatMemberTagResponse {
-        let data = try request("setChatMemberTag", params)
+    public func setChatMemberTag(params: SetChatMemberTagParams) async throws -> SetChatMemberTagResponse {
+        let data = try await request("setChatMemberTag", params)
         return try JSONDecoder().decode(SetChatMemberTagResponse.self, from: data)
     }
 }
@@ -14363,8 +14363,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#banchatsenderchat
      * Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func banChatSenderChat(params: BanChatSenderChatParams) throws -> BanChatSenderChatResponse {
-        let data = try request("banChatSenderChat", params)
+    public func banChatSenderChat(params: BanChatSenderChatParams) async throws -> BanChatSenderChatResponse {
+        let data = try await request("banChatSenderChat", params)
         return try JSONDecoder().decode(BanChatSenderChatResponse.self, from: data)
     }
 }
@@ -14392,8 +14392,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unbanchatsenderchat
      * Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func unbanChatSenderChat(params: UnbanChatSenderChatParams) throws -> UnbanChatSenderChatResponse {
-        let data = try request("unbanChatSenderChat", params)
+    public func unbanChatSenderChat(params: UnbanChatSenderChatParams) async throws -> UnbanChatSenderChatResponse {
+        let data = try await request("unbanChatSenderChat", params)
         return try JSONDecoder().decode(UnbanChatSenderChatResponse.self, from: data)
     }
 }
@@ -14424,8 +14424,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatpermissions
      * Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
      */
-    public func setChatPermissions(params: SetChatPermissionsParams) throws -> SetChatPermissionsResponse {
-        let data = try request("setChatPermissions", params)
+    public func setChatPermissions(params: SetChatPermissionsParams) async throws -> SetChatPermissionsResponse {
+        let data = try await request("setChatPermissions", params)
         return try JSONDecoder().decode(SetChatPermissionsResponse.self, from: data)
     }
 }
@@ -14450,8 +14450,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#exportchatinvitelink
      * Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
      */
-    public func exportChatInviteLink(params: ExportChatInviteLinkParams) throws -> ExportChatInviteLinkResponse {
-        let data = try request("exportChatInviteLink", params)
+    public func exportChatInviteLink(params: ExportChatInviteLinkParams) async throws -> ExportChatInviteLinkResponse {
+        let data = try await request("exportChatInviteLink", params)
         return try JSONDecoder().decode(ExportChatInviteLinkResponse.self, from: data)
     }
 }
@@ -14488,8 +14488,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#createchatinvitelink
      * Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
      */
-    public func createChatInviteLink(params: CreateChatInviteLinkParams) throws -> CreateChatInviteLinkResponse {
-        let data = try request("createChatInviteLink", params)
+    public func createChatInviteLink(params: CreateChatInviteLinkParams) async throws -> CreateChatInviteLinkResponse {
+        let data = try await request("createChatInviteLink", params)
         return try JSONDecoder().decode(CreateChatInviteLinkResponse.self, from: data)
     }
 }
@@ -14529,8 +14529,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editchatinvitelink
      * Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a ChatInviteLink object.
      */
-    public func editChatInviteLink(params: EditChatInviteLinkParams) throws -> EditChatInviteLinkResponse {
-        let data = try request("editChatInviteLink", params)
+    public func editChatInviteLink(params: EditChatInviteLinkParams) async throws -> EditChatInviteLinkResponse {
+        let data = try await request("editChatInviteLink", params)
         return try JSONDecoder().decode(EditChatInviteLinkResponse.self, from: data)
     }
 }
@@ -14564,8 +14564,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
      * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
      */
-    public func createChatSubscriptionInviteLink(params: CreateChatSubscriptionInviteLinkParams) throws -> CreateChatSubscriptionInviteLinkResponse {
-        let data = try request("createChatSubscriptionInviteLink", params)
+    public func createChatSubscriptionInviteLink(params: CreateChatSubscriptionInviteLinkParams) async throws -> CreateChatSubscriptionInviteLinkResponse {
+        let data = try await request("createChatSubscriptionInviteLink", params)
         return try JSONDecoder().decode(CreateChatSubscriptionInviteLinkResponse.self, from: data)
     }
 }
@@ -14596,8 +14596,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
      * Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
      */
-    public func editChatSubscriptionInviteLink(params: EditChatSubscriptionInviteLinkParams) throws -> EditChatSubscriptionInviteLinkResponse {
-        let data = try request("editChatSubscriptionInviteLink", params)
+    public func editChatSubscriptionInviteLink(params: EditChatSubscriptionInviteLinkParams) async throws -> EditChatSubscriptionInviteLinkResponse {
+        let data = try await request("editChatSubscriptionInviteLink", params)
         return try JSONDecoder().decode(EditChatSubscriptionInviteLinkResponse.self, from: data)
     }
 }
@@ -14625,8 +14625,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#revokechatinvitelink
      * Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object.
      */
-    public func revokeChatInviteLink(params: RevokeChatInviteLinkParams) throws -> RevokeChatInviteLinkResponse {
-        let data = try request("revokeChatInviteLink", params)
+    public func revokeChatInviteLink(params: RevokeChatInviteLinkParams) async throws -> RevokeChatInviteLinkResponse {
+        let data = try await request("revokeChatInviteLink", params)
         return try JSONDecoder().decode(RevokeChatInviteLinkResponse.self, from: data)
     }
 }
@@ -14654,8 +14654,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#approvechatjoinrequest
      * Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
      */
-    public func approveChatJoinRequest(params: ApproveChatJoinRequestParams) throws -> ApproveChatJoinRequestResponse {
-        let data = try request("approveChatJoinRequest", params)
+    public func approveChatJoinRequest(params: ApproveChatJoinRequestParams) async throws -> ApproveChatJoinRequestResponse {
+        let data = try await request("approveChatJoinRequest", params)
         return try JSONDecoder().decode(ApproveChatJoinRequestResponse.self, from: data)
     }
 }
@@ -14683,8 +14683,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#declinechatjoinrequest
      * Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
      */
-    public func declineChatJoinRequest(params: DeclineChatJoinRequestParams) throws -> DeclineChatJoinRequestResponse {
-        let data = try request("declineChatJoinRequest", params)
+    public func declineChatJoinRequest(params: DeclineChatJoinRequestParams) async throws -> DeclineChatJoinRequestResponse {
+        let data = try await request("declineChatJoinRequest", params)
         return try JSONDecoder().decode(DeclineChatJoinRequestResponse.self, from: data)
     }
 }
@@ -14712,8 +14712,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answerchatjoinrequestquery
      * Use this method to process a received chat join request query. Returns True on success.
      */
-    public func answerChatJoinRequestQuery(params: AnswerChatJoinRequestQueryParams) throws -> AnswerChatJoinRequestQueryResponse {
-        let data = try request("answerChatJoinRequestQuery", params)
+    public func answerChatJoinRequestQuery(params: AnswerChatJoinRequestQueryParams) async throws -> AnswerChatJoinRequestQueryResponse {
+        let data = try await request("answerChatJoinRequestQuery", params)
         return try JSONDecoder().decode(AnswerChatJoinRequestQueryResponse.self, from: data)
     }
 }
@@ -14741,8 +14741,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
      * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
      */
-    public func sendChatJoinRequestWebApp(params: SendChatJoinRequestWebAppParams) throws -> SendChatJoinRequestWebAppResponse {
-        let data = try request("sendChatJoinRequestWebApp", params)
+    public func sendChatJoinRequestWebApp(params: SendChatJoinRequestWebAppParams) async throws -> SendChatJoinRequestWebAppResponse {
+        let data = try await request("sendChatJoinRequestWebApp", params)
         return try JSONDecoder().decode(SendChatJoinRequestWebAppResponse.self, from: data)
     }
 }
@@ -14770,8 +14770,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatphoto
      * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func setChatPhoto(params: SetChatPhotoParams) throws -> SetChatPhotoResponse {
-        let data = try request("setChatPhoto", params)
+    public func setChatPhoto(params: SetChatPhotoParams) async throws -> SetChatPhotoResponse {
+        let data = try await request("setChatPhoto", params)
         return try JSONDecoder().decode(SetChatPhotoResponse.self, from: data)
     }
 }
@@ -14796,8 +14796,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletechatphoto
      * Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func deleteChatPhoto(params: DeleteChatPhotoParams) throws -> DeleteChatPhotoResponse {
-        let data = try request("deleteChatPhoto", params)
+    public func deleteChatPhoto(params: DeleteChatPhotoParams) async throws -> DeleteChatPhotoResponse {
+        let data = try await request("deleteChatPhoto", params)
         return try JSONDecoder().decode(DeleteChatPhotoResponse.self, from: data)
     }
 }
@@ -14825,8 +14825,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchattitle
      * Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func setChatTitle(params: SetChatTitleParams) throws -> SetChatTitleResponse {
-        let data = try request("setChatTitle", params)
+    public func setChatTitle(params: SetChatTitleParams) async throws -> SetChatTitleResponse {
+        let data = try await request("setChatTitle", params)
         return try JSONDecoder().decode(SetChatTitleResponse.self, from: data)
     }
 }
@@ -14854,8 +14854,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatdescription
      * Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
      */
-    public func setChatDescription(params: SetChatDescriptionParams) throws -> SetChatDescriptionResponse {
-        let data = try request("setChatDescription", params)
+    public func setChatDescription(params: SetChatDescriptionParams) async throws -> SetChatDescriptionResponse {
+        let data = try await request("setChatDescription", params)
         return try JSONDecoder().decode(SetChatDescriptionResponse.self, from: data)
     }
 }
@@ -14889,8 +14889,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#pinchatmessage
      * Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to pin messages in groups and channels respectively. Returns True on success.
      */
-    public func pinChatMessage(params: PinChatMessageParams) throws -> PinChatMessageResponse {
-        let data = try request("pinChatMessage", params)
+    public func pinChatMessage(params: PinChatMessageParams) async throws -> PinChatMessageResponse {
+        let data = try await request("pinChatMessage", params)
         return try JSONDecoder().decode(PinChatMessageResponse.self, from: data)
     }
 }
@@ -14921,8 +14921,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unpinchatmessage
      * Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin messages in groups and channels respectively. Returns True on success.
      */
-    public func unpinChatMessage(params: UnpinChatMessageParams) throws -> UnpinChatMessageResponse {
-        let data = try request("unpinChatMessage", params)
+    public func unpinChatMessage(params: UnpinChatMessageParams) async throws -> UnpinChatMessageResponse {
+        let data = try await request("unpinChatMessage", params)
         return try JSONDecoder().decode(UnpinChatMessageResponse.self, from: data)
     }
 }
@@ -14947,8 +14947,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unpinallchatmessages
      * Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin all pinned messages in groups and channels respectively. Returns True on success.
      */
-    public func unpinAllChatMessages(params: UnpinAllChatMessagesParams) throws -> UnpinAllChatMessagesResponse {
-        let data = try request("unpinAllChatMessages", params)
+    public func unpinAllChatMessages(params: UnpinAllChatMessagesParams) async throws -> UnpinAllChatMessagesResponse {
+        let data = try await request("unpinAllChatMessages", params)
         return try JSONDecoder().decode(UnpinAllChatMessagesResponse.self, from: data)
     }
 }
@@ -14973,8 +14973,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#leavechat
      * Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
      */
-    public func leaveChat(params: LeaveChatParams) throws -> LeaveChatResponse {
-        let data = try request("leaveChat", params)
+    public func leaveChat(params: LeaveChatParams) async throws -> LeaveChatResponse {
+        let data = try await request("leaveChat", params)
         return try JSONDecoder().decode(LeaveChatResponse.self, from: data)
     }
 }
@@ -14999,8 +14999,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchat
      * Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
      */
-    public func getChat(params: GetChatParams) throws -> GetChatResponse {
-        let data = try request("getChat", params)
+    public func getChat(params: GetChatParams) async throws -> GetChatResponse {
+        let data = try await request("getChat", params)
         return try JSONDecoder().decode(GetChatResponse.self, from: data)
     }
 }
@@ -15028,8 +15028,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchatadministrators
      * Use this method to get a list of administrators in a chat. Returns an Array of ChatMember objects.
      */
-    public func getChatAdministrators(params: GetChatAdministratorsParams) throws -> GetChatAdministratorsResponse {
-        let data = try request("getChatAdministrators", params)
+    public func getChatAdministrators(params: GetChatAdministratorsParams) async throws -> GetChatAdministratorsResponse {
+        let data = try await request("getChatAdministrators", params)
         return try JSONDecoder().decode(GetChatAdministratorsResponse.self, from: data)
     }
 }
@@ -15054,8 +15054,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchatmembercount
      * Use this method to get the number of members in a chat. Returns Integer on success.
      */
-    public func getChatMemberCount(params: GetChatMemberCountParams) throws -> GetChatMemberCountResponse {
-        let data = try request("getChatMemberCount", params)
+    public func getChatMemberCount(params: GetChatMemberCountParams) async throws -> GetChatMemberCountResponse {
+        let data = try await request("getChatMemberCount", params)
         return try JSONDecoder().decode(GetChatMemberCountResponse.self, from: data)
     }
 }
@@ -15083,8 +15083,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchatmember
      * Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
      */
-    public func getChatMember(params: GetChatMemberParams) throws -> GetChatMemberResponse {
-        let data = try request("getChatMember", params)
+    public func getChatMember(params: GetChatMemberParams) async throws -> GetChatMemberResponse {
+        let data = try await request("getChatMember", params)
         return try JSONDecoder().decode(GetChatMemberResponse.self, from: data)
     }
 }
@@ -15112,8 +15112,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getuserpersonalchatmessages
      * Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given user. On success, an Array of Message objects is returned.
      */
-    public func getUserPersonalChatMessages(params: GetUserPersonalChatMessagesParams) throws -> GetUserPersonalChatMessagesResponse {
-        let data = try request("getUserPersonalChatMessages", params)
+    public func getUserPersonalChatMessages(params: GetUserPersonalChatMessagesParams) async throws -> GetUserPersonalChatMessagesResponse {
+        let data = try await request("getUserPersonalChatMessages", params)
         return try JSONDecoder().decode(GetUserPersonalChatMessagesResponse.self, from: data)
     }
 }
@@ -15141,8 +15141,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatstickerset
      * Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
      */
-    public func setChatStickerSet(params: SetChatStickerSetParams) throws -> SetChatStickerSetResponse {
-        let data = try request("setChatStickerSet", params)
+    public func setChatStickerSet(params: SetChatStickerSetParams) async throws -> SetChatStickerSetResponse {
+        let data = try await request("setChatStickerSet", params)
         return try JSONDecoder().decode(SetChatStickerSetResponse.self, from: data)
     }
 }
@@ -15167,8 +15167,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletechatstickerset
      * Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.
      */
-    public func deleteChatStickerSet(params: DeleteChatStickerSetParams) throws -> DeleteChatStickerSetResponse {
-        let data = try request("deleteChatStickerSet", params)
+    public func deleteChatStickerSet(params: DeleteChatStickerSetParams) async throws -> DeleteChatStickerSetResponse {
+        let data = try await request("deleteChatStickerSet", params)
         return try JSONDecoder().decode(DeleteChatStickerSetResponse.self, from: data)
     }
 }
@@ -15181,8 +15181,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getforumtopiciconstickers
      * Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
      */
-    public func getForumTopicIconStickers() throws -> GetForumTopicIconStickersResponse {
-        let data = try request("getForumTopicIconStickers", [String: String]())
+    public func getForumTopicIconStickers() async throws -> GetForumTopicIconStickersResponse {
+        let data = try await request("getForumTopicIconStickers", [String: String]())
         return try JSONDecoder().decode(GetForumTopicIconStickersResponse.self, from: data)
     }
 }
@@ -15216,8 +15216,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#createforumtopic
      * Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns information about the created topic as a ForumTopic object.
      */
-    public func createForumTopic(params: CreateForumTopicParams) throws -> CreateForumTopicResponse {
-        let data = try request("createForumTopic", params)
+    public func createForumTopic(params: CreateForumTopicParams) async throws -> CreateForumTopicResponse {
+        let data = try await request("createForumTopic", params)
         return try JSONDecoder().decode(CreateForumTopicResponse.self, from: data)
     }
 }
@@ -15251,8 +15251,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editforumtopic
      * Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
      */
-    public func editForumTopic(params: EditForumTopicParams) throws -> EditForumTopicResponse {
-        let data = try request("editForumTopic", params)
+    public func editForumTopic(params: EditForumTopicParams) async throws -> EditForumTopicResponse {
+        let data = try await request("editForumTopic", params)
         return try JSONDecoder().decode(EditForumTopicResponse.self, from: data)
     }
 }
@@ -15280,8 +15280,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#closeforumtopic
      * Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
      */
-    public func closeForumTopic(params: CloseForumTopicParams) throws -> CloseForumTopicResponse {
-        let data = try request("closeForumTopic", params)
+    public func closeForumTopic(params: CloseForumTopicParams) async throws -> CloseForumTopicResponse {
+        let data = try await request("closeForumTopic", params)
         return try JSONDecoder().decode(CloseForumTopicResponse.self, from: data)
     }
 }
@@ -15309,8 +15309,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#reopenforumtopic
      * Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
      */
-    public func reopenForumTopic(params: ReopenForumTopicParams) throws -> ReopenForumTopicResponse {
-        let data = try request("reopenForumTopic", params)
+    public func reopenForumTopic(params: ReopenForumTopicParams) async throws -> ReopenForumTopicResponse {
+        let data = try await request("reopenForumTopic", params)
         return try JSONDecoder().decode(ReopenForumTopicResponse.self, from: data)
     }
 }
@@ -15338,8 +15338,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deleteforumtopic
      * Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
      */
-    public func deleteForumTopic(params: DeleteForumTopicParams) throws -> DeleteForumTopicResponse {
-        let data = try request("deleteForumTopic", params)
+    public func deleteForumTopic(params: DeleteForumTopicParams) async throws -> DeleteForumTopicResponse {
+        let data = try await request("deleteForumTopic", params)
         return try JSONDecoder().decode(DeleteForumTopicResponse.self, from: data)
     }
 }
@@ -15367,8 +15367,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unpinallforumtopicmessages
      * Use this method to clear the list of pinned messages in a forum topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
      */
-    public func unpinAllForumTopicMessages(params: UnpinAllForumTopicMessagesParams) throws -> UnpinAllForumTopicMessagesResponse {
-        let data = try request("unpinAllForumTopicMessages", params)
+    public func unpinAllForumTopicMessages(params: UnpinAllForumTopicMessagesParams) async throws -> UnpinAllForumTopicMessagesResponse {
+        let data = try await request("unpinAllForumTopicMessages", params)
         return try JSONDecoder().decode(UnpinAllForumTopicMessagesResponse.self, from: data)
     }
 }
@@ -15396,8 +15396,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editgeneralforumtopic
      * Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
      */
-    public func editGeneralForumTopic(params: EditGeneralForumTopicParams) throws -> EditGeneralForumTopicResponse {
-        let data = try request("editGeneralForumTopic", params)
+    public func editGeneralForumTopic(params: EditGeneralForumTopicParams) async throws -> EditGeneralForumTopicResponse {
+        let data = try await request("editGeneralForumTopic", params)
         return try JSONDecoder().decode(EditGeneralForumTopicResponse.self, from: data)
     }
 }
@@ -15422,8 +15422,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#closegeneralforumtopic
      * Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
      */
-    public func closeGeneralForumTopic(params: CloseGeneralForumTopicParams) throws -> CloseGeneralForumTopicResponse {
-        let data = try request("closeGeneralForumTopic", params)
+    public func closeGeneralForumTopic(params: CloseGeneralForumTopicParams) async throws -> CloseGeneralForumTopicResponse {
+        let data = try await request("closeGeneralForumTopic", params)
         return try JSONDecoder().decode(CloseGeneralForumTopicResponse.self, from: data)
     }
 }
@@ -15448,8 +15448,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#reopengeneralforumtopic
      * Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
      */
-    public func reopenGeneralForumTopic(params: ReopenGeneralForumTopicParams) throws -> ReopenGeneralForumTopicResponse {
-        let data = try request("reopenGeneralForumTopic", params)
+    public func reopenGeneralForumTopic(params: ReopenGeneralForumTopicParams) async throws -> ReopenGeneralForumTopicResponse {
+        let data = try await request("reopenGeneralForumTopic", params)
         return try JSONDecoder().decode(ReopenGeneralForumTopicResponse.self, from: data)
     }
 }
@@ -15474,8 +15474,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#hidegeneralforumtopic
      * Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
      */
-    public func hideGeneralForumTopic(params: HideGeneralForumTopicParams) throws -> HideGeneralForumTopicResponse {
-        let data = try request("hideGeneralForumTopic", params)
+    public func hideGeneralForumTopic(params: HideGeneralForumTopicParams) async throws -> HideGeneralForumTopicResponse {
+        let data = try await request("hideGeneralForumTopic", params)
         return try JSONDecoder().decode(HideGeneralForumTopicResponse.self, from: data)
     }
 }
@@ -15500,8 +15500,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unhidegeneralforumtopic
      * Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
      */
-    public func unhideGeneralForumTopic(params: UnhideGeneralForumTopicParams) throws -> UnhideGeneralForumTopicResponse {
-        let data = try request("unhideGeneralForumTopic", params)
+    public func unhideGeneralForumTopic(params: UnhideGeneralForumTopicParams) async throws -> UnhideGeneralForumTopicResponse {
+        let data = try await request("unhideGeneralForumTopic", params)
         return try JSONDecoder().decode(UnhideGeneralForumTopicResponse.self, from: data)
     }
 }
@@ -15526,8 +15526,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
      * Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
      */
-    public func unpinAllGeneralForumTopicMessages(params: UnpinAllGeneralForumTopicMessagesParams) throws -> UnpinAllGeneralForumTopicMessagesResponse {
-        let data = try request("unpinAllGeneralForumTopicMessages", params)
+    public func unpinAllGeneralForumTopicMessages(params: UnpinAllGeneralForumTopicMessagesParams) async throws -> UnpinAllGeneralForumTopicMessagesResponse {
+        let data = try await request("unpinAllGeneralForumTopicMessages", params)
         return try JSONDecoder().decode(UnpinAllGeneralForumTopicMessagesResponse.self, from: data)
     }
 }
@@ -15564,8 +15564,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answercallbackquery
      * Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
      */
-    public func answerCallbackQuery(params: AnswerCallbackQueryParams) throws -> AnswerCallbackQueryResponse {
-        let data = try request("answerCallbackQuery", params)
+    public func answerCallbackQuery(params: AnswerCallbackQueryParams) async throws -> AnswerCallbackQueryResponse {
+        let data = try await request("answerCallbackQuery", params)
         return try JSONDecoder().decode(AnswerCallbackQueryResponse.self, from: data)
     }
 }
@@ -15593,8 +15593,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answerguestquery
      * Use this method to reply to a received guest message. On success, a SentGuestMessage object is returned.
      */
-    public func answerGuestQuery(params: AnswerGuestQueryParams) throws -> AnswerGuestQueryResponse {
-        let data = try request("answerGuestQuery", params)
+    public func answerGuestQuery(params: AnswerGuestQueryParams) async throws -> AnswerGuestQueryResponse {
+        let data = try await request("answerGuestQuery", params)
         return try JSONDecoder().decode(AnswerGuestQueryResponse.self, from: data)
     }
 }
@@ -15622,8 +15622,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getuserchatboosts
      * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
      */
-    public func getUserChatBoosts(params: GetUserChatBoostsParams) throws -> GetUserChatBoostsResponse {
-        let data = try request("getUserChatBoosts", params)
+    public func getUserChatBoosts(params: GetUserChatBoostsParams) async throws -> GetUserChatBoostsResponse {
+        let data = try await request("getUserChatBoosts", params)
         return try JSONDecoder().decode(GetUserChatBoostsResponse.self, from: data)
     }
 }
@@ -15648,8 +15648,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getbusinessconnection
      * Use this method to get information about the connection of the bot with a business account. Returns a BusinessConnection object on success.
      */
-    public func getBusinessConnection(params: GetBusinessConnectionParams) throws -> GetBusinessConnectionResponse {
-        let data = try request("getBusinessConnection", params)
+    public func getBusinessConnection(params: GetBusinessConnectionParams) async throws -> GetBusinessConnectionResponse {
+        let data = try await request("getBusinessConnection", params)
         return try JSONDecoder().decode(GetBusinessConnectionResponse.self, from: data)
     }
 }
@@ -15674,8 +15674,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmanagedbottoken
      * Use this method to get the token of a managed bot. Returns the token as String on success.
      */
-    public func getManagedBotToken(params: GetManagedBotTokenParams) throws -> GetManagedBotTokenResponse {
-        let data = try request("getManagedBotToken", params)
+    public func getManagedBotToken(params: GetManagedBotTokenParams) async throws -> GetManagedBotTokenResponse {
+        let data = try await request("getManagedBotToken", params)
         return try JSONDecoder().decode(GetManagedBotTokenResponse.self, from: data)
     }
 }
@@ -15700,8 +15700,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#replacemanagedbottoken
      * Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success.
      */
-    public func replaceManagedBotToken(params: ReplaceManagedBotTokenParams) throws -> ReplaceManagedBotTokenResponse {
-        let data = try request("replaceManagedBotToken", params)
+    public func replaceManagedBotToken(params: ReplaceManagedBotTokenParams) async throws -> ReplaceManagedBotTokenResponse {
+        let data = try await request("replaceManagedBotToken", params)
         return try JSONDecoder().decode(ReplaceManagedBotTokenResponse.self, from: data)
     }
 }
@@ -15726,8 +15726,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmanagedbotaccesssettings
      * Use this method to get the access settings of a managed bot. Returns a BotAccessSettings object on success.
      */
-    public func getManagedBotAccessSettings(params: GetManagedBotAccessSettingsParams) throws -> GetManagedBotAccessSettingsResponse {
-        let data = try request("getManagedBotAccessSettings", params)
+    public func getManagedBotAccessSettings(params: GetManagedBotAccessSettingsParams) async throws -> GetManagedBotAccessSettingsResponse {
+        let data = try await request("getManagedBotAccessSettings", params)
         return try JSONDecoder().decode(GetManagedBotAccessSettingsResponse.self, from: data)
     }
 }
@@ -15758,8 +15758,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmanagedbotaccesssettings
      * Use this method to change the access settings of a managed bot. Returns True on success.
      */
-    public func setManagedBotAccessSettings(params: SetManagedBotAccessSettingsParams) throws -> SetManagedBotAccessSettingsResponse {
-        let data = try request("setManagedBotAccessSettings", params)
+    public func setManagedBotAccessSettings(params: SetManagedBotAccessSettingsParams) async throws -> SetManagedBotAccessSettingsResponse {
+        let data = try await request("setManagedBotAccessSettings", params)
         return try JSONDecoder().decode(SetManagedBotAccessSettingsResponse.self, from: data)
     }
 }
@@ -15790,8 +15790,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmycommands
      * Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
      */
-    public func setMyCommands(params: SetMyCommandsParams) throws -> SetMyCommandsResponse {
-        let data = try request("setMyCommands", params)
+    public func setMyCommands(params: SetMyCommandsParams) async throws -> SetMyCommandsResponse {
+        let data = try await request("setMyCommands", params)
         return try JSONDecoder().decode(SetMyCommandsResponse.self, from: data)
     }
 }
@@ -15819,8 +15819,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletemycommands
      * Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success.
      */
-    public func deleteMyCommands(params: DeleteMyCommandsParams) throws -> DeleteMyCommandsResponse {
-        let data = try request("deleteMyCommands", params)
+    public func deleteMyCommands(params: DeleteMyCommandsParams) async throws -> DeleteMyCommandsResponse {
+        let data = try await request("deleteMyCommands", params)
         return try JSONDecoder().decode(DeleteMyCommandsResponse.self, from: data)
     }
 }
@@ -15848,8 +15848,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmycommands
      * Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.
      */
-    public func getMyCommands(params: GetMyCommandsParams) throws -> GetMyCommandsResponse {
-        let data = try request("getMyCommands", params)
+    public func getMyCommands(params: GetMyCommandsParams) async throws -> GetMyCommandsResponse {
+        let data = try await request("getMyCommands", params)
         return try JSONDecoder().decode(GetMyCommandsResponse.self, from: data)
     }
 }
@@ -15877,8 +15877,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmyname
      * Use this method to change the bot's name. Returns True on success.
      */
-    public func setMyName(params: SetMyNameParams) throws -> SetMyNameResponse {
-        let data = try request("setMyName", params)
+    public func setMyName(params: SetMyNameParams) async throws -> SetMyNameResponse {
+        let data = try await request("setMyName", params)
         return try JSONDecoder().decode(SetMyNameResponse.self, from: data)
     }
 }
@@ -15903,8 +15903,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmyname
      * Use this method to get the current bot name for the given user language. Returns BotName on success.
      */
-    public func getMyName(params: GetMyNameParams) throws -> GetMyNameResponse {
-        let data = try request("getMyName", params)
+    public func getMyName(params: GetMyNameParams) async throws -> GetMyNameResponse {
+        let data = try await request("getMyName", params)
         return try JSONDecoder().decode(GetMyNameResponse.self, from: data)
     }
 }
@@ -15932,8 +15932,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmydescription
      * Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
      */
-    public func setMyDescription(params: SetMyDescriptionParams) throws -> SetMyDescriptionResponse {
-        let data = try request("setMyDescription", params)
+    public func setMyDescription(params: SetMyDescriptionParams) async throws -> SetMyDescriptionResponse {
+        let data = try await request("setMyDescription", params)
         return try JSONDecoder().decode(SetMyDescriptionResponse.self, from: data)
     }
 }
@@ -15958,8 +15958,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmydescription
      * Use this method to get the current bot description for the given user language. Returns BotDescription on success.
      */
-    public func getMyDescription(params: GetMyDescriptionParams) throws -> GetMyDescriptionResponse {
-        let data = try request("getMyDescription", params)
+    public func getMyDescription(params: GetMyDescriptionParams) async throws -> GetMyDescriptionResponse {
+        let data = try await request("getMyDescription", params)
         return try JSONDecoder().decode(GetMyDescriptionResponse.self, from: data)
     }
 }
@@ -15987,8 +15987,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmyshortdescription
      * Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
      */
-    public func setMyShortDescription(params: SetMyShortDescriptionParams) throws -> SetMyShortDescriptionResponse {
-        let data = try request("setMyShortDescription", params)
+    public func setMyShortDescription(params: SetMyShortDescriptionParams) async throws -> SetMyShortDescriptionResponse {
+        let data = try await request("setMyShortDescription", params)
         return try JSONDecoder().decode(SetMyShortDescriptionResponse.self, from: data)
     }
 }
@@ -16013,8 +16013,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmyshortdescription
      * Use this method to get the current bot short description for the given user language. Returns BotShortDescription on success.
      */
-    public func getMyShortDescription(params: GetMyShortDescriptionParams) throws -> GetMyShortDescriptionResponse {
-        let data = try request("getMyShortDescription", params)
+    public func getMyShortDescription(params: GetMyShortDescriptionParams) async throws -> GetMyShortDescriptionResponse {
+        let data = try await request("getMyShortDescription", params)
         return try JSONDecoder().decode(GetMyShortDescriptionResponse.self, from: data)
     }
 }
@@ -16039,8 +16039,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmyprofilephoto
      * Changes the profile photo of the bot. Returns True on success.
      */
-    public func setMyProfilePhoto(params: SetMyProfilePhotoParams) throws -> SetMyProfilePhotoResponse {
-        let data = try request("setMyProfilePhoto", params)
+    public func setMyProfilePhoto(params: SetMyProfilePhotoParams) async throws -> SetMyProfilePhotoResponse {
+        let data = try await request("setMyProfilePhoto", params)
         return try JSONDecoder().decode(SetMyProfilePhotoResponse.self, from: data)
     }
 }
@@ -16053,8 +16053,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#removemyprofilephoto
      * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
      */
-    public func removeMyProfilePhoto() throws -> RemoveMyProfilePhotoResponse {
-        let data = try request("removeMyProfilePhoto", [String: String]())
+    public func removeMyProfilePhoto() async throws -> RemoveMyProfilePhotoResponse {
+        let data = try await request("removeMyProfilePhoto", [String: String]())
         return try JSONDecoder().decode(RemoveMyProfilePhotoResponse.self, from: data)
     }
 }
@@ -16082,8 +16082,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setchatmenubutton
      * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
      */
-    public func setChatMenuButton(params: SetChatMenuButtonParams) throws -> SetChatMenuButtonResponse {
-        let data = try request("setChatMenuButton", params)
+    public func setChatMenuButton(params: SetChatMenuButtonParams) async throws -> SetChatMenuButtonResponse {
+        let data = try await request("setChatMenuButton", params)
         return try JSONDecoder().decode(SetChatMenuButtonResponse.self, from: data)
     }
 }
@@ -16108,8 +16108,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchatmenubutton
      * Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
      */
-    public func getChatMenuButton(params: GetChatMenuButtonParams) throws -> GetChatMenuButtonResponse {
-        let data = try request("getChatMenuButton", params)
+    public func getChatMenuButton(params: GetChatMenuButtonParams) async throws -> GetChatMenuButtonResponse {
+        let data = try await request("getChatMenuButton", params)
         return try JSONDecoder().decode(GetChatMenuButtonResponse.self, from: data)
     }
 }
@@ -16137,8 +16137,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setmydefaultadministratorrights
      * Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are free to modify the list before adding the bot. Returns True on success.
      */
-    public func setMyDefaultAdministratorRights(params: SetMyDefaultAdministratorRightsParams) throws -> SetMyDefaultAdministratorRightsResponse {
-        let data = try request("setMyDefaultAdministratorRights", params)
+    public func setMyDefaultAdministratorRights(params: SetMyDefaultAdministratorRightsParams) async throws -> SetMyDefaultAdministratorRightsResponse {
+        let data = try await request("setMyDefaultAdministratorRights", params)
         return try JSONDecoder().decode(SetMyDefaultAdministratorRightsResponse.self, from: data)
     }
 }
@@ -16163,8 +16163,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmydefaultadministratorrights
      * Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
      */
-    public func getMyDefaultAdministratorRights(params: GetMyDefaultAdministratorRightsParams) throws -> GetMyDefaultAdministratorRightsResponse {
-        let data = try request("getMyDefaultAdministratorRights", params)
+    public func getMyDefaultAdministratorRights(params: GetMyDefaultAdministratorRightsParams) async throws -> GetMyDefaultAdministratorRightsResponse {
+        let data = try await request("getMyDefaultAdministratorRights", params)
         return try JSONDecoder().decode(GetMyDefaultAdministratorRightsResponse.self, from: data)
     }
 }
@@ -16177,8 +16177,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getavailablegifts
      * Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object.
      */
-    public func getAvailableGifts() throws -> GetAvailableGiftsResponse {
-        let data = try request("getAvailableGifts", [String: String]())
+    public func getAvailableGifts() async throws -> GetAvailableGiftsResponse {
+        let data = try await request("getAvailableGifts", [String: String]())
         return try JSONDecoder().decode(GetAvailableGiftsResponse.self, from: data)
     }
 }
@@ -16221,8 +16221,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendgift
      * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success.
      */
-    public func sendGift(params: SendGiftParams) throws -> SendGiftResponse {
-        let data = try request("sendGift", params)
+    public func sendGift(params: SendGiftParams) async throws -> SendGiftResponse {
+        let data = try await request("sendGift", params)
         return try JSONDecoder().decode(SendGiftResponse.self, from: data)
     }
 }
@@ -16262,8 +16262,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#giftpremiumsubscription
      * Gifts a Telegram Premium subscription to the given user. Returns True on success.
      */
-    public func giftPremiumSubscription(params: GiftPremiumSubscriptionParams) throws -> GiftPremiumSubscriptionResponse {
-        let data = try request("giftPremiumSubscription", params)
+    public func giftPremiumSubscription(params: GiftPremiumSubscriptionParams) async throws -> GiftPremiumSubscriptionResponse {
+        let data = try await request("giftPremiumSubscription", params)
         return try JSONDecoder().decode(GiftPremiumSubscriptionResponse.self, from: data)
     }
 }
@@ -16291,8 +16291,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#verifyuser
      * Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
      */
-    public func verifyUser(params: VerifyUserParams) throws -> VerifyUserResponse {
-        let data = try request("verifyUser", params)
+    public func verifyUser(params: VerifyUserParams) async throws -> VerifyUserResponse {
+        let data = try await request("verifyUser", params)
         return try JSONDecoder().decode(VerifyUserResponse.self, from: data)
     }
 }
@@ -16320,8 +16320,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#verifychat
      * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success.
      */
-    public func verifyChat(params: VerifyChatParams) throws -> VerifyChatResponse {
-        let data = try request("verifyChat", params)
+    public func verifyChat(params: VerifyChatParams) async throws -> VerifyChatResponse {
+        let data = try await request("verifyChat", params)
         return try JSONDecoder().decode(VerifyChatResponse.self, from: data)
     }
 }
@@ -16346,8 +16346,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#removeuserverification
      * Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True on success.
      */
-    public func removeUserVerification(params: RemoveUserVerificationParams) throws -> RemoveUserVerificationResponse {
-        let data = try request("removeUserVerification", params)
+    public func removeUserVerification(params: RemoveUserVerificationParams) async throws -> RemoveUserVerificationResponse {
+        let data = try await request("removeUserVerification", params)
         return try JSONDecoder().decode(RemoveUserVerificationResponse.self, from: data)
     }
 }
@@ -16372,8 +16372,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#removechatverification
      * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success.
      */
-    public func removeChatVerification(params: RemoveChatVerificationParams) throws -> RemoveChatVerificationResponse {
-        let data = try request("removeChatVerification", params)
+    public func removeChatVerification(params: RemoveChatVerificationParams) async throws -> RemoveChatVerificationResponse {
+        let data = try await request("removeChatVerification", params)
         return try JSONDecoder().decode(RemoveChatVerificationResponse.self, from: data)
     }
 }
@@ -16404,8 +16404,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#readbusinessmessage
      * Marks incoming message as read on behalf of a business account. Requires the can_read_messages business bot right. Returns True on success.
      */
-    public func readBusinessMessage(params: ReadBusinessMessageParams) throws -> ReadBusinessMessageResponse {
-        let data = try request("readBusinessMessage", params)
+    public func readBusinessMessage(params: ReadBusinessMessageParams) async throws -> ReadBusinessMessageResponse {
+        let data = try await request("readBusinessMessage", params)
         return try JSONDecoder().decode(ReadBusinessMessageResponse.self, from: data)
     }
 }
@@ -16433,8 +16433,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletebusinessmessages
      * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
      */
-    public func deleteBusinessMessages(params: DeleteBusinessMessagesParams) throws -> DeleteBusinessMessagesResponse {
-        let data = try request("deleteBusinessMessages", params)
+    public func deleteBusinessMessages(params: DeleteBusinessMessagesParams) async throws -> DeleteBusinessMessagesResponse {
+        let data = try await request("deleteBusinessMessages", params)
         return try JSONDecoder().decode(DeleteBusinessMessagesResponse.self, from: data)
     }
 }
@@ -16465,8 +16465,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setbusinessaccountname
      * Changes the first and last name of a managed business account. Requires the can_change_name business bot right. Returns True on success.
      */
-    public func setBusinessAccountName(params: SetBusinessAccountNameParams) throws -> SetBusinessAccountNameResponse {
-        let data = try request("setBusinessAccountName", params)
+    public func setBusinessAccountName(params: SetBusinessAccountNameParams) async throws -> SetBusinessAccountNameResponse {
+        let data = try await request("setBusinessAccountName", params)
         return try JSONDecoder().decode(SetBusinessAccountNameResponse.self, from: data)
     }
 }
@@ -16494,8 +16494,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setbusinessaccountusername
      * Changes the username of a managed business account. Requires the can_change_username business bot right. Returns True on success.
      */
-    public func setBusinessAccountUsername(params: SetBusinessAccountUsernameParams) throws -> SetBusinessAccountUsernameResponse {
-        let data = try request("setBusinessAccountUsername", params)
+    public func setBusinessAccountUsername(params: SetBusinessAccountUsernameParams) async throws -> SetBusinessAccountUsernameResponse {
+        let data = try await request("setBusinessAccountUsername", params)
         return try JSONDecoder().decode(SetBusinessAccountUsernameResponse.self, from: data)
     }
 }
@@ -16523,8 +16523,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setbusinessaccountbio
      * Changes the bio of a managed business account. Requires the can_change_bio business bot right. Returns True on success.
      */
-    public func setBusinessAccountBio(params: SetBusinessAccountBioParams) throws -> SetBusinessAccountBioResponse {
-        let data = try request("setBusinessAccountBio", params)
+    public func setBusinessAccountBio(params: SetBusinessAccountBioParams) async throws -> SetBusinessAccountBioResponse {
+        let data = try await request("setBusinessAccountBio", params)
         return try JSONDecoder().decode(SetBusinessAccountBioResponse.self, from: data)
     }
 }
@@ -16555,8 +16555,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
      * Changes the profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns True on success.
      */
-    public func setBusinessAccountProfilePhoto(params: SetBusinessAccountProfilePhotoParams) throws -> SetBusinessAccountProfilePhotoResponse {
-        let data = try request("setBusinessAccountProfilePhoto", params)
+    public func setBusinessAccountProfilePhoto(params: SetBusinessAccountProfilePhotoParams) async throws -> SetBusinessAccountProfilePhotoResponse {
+        let data = try await request("setBusinessAccountProfilePhoto", params)
         return try JSONDecoder().decode(SetBusinessAccountProfilePhotoResponse.self, from: data)
     }
 }
@@ -16584,8 +16584,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#removebusinessaccountprofilephoto
      * Removes the current profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns True on success.
      */
-    public func removeBusinessAccountProfilePhoto(params: RemoveBusinessAccountProfilePhotoParams) throws -> RemoveBusinessAccountProfilePhotoResponse {
-        let data = try request("removeBusinessAccountProfilePhoto", params)
+    public func removeBusinessAccountProfilePhoto(params: RemoveBusinessAccountProfilePhotoParams) async throws -> RemoveBusinessAccountProfilePhotoResponse {
+        let data = try await request("removeBusinessAccountProfilePhoto", params)
         return try JSONDecoder().decode(RemoveBusinessAccountProfilePhotoResponse.self, from: data)
     }
 }
@@ -16616,8 +16616,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
      * Changes the privacy settings pertaining to incoming gifts in a managed business account. Requires the can_change_gift_settings business bot right. Returns True on success.
      */
-    public func setBusinessAccountGiftSettings(params: SetBusinessAccountGiftSettingsParams) throws -> SetBusinessAccountGiftSettingsResponse {
-        let data = try request("setBusinessAccountGiftSettings", params)
+    public func setBusinessAccountGiftSettings(params: SetBusinessAccountGiftSettingsParams) async throws -> SetBusinessAccountGiftSettingsResponse {
+        let data = try await request("setBusinessAccountGiftSettings", params)
         return try JSONDecoder().decode(SetBusinessAccountGiftSettingsResponse.self, from: data)
     }
 }
@@ -16642,8 +16642,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getbusinessaccountstarbalance
      * Returns the amount of Telegram Stars owned by a managed business account. Requires the can_view_gifts_and_stars business bot right. Returns StarAmount on success.
      */
-    public func getBusinessAccountStarBalance(params: GetBusinessAccountStarBalanceParams) throws -> GetBusinessAccountStarBalanceResponse {
-        let data = try request("getBusinessAccountStarBalance", params)
+    public func getBusinessAccountStarBalance(params: GetBusinessAccountStarBalanceParams) async throws -> GetBusinessAccountStarBalanceResponse {
+        let data = try await request("getBusinessAccountStarBalance", params)
         return try JSONDecoder().decode(GetBusinessAccountStarBalanceResponse.self, from: data)
     }
 }
@@ -16671,8 +16671,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#transferbusinessaccountstars
      * Transfers Telegram Stars from the business account balance to the bot's balance. Requires the can_transfer_stars business bot right. Returns True on success.
      */
-    public func transferBusinessAccountStars(params: TransferBusinessAccountStarsParams) throws -> TransferBusinessAccountStarsResponse {
-        let data = try request("transferBusinessAccountStars", params)
+    public func transferBusinessAccountStars(params: TransferBusinessAccountStarsParams) async throws -> TransferBusinessAccountStarsResponse {
+        let data = try await request("transferBusinessAccountStars", params)
         return try JSONDecoder().decode(TransferBusinessAccountStarsResponse.self, from: data)
     }
 }
@@ -16727,8 +16727,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getbusinessaccountgifts
      * Returns the gifts received and owned by a managed business account. Requires the can_view_gifts_and_stars business bot right. Returns OwnedGifts on success.
      */
-    public func getBusinessAccountGifts(params: GetBusinessAccountGiftsParams) throws -> GetBusinessAccountGiftsResponse {
-        let data = try request("getBusinessAccountGifts", params)
+    public func getBusinessAccountGifts(params: GetBusinessAccountGiftsParams) async throws -> GetBusinessAccountGiftsResponse {
+        let data = try await request("getBusinessAccountGifts", params)
         return try JSONDecoder().decode(GetBusinessAccountGiftsResponse.self, from: data)
     }
 }
@@ -16777,8 +16777,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getusergifts
      * Returns the gifts owned and hosted by a user. Returns OwnedGifts on success.
      */
-    public func getUserGifts(params: GetUserGiftsParams) throws -> GetUserGiftsResponse {
-        let data = try request("getUserGifts", params)
+    public func getUserGifts(params: GetUserGiftsParams) async throws -> GetUserGiftsResponse {
+        let data = try await request("getUserGifts", params)
         return try JSONDecoder().decode(GetUserGiftsResponse.self, from: data)
     }
 }
@@ -16833,8 +16833,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getchatgifts
      * Returns the gifts owned by a chat. Returns OwnedGifts on success.
      */
-    public func getChatGifts(params: GetChatGiftsParams) throws -> GetChatGiftsResponse {
-        let data = try request("getChatGifts", params)
+    public func getChatGifts(params: GetChatGiftsParams) async throws -> GetChatGiftsResponse {
+        let data = try await request("getChatGifts", params)
         return try JSONDecoder().decode(GetChatGiftsResponse.self, from: data)
     }
 }
@@ -16862,8 +16862,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#convertgifttostars
      * Converts a given regular gift to Telegram Stars. Requires the can_convert_gifts_to_stars business bot right. Returns True on success.
      */
-    public func convertGiftToStars(params: ConvertGiftToStarsParams) throws -> ConvertGiftToStarsResponse {
-        let data = try request("convertGiftToStars", params)
+    public func convertGiftToStars(params: ConvertGiftToStarsParams) async throws -> ConvertGiftToStarsResponse {
+        let data = try await request("convertGiftToStars", params)
         return try JSONDecoder().decode(ConvertGiftToStarsResponse.self, from: data)
     }
 }
@@ -16897,8 +16897,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#upgradegift
      * Upgrades a given regular gift to a unique gift. Requires the can_transfer_and_upgrade_gifts business bot right. Additionally requires the can_transfer_stars business bot right if the upgrade is paid. Returns True on success.
      */
-    public func upgradeGift(params: UpgradeGiftParams) throws -> UpgradeGiftResponse {
-        let data = try request("upgradeGift", params)
+    public func upgradeGift(params: UpgradeGiftParams) async throws -> UpgradeGiftResponse {
+        let data = try await request("upgradeGift", params)
         return try JSONDecoder().decode(UpgradeGiftResponse.self, from: data)
     }
 }
@@ -16932,8 +16932,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#transfergift
      * Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires can_transfer_stars business bot right if the transfer is paid. Returns True on success.
      */
-    public func transferGift(params: TransferGiftParams) throws -> TransferGiftResponse {
-        let data = try request("transferGift", params)
+    public func transferGift(params: TransferGiftParams) async throws -> TransferGiftResponse {
+        let data = try await request("transferGift", params)
         return try JSONDecoder().decode(TransferGiftResponse.self, from: data)
     }
 }
@@ -16982,8 +16982,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#poststory
      * Posts a story on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success.
      */
-    public func postStory(params: PostStoryParams) throws -> PostStoryResponse {
-        let data = try request("postStory", params)
+    public func postStory(params: PostStoryParams) async throws -> PostStoryResponse {
+        let data = try await request("postStory", params)
         return try JSONDecoder().decode(PostStoryResponse.self, from: data)
     }
 }
@@ -17023,8 +17023,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#repoststory
      * Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories business bot right for both business accounts. Returns Story on success.
      */
-    public func repostStory(params: RepostStoryParams) throws -> RepostStoryResponse {
-        let data = try request("repostStory", params)
+    public func repostStory(params: RepostStoryParams) async throws -> RepostStoryResponse {
+        let data = try await request("repostStory", params)
         return try JSONDecoder().decode(RepostStoryResponse.self, from: data)
     }
 }
@@ -17067,8 +17067,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editstory
      * Edits a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success.
      */
-    public func editStory(params: EditStoryParams) throws -> EditStoryResponse {
-        let data = try request("editStory", params)
+    public func editStory(params: EditStoryParams) async throws -> EditStoryResponse {
+        let data = try await request("editStory", params)
         return try JSONDecoder().decode(EditStoryResponse.self, from: data)
     }
 }
@@ -17096,8 +17096,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletestory
      * Deletes a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns True on success.
      */
-    public func deleteStory(params: DeleteStoryParams) throws -> DeleteStoryResponse {
-        let data = try request("deleteStory", params)
+    public func deleteStory(params: DeleteStoryParams) async throws -> DeleteStoryResponse {
+        let data = try await request("deleteStory", params)
         return try JSONDecoder().decode(DeleteStoryResponse.self, from: data)
     }
 }
@@ -17125,8 +17125,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answerwebappquery
      * Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
      */
-    public func answerWebAppQuery(params: AnswerWebAppQueryParams) throws -> AnswerWebAppQueryResponse {
-        let data = try request("answerWebAppQuery", params)
+    public func answerWebAppQuery(params: AnswerWebAppQueryParams) async throws -> AnswerWebAppQueryResponse {
+        let data = try await request("answerWebAppQuery", params)
         return try JSONDecoder().decode(AnswerWebAppQueryResponse.self, from: data)
     }
 }
@@ -17166,8 +17166,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#savepreparedinlinemessage
      * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
      */
-    public func savePreparedInlineMessage(params: SavePreparedInlineMessageParams) throws -> SavePreparedInlineMessageResponse {
-        let data = try request("savePreparedInlineMessage", params)
+    public func savePreparedInlineMessage(params: SavePreparedInlineMessageParams) async throws -> SavePreparedInlineMessageResponse {
+        let data = try await request("savePreparedInlineMessage", params)
         return try JSONDecoder().decode(SavePreparedInlineMessageResponse.self, from: data)
     }
 }
@@ -17195,8 +17195,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#savepreparedkeyboardbutton
      * Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.
      */
-    public func savePreparedKeyboardButton(params: SavePreparedKeyboardButtonParams) throws -> SavePreparedKeyboardButtonResponse {
-        let data = try request("savePreparedKeyboardButton", params)
+    public func savePreparedKeyboardButton(params: SavePreparedKeyboardButtonParams) async throws -> SavePreparedKeyboardButtonResponse {
+        let data = try await request("savePreparedKeyboardButton", params)
         return try JSONDecoder().decode(SavePreparedKeyboardButtonResponse.self, from: data)
     }
 }
@@ -17248,8 +17248,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagetext
      * Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
      */
-    public func editMessageText(params: EditMessageTextParams) throws -> EditMessageTextResponse {
-        let data = try request("editMessageText", params)
+    public func editMessageText(params: EditMessageTextParams) async throws -> EditMessageTextResponse {
+        let data = try await request("editMessageText", params)
         return try JSONDecoder().decode(EditMessageTextResponse.self, from: data)
     }
 }
@@ -17298,8 +17298,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagecaption
      * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
      */
-    public func editMessageCaption(params: EditMessageCaptionParams) throws -> EditMessageCaptionResponse {
-        let data = try request("editMessageCaption", params)
+    public func editMessageCaption(params: EditMessageCaptionParams) async throws -> EditMessageCaptionResponse {
+        let data = try await request("editMessageCaption", params)
         return try JSONDecoder().decode(EditMessageCaptionResponse.self, from: data)
     }
 }
@@ -17339,8 +17339,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagemedia
      * Use this method to edit animation, audio, document, live photo, photo, or video messages, or to replace a text or a rich message with a media. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
      */
-    public func editMessageMedia(params: EditMessageMediaParams) throws -> EditMessageMediaResponse {
-        let data = try request("editMessageMedia", params)
+    public func editMessageMedia(params: EditMessageMediaParams) async throws -> EditMessageMediaResponse {
+        let data = try await request("editMessageMedia", params)
         return try JSONDecoder().decode(EditMessageMediaResponse.self, from: data)
     }
 }
@@ -17395,8 +17395,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagelivelocation
      * Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
      */
-    public func editMessageLiveLocation(params: EditMessageLiveLocationParams) throws -> EditMessageLiveLocationResponse {
-        let data = try request("editMessageLiveLocation", params)
+    public func editMessageLiveLocation(params: EditMessageLiveLocationParams) async throws -> EditMessageLiveLocationResponse {
+        let data = try await request("editMessageLiveLocation", params)
         return try JSONDecoder().decode(EditMessageLiveLocationResponse.self, from: data)
     }
 }
@@ -17433,8 +17433,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#stopmessagelivelocation
      * Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
      */
-    public func stopMessageLiveLocation(params: StopMessageLiveLocationParams) throws -> StopMessageLiveLocationResponse {
-        let data = try request("stopMessageLiveLocation", params)
+    public func stopMessageLiveLocation(params: StopMessageLiveLocationParams) async throws -> StopMessageLiveLocationResponse {
+        let data = try await request("stopMessageLiveLocation", params)
         return try JSONDecoder().decode(StopMessageLiveLocationResponse.self, from: data)
     }
 }
@@ -17471,8 +17471,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagechecklist
      * Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
      */
-    public func editMessageChecklist(params: EditMessageChecklistParams) throws -> EditMessageChecklistResponse {
-        let data = try request("editMessageChecklist", params)
+    public func editMessageChecklist(params: EditMessageChecklistParams) async throws -> EditMessageChecklistResponse {
+        let data = try await request("editMessageChecklist", params)
         return try JSONDecoder().decode(EditMessageChecklistResponse.self, from: data)
     }
 }
@@ -17509,8 +17509,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editmessagereplymarkup
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
      */
-    public func editMessageReplyMarkup(params: EditMessageReplyMarkupParams) throws -> EditMessageReplyMarkupResponse {
-        let data = try request("editMessageReplyMarkup", params)
+    public func editMessageReplyMarkup(params: EditMessageReplyMarkupParams) async throws -> EditMessageReplyMarkupResponse {
+        let data = try await request("editMessageReplyMarkup", params)
         return try JSONDecoder().decode(EditMessageReplyMarkupResponse.self, from: data)
     }
 }
@@ -17544,8 +17544,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#stoppoll
      * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
      */
-    public func stopPoll(params: StopPollParams) throws -> StopPollResponse {
-        let data = try request("stopPoll", params)
+    public func stopPoll(params: StopPollParams) async throws -> StopPollResponse {
+        let data = try await request("stopPoll", params)
         return try JSONDecoder().decode(StopPollResponse.self, from: data)
     }
 }
@@ -17594,8 +17594,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editephemeralmessagetext
      * Use this method to edit an ephemeral text or rich message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned.
      */
-    public func editEphemeralMessageText(params: EditEphemeralMessageTextParams) throws -> EditEphemeralMessageTextResponse {
-        let data = try request("editEphemeralMessageText", params)
+    public func editEphemeralMessageText(params: EditEphemeralMessageTextParams) async throws -> EditEphemeralMessageTextResponse {
+        let data = try await request("editEphemeralMessageText", params)
         return try JSONDecoder().decode(EditEphemeralMessageTextResponse.self, from: data)
     }
 }
@@ -17632,8 +17632,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editephemeralmessagemedia
      * Use this method to edit the media of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned.
      */
-    public func editEphemeralMessageMedia(params: EditEphemeralMessageMediaParams) throws -> EditEphemeralMessageMediaResponse {
-        let data = try request("editEphemeralMessageMedia", params)
+    public func editEphemeralMessageMedia(params: EditEphemeralMessageMediaParams) async throws -> EditEphemeralMessageMediaResponse {
+        let data = try await request("editEphemeralMessageMedia", params)
         return try JSONDecoder().decode(EditEphemeralMessageMediaResponse.self, from: data)
     }
 }
@@ -17679,8 +17679,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editephemeralmessagecaption
      * Use this method to edit the caption of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned.
      */
-    public func editEphemeralMessageCaption(params: EditEphemeralMessageCaptionParams) throws -> EditEphemeralMessageCaptionResponse {
-        let data = try request("editEphemeralMessageCaption", params)
+    public func editEphemeralMessageCaption(params: EditEphemeralMessageCaptionParams) async throws -> EditEphemeralMessageCaptionResponse {
+        let data = try await request("editEphemeralMessageCaption", params)
         return try JSONDecoder().decode(EditEphemeralMessageCaptionResponse.self, from: data)
     }
 }
@@ -17714,8 +17714,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#editephemeralmessagereplymarkup
      * Use this method to edit only the reply markup of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned.
      */
-    public func editEphemeralMessageReplyMarkup(params: EditEphemeralMessageReplyMarkupParams) throws -> EditEphemeralMessageReplyMarkupResponse {
-        let data = try request("editEphemeralMessageReplyMarkup", params)
+    public func editEphemeralMessageReplyMarkup(params: EditEphemeralMessageReplyMarkupParams) async throws -> EditEphemeralMessageReplyMarkupResponse {
+        let data = try await request("editEphemeralMessageReplyMarkup", params)
         return try JSONDecoder().decode(EditEphemeralMessageReplyMarkupResponse.self, from: data)
     }
 }
@@ -17746,8 +17746,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#approvesuggestedpost
      * Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can_post_messages' administrator right in the corresponding channel chat. Returns True on success.
      */
-    public func approveSuggestedPost(params: ApproveSuggestedPostParams) throws -> ApproveSuggestedPostResponse {
-        let data = try request("approveSuggestedPost", params)
+    public func approveSuggestedPost(params: ApproveSuggestedPostParams) async throws -> ApproveSuggestedPostResponse {
+        let data = try await request("approveSuggestedPost", params)
         return try JSONDecoder().decode(ApproveSuggestedPostResponse.self, from: data)
     }
 }
@@ -17778,8 +17778,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#declinesuggestedpost
      * Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can_manage_direct_messages' administrator right in the corresponding channel chat. Returns True on success.
      */
-    public func declineSuggestedPost(params: DeclineSuggestedPostParams) throws -> DeclineSuggestedPostResponse {
-        let data = try request("declineSuggestedPost", params)
+    public func declineSuggestedPost(params: DeclineSuggestedPostParams) async throws -> DeclineSuggestedPostResponse {
+        let data = try await request("declineSuggestedPost", params)
         return try JSONDecoder().decode(DeclineSuggestedPostResponse.self, from: data)
     }
 }
@@ -17817,8 +17817,8 @@ extension TelegramAPI {
      * - If the bot has can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.
      * Returns True on success.
      */
-    public func deleteMessage(params: DeleteMessageParams) throws -> DeleteMessageResponse {
-        let data = try request("deleteMessage", params)
+    public func deleteMessage(params: DeleteMessageParams) async throws -> DeleteMessageResponse {
+        let data = try await request("deleteMessage", params)
         return try JSONDecoder().decode(DeleteMessageResponse.self, from: data)
     }
 }
@@ -17846,8 +17846,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletemessages
      * Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
      */
-    public func deleteMessages(params: DeleteMessagesParams) throws -> DeleteMessagesResponse {
-        let data = try request("deleteMessages", params)
+    public func deleteMessages(params: DeleteMessagesParams) async throws -> DeleteMessagesResponse {
+        let data = try await request("deleteMessages", params)
         return try JSONDecoder().decode(DeleteMessagesResponse.self, from: data)
     }
 }
@@ -17878,8 +17878,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deleteephemeralmessage
      * Use this method to delete an ephemeral message. Note that it is not guaranteed that the user will receive the message deletion event, especially if they are offline. Returns True on success.
      */
-    public func deleteEphemeralMessage(params: DeleteEphemeralMessageParams) throws -> DeleteEphemeralMessageResponse {
-        let data = try request("deleteEphemeralMessage", params)
+    public func deleteEphemeralMessage(params: DeleteEphemeralMessageParams) async throws -> DeleteEphemeralMessageResponse {
+        let data = try await request("deleteEphemeralMessage", params)
         return try JSONDecoder().decode(DeleteEphemeralMessageResponse.self, from: data)
     }
 }
@@ -17913,8 +17913,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletemessagereaction
      * Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.
      */
-    public func deleteMessageReaction(params: DeleteMessageReactionParams) throws -> DeleteMessageReactionResponse {
-        let data = try request("deleteMessageReaction", params)
+    public func deleteMessageReaction(params: DeleteMessageReactionParams) async throws -> DeleteMessageReactionResponse {
+        let data = try await request("deleteMessageReaction", params)
         return try JSONDecoder().decode(DeleteMessageReactionResponse.self, from: data)
     }
 }
@@ -17945,8 +17945,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deleteallmessagereactions
      * Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a given user or chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.
      */
-    public func deleteAllMessageReactions(params: DeleteAllMessageReactionsParams) throws -> DeleteAllMessageReactionsResponse {
-        let data = try request("deleteAllMessageReactions", params)
+    public func deleteAllMessageReactions(params: DeleteAllMessageReactionsParams) async throws -> DeleteAllMessageReactionsResponse {
+        let data = try await request("deleteAllMessageReactions", params)
         return try JSONDecoder().decode(DeleteAllMessageReactionsResponse.self, from: data)
     }
 }
@@ -18010,8 +18010,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendsticker
      * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
      */
-    public func sendSticker(params: SendStickerParams) throws -> SendStickerResponse {
-        let data = try request("sendSticker", params)
+    public func sendSticker(params: SendStickerParams) async throws -> SendStickerResponse {
+        let data = try await request("sendSticker", params)
         return try JSONDecoder().decode(SendStickerResponse.self, from: data)
     }
 }
@@ -18036,8 +18036,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getstickerset
      * Use this method to get a sticker set. On success, a StickerSet object is returned.
      */
-    public func getStickerSet(params: GetStickerSetParams) throws -> GetStickerSetResponse {
-        let data = try request("getStickerSet", params)
+    public func getStickerSet(params: GetStickerSetParams) async throws -> GetStickerSetResponse {
+        let data = try await request("getStickerSet", params)
         return try JSONDecoder().decode(GetStickerSetResponse.self, from: data)
     }
 }
@@ -18062,8 +18062,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getcustomemojistickers
      * Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
      */
-    public func getCustomEmojiStickers(params: GetCustomEmojiStickersParams) throws -> GetCustomEmojiStickersResponse {
-        let data = try request("getCustomEmojiStickers", params)
+    public func getCustomEmojiStickers(params: GetCustomEmojiStickersParams) async throws -> GetCustomEmojiStickersResponse {
+        let data = try await request("getCustomEmojiStickers", params)
         return try JSONDecoder().decode(GetCustomEmojiStickersResponse.self, from: data)
     }
 }
@@ -18094,8 +18094,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#uploadstickerfile
      * Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times). Returns the uploaded File on success.
      */
-    public func uploadStickerFile(params: UploadStickerFileParams) throws -> UploadStickerFileResponse {
-        let data = try request("uploadStickerFile", params)
+    public func uploadStickerFile(params: UploadStickerFileParams) async throws -> UploadStickerFileResponse {
+        let data = try await request("uploadStickerFile", params)
         return try JSONDecoder().decode(UploadStickerFileResponse.self, from: data)
     }
 }
@@ -18135,8 +18135,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#createnewstickerset
      * Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
      */
-    public func createNewStickerSet(params: CreateNewStickerSetParams) throws -> CreateNewStickerSetResponse {
-        let data = try request("createNewStickerSet", params)
+    public func createNewStickerSet(params: CreateNewStickerSetParams) async throws -> CreateNewStickerSetResponse {
+        let data = try await request("createNewStickerSet", params)
         return try JSONDecoder().decode(CreateNewStickerSetResponse.self, from: data)
     }
 }
@@ -18167,8 +18167,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#addstickertoset
      * Use this method to add a new sticker to a set created by the bot. Emoji sticker sets can have up to 200 stickers. Other sticker sets can have up to 120 stickers. Returns True on success.
      */
-    public func addStickerToSet(params: AddStickerToSetParams) throws -> AddStickerToSetResponse {
-        let data = try request("addStickerToSet", params)
+    public func addStickerToSet(params: AddStickerToSetParams) async throws -> AddStickerToSetResponse {
+        let data = try await request("addStickerToSet", params)
         return try JSONDecoder().decode(AddStickerToSetResponse.self, from: data)
     }
 }
@@ -18196,8 +18196,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickerpositioninset
      * Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
      */
-    public func setStickerPositionInSet(params: SetStickerPositionInSetParams) throws -> SetStickerPositionInSetResponse {
-        let data = try request("setStickerPositionInSet", params)
+    public func setStickerPositionInSet(params: SetStickerPositionInSetParams) async throws -> SetStickerPositionInSetResponse {
+        let data = try await request("setStickerPositionInSet", params)
         return try JSONDecoder().decode(SetStickerPositionInSetResponse.self, from: data)
     }
 }
@@ -18222,8 +18222,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletestickerfromset
      * Use this method to delete a sticker from a set created by the bot. Returns True on success.
      */
-    public func deleteStickerFromSet(params: DeleteStickerFromSetParams) throws -> DeleteStickerFromSetResponse {
-        let data = try request("deleteStickerFromSet", params)
+    public func deleteStickerFromSet(params: DeleteStickerFromSetParams) async throws -> DeleteStickerFromSetResponse {
+        let data = try await request("deleteStickerFromSet", params)
         return try JSONDecoder().decode(DeleteStickerFromSetResponse.self, from: data)
     }
 }
@@ -18257,8 +18257,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#replacestickerinset
      * Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
      */
-    public func replaceStickerInSet(params: ReplaceStickerInSetParams) throws -> ReplaceStickerInSetResponse {
-        let data = try request("replaceStickerInSet", params)
+    public func replaceStickerInSet(params: ReplaceStickerInSetParams) async throws -> ReplaceStickerInSetResponse {
+        let data = try await request("replaceStickerInSet", params)
         return try JSONDecoder().decode(ReplaceStickerInSetResponse.self, from: data)
     }
 }
@@ -18286,8 +18286,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickeremojilist
      * Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
      */
-    public func setStickerEmojiList(params: SetStickerEmojiListParams) throws -> SetStickerEmojiListResponse {
-        let data = try request("setStickerEmojiList", params)
+    public func setStickerEmojiList(params: SetStickerEmojiListParams) async throws -> SetStickerEmojiListResponse {
+        let data = try await request("setStickerEmojiList", params)
         return try JSONDecoder().decode(SetStickerEmojiListResponse.self, from: data)
     }
 }
@@ -18315,8 +18315,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickerkeywords
      * Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
      */
-    public func setStickerKeywords(params: SetStickerKeywordsParams) throws -> SetStickerKeywordsResponse {
-        let data = try request("setStickerKeywords", params)
+    public func setStickerKeywords(params: SetStickerKeywordsParams) async throws -> SetStickerKeywordsResponse {
+        let data = try await request("setStickerKeywords", params)
         return try JSONDecoder().decode(SetStickerKeywordsResponse.self, from: data)
     }
 }
@@ -18344,8 +18344,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickermaskposition
      * Use this method to change the mask position of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
      */
-    public func setStickerMaskPosition(params: SetStickerMaskPositionParams) throws -> SetStickerMaskPositionResponse {
-        let data = try request("setStickerMaskPosition", params)
+    public func setStickerMaskPosition(params: SetStickerMaskPositionParams) async throws -> SetStickerMaskPositionResponse {
+        let data = try await request("setStickerMaskPosition", params)
         return try JSONDecoder().decode(SetStickerMaskPositionResponse.self, from: data)
     }
 }
@@ -18373,8 +18373,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickersettitle
      * Use this method to set the title of a created sticker set. Returns True on success.
      */
-    public func setStickerSetTitle(params: SetStickerSetTitleParams) throws -> SetStickerSetTitleResponse {
-        let data = try request("setStickerSetTitle", params)
+    public func setStickerSetTitle(params: SetStickerSetTitleParams) async throws -> SetStickerSetTitleResponse {
+        let data = try await request("setStickerSetTitle", params)
         return try JSONDecoder().decode(SetStickerSetTitleResponse.self, from: data)
     }
 }
@@ -18408,8 +18408,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setstickersetthumbnail
      * Use this method to set the thumbnail of a regular or mask sticker set. The format of the thumbnail file must match the format of the stickers in the set. Returns True on success.
      */
-    public func setStickerSetThumbnail(params: SetStickerSetThumbnailParams) throws -> SetStickerSetThumbnailResponse {
-        let data = try request("setStickerSetThumbnail", params)
+    public func setStickerSetThumbnail(params: SetStickerSetThumbnailParams) async throws -> SetStickerSetThumbnailResponse {
+        let data = try await request("setStickerSetThumbnail", params)
         return try JSONDecoder().decode(SetStickerSetThumbnailResponse.self, from: data)
     }
 }
@@ -18437,8 +18437,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
      * Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
      */
-    public func setCustomEmojiStickerSetThumbnail(params: SetCustomEmojiStickerSetThumbnailParams) throws -> SetCustomEmojiStickerSetThumbnailResponse {
-        let data = try request("setCustomEmojiStickerSetThumbnail", params)
+    public func setCustomEmojiStickerSetThumbnail(params: SetCustomEmojiStickerSetThumbnailParams) async throws -> SetCustomEmojiStickerSetThumbnailResponse {
+        let data = try await request("setCustomEmojiStickerSetThumbnail", params)
         return try JSONDecoder().decode(SetCustomEmojiStickerSetThumbnailResponse.self, from: data)
     }
 }
@@ -18463,8 +18463,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#deletestickerset
      * Use this method to delete a sticker set that was created by the bot. Returns True on success.
      */
-    public func deleteStickerSet(params: DeleteStickerSetParams) throws -> DeleteStickerSetResponse {
-        let data = try request("deleteStickerSet", params)
+    public func deleteStickerSet(params: DeleteStickerSetParams) async throws -> DeleteStickerSetResponse {
+        let data = try await request("deleteStickerSet", params)
         return try JSONDecoder().decode(DeleteStickerSetResponse.self, from: data)
     }
 }
@@ -18525,8 +18525,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendrichmessage
      * Use this method to send rich messages. If the message contains a block with a media element, then the bot must have the right to send the media to the chat. On success, the sent Message is returned.
      */
-    public func sendRichMessage(params: SendRichMessageParams) throws -> SendRichMessageResponse {
-        let data = try request("sendRichMessage", params)
+    public func sendRichMessage(params: SendRichMessageParams) async throws -> SendRichMessageResponse {
+        let data = try await request("sendRichMessage", params)
         return try JSONDecoder().decode(SendRichMessageResponse.self, from: data)
     }
 }
@@ -18566,8 +18566,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendrichmessagedraft
      * Use this method to stream a partial rich message to a user while the message is being generated. Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendRichMessage with the complete message to persist it in the user's chat. Returns True on success.
      */
-    public func sendRichMessageDraft(params: SendRichMessageDraftParams) throws -> SendRichMessageDraftResponse {
-        let data = try request("sendRichMessageDraft", params)
+    public func sendRichMessageDraft(params: SendRichMessageDraftParams) async throws -> SendRichMessageDraftResponse {
+        let data = try await request("sendRichMessageDraft", params)
         return try JSONDecoder().decode(SendRichMessageDraftResponse.self, from: data)
     }
 }
@@ -18608,8 +18608,8 @@ extension TelegramAPI {
      * Use this method to send answers to an inline query. On success, True is returned.
      * No more than 50 results per query are allowed.
      */
-    public func answerInlineQuery(params: AnswerInlineQueryParams) throws -> AnswerInlineQueryResponse {
-        let data = try request("answerInlineQuery", params)
+    public func answerInlineQuery(params: AnswerInlineQueryParams) async throws -> AnswerInlineQueryResponse {
+        let data = try await request("answerInlineQuery", params)
         return try JSONDecoder().decode(AnswerInlineQueryResponse.self, from: data)
     }
 }
@@ -18724,8 +18724,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendinvoice
      * Use this method to send invoices. On success, the sent Message is returned.
      */
-    public func sendInvoice(params: SendInvoiceParams) throws -> SendInvoiceResponse {
-        let data = try request("sendInvoice", params)
+    public func sendInvoice(params: SendInvoiceParams) async throws -> SendInvoiceResponse {
+        let data = try await request("sendInvoice", params)
         return try JSONDecoder().decode(SendInvoiceResponse.self, from: data)
     }
 }
@@ -18813,8 +18813,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#createinvoicelink
      * Use this method to create a link for an invoice. Returns the created invoice link as String on success.
      */
-    public func createInvoiceLink(params: CreateInvoiceLinkParams) throws -> CreateInvoiceLinkResponse {
-        let data = try request("createInvoiceLink", params)
+    public func createInvoiceLink(params: CreateInvoiceLinkParams) async throws -> CreateInvoiceLinkResponse {
+        let data = try await request("createInvoiceLink", params)
         return try JSONDecoder().decode(CreateInvoiceLinkResponse.self, from: data)
     }
 }
@@ -18848,8 +18848,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answershippingquery
      * If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
      */
-    public func answerShippingQuery(params: AnswerShippingQueryParams) throws -> AnswerShippingQueryResponse {
-        let data = try request("answerShippingQuery", params)
+    public func answerShippingQuery(params: AnswerShippingQueryParams) async throws -> AnswerShippingQueryResponse {
+        let data = try await request("answerShippingQuery", params)
         return try JSONDecoder().decode(AnswerShippingQueryResponse.self, from: data)
     }
 }
@@ -18880,8 +18880,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#answerprecheckoutquery
      * Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
      */
-    public func answerPreCheckoutQuery(params: AnswerPreCheckoutQueryParams) throws -> AnswerPreCheckoutQueryResponse {
-        let data = try request("answerPreCheckoutQuery", params)
+    public func answerPreCheckoutQuery(params: AnswerPreCheckoutQueryParams) async throws -> AnswerPreCheckoutQueryResponse {
+        let data = try await request("answerPreCheckoutQuery", params)
         return try JSONDecoder().decode(AnswerPreCheckoutQueryResponse.self, from: data)
     }
 }
@@ -18894,8 +18894,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getmystarbalance
      * A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object.
      */
-    public func getMyStarBalance() throws -> GetMyStarBalanceResponse {
-        let data = try request("getMyStarBalance", [String: String]())
+    public func getMyStarBalance() async throws -> GetMyStarBalanceResponse {
+        let data = try await request("getMyStarBalance", [String: String]())
         return try JSONDecoder().decode(GetMyStarBalanceResponse.self, from: data)
     }
 }
@@ -18923,8 +18923,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getstartransactions
      * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
      */
-    public func getStarTransactions(params: GetStarTransactionsParams) throws -> GetStarTransactionsResponse {
-        let data = try request("getStarTransactions", params)
+    public func getStarTransactions(params: GetStarTransactionsParams) async throws -> GetStarTransactionsResponse {
+        let data = try await request("getStarTransactions", params)
         return try JSONDecoder().decode(GetStarTransactionsResponse.self, from: data)
     }
 }
@@ -18952,8 +18952,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#refundstarpayment
      * Refunds a successful payment in Telegram Stars. Returns True on success.
      */
-    public func refundStarPayment(params: RefundStarPaymentParams) throws -> RefundStarPaymentResponse {
-        let data = try request("refundStarPayment", params)
+    public func refundStarPayment(params: RefundStarPaymentParams) async throws -> RefundStarPaymentResponse {
+        let data = try await request("refundStarPayment", params)
         return try JSONDecoder().decode(RefundStarPaymentResponse.self, from: data)
     }
 }
@@ -18984,8 +18984,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#edituserstarsubscription
      * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success.
      */
-    public func editUserStarSubscription(params: EditUserStarSubscriptionParams) throws -> EditUserStarSubscriptionResponse {
-        let data = try request("editUserStarSubscription", params)
+    public func editUserStarSubscription(params: EditUserStarSubscriptionParams) async throws -> EditUserStarSubscriptionResponse {
+        let data = try await request("editUserStarSubscription", params)
         return try JSONDecoder().decode(EditUserStarSubscriptionResponse.self, from: data)
     }
 }
@@ -19014,8 +19014,8 @@ extension TelegramAPI {
      * Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
      * Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
      */
-    public func setPassportDataErrors(params: SetPassportDataErrorsParams) throws -> SetPassportDataErrorsResponse {
-        let data = try request("setPassportDataErrors", params)
+    public func setPassportDataErrors(params: SetPassportDataErrorsParams) async throws -> SetPassportDataErrorsResponse {
+        let data = try await request("setPassportDataErrors", params)
         return try JSONDecoder().decode(SetPassportDataErrorsResponse.self, from: data)
     }
 }
@@ -19067,8 +19067,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#sendgame
      * Use this method to send a game. On success, the sent Message is returned.
      */
-    public func sendGame(params: SendGameParams) throws -> SendGameResponse {
-        let data = try request("sendGame", params)
+    public func sendGame(params: SendGameParams) async throws -> SendGameResponse {
+        let data = try await request("sendGame", params)
         return try JSONDecoder().decode(SendGameResponse.self, from: data)
     }
 }
@@ -19111,8 +19111,8 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#setgamescore
      * Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
      */
-    public func setGameScore(params: SetGameScoreParams) throws -> SetGameScoreResponse {
-        let data = try request("setGameScore", params)
+    public func setGameScore(params: SetGameScoreParams) async throws -> SetGameScoreResponse {
+        let data = try await request("setGameScore", params)
         return try JSONDecoder().decode(SetGameScoreResponse.self, from: data)
     }
 }
@@ -19146,11 +19146,12 @@ extension TelegramAPI {
      * https://core.telegram.org/bots/api#getgamehighscores
      * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.
      */
-    public func getGameHighScores(params: GetGameHighScoresParams) throws -> GetGameHighScoresResponse {
-        let data = try request("getGameHighScores", params)
+    public func getGameHighScores(params: GetGameHighScoresParams) async throws -> GetGameHighScoresResponse {
+        let data = try await request("getGameHighScores", params)
         return try JSONDecoder().decode(GetGameHighScoresResponse.self, from: data)
     }
 }
+
 extension TelegramAPI {
 
     public enum Either2<A: Codable, B: Codable>: Codable {
